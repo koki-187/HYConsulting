@@ -1,0 +1,38 @@
+# Ignore build artifacts and dependencies
+node_modules/
+dist/
+build/
+.cache/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignore temporary files
+tmp/
+temp/
+*.tmp
+
+# Ignore large media files (keep originals elsewhere if needed)
+# Uncomment the following if you have very large files
+# *.psd
+# *.ai
+# *.sketch
+
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Keep directory structure
+!assets/images/.gitkeep
+!assets/documents/.gitkeep
+!docs/design/.gitkeep
