@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HY Consulting - 追加セクション（Achievements, Testimonials, FAQ）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Achievementsセクション */
+        #achievements {
+            background-color: #F5F5F5;
+            padding: 80px 20px;
+        }
+
+        #achievements .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #achievements h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0D274D;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        #achievements .description {
+            font-size: 16px;
+            color: #666666;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #achievements .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        #achievements .card {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        #achievements .card .number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #008E7D;
+            margin-bottom: 8px;
+        }
+
+        #achievements .card .unit {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0D274D;
+            margin-bottom: 8px;
+        }
+
+        #achievements .card .label {
+            font-size: 14px;
+            color: #666666;
+        }
+
+        /* Testimonialsセクション */
+        #testimonials {
+            background-color: #FFFFFF;
+            padding: 80px 20px;
+        }
+
+        #testimonials .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #testimonials h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0D274D;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        #testimonials .description {
+            font-size: 16px;
+            color: #666666;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #testimonials .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        #testimonials .card {
+            background-color: #F5F5F5;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        #testimonials .card .quote {
+            font-size: 48px;
+            font-weight: 700;
+            color: #008E7D;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        #testimonials .card .comment {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        #testimonials .card .customer {
+            font-size: 12px;
+            font-weight: 600;
+            color: #0D274D;
+        }
+
+        /* FAQセクション */
+        #faq {
+            background-color: #F5F5F5;
+            padding: 80px 20px;
+        }
+
+        #faq .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        #faq h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0D274D;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        #faq .description {
+            font-size: 16px;
+            color: #666666;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        #faq .accordion-item {
+            background-color: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            border-radius: 14px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        #faq .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #0D274D;
+            transition: background-color 0.3s;
+        }
+
+        #faq .accordion-header:hover {
+            background-color: #F5F5F5;
+        }
+
+        #faq .accordion-icon {
+            font-size: 20px;
+            color: #008E7D;
+            transition: transform 0.3s;
+        }
+
+        #faq .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        #faq .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #F5F5F5;
+        }
+
+        #faq .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        #faq .accordion-content-inner {
+            padding: 20px;
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 900px) {
+            #achievements .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            #testimonials .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 540px) {
+            #achievements {
+                padding: 40px 16px;
+            }
+
+            #achievements h2 {
+                font-size: 28px;
+            }
+
+            #achievements .description {
+                font-size: 14px;
+            }
+
+            #achievements .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            #achievements .card .number {
+                font-size: 40px;
+            }
+
+            #testimonials {
+                padding: 40px 16px;
+            }
+
+            #testimonials h2 {
+                font-size: 28px;
+            }
+
+            #testimonials .description {
+                font-size: 14px;
+            }
+
+            #testimonials .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            #faq {
+                padding: 40px 16px;
+            }
+
+            #faq h2 {
+                font-size: 28px;
+            }
+
+            #faq .description {
+                font-size: 14px;
+            }
+
+            #faq .accordion-header {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Achievementsセクション -->
+    <section id="achievements">
+        <div class="container">
+            <h2>HY Consultingの実績</h2>
+            <p class="description">横浜・湘南エリアを中心に、多くのお客様の不動産課題を解決してきました。</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="number">1,500+</div>
+                    <div class="unit">件</div>
+                    <div class="label">相談実績</div>
+                </div>
+                <div class="card">
+                    <div class="number">95%</div>
+                    <div class="unit"></div>
+                    <div class="label">顧客満足度</div>
+                </div>
+                <div class="card">
+                    <div class="number">10万+</div>
+                    <div class="unit">件</div>
+                    <div class="label">データベース取引数</div>
+                </div>
+                <div class="card">
+                    <div class="number">20+</div>
+                    <div class="unit">年</div>
+                    <div class="label">業界経験年数</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonialsセクション -->
+    <section id="testimonials">
+        <div class="container">
+            <h2>お客様の声</h2>
+            <p class="description">HY Consultingのサービスをご利用いただいたお客様から、多くの喜びの声をいただいています。</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="quote">"</div>
+                    <div class="comment">親から相続した横浜の実家の売却に悩んでいましたが、HY Consultingさんに相談して本当に良かったです。税理士や司法書士の手配もすべてお任せでき、スムーズに売却できました。</div>
+                    <div class="customer">Y.T様（50代・横浜市・戸建て）</div>
+                </div>
+                <div class="card">
+                    <div class="quote">"</div>
+                    <div class="comment">湘南エリアの空きアパートの活用に困っていましたが、HY Consultingさんのデータベース査定で適正価格を知ることができ、納得のいく形で売却できました。データに基づいた提案が信頼できました。</div>
+                    <div class="customer">K.S様（60代・湘南エリア・アパート）</div>
+                </div>
+                <div class="card">
+                    <div class="quote">"</div>
+                    <div class="comment">不動産投資を始めたいと思っていましたが、何から始めればいいか分かりませんでした。HY Consultingさんに相談したところ、ライフプランから資産形成まで丁寧にサポートしていただき、安心して投資を始めることができました。</div>
+                    <div class="customer">M.H様（40代・横浜市・マンション）</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQセクション -->
+    <section id="faq">
+        <div class="container">
+            <h2>よくある質問</h2>
+            <p class="description">HY Consultingのサービスについて、お客様からよくいただく質問をまとめました。</p>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Q1: 相談は無料ですか？</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        はい、初回相談は無料です。お客様の状況やご要望をお伺いし、最適なソリューションをご提案いたします。お気軽にお問い合わせください。
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Q2: 横浜・湘南エリア以外の物件も対応できますか？</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        はい、対応可能です。横浜・湘南エリアを中心に活動していますが、全国の物件にも対応しております。まずはお気軽にご相談ください。
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Q3: データベース査定とAI査定の違いは何ですか？</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        データベース査定は、国土交通省の実取引データ約10万件を使用した、実際の取引データに基づく査定です。AI査定は機械学習による推計ですが、データベース査定は公的データに基づく正確な査定を提供します。
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Q4: 相続不動産の売却にはどのくらいの期間がかかりますか？</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        物件の状況や市場環境によって異なりますが、一般的には3〜6ヶ月程度です。相続手続きや名義変更が必要な場合は、さらに時間がかかる場合があります。詳細はお問い合わせください。
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Q5: 空き家の管理もお願いできますか？</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        はい、空き家の管理サービスも提供しております。定期的な巡回、清掃、修繕手配など、お客様のニーズに合わせたサービスをご提案いたします。
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Q6: 売却以外の活用方法も相談できますか？</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-content-inner">
+                        はい、もちろんです。賃貸、リノベーション、土地活用など、売却以外の選択肢もご提案いたします。お客様のライフプランに合わせた最適なソリューションを一緒に考えます。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // アコーディオンの開閉機能
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // すべてのアコーディオンを閉じる
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // クリックされたアコーディオンを開く（既に開いている場合は閉じる）
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
