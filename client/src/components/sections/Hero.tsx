@@ -12,10 +12,10 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-blue-50/50 to-white">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-blue-50/30 blur-3xl rounded-bl-full opacity-60" />
-      <div className="absolute bottom-0 left-0 -z-10 w-1/3 h-1/2 bg-yellow-50/40 blur-3xl rounded-tr-full opacity-60" />
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-gradient-to-b from-blue-50/30 to-white">
+      {/* Background decoration - More subtle and professional */}
+      <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-blue-100/40 blur-3xl rounded-bl-full opacity-50" />
+      <div className="absolute bottom-0 left-0 -z-10 w-1/3 h-1/2 bg-slate-100/50 blur-3xl rounded-tr-full opacity-50" />
 
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
@@ -32,27 +32,22 @@ export default function Hero() {
               <span className="text-sm font-medium text-primary">初回相談無料キャンペーン実施中</span>
             </div>
 
-            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-slate-800 font-heading">
-              ビジネスの<span className="text-primary">未来</span>を、<br />
-              <span className="relative inline-block">
-                共に描く
-                <svg className="absolute -bottom-2 left-0 w-full h-3 text-yellow-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
-                </svg>
-              </span>
-              パートナー
+            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-slate-800 font-heading tracking-tight">
+              人とまちと社会の<br />
+              <span className="text-primary">未来</span>をつなぐ<br />
+              不動産コンサルティング
             </h1>
             
-            <p className="text-lg lg:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              HYコンサルティングは、あなたの会社の「強み」を見つけ出し、
-              持続可能な成長へと導く伴走型パートナーです。
-              複雑な課題も、親身な対話と確かな戦略で解決します。
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              理想の住まいづくりや資産形成など「未来のビジョン」から、
+              空き家・相続といった「いまの課題」まで。
+              不動産を活用したソリューションを提案し、実行支援していきます。
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90 text-white group"
+                className="w-full sm:w-auto text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90 text-white group"
                 onClick={scrollToContact}
               >
                 無料相談を予約する
@@ -61,7 +56,7 @@ export default function Hero() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="w-full sm:w-auto text-lg px-8 py-6 rounded-full border-2 hover:bg-slate-50 text-slate-700"
+                className="w-full sm:w-auto text-lg px-8 py-6 rounded-lg border-2 hover:bg-slate-50 text-slate-700"
                 onClick={scrollToServices}
               >
                 サービス資料を見る
@@ -70,60 +65,64 @@ export default function Hero() {
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 text-sm font-medium text-slate-500">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-500" />
-                <span>累計支援 500社以上</span>
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span>相続・空き家対策のプロ</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-500" />
-                <span>顧客満足度 98%</span>
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span>ワンストップ対応</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-500" />
-                <span>最短1ヶ月で成果</span>
+                <CheckCircle2 className="w-5 h-5 text-primary" />
+                <span>地域密着の信頼</span>
               </div>
             </div>
           </motion.div>
 
           {/* Image Content */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-1 relative w-full max-w-[600px] lg:max-w-none"
           >
             <div className="relative aspect-[4/3] w-full">
-              {/* Main Illustration */}
+              {/* Main Illustration - Keeping the city illustration but with less aggressive effects */}
               <img 
                 src="/images/hero_city_16x9.png" 
                 alt="未来の街並みとビジネスの成長" 
-                className="w-full h-full object-contain drop-shadow-2xl z-10 relative hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-contain drop-shadow-xl z-10 relative"
               />
               
-              {/* Floating Elements */}
+              {/* Floating Elements - Simplified for professionalism */}
               <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute -top-8 -right-8 bg-white p-4 rounded-2xl shadow-xl border border-blue-50 z-20 hidden sm:block"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                className="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-lg border border-slate-100 z-20 hidden sm:block"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold">UP</div>
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-primary font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21h18"/><path d="M5 21V7"/><path d="M19 21V3"/><path d="M10 21V11"/><path d="M14 21V15"/></svg>
+                  </div>
                   <div>
-                    <p className="text-xs text-slate-400">売上成長率</p>
-                    <p className="text-lg font-bold text-slate-800">+150%</p>
+                    <p className="text-xs text-slate-500">資産価値向上</p>
+                    <p className="text-base font-bold text-slate-800">最適な活用提案</p>
                   </div>
                 </div>
               </motion.div>
 
               <motion.div 
-                animate={{ y: [0, 15, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-8 -left-8 bg-white p-4 rounded-2xl shadow-xl border border-blue-50 z-20 hidden sm:block"
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg border border-slate-100 z-20 hidden sm:block"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">★</div>
+                  <div className="w-10 h-10 rounded-full bg-yellow-50 flex items-center justify-center text-yellow-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  </div>
                   <div>
-                    <p className="text-xs text-slate-400">顧客評価</p>
-                    <p className="text-lg font-bold text-slate-800">4.9/5.0</p>
+                    <p className="text-xs text-slate-500">専門家連携</p>
+                    <p className="text-base font-bold text-slate-800">強力なネットワーク</p>
                   </div>
                 </div>
               </motion.div>

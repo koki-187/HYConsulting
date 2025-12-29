@@ -4,21 +4,24 @@ import { ArrowUpRight } from "lucide-react";
 
 const achievements = [
   {
-    category: "製造業",
-    title: "生産プロセス改革によるコスト削減",
-    result: "製造コスト 20%削減",
+    category: "不動産事業支援",
+    title: "高齢者施設斡旋業のご支援",
+    result: "資金計画・相続対策",
+    description: "介護施設入居前後の資金計画や相続の不安に対し、不動産の有効活用を通じて安心できる老後の暮らしを支援します。",
     image: "/images/case_before_after_16x9.png"
   },
   {
-    category: "小売業",
-    title: "店舗DX推進とEC連携強化",
-    result: "売上高 150%達成",
+    category: "不動産購入・売却",
+    title: "５年売れなかった土地をアイデアで即売却",
+    result: "早期売却達成",
+    description: "他の不動産会社にて５年売れなかった空き家を、独自のアイデアとネットワークで即座に売却へと導きました。",
     image: "/images/valuation_4x3.png"
   },
   {
-    category: "サービス業",
-    title: "人事評価制度の刷新と定着化",
-    result: "離職率 10%改善",
+    category: "空き家活用",
+    title: "相続した空き家の有効活用",
+    result: "収益化実現",
+    description: "放置されていた空き家をリノベーションし、地域のコミュニティスペースとして再生。収益化と地域貢献を両立。",
     image: "/images/experts_network_1x1.png"
   }
 ];
@@ -48,8 +51,8 @@ export default function Achievements() {
           >
             確かな実績と<br className="hidden sm:block" />
             <span className="text-primary relative inline-block">
-              具体的な成果
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-yellow-200/50 -z-10 rounded-sm" />
+              具体的な解決事例
+              <span className="absolute bottom-1 left-0 w-full h-3 bg-blue-100/50 -z-10 rounded-sm" />
             </span>
           </motion.h2>
           <motion.p 
@@ -59,8 +62,8 @@ export default function Achievements() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 leading-relaxed"
           >
-            多くの企業様の課題解決と成長をご支援させていただいております。
-            業界・規模を問わず、確実な成果を創出します。
+            個人のお客様から法人様まで、様々な課題を解決に導いた実績がございます。<br className="hidden lg:block" />
+            その一部をご紹介します。
           </motion.p>
         </div>
 
@@ -73,7 +76,7 @@ export default function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 + 0.3 }}
             >
-              <Card className="h-full border-none shadow-soft hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-[2rem] flex flex-col">
+              <Card className="h-full border-none shadow-soft hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-xl flex flex-col">
                 <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
                   <img 
                     src={item.image} 
@@ -86,19 +89,22 @@ export default function Achievements() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 
-                <CardContent className="p-8 flex-grow flex flex-col">
-                  <h3 className="text-xl font-bold text-slate-800 mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                <CardContent className="p-6 flex-grow flex flex-col">
+                  <h3 className="text-lg font-bold text-slate-800 mb-3 group-hover:text-primary transition-colors line-clamp-2">
                     {item.title}
                   </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 line-clamp-3">
+                    {item.description}
+                  </p>
                   
-                  <div className="mt-auto pt-6 border-t border-slate-100">
+                  <div className="mt-auto pt-4 border-t border-slate-100">
                     <div className="flex items-end justify-between">
                       <div>
                         <p className="text-xs text-slate-500 font-medium mb-1">成果</p>
-                        <p className="text-2xl font-bold text-primary">{item.result}</p>
+                        <p className="text-lg font-bold text-primary">{item.result}</p>
                       </div>
-                      <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                        <ArrowUpRight className="w-5 h-5" />
+                      <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>
                   </div>
