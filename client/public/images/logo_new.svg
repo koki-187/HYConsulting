@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60">
+  <defs>
+    <style>
+      .text { font-family: "Noto Sans JP", sans-serif; font-weight: bold; fill: #1e3a8a; }
+      .subtext { font-family: "Noto Sans JP", sans-serif; font-weight: normal; fill: #64748b; letter-spacing: 0.1em; }
+      .icon-bg { fill: #1e3a8a; }
+      .icon-text { fill: #ffffff; font-family: sans-serif; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Symbol Mark -->
+  <rect x="0" y="5" width="50" height="50" rx="8" class="icon-bg" />
+  <text x="25" y="40" text-anchor="middle" class="icon-text" font-size="28">HY</text>
+  
+  <!-- Text -->
+  <text x="65" y="32" class="text" font-size="28">HY Consulting</text>
+  <text x="65" y="52" class="subtext" font-size="10">Estate &amp; Management</text>
+</svg>

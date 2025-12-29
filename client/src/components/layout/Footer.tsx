@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <a href="/" className="inline-block mb-6">
               <img 
-                src="/images/hy_consulting_logo_recreated.png" 
+                src="/images/logo_new.svg" 
                 alt="HY Consulting" 
                 className="h-12 w-auto brightness-0 invert"
               />
@@ -36,6 +36,7 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-6 text-slate-200">Menu</h4>
             <ul className="space-y-4">
               <li><a href="#services" className="text-slate-400 hover:text-primary transition-colors">サービス</a></li>
+              <li><a href="#assessment" className="text-slate-400 hover:text-primary transition-colors">不動産査定</a></li>
               <li><a href="#features" className="text-slate-400 hover:text-primary transition-colors">選ばれる理由</a></li>
               <li><a href="#achievements" className="text-slate-400 hover:text-primary transition-colors">実績</a></li>
               <li><a href="#testimonials" className="text-slate-400 hover:text-primary transition-colors">お客様の声</a></li>

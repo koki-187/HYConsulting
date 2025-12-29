@@ -6,6 +6,7 @@ import { Link, useLocation } from "wouter";
 
 const NAV_ITEMS = [
   { label: "サービス", href: "#services" },
+  { label: "不動産査定", href: "#assessment" },
   { label: "強み・特徴", href: "#features" },
   { label: "実績", href: "#achievements" },
   { label: "お客様の声", href: "#testimonials" },
@@ -35,7 +36,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="container flex items-center justify-between">
@@ -43,7 +44,7 @@ export default function Header() {
         <Link href="/">
           <a className="flex items-center gap-2 group">
             <img 
-              src="/images/logos/HY_Consulting_Logo_Horizontal.png" 
+              src="/images/logo_new.svg" 
               alt="HY Consulting" 
               className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
@@ -51,21 +52,21 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={(e) => scrollToSection(e, item.href)}
-              className={`text-sm font-medium transition-colors hover:text-accent ${
-                isScrolled ? "text-primary" : "text-white"
+              className={`text-sm font-bold transition-colors hover:text-primary ${
+                isScrolled ? "text-slate-600" : "text-slate-800"
               }`}
             >
               {item.label}
             </a>
           ))}
           <Button 
-            className="bg-accent hover:bg-accent/90 text-white font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5"
+            className="bg-primary hover:bg-primary/90 text-white font-bold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 rounded-full px-6"
             onClick={(e) => {
               e.preventDefault();
               document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
@@ -78,8 +79,8 @@ export default function Header() {
         {/* Mobile Navigation */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden text-primary">
-              <Menu className={`h-6 w-6 ${isScrolled ? "text-primary" : "text-white"}`} />
+            <Button variant="ghost" size="icon" className="lg:hidden text-primary">
+              <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -90,15 +91,14 @@ export default function Header() {
                   href={item.href}
                   onClick={(e) => {
                     scrollToSection(e, item.href);
-                    // Close sheet logic would go here if we had access to the state
                   }}
-                  className="text-lg font-medium text-primary hover:text-accent transition-colors"
+                  className="text-lg font-medium text-slate-800 hover:text-primary transition-colors"
                 >
                   {item.label}
                 </a>
               ))}
               <Button 
-                className="w-full bg-accent hover:bg-accent/90 text-white font-bold mt-4"
+                className="w-full bg-primary hover:bg-primary/90 text-white font-bold mt-4 rounded-full"
                 onClick={(e) => {
                   e.preventDefault();
                   document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
