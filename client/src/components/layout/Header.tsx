@@ -4,6 +4,15 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+const navItems = [
+  { label: "ホーム", href: "/" },
+  { label: "サービス", href: "#services" },
+  { label: "無料査定", href: "#assessment" },
+  { label: "強み", href: "#features" },
+  { label: "実績", href: "#achievements" },
+  { label: "よくある質問", href: "#faq" },
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,21 +26,13 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = [
-    { label: "ホーム", href: "/" },
-    { label: "サービス", href: "#services" },
-    { label: "不動産査定", href: "#assessment" },
-    { label: "強み・特徴", href: "#features" },
-    { label: "実績紹介", href: "#achievements" },
-    { label: "よくある質問", href: "#faq" },
-  ];
-
-  const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
+      e.preventDefault();
       const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
+        setIsMobileMenuOpen(false);
       }
     }
   };
@@ -40,94 +41,89 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3 border-slate-100" : "bg-transparent py-5"
+        isScrolled ? "bg-white/95 backdrop-blur-md py-2 shadow-md border-slate-100" : "bg-white py-4 shadow-sm"
       )}
     >
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link href="/">
-          <a className="flex items-center gap-2 group">
-            <img 
-              src="/images/logo_new.svg" 
-              alt="HY Consulting" 
-              className={cn(
-                "transition-all duration-300",
-                isScrolled ? "h-8" : "h-10 brightness-0 invert"
-              )} 
-            />
-          </a>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick(item.href);
-              }}
-              className={cn(
-                "text-sm font-medium transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full",
-                isScrolled ? "text-slate-600 hover:text-primary" : "text-white/90 hover:text-white"
-              )}
-            >
-              {item.label}
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/">
+            <a className="flex items-center gap-3 group">
+              <img 
+                src="/images/logo_new_design.png" 
+                alt="HY Consulting" 
+                className="h-10 lg:h-12 w-auto object-contain"
+              />
             </a>
-          ))}
-          <Button 
-            className={cn(
-              "font-bold rounded-sm shadow-md transition-all duration-300",
-              isScrolled 
-                ? "bg-primary hover:bg-primary/90 text-white" 
-                : "bg-white text-primary hover:bg-slate-100"
-            )}
-            onClick={() => handleNavClick("#contact")}
-          >
-            <Phone className="w-4 h-4 mr-2" />
-            お問い合わせ
-          </Button>
-        </nav>
+          </Link>
 
-        {/* Mobile Menu Button */}
-        <button
-          className={cn(
-            "lg:hidden p-2 rounded-sm transition-colors",
-            isScrolled ? "text-slate-900 hover:bg-slate-100" : "text-white hover:bg-white/10"
-          )}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-white border-t border-slate-100 shadow-xl lg:hidden animate-in slide-in-from-top-5">
-          <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-8">
             {navItems.map((item) => (
               <a
-                key={item.href}
+                key={item.label}
                 href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(item.href);
-                }}
-                className="text-slate-600 hover:text-primary font-medium py-2 border-b border-slate-50 last:border-0"
+                onClick={(e) => scrollToSection(e, item.href)}
+                className="text-base font-bold text-primary hover:text-accent transition-colors relative group py-2"
               >
                 {item.label}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
             <Button 
-              className="w-full mt-4 bg-primary hover:bg-primary/90 text-white font-bold rounded-sm"
-              onClick={() => handleNavClick("#contact")}
+              className="bg-secondary hover:bg-secondary/90 text-white font-bold tracking-wide rounded-md px-6 shadow-md hover:shadow-lg transition-all"
+              onClick={() => {
+                const element = document.querySelector("#contact");
+                element?.scrollIntoView({ behavior: "smooth" });
+              }}
             >
               <Phone className="w-4 h-4 mr-2" />
               お問い合わせ
             </Button>
-          </div>
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="lg:hidden p-2 rounded-md text-primary hover:bg-slate-100 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+          </button>
         </div>
-      )}
+      </div>
+
+      {/* Mobile Navigation Overlay */}
+      <div
+        className={cn(
+          "fixed inset-0 bg-white z-40 lg:hidden transition-all duration-300 flex flex-col pt-24 px-6",
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+      >
+        <nav className="flex flex-col gap-6">
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
+              className="text-xl font-bold text-primary border-b border-slate-100 pb-4 flex justify-between items-center"
+            >
+              {item.label}
+              <span className="text-accent">›</span>
+            </a>
+          ))}
+          <Button 
+            className="w-full bg-secondary text-white hover:bg-secondary/90 font-bold py-6 text-lg rounded-md mt-4 shadow-lg"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              const element = document.querySelector("#contact");
+              element?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            <Phone className="w-5 h-5 mr-2" />
+            お問い合わせ
+          </Button>
+        </nav>
+      </div>
     </header>
   );
 }
