@@ -73,6 +73,9 @@ export default function AssessmentForm() {
                 無料スピード査定
               </h3>
               <p className="text-primary-foreground/80 text-sm mt-1">最短60秒で入力完了・その場で結果表示</p>
+              <div className="mt-2 inline-block bg-white/20 px-3 py-1 rounded text-xs text-white font-bold border border-white/30">
+                国土交通省「不動産取引価格情報」データベース連動
+              </div>
             </div>
             {/* Decoration */}
             <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-white/10 to-transparent transform skew-x-12" />

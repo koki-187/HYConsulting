@@ -3,12 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, HeartHandshake, Home, PiggyBank } from "lucide-react";
 
 export default function Hero() {
-  const scrollToContact = () => {
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const scrollToServices = () => {
-    document.querySelector("#services")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToAssessment = () => {
+    const element = document.querySelector("#assessment");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -28,52 +27,50 @@ export default function Hero() {
             className="flex-1 text-center lg:text-left z-10"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 border-l-4 border-primary bg-slate-50 mb-8">
-              <span className="text-sm font-bold text-primary tracking-wider">初回相談無料キャンペーン実施中</span>
+              <span className="text-sm font-bold text-primary tracking-wider">HPをご覧の方へ：そのお悩み、ここで解決します</span>
             </div>
 
             <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-slate-900 font-heading tracking-tight">
-              老後資金・介護・相続<br />
-              <span className="text-primary">安心の未来</span>をつくる<br />
-              終活・資産整理サポート
+              老後・相続・不動産<br />
+              <span className="text-primary">窓口ひとつで解決。</span>
             </h1>
             
-            <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans">
-              「老後の資金が心配」「実家の処分どうしよう」「相続対策を始めたい」<br />
-              そんなお悩みを、不動産と終活のプロがワンストップで解決します。<br />
-              あなたとご家族の笑顔のために、最適なプランをご提案します。
+            <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans font-bold">
+              複数の業者への連絡は不要です。<br />
+              査定から対策まで、プロがワンストップで対応します。
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-lg px-10 py-7 rounded-sm shadow-lg hover:shadow-xl transition-all bg-primary hover:bg-primary/90 text-white group font-bold tracking-wide"
-                onClick={scrollToContact}
+                className="w-full sm:w-auto text-lg px-10 py-7 rounded-sm shadow-lg hover:shadow-xl transition-all bg-secondary hover:bg-secondary/90 text-white group font-bold tracking-wide"
+                onClick={scrollToAssessment}
               >
-                無料相談を予約する
+                まずは無料査定から
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg" 
                 className="w-full sm:w-auto text-lg px-10 py-7 rounded-sm border-2 border-slate-200 hover:bg-slate-50 text-slate-700 font-medium"
-                onClick={scrollToServices}
+                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
               >
-                サービス詳細を見る
+                ご相談はこちら
               </Button>
             </div>
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-bold text-slate-600">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span>相続・空き家対策のプロ</span>
+                <span>たらい回しなし</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span>介護施設探しのサポート</span>
+                <span>最短即日対応</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span>地域密着の信頼</span>
+                <span>秘密厳守</span>
               </div>
             </div>
           </motion.div>
