@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Users, Building, FileText } from "lucide-react";
+import { Users, Building, FileText } from "lucide-react";
 
 const features = [
   {
@@ -22,7 +22,17 @@ const features = [
 export default function Features() {
   return (
     <section id="features" className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
-      <div className="container mx-auto px-4">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/features_experts_bg.png" 
+          alt="専門家ネットワーク" 
+          className="w-full h-full object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/80 to-white/60" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           {/* Image Side */}
           <motion.div 
@@ -32,25 +42,22 @@ export default function Features() {
             transition={{ duration: 0.6 }}
             className="w-full lg:w-1/2 relative order-2 lg:order-1"
           >
-            <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
               {/* Main Illustration */}
               <img 
-                src="/images/hero_handshake_4x5.png" 
+                src="/images/features_experts_bg.png" 
                 alt="Consulting Partnership" 
-                className="w-full h-auto object-contain drop-shadow-xl z-10 relative"
+                className="w-full h-auto object-cover"
               />
               
-              {/* Decorative Elements - Simplified */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] bg-white/60 rounded-full blur-3xl -z-10" />
-              
-              {/* Floating Badge - Professional Look */}
+              {/* Floating Badge */}
               <motion.div 
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border border-slate-100 max-w-[240px] hidden md:block z-20"
+                className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-slate-100 max-w-[240px] hidden md:block z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                     <Users className="w-5 h-5" />
                   </div>
                   <p className="text-sm font-bold text-slate-700">専門家ネットワーク</p>
@@ -68,7 +75,7 @@ export default function Features() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full"
+              className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-orange-600 uppercase bg-orange-50 rounded-full"
             >
               Why Choose Us
             </motion.span>
@@ -80,9 +87,9 @@ export default function Features() {
               className="text-3xl lg:text-4xl font-bold text-slate-800 mb-8 font-heading leading-tight"
             >
               HYコンサルティングが<br />
-              <span className="text-primary relative inline-block">
+              <span className="text-orange-600 relative inline-block">
                 選ばれる理由
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-yellow-100/50 -z-10 rounded-sm" />
+                <span className="absolute bottom-1 left-0 w-full h-3 bg-orange-100/50 -z-10 rounded-sm" />
               </span>
             </motion.h2>
 
@@ -94,10 +101,10 @@ export default function Features() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.2 }}
-                  className="flex gap-5 bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:border-blue-100"
+                  className="flex gap-5 bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:border-orange-100"
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-primary">
+                    <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
                       <feature.icon className="w-6 h-6" />
                     </div>
                   </div>
