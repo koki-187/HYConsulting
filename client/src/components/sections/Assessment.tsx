@@ -1,104 +1,96 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { ArrowRight, Calculator, Home, LineChart } from "lucide-react";
+import { Calculator, Home, FileSearch, ArrowRight } from "lucide-react";
+
+const steps = [
+  {
+    icon: Calculator,
+    title: "簡易査定（机上査定）",
+    description: "物件情報と周辺相場データをもとに、概算価格をスピーディーに算出します。まずは相場を知りたい方におすすめです。"
+  },
+  {
+    icon: Home,
+    title: "訪問査定（実査定）",
+    description: "現地を実際に訪問し、建物の状態や周辺環境を詳細に調査。より正確な査定価格をご提示します。"
+  },
+  {
+    icon: FileSearch,
+    title: "買取査定",
+    description: "当社または提携会社による直接買取価格を提示します。早期現金化をご希望の方や、近隣に知られずに売却したい方に最適です。"
+  }
+];
 
 export default function Assessment() {
   return (
-    <section id="assessment" className="py-20 lg:py-32 bg-blue-900 text-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-        <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-white rounded-full blur-3xl" />
-        <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-400 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
-          {/* Text Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+    <section id="assessment" className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex-1"
+            className="inline-block px-4 py-1 mb-6 text-xs font-bold tracking-[0.2em] text-primary uppercase border-b-2 border-primary"
           >
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-bold tracking-wider text-blue-900 uppercase bg-yellow-400 rounded-full">
-              Free Assessment
-            </span>
-            <h2 className="text-3xl lg:text-5xl font-bold mb-6 font-heading leading-tight">
-              あなたの不動産の<br />
-              <span className="text-yellow-400">適正価値</span>を知りませんか？
-            </h2>
-            <p className="text-lg text-blue-100 mb-8 leading-relaxed">
-              「いくらで売れるか知りたい」「活用方法に迷っている」<br />
-              そんなお悩みをお持ちの方は、まずは無料査定をご利用ください。<br />
-              地域の相場や市場動向を踏まえ、適正な価格を算出します。
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
-              >
-                無料査定を依頼する
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Cards Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            Real Estate Assessment
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading"
+          >
+            無料不動産査定
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="flex-1 w-full"
+            className="text-lg text-slate-600 font-sans"
           >
-            <div className="grid gap-6">
-              <Card className="bg-white/10 border-white/20 backdrop-blur-sm text-white hover:bg-white/20 transition-colors">
-                <CardContent className="p-6 flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/30 flex items-center justify-center flex-shrink-0">
-                    <Calculator className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">簡易机上査定</h3>
-                    <p className="text-blue-100 text-sm">
-                      周辺の成約事例や公示地価などのデータに基づき、概算価格をスピーディーに算出します。
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white/10 border-white/20 backdrop-blur-sm text-white hover:bg-white/20 transition-colors">
-                <CardContent className="p-6 flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/30 flex items-center justify-center flex-shrink-0">
-                    <Home className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">訪問実査定</h3>
-                    <p className="text-blue-100 text-sm">
-                      現地を実際に確認し、建物の状態や周辺環境などを詳細に調査。より正確な査定価格をご提示します。
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-white/10 border-white/20 backdrop-blur-sm text-white hover:bg-white/20 transition-colors">
-                <CardContent className="p-6 flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg bg-blue-500/30 flex items-center justify-center flex-shrink-0">
-                    <LineChart className="w-6 h-6 text-yellow-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">売却・活用プラン提案</h3>
-                    <p className="text-blue-100 text-sm">
-                      査定結果をもとに、売却だけでなく賃貸やリノベーションなど、お客様に最適なプランをご提案します。
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
+            お客様のニーズに合わせて、3つの査定方法をご用意しております。<br className="hidden lg:block" />
+            秘密厳守で対応いたしますので、安心してお申し込みください。
+          </motion.p>
         </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 + 0.3 }}
+              className="bg-white p-8 rounded-sm shadow-sm border border-slate-200 hover:border-primary/50 transition-all duration-300 group"
+            >
+              <div className="w-16 h-16 bg-slate-50 rounded-sm flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                <step.icon className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4 font-heading">{step.title}</h3>
+              <p className="text-slate-600 leading-relaxed font-sans text-sm">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          className="text-center"
+        >
+          <div className="inline-block p-8 bg-white rounded-sm shadow-lg border border-slate-100 max-w-2xl w-full">
+            <h3 className="text-2xl font-bold text-slate-900 mb-2 font-heading">まずは無料査定を試してみる</h3>
+            <p className="text-slate-600 mb-8 font-sans">最短60秒で入力完了。しつこい営業は一切ありません。</p>
+            <Button className="w-full md:w-auto px-12 py-6 bg-primary hover:bg-primary/90 text-white font-bold text-lg rounded-sm shadow-md hover:shadow-lg transition-all duration-300 group">
+              無料査定を申し込む
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

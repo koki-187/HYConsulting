@@ -21,15 +21,15 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+    <section id="features" className="py-20 lg:py-32 bg-slate-900 relative overflow-hidden text-white">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
           src="/images/features_experts_bg.png" 
           alt="専門家ネットワーク" 
-          className="w-full h-full object-cover opacity-10"
+          className="w-full h-full object-cover opacity-20 grayscale"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/80 to-white/60" />
+        <div className="absolute inset-0 bg-slate-900/90" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -42,27 +42,27 @@ export default function Features() {
             transition={{ duration: 0.6 }}
             className="w-full lg:w-1/2 relative order-2 lg:order-1"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+            <div className="relative rounded-sm overflow-hidden shadow-2xl border border-slate-700">
               {/* Main Illustration */}
               <img 
                 src="/images/features_experts_bg.png" 
                 alt="Consulting Partnership" 
-                className="w-full h-auto object-cover"
+                className="w-full h-auto object-cover grayscale-[30%]"
               />
               
               {/* Floating Badge */}
               <motion.div 
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-slate-100 max-w-[240px] hidden md:block z-20"
+                className="absolute bottom-6 right-6 bg-white p-6 rounded-sm shadow-lg border-l-4 border-primary max-w-[240px] hidden md:block z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+                  <div className="w-10 h-10 bg-slate-100 flex items-center justify-center text-primary">
                     <Users className="w-5 h-5" />
                   </div>
-                  <p className="text-sm font-bold text-slate-700">専門家ネットワーク</p>
+                  <p className="text-sm font-bold text-slate-900">専門家ネットワーク</p>
                 </div>
-                <p className="text-xs text-slate-500 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   弁護士・税理士・司法書士など<br/>各分野のプロと連携
                 </p>
               </motion.div>
@@ -75,7 +75,7 @@ export default function Features() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-orange-600 uppercase bg-orange-50 rounded-full"
+              className="inline-block px-4 py-1 mb-6 text-xs font-bold tracking-[0.2em] text-white/80 uppercase border-b border-white/30"
             >
               Why Choose Us
             </motion.span>
@@ -84,12 +84,11 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-3xl lg:text-4xl font-bold text-slate-800 mb-8 font-heading leading-tight"
+              className="text-3xl lg:text-4xl font-bold text-white mb-10 font-heading leading-tight"
             >
               HYコンサルティングが<br />
-              <span className="text-orange-600 relative inline-block">
+              <span className="text-white relative inline-block">
                 選ばれる理由
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-orange-100/50 -z-10 rounded-sm" />
               </span>
             </motion.h2>
 
@@ -101,16 +100,16 @@ export default function Features() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.2 }}
-                  className="flex gap-5 bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 hover:border-orange-100"
+                  className="flex gap-6 bg-white/5 backdrop-blur-sm p-6 rounded-sm border border-white/10 hover:bg-white/10 transition-all duration-300"
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
+                    <div className="w-12 h-12 rounded-sm bg-white/10 flex items-center justify-center text-white">
                       <feature.icon className="w-6 h-6" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-slate-800 mb-2">{feature.title}</h3>
-                    <p className="text-slate-600 leading-relaxed text-sm lg:text-base">
+                    <h3 className="text-lg font-bold text-white mb-2 font-heading">{feature.title}</h3>
+                    <p className="text-slate-300 leading-relaxed text-sm lg:text-base font-sans">
                       {feature.description}
                     </p>
                   </div>

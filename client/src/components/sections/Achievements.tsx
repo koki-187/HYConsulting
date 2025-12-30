@@ -29,8 +29,8 @@ const achievements = [
 export default function Achievements() {
   return (
     <section id="achievements" className="py-20 lg:py-32 bg-white relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-50 via-white to-white -z-10" />
+      {/* Background decoration - Professional */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
@@ -38,7 +38,7 @@ export default function Achievements() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-block px-4 py-1.5 mb-4 text-sm font-bold tracking-wider text-primary uppercase bg-blue-50 rounded-full"
+            className="inline-block px-4 py-1 mb-6 text-xs font-bold tracking-[0.2em] text-primary uppercase border-b-2 border-primary"
           >
             Case Studies
           </motion.span>
@@ -47,12 +47,11 @@ export default function Achievements() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-slate-800 mb-6 font-heading"
+            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading"
           >
             確かな実績と<br className="hidden sm:block" />
             <span className="text-primary relative inline-block">
               具体的な解決事例
-              <span className="absolute bottom-1 left-0 w-full h-3 bg-blue-100/50 -z-10 rounded-sm" />
             </span>
           </motion.h2>
           <motion.p 
@@ -60,7 +59,7 @@ export default function Achievements() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 leading-relaxed"
+            className="text-lg text-slate-600 leading-relaxed font-sans"
           >
             個人のお客様から法人様まで、様々な課題を解決に導いた実績がございます。<br className="hidden lg:block" />
             その一部をご紹介します。
@@ -76,24 +75,24 @@ export default function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 + 0.3 }}
             >
-              <Card className="h-full border-none shadow-soft hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-xl flex flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
+              <Card className="h-full border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-sm flex flex-col">
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
                   <img 
                     src={item.image} 
                     alt={item.title} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
                   />
-                  <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                  <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-sm shadow-sm border border-slate-100">
                     {item.category}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 
                 <CardContent className="p-6 flex-grow flex flex-col">
-                  <h3 className="text-lg font-bold text-slate-800 mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors line-clamp-2 font-heading">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6 line-clamp-3 font-sans">
                     {item.description}
                   </p>
                   
@@ -101,9 +100,9 @@ export default function Achievements() {
                     <div className="flex items-end justify-between">
                       <div>
                         <p className="text-xs text-slate-500 font-medium mb-1">成果</p>
-                        <p className="text-lg font-bold text-primary">{item.result}</p>
+                        <p className="text-lg font-bold text-primary font-heading">{item.result}</p>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                      <div className="w-8 h-8 rounded-sm bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         <ArrowUpRight className="w-4 h-4" />
                       </div>
                     </div>
