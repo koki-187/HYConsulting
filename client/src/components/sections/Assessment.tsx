@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calculator, Home, FileSearch, ArrowRight } from "lucide-react";
+import { Calculator, Home, FileSearch } from "lucide-react";
+import AssessmentForm from "./AssessmentForm";
 
 const steps = [
   {
@@ -49,12 +49,18 @@ export default function Assessment() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 font-sans"
           >
-            お客様のニーズに合わせて、3つの査定方法をご用意しております。<br className="hidden lg:block" />
-            秘密厳守で対応いたしますので、安心してお申し込みください。
+            国土交通省のデータベースと連動し、適正な価格を即座に算出。<br className="hidden lg:block" />
+            お客様のニーズに合わせて、3つの査定方法をご用意しております。
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+        {/* Assessment Form Section - Prominently Displayed */}
+        <div className="mb-20">
+          <AssessmentForm />
+        </div>
+
+        {/* Assessment Types Explanation */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -74,23 +80,6 @@ export default function Assessment() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="text-center"
-        >
-          <div className="inline-block p-8 bg-white rounded-sm shadow-lg border border-slate-100 max-w-2xl w-full">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2 font-heading">まずは無料査定を試してみる</h3>
-            <p className="text-slate-600 mb-8 font-sans">最短60秒で入力完了。しつこい営業は一切ありません。</p>
-            <Button className="w-full md:w-auto px-12 py-6 bg-primary hover:bg-primary/90 text-white font-bold text-lg rounded-sm shadow-md hover:shadow-lg transition-all duration-300 group">
-              無料査定を申し込む
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
