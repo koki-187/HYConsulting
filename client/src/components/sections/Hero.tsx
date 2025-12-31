@@ -85,7 +85,7 @@ export default function Hero() {
             <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden shadow-2xl group">
               {/* Background Image - Sea Town Illustration */}
               <img 
-                src="/images/hero_senior_couple.png" 
+                src="/images/hero_city_16x9.png" 
                 alt="海に囲まれた街の風景" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
