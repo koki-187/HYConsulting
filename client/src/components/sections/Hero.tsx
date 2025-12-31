@@ -75,72 +75,65 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Image Content */}
+          {/* Image Content with Glassmorphism Panel */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex-1 relative w-full max-w-[600px] lg:max-w-none"
           >
-            <div className="relative aspect-[4/3] w-full pl-4 pb-4">
-              {/* Decorative Frame */}
-              <div className="absolute top-0 right-0 w-full h-full border-2 border-primary/20 translate-x-4 -translate-y-4 z-0" />
-              
-              {/* Main Illustration - Senior Couple */}
+            <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden shadow-2xl">
+              {/* Background Image - Sea Town Illustration */}
               <img 
                 src="/images/hero_senior_couple.png" 
-                alt="笑顔で手をつないで歩くシニア夫婦" 
-                className="w-full h-full object-contain drop-shadow-2xl z-10 relative bg-white"
+                alt="海に囲まれた街の風景" 
+                className="absolute inset-0 w-full h-full object-cover"
               />
               
-              {/* Floating Elements - Clean & Sharp */}
-              <motion.div 
-                animate={{ y: [0, -5, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                className="absolute -top-8 -right-8 bg-white p-5 shadow-xl border-l-4 border-primary z-20 hidden sm:block min-w-[180px]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-slate-50 flex items-center justify-center text-primary">
-                    <PiggyBank className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Asset</p>
-                    <p className="text-base font-bold text-slate-900">老後資金の確保</p>
-                  </div>
-                </div>
-              </motion.div>
+              {/* Glassmorphism Panel Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center p-6">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="w-full max-w-md bg-white/20 backdrop-blur-md border border-white/40 rounded-xl p-8 shadow-lg"
+                >
+                  <div className="grid gap-6">
+                    {/* Item 1: Asset */}
+                    <div className="flex items-center gap-4 bg-white/60 p-4 rounded-lg border border-white/50 shadow-sm hover:bg-white/80 transition-colors">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                        <PiggyBank className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-primary font-bold uppercase tracking-wider mb-1">Asset</p>
+                        <p className="text-lg font-bold text-slate-900">老後資金の確保</p>
+                      </div>
+                    </div>
 
-              <motion.div 
-                animate={{ y: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
-                className="absolute top-1/2 -left-12 bg-white p-5 shadow-xl border-l-4 border-primary z-20 hidden sm:block min-w-[180px]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-slate-50 flex items-center justify-center text-primary">
-                    <Home className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Real Estate</p>
-                    <p className="text-base font-bold text-slate-900">空き家・売却</p>
-                  </div>
-                </div>
-              </motion.div>
+                    {/* Item 2: Real Estate */}
+                    <div className="flex items-center gap-4 bg-white/60 p-4 rounded-lg border border-white/50 shadow-sm hover:bg-white/80 transition-colors">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                        <Home className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-primary font-bold uppercase tracking-wider mb-1">Real Estate</p>
+                        <p className="text-lg font-bold text-slate-900">空き家・売却</p>
+                      </div>
+                    </div>
 
-              <motion.div 
-                animate={{ y: [0, 5, 0] }}
-                transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 0.5 }}
-                className="absolute -bottom-8 right-12 bg-white p-5 shadow-xl border-l-4 border-primary z-20 hidden sm:block min-w-[180px]"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 bg-slate-50 flex items-center justify-center text-primary">
-                    <HeartHandshake className="w-6 h-6" />
+                    {/* Item 3: Support */}
+                    <div className="flex items-center gap-4 bg-white/60 p-4 rounded-lg border border-white/50 shadow-sm hover:bg-white/80 transition-colors">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                        <HeartHandshake className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <p className="text-xs text-primary font-bold uppercase tracking-wider mb-1">Support</p>
+                        <p className="text-lg font-bold text-slate-900">生前整理サポート</p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Support</p>
-                    <p className="text-base font-bold text-slate-900">生前整理サポート</p>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
