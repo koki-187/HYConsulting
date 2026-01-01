@@ -97,18 +97,17 @@
     --popover: 0 0% 100%;
     --popover-foreground: 216 71% 10%;
 
-    /* Primary Navy (#0D274D): 深い知性と信頼、安定感 */
-    --primary: 216 71% 18%;
+    /* Primary Blue (#005BAC): 公式サイトのメインカラー（ロゴの青） */
+    --primary: 208 100% 34%;
     --primary-foreground: 0 0% 100%;
 
-    /* CTA Emerald (#008E7D): 成長と解決策、行動を促すアクセント */
-    /* ここではセカンダリーとして定義し、ボタン等で活用 */
-    --secondary: 173 100% 28%;
+    /* Secondary Navy (#0D274D): フッターや重要セクションの背景色 */
+    --secondary: 216 71% 18%;
     --secondary-foreground: 0 0% 100%;
 
-    /* Accent Gold (#F7B042): 成功と価値を表現するハイライト */
-    --accent: 36 91% 61%;
-    --accent-foreground: 216 71% 18%;
+    /* Accent Cyan (#00A0E9): リンクや強調に使用される明るい青 */
+    --accent: 200 100% 46%;
+    --accent-foreground: 0 0% 100%;
 
     /* ミュート: 薄いグレー（背景の切り替え用など） */
     --muted: 210 20% 96%;
@@ -135,14 +134,14 @@
     --popover: 216 71% 12%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 216 71% 18%;
+    --primary: 208 100% 34%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 173 100% 28%;
+    --secondary: 216 71% 18%;
     --secondary-foreground: 0 0% 100%;
 
-    --accent: 36 91% 61%;
-    --accent-foreground: 216 71% 18%;
+    --accent: 200 100% 46%;
+    --accent-foreground: 0 0% 100%;
 
     --muted: 216 30% 20%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -152,7 +151,7 @@
 
     --border: 216 30% 20%;
     --input: 216 30% 20%;
-    --ring: 216 71% 18%;
+    --ring: 208 100% 34%;
   }
 }
 
