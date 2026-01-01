@@ -99,7 +99,7 @@ export default function AssessmentForm() {
                       { value: "house", label: "戸建て", icon: Home, desc: "一軒家" },
                       { value: "mansion", label: "マンション", icon: Building2, desc: "区分所有" },
                       { value: "land", label: "土地", icon: LandPlot, desc: "更地・古家付" },
-                      { value: "apartment", label: "アパート", icon: Building2, desc: "一棟収益" },
+                      { value: "apartment", label: "アパート", icon: Home, desc: "一棟収益" },
                     ].map((type) => (
                       <div key={type.value}>
                         <RadioGroupItem value={type.value} id={type.value} className="peer sr-only" />

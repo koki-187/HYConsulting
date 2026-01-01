@@ -8,14 +8,14 @@ const achievements = [
     title: "高齢者施設斡旋業のご支援",
     result: "資金計画・相続対策",
     description: "介護施設入居前後の資金計画や相続の不安に対し、不動産の有効活用を通じて安心できる老後の暮らしを支援します。",
-    image: "/images/case_before_after_16x9.png"
+    image: "/images/elderly_support.png"
   },
   {
     category: "不動産購入・売却",
     title: "５年売れなかった土地をアイデアで即売却",
     result: "早期売却達成",
     description: "他の不動産会社にて５年売れなかった空き家を、独自のアイデアとネットワークで即座に売却へと導きました。",
-    image: "/images/valuation_4x3.png"
+    image: "/images/land_sale.png"
   },
   {
     category: "空き家活用",
