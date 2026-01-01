@@ -45,16 +45,15 @@ export default function AssessmentForm() {
           </motion.div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-primary mb-6 font-heading leading-tight">
-            あなたの不動産、<br className="md:hidden" />
+            不動産価格を知りたい方は<br className="md:hidden" />
             <span className="text-accent relative inline-block px-2">
-              今いくら？
+              まずは簡易査定
               <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/20 -z-10 transform -skew-x-12" />
             </span>
-            で即時査定
           </h2>
           <p className="text-lg text-slate-600 font-sans max-w-2xl mx-auto">
             物件情報を入力するだけで、膨大な取引事例と公的データを照合。<br />
-            <span className="font-bold text-primary">AIが適正価格を瞬時に算出</span>します。匿名・無料です。
+            <span className="font-bold text-primary">適正価格を瞬時に算出</span>します。匿名・無料です。
           </p>
         </div>
 
@@ -70,7 +69,7 @@ export default function AssessmentForm() {
             <div className="relative z-10">
               <h3 className="text-xl lg:text-2xl font-bold text-white font-heading flex items-center gap-3">
                 <Search className="w-6 h-6 text-accent" />
-                無料スピード査定
+                不動産価格を知りたい方はまずは簡易査定
               </h3>
               <p className="text-primary-foreground/80 text-sm mt-1">最短60秒で入力完了・その場で結果表示</p>
               <div className="mt-2 inline-block bg-white/20 px-3 py-1 rounded text-xs text-white font-bold border border-white/30">

@@ -5,18 +5,18 @@ import AssessmentForm from "./AssessmentForm";
 const steps = [
   {
     icon: Calculator,
-    title: "簡易査定（机上査定）",
+    title: "簡易査定（まずは相場を知る）",
     description: "物件情報と周辺相場データをもとに、概算価格をスピーディーに算出します。まずは相場を知りたい方におすすめです。"
   },
   {
     icon: Home,
-    title: "訪問査定（実査定）",
+    title: "訪問査定（正確な価格を知る）",
     description: "現地を実際に訪問し、建物の状態や周辺環境を詳細に調査。より正確な査定価格をご提示します。"
   },
   {
     icon: FileSearch,
-    title: "買取査定",
-    description: "当社または提携会社による直接買取価格を提示します。早期現金化をご希望の方や、近隣に知られずに売却したい方に最適です。"
+    title: "最適なプランのご提案",
+    description: "訪問査定の結果をもとに、お客様のご希望に合わせて「仲介売却」か「買取」か、最適なプランをご提案します。"
   }
 ];
 
