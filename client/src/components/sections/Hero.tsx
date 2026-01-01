@@ -59,20 +59,7 @@ export default function Hero() {
               </Button>
             </div>
 
-            <div className="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-4 text-sm font-bold text-slate-600">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span>たらい回しなし</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span>最短即日対応</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-primary" />
-                <span>秘密厳守</span>
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Image Content with Glassmorphism Panel */}
