@@ -22,7 +22,7 @@ const achievements = [
     title: "相続した空き家の有効活用",
     result: "収益化実現",
     description: "放置されていた空き家をリノベーションし、地域のコミュニティスペースとして再生。収益化と地域貢献を両立。",
-    image: "/images/experts_network_1x1.png"
+    image: "/images/vacant_house_utilization.png"
   }
 ];
 
