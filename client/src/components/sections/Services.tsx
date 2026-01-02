@@ -6,21 +6,39 @@ const services = [
   {
     icon: HeartHandshake,
     title: "老後資金・介護・相続の終活支援",
-    description: "老後ライフプランの作成、老後資金の準備、介護生活サポート、想いと財産を円満に託すための相続対策など、終活に関するお悩みに対応します。",
+    description: "老後の生活設計から資金計画、介護施設の選定、そして円満な相続までをトータルサポートします。専門家（税理士・司法書士・FP）と連携し、複雑な手続きや将来の不安を解消。ご家族の想いを大切にしながら、安心できる未来を設計します。",
+    details: [
+      "老後ライフプランの作成・資金シミュレーション",
+      "有料老人ホーム・高齢者住宅の紹介・入居支援",
+      "遺言書作成・家族信託・生前贈与のサポート",
+      "遺品整理・死後事務委任契約の締結"
+    ],
     color: "bg-slate-100 text-primary",
     image: "/images/hero_senior_couple.png"
   },
   {
     icon: Home,
     title: "不動産購入・売却・活用支援",
-    description: "自宅の購入や売却、不動産投資等の資産形成、相続対策等、ライフイベントに対して最適な方策を考察し実行まで支援します。",
+    description: "お客様のライフステージに合わせた最適な不動産戦略をご提案します。自宅の売却・住み替えはもちろん、収益物件の購入や遊休地の有効活用まで幅広く対応。市場分析に基づいた適正価格での取引を実現し、資産価値の最大化を目指します。",
+    details: [
+      "居住用不動産の売却・購入・住み替え支援",
+      "収益不動産（アパート・マンション）の運用提案",
+      "相続不動産の売却・権利調整・登記手続き",
+      "リフォーム・リノベーションによる価値向上"
+    ],
     color: "bg-slate-100 text-primary",
     image: "/images/service_consultation.png"
   },
   {
     icon: Building2,
     title: "０円物件・負動産の処分活用支援",
-    description: "売れない、貸せない空き家や遊休地の処分にお悩みの方へ。利活用、引き取り、管理、名義変更など、専門チームがワンストップで対応します。",
+    description: "「売れない」「貸せない」「管理できない」といった、いわゆる“負動産”の問題を解決します。他社で断られた物件でも、独自のネットワークとノウハウで引き取りや活用方法をご提案。固定資産税や管理責任の負担から解放されるようサポートします。",
+    details: [
+      "長期間売れていない空き家・空き地の処分相談",
+      "再建築不可物件・市街化調整区域の活用提案",
+      "遠隔地の管理不全空き家の巡回・管理代行",
+      "近隣トラブルや権利関係が複雑な物件の整理"
+    ],
     color: "bg-slate-100 text-primary",
     image: "/images/service_renovation.png"
   }
@@ -95,14 +113,21 @@ export default function Services() {
                   </CardTitle>
                 </CardHeader>
                 
-                <CardContent className="px-8 pb-8 flex-grow flex flex-col justify-between">
+                <CardContent className="px-8 pb-8 flex-grow flex flex-col">
                   <CardDescription className="text-base text-slate-600 leading-relaxed mb-6 font-sans">
                     {service.description}
                   </CardDescription>
                   
-                  <div className="flex items-center text-primary font-bold text-sm group/link cursor-pointer mt-auto border-b border-transparent hover:border-primary w-fit pb-0.5 transition-all">
-                    詳しく見る
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform" />
+                  <div className="mt-auto pt-6 border-t border-slate-100">
+                    <h4 className="text-sm font-bold text-primary mb-3">主な支援内容</h4>
+                    <ul className="space-y-2">
+                      {service.details.map((detail, i) => (
+                        <li key={i} className="text-sm text-slate-600 flex items-start">
+                          <span className="inline-block w-1.5 h-1.5 bg-accent rounded-full mt-1.5 mr-2 flex-shrink-0" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </CardContent>
               </Card>
