@@ -1,4 +1,4 @@
-import { z } from "zod";
+import z from "zod";
 import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
@@ -26,6 +26,8 @@ export const appRouter = router({
     submit: publicProcedure
       .input(z.object({
         propertyType: z.string(),
+        prefecture: z.string(),
+        city: z.string(),
         location: z.string(),
         buildingAge: z.number().optional(),
         floorArea: z.number().optional(),
@@ -52,6 +54,8 @@ export const appRouter = router({
           // Create assessment request
           const result = await createAssessmentRequest({
             propertyType: input.propertyType,
+            prefecture: input.prefecture,
+            city: input.city,
             location: input.location,
             buildingAge: input.buildingAge,
             floorArea: input.floorArea,
@@ -100,7 +104,7 @@ export const appRouter = router({
           console.error("Assessment list error:", error);
           return {
             success: false,
-            requests: [],
+            message: "査定履歴の取得に失敗しました。",
           };
         }
       }),

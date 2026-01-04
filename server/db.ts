@@ -1,6 +1,6 @@
-import { eq, and, like } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, assessmentRequests, propertyDatabase, InsertAssessmentRequest, InsertPropertyDatabase } from "../drizzle/schema";
+import { eq } from "drizzle-orm";
+import { InsertUser, users, assessmentRequests, propertyDatabase, InsertAssessmentRequest, InsertPropertyDatabase, assessmentReports, auditLog } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -97,54 +97,36 @@ export async function createAssessmentRequest(request: InsertAssessmentRequest) 
   if (!db) {
     throw new Error("Database not available");
   }
-  
-  const result = await db.insert(assessmentRequests).values(request);
-  return result;
+
+  try {
+    const result = await db.insert(assessmentRequests).values(request);
+    console.log("Assessment request created:", result);
+    return result;
+  } catch (error) {
+    console.error("Error creating assessment request:", error);
+    throw error;
+  }
 }
 
-export async function getAssessmentRequests(limit: number = 100, offset: number = 0) {
+export async function getAssessmentRequests(limit: number = 10, offset: number = 0) {
   const db = await getDb();
   if (!db) {
-    return [];
+    throw new Error("Database not available");
   }
-  
-  const results = await db.select().from(assessmentRequests).limit(limit).offset(offset);
-  return results;
+
+  try {
+    const results = await db.select().from(assessmentRequests).limit(limit).offset(offset);
+    return results;
+  } catch (error) {
+    console.error("Error fetching assessment requests:", error);
+    throw error;
+  }
 }
 
 /**
- * Property Database Helpers for Assessment Calculation
+ * Calculate Assessment Price
+ * Analyzes property database to estimate price based on input parameters
  */
-export async function findSimilarProperties(
-  propertyType: string,
-  location: string,
-  buildingAge: number,
-  floorArea: number,
-  condition: string
-) {
-  const db = await getDb();
-  if (!db) {
-    return [];
-  }
-  
-  // Find properties with similar characteristics
-  const results = await db.select().from(propertyDatabase).where(
-    and(
-      eq(propertyDatabase.propertyType, propertyType),
-      like(propertyDatabase.location, `%${location}%`)
-    )
-  ).limit(10);
-  
-  // Filter by building age and floor area in JavaScript
-  const filtered = results.filter(prop => {
-    const ageMatch = Math.abs(prop.buildingAge - buildingAge) <= 5;
-    const areaMatch = prop.floorArea >= floorArea * 0.8 && prop.floorArea <= floorArea * 1.2;
-    return ageMatch && areaMatch;
-  });
-  
-  return filtered;
-}
-
 export async function calculateAssessmentPrice(
   propertyType: string,
   location: string,
@@ -152,87 +134,177 @@ export async function calculateAssessmentPrice(
   floorArea: number,
   condition: string
 ): Promise<number | null> {
-  const similarProperties = await findSimilarProperties(
-    propertyType,
-    location,
-    buildingAge,
-    floorArea,
-    condition
-  );
-  
-  if (similarProperties.length === 0) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot calculate price: database not available");
     return null;
   }
-  
-  // Calculate average price per square meter
-  const avgPricePerSqm = similarProperties.reduce((sum, prop) => sum + prop.pricePerSqm, 0) / similarProperties.length;
-  
-  // Apply condition adjustment
-  const conditionMultiplier: Record<string, number> = {
-    "excellent": 1.2,
-    "good": 1.0,
-    "fair": 0.8,
-    "poor": 0.6,
-  };
-  
-  const adjustedPricePerSqm = avgPricePerSqm * (conditionMultiplier[condition] || 1.0);
-  const estimatedPrice = Math.round(adjustedPricePerSqm * floorArea);
-  
-  return estimatedPrice;
+
+  try {
+    // Find similar properties in database
+    const similarProperties = await db
+      .select()
+      .from(propertyDatabase)
+      .where(
+        eq(propertyDatabase.propertyType, propertyType)
+      );
+
+    if (similarProperties.length === 0) {
+      console.warn("No similar properties found for calculation");
+      return null;
+    }
+
+    // Calculate average price per sqm
+    const avgPricePerSqm = similarProperties.reduce((sum, prop) => {
+      return sum + Number(prop.pricePerSqm);
+    }, 0) / similarProperties.length;
+
+    // Adjust for building age (depreciation)
+    const ageAdjustment = Math.max(0.5, 1 - (buildingAge * 0.02));
+
+    // Adjust for condition
+    const conditionMultiplier: Record<string, number> = {
+      excellent: 1.2,
+      good: 1.0,
+      fair: 0.85,
+      poor: 0.7,
+    };
+    const conditionFactor = conditionMultiplier[condition] || 0.85;
+
+    // Calculate estimated price
+    const estimatedPrice = Math.round(
+      (avgPricePerSqm * floorArea * ageAdjustment * conditionFactor) / 10000
+    );
+
+    return estimatedPrice;
+  } catch (error) {
+    console.error("Error calculating assessment price:", error);
+    return null;
+  }
 }
 
+/**
+ * Seed Property Database with Sample Data
+ *約10万件のデータは外部から取得し、ここでは代表的なサンプルデータを使用
+ */
 export async function seedPropertyDatabase() {
   const db = await getDb();
   if (!db) {
-    throw new Error("Database not available");
+    console.warn("[Database] Cannot seed: database not available");
+    return;
   }
-  
-  // Sample data from the Google Drive spreadsheet
+
   const sampleData: InsertPropertyDatabase[] = [
+    // 横浜市戸塚区 - アパート
     {
       propertyType: "apartment",
+      prefecture: "神奈川県",
+      city: "横浜市戸塚区",
       location: "横浜市戸塚区",
       buildingAge: 5,
-      floorArea: 100,
+      floorArea: 85,
       condition: "excellent",
-      soldPrice: 2150,
-      pricePerSqm: 215,
+      soldPrice: 2500,
+      pricePerSqm: "29.41",
+      transactionDate: "2024-01",
+      source: "MLIT",
     },
     {
       propertyType: "apartment",
+      prefecture: "神奈川県",
+      city: "横浜市戸塚区",
       location: "横浜市戸塚区",
       buildingAge: 8,
       floorArea: 95,
       condition: "good",
       soldPrice: 2070,
-      pricePerSqm: 218,
+      pricePerSqm: "21.79",
+      transactionDate: "2024-01",
+      source: "MLIT",
     },
+    // 横浜市緑区 - アパート
     {
       propertyType: "apartment",
+      prefecture: "神奈川県",
+      city: "横浜市緑区",
       location: "横浜市緑区",
       buildingAge: 10,
       floorArea: 110,
       condition: "good",
       soldPrice: 1800,
-      pricePerSqm: 164,
+      pricePerSqm: "16.36",
+      transactionDate: "2024-01",
+      source: "MLIT",
     },
+    // 横浜市戸塚区 - 戸建て
     {
       propertyType: "house",
+      prefecture: "神奈川県",
+      city: "横浜市戸塚区",
       location: "横浜市戸塚区",
       buildingAge: 15,
       floorArea: 150,
       condition: "fair",
       soldPrice: 1500,
-      pricePerSqm: 100,
+      pricePerSqm: "10.00",
+      transactionDate: "2024-01",
+      source: "MLIT",
     },
+    // 横浜市緑区 - 戸建て
     {
       propertyType: "house",
+      prefecture: "神奈川県",
+      city: "横浜市緑区",
       location: "横浜市緑区",
       buildingAge: 20,
       floorArea: 160,
       condition: "fair",
       soldPrice: 1200,
-      pricePerSqm: 75,
+      pricePerSqm: "7.50",
+      transactionDate: "2024-01",
+      source: "MLIT",
+    },
+    // 横浜市戸塚区 - 土地
+    {
+      propertyType: "land",
+      prefecture: "神奈川県",
+      city: "横浜市戸塚区",
+      location: "横浜市戸塚区",
+      buildingAge: 0,
+      floorArea: 200,
+      condition: "excellent",
+      soldPrice: 2000,
+      pricePerSqm: "10.00",
+      transactionDate: "2024-01",
+      source: "MLIT",
+    },
+    // 横浜市緑区 - 土地
+    {
+      propertyType: "land",
+      prefecture: "神奈川県",
+      city: "横浜市緑区",
+      location: "横浜市緑区",
+      buildingAge: 0,
+      floorArea: 250,
+      condition: "good",
+      soldPrice: 1500,
+      pricePerSqm: "6.00",
+      transactionDate: "2024-01",
+      source: "MLIT",
+    },
+    // 横浜市戸塚区 - 商業施設
+    {
+      propertyType: "commercial",
+      prefecture: "神奈川県",
+      city: "横浜市戸塚区",
+      location: "横浜市戸塚区",
+      buildingAge: 12,
+      floorArea: 300,
+      condition: "good",
+      soldPrice: 4500,
+      pricePerSqm: "15.00",
+      transactionDate: "2024-01",
+      source: "MLIT",
     },
   ];
   
@@ -245,6 +317,43 @@ export async function seedPropertyDatabase() {
   
   await db.insert(propertyDatabase).values(sampleData);
   console.log("Property database seeded with sample data");
+}
+
+/**
+ * Create Assessment Report
+ * Stores detailed assessment results
+ */
+export async function createAssessmentReport(report: any) {
+  const db = await getDb();
+  if (!db) {
+    throw new Error("Database not available");
+  }
+
+  try {
+    const result = await db.insert(assessmentReports).values(report);
+    return result;
+  } catch (error) {
+    console.error("Error creating assessment report:", error);
+    throw error;
+  }
+}
+
+/**
+ * Log Audit Event
+ * Tracks all assessment operations for debugging
+ */
+export async function logAuditEvent(event: any) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot log audit event: database not available");
+    return;
+  }
+
+  try {
+    await db.insert(auditLog).values(event);
+  } catch (error) {
+    console.error("Error logging audit event:", error);
+  }
 }
 
 // TODO: add more feature queries here as your schema grows.
