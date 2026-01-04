@@ -6,10 +6,10 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-slate-900 text-white relative overflow-hidden">
+    <section id="contact" className="py-20 lg:py-32 bg-sky-100 text-slate-900 relative overflow-hidden">
       {/* Background Image Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-slate-900/95 z-10" />
+        <div className="absolute inset-0 bg-sky-100/95 z-10" />
         <img 
           src="/images/hero_city_16x9.png" 
           alt="Background" 
@@ -26,28 +26,28 @@ export default function Contact() {
             viewport={{ once: true }}
             className="w-full lg:w-1/2"
           >
-            <span className="inline-block px-4 py-1 mb-6 text-xs font-bold tracking-[0.2em] text-white/80 uppercase border-b border-white/30">
+            <span className="inline-block px-4 py-1 mb-6 text-xs font-bold tracking-[0.2em] text-slate-600 uppercase border-b border-slate-300">
               Contact Us
             </span>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-8 font-heading leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-8 font-heading leading-tight text-slate-900">
               無料相談・お問い合わせ
             </h2>
-            <p className="text-slate-300 mb-12 leading-relaxed font-sans">
+            <p className="text-slate-700 mb-12 leading-relaxed font-sans">
               不動産、相続、終活に関するご相談は、お電話またはフォームよりお気軽にお問い合わせください。<br />
               専門スタッフが丁寧に対応させていただきます。
             </p>
 
             <div className="space-y-8">
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <Phone className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-sm bg-slate-200 flex items-center justify-center flex-shrink-0 border border-slate-300">
+                  <Phone className="w-5 h-5 text-slate-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-400 mb-1 font-bold uppercase tracking-wider">お電話でのお問い合わせ</p>
-                  <a href="tel:045-123-4567" className="text-2xl lg:text-3xl font-bold hover:text-primary-foreground transition-colors font-heading tracking-wide">
+                  <p className="text-sm text-slate-600 mb-1 font-bold uppercase tracking-wider">お電話でのお問い合わせ</p>
+                  <a href="tel:045-123-4567" className="text-2xl lg:text-3xl font-bold hover:text-primary transition-colors font-heading tracking-wide text-slate-900">
                     045-123-4567
                   </a>
-                  <p className="text-sm text-slate-400 mt-1 flex items-center gap-2">
+                  <p className="text-sm text-slate-600 mt-1 flex items-center gap-2">
                     <Clock className="w-3 h-3" />
                     受付時間 9:00〜18:00（水曜定休）
                   </p>
@@ -55,12 +55,12 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <MapPin className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-sm bg-slate-200 flex items-center justify-center flex-shrink-0 border border-slate-300">
+                  <MapPin className="w-5 h-5 text-slate-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-400 mb-1 font-bold uppercase tracking-wider">所在地</p>
-                  <p className="text-lg font-medium">
+                  <p className="text-sm text-slate-600 mb-1 font-bold uppercase tracking-wider">所在地</p>
+                  <p className="text-lg font-medium text-slate-900">
                     〒244-0003<br />
                     神奈川県横浜市戸塚区戸塚町
                   </p>
@@ -68,12 +68,12 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-6">
-                <div className="w-12 h-12 rounded-sm bg-white/10 flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <Mail className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-sm bg-slate-200 flex items-center justify-center flex-shrink-0 border border-slate-300">
+                  <Mail className="w-5 h-5 text-slate-700" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-400 mb-1 font-bold uppercase tracking-wider">メールでのお問い合わせ</p>
-                  <p className="text-lg font-medium">info@hy-consulting.jp</p>
+                  <p className="text-sm text-slate-600 mb-1 font-bold uppercase tracking-wider">メールでのお問い合わせ</p>
+                  <p className="text-lg font-medium text-slate-900">info@hy-consulting.jp</p>
                 </div>
               </div>
             </div>
