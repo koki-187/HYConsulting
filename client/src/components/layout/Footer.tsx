@@ -11,12 +11,17 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link href="/">
-              <a className="block mb-6 bg-white p-2 rounded w-fit">
-                <img 
-                  src="/images/logo_new_design.png" 
-                  alt="HY Consulting" 
-                  className="h-12 w-auto object-contain"
-                />
+              <a className="flex items-center gap-3 mb-6 w-fit group">
+                <div className="bg-white p-1.5 rounded-sm">
+                  <img 
+                    src="/images/logo_new_design.png" 
+                    alt="HY Consulting" 
+                    className="h-8 w-auto object-contain"
+                  />
+                </div>
+                <span className="text-2xl font-bold text-white tracking-tight">
+                  HY Consulting
+                </span>
               </a>
             </Link>
             <p className="text-slate-300 text-base leading-relaxed mb-8 max-w-md font-sans">
