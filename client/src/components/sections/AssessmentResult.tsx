@@ -5,6 +5,10 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, MapPin, DollarSign, Home, Calendar, Users, BarChart3, ArrowUpRight, ArrowDownRight, CheckCircle2, Share2, Download } from "lucide-react";
 import { useState } from "react";
+import { PriceTrendChart } from "@/components/charts/PriceTrendChart";
+import { MarketAnalysisCharts } from "@/components/charts/MarketAnalysisCharts";
+import type { PriceTrendData } from "@/components/charts/PriceTrendChart";
+import type { PriceDistributionData, PropertyTypeComparison, StationDistanceAnalysis, BuildingAgeAnalysis } from "@/components/charts/MarketAnalysisCharts";
 
 interface AssessmentResultProps {
   result: {
@@ -25,10 +29,17 @@ interface AssessmentResultProps {
     floorArea?: number;
     buildingAge?: number;
   };
+  marketAnalysis?: {
+    priceTrends?: PriceTrendData[];
+    priceDistribution?: PriceDistributionData[];
+    propertyTypeComparison?: PropertyTypeComparison[];
+    stationDistanceAnalysis?: StationDistanceAnalysis[];
+    buildingAgeAnalysis?: BuildingAgeAnalysis[];
+  };
   onReset: () => void;
 }
 
-export default function AssessmentResult({ result, propertyData, onReset }: AssessmentResultProps) {
+export default function AssessmentResult({ result, propertyData, marketAnalysis, onReset }: AssessmentResultProps) {
   const [showDetails, setShowDetails] = useState(false);
 
   const formatPrice = (price: number) => {
@@ -273,6 +284,21 @@ export default function AssessmentResult({ result, propertyData, onReset }: Asse
               </div>
             </div>
           </Card>
+
+          {/* Interactive Charts */}
+          {marketAnalysis && (
+            <div className="space-y-6">
+              {marketAnalysis.priceTrends && (
+                <PriceTrendChart data={marketAnalysis.priceTrends} />
+              )}
+              <MarketAnalysisCharts
+                priceDistribution={marketAnalysis.priceDistribution}
+                propertyTypeComparison={marketAnalysis.propertyTypeComparison}
+                stationDistanceAnalysis={marketAnalysis.stationDistanceAnalysis}
+                buildingAgeAnalysis={marketAnalysis.buildingAgeAnalysis}
+              />
+            </div>
+          )}
 
           {/* Disclaimer */}
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
