@@ -12,13 +12,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/">
               <a className="flex items-center gap-3 mb-6 w-fit group">
-                <div className="bg-white p-1.5 rounded-sm">
-                  <img 
-                    src="/images/logo_new_design.png" 
-                    alt="HY Consulting" 
-                    className="h-8 w-auto object-contain"
-                  />
-                </div>
+                <img 
+                  src="/images/logo_new_design.png" 
+                  alt="HY Consulting" 
+                  className="h-8 w-auto object-contain"
+                />
                 <span className="text-2xl font-bold text-white tracking-tight">
                   HY Consulting
                 </span>
