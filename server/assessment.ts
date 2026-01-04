@@ -203,8 +203,10 @@ function calculateAdjustments(input: AssessmentInput, comps: any[]): {
   if (input.stationDistanceMin && comps.some((c) => c.stationDistanceMin)) {
     const avgCompDistance =
       comps.reduce((sum, c) => sum + (c.stationDistanceMin || 0), 0) / comps.length;
+    // If subject property is farther from station than average comps, apply negative adjustment
+    // If subject property is closer to station than average comps, apply positive adjustment
     const distanceDiff = input.stationDistanceMin - avgCompDistance;
-    stationDistanceAdjustment = Math.max(0.7, 1 - distanceDiff * 0.01); // -1% per minute, floor at 70%
+    stationDistanceAdjustment = Math.max(0.7, 1 - Math.abs(distanceDiff) * 0.01); // -1% per minute difference, floor at 70%
   }
 
   // Area adjustment (larger properties often have lower per-sqm value)
