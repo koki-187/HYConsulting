@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import SchemaMarkup from "./components/SchemaMarkup";
 
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
+      <SchemaMarkup />
       <ThemeProvider
         defaultTheme="light"
         // switchable
