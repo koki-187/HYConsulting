@@ -1,4 +1,5 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal, index } from "drizzle-orm/mysql-core";
+import { relations } from "drizzle-orm";
 
 /**
  * Core user table backing auth flow.
@@ -131,3 +132,194 @@ export const auditLog = mysqlTable("audit_log", {
 
 export type AuditLog = typeof auditLog.$inferSelect;
 export type InsertAuditLog = typeof auditLog.$inferInsert;
+
+/**
+ * Dataset Versions
+ * Tracks data ingestion history for reproducibility and audit trail
+ * Based on MLIT (Ministry of Land, Infrastructure, Transport and Tourism) data
+ */
+export const datasetVersions = mysqlTable(
+  "dataset_versions",
+  {
+    id: varchar("id", { length: 100 }).primaryKey(), // e.g., "mlit_tx_2025Q3"
+    source: varchar("source", { length: 255 }).notNull(), // e.g., "MLIT 不動産取引価格情報"
+    description: text("description"),
+    publishedDate: varchar("publishedDate", { length: 50 }), // YYYY-MM-DD
+    ingestedAt: timestamp("ingestedAt").defaultNow().notNull(), // ISO8601
+    checksum: varchar("checksum", { length: 255 }), // For data integrity verification
+    notes: text("notes"),
+  },
+  (table) => ({
+    sourceIdx: index("idx_dataset_source").on(table.source),
+  })
+);
+
+export type DatasetVersion = typeof datasetVersions.$inferSelect;
+export type InsertDatasetVersion = typeof datasetVersions.$inferInsert;
+
+/**
+ * Regions (地域マスタ)
+ * Master data for geographic regions (prefectures, cities, wards, districts)
+ */
+export const regions = mysqlTable(
+  "regions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    prefecture: varchar("prefecture", { length: 50 }).notNull(), // e.g., "神奈川県"
+    city: varchar("city", { length: 100 }).notNull(), // e.g., "横浜市"
+    ward: varchar("ward", { length: 100 }), // e.g., "西区"
+    district: varchar("district", { length: 100 }), // e.g., "みなとみらい"
+    geoCode: varchar("geoCode", { length: 20 }), // e.g., "14103"
+    lat: decimal("lat", { precision: 10, scale: 6 }), // Latitude
+    lon: decimal("lon", { precision: 10, scale: 6 }), // Longitude
+  },
+  (table) => ({
+    prefectureIdx: index("idx_region_prefecture").on(table.prefecture),
+    cityIdx: index("idx_region_city").on(table.city),
+    prefectureCityIdx: index("idx_region_pref_city").on(table.prefecture, table.city),
+  })
+);
+
+export type Region = typeof regions.$inferSelect;
+export type InsertRegion = typeof regions.$inferInsert;
+
+/**
+ * Transactions (取引データ)
+ * Real estate transaction data from MLIT
+ * Contains ~100,000 records covering 19 prefectures, 1,852 municipalities
+ */
+export const transactions = mysqlTable(
+  "transactions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    datasetVersionId: varchar("datasetVersionId", { length: 100 }).notNull(), // Foreign key to dataset_versions
+    transactionYm: varchar("transactionYm", { length: 50 }).notNull(), // YYYY-MM format
+    prefecture: varchar("prefecture", { length: 50 }).notNull(),
+    city: varchar("city", { length: 100 }).notNull(),
+    ward: varchar("ward", { length: 100 }),
+    district: varchar("district", { length: 100 }),
+    propertyType: varchar("propertyType", { length: 50 }).notNull(), // "land", "house", "condo"
+    landAreaM2: decimal("landAreaM2", { precision: 12, scale: 2 }), // 土地面積 (square meters)
+    buildingAreaM2: decimal("buildingAreaM2", { precision: 12, scale: 2 }), // 延床 (square meters)
+    buildingYear: int("buildingYear"), // 築年 (year built)
+    structure: varchar("structure", { length: 100 }), // e.g., "木造", "鉄筋コンクリート"
+    floorPlan: varchar("floorPlan", { length: 100 }), // e.g., "3LDK"
+    floor: int("floor"), // Floor number
+    nearestStation: varchar("nearestStation", { length: 100 }), // 最寄り駅
+    stationDistanceMin: int("stationDistanceMin"), // 駅距離 (walking minutes)
+    priceYen: int("priceYen").notNull(), // 価格 (price in yen)
+    unitPriceYenPerM2: decimal("unitPriceYenPerM2", { precision: 15, scale: 2 }), // 単価 (price per sqm)
+    lat: decimal("lat", { precision: 10, scale: 6 }), // Latitude
+    lon: decimal("lon", { precision: 10, scale: 6 }), // Longitude
+    remarks: text("remarks"), // 備考
+  },
+  (table) => ({
+    datasetVersionIdx: index("idx_tx_dataset").on(table.datasetVersionId),
+    prefectureIdx: index("idx_tx_prefecture").on(table.prefecture),
+    cityIdx: index("idx_tx_city").on(table.city),
+    propertyTypeIdx: index("idx_tx_property_type").on(table.propertyType),
+    transactionYmIdx: index("idx_tx_transaction_ym").on(table.transactionYm),
+    prefectureCityTypeIdx: index("idx_tx_pref_city_type").on(
+      table.prefecture,
+      table.city,
+      table.propertyType
+    ),
+  })
+);
+
+export type Transaction = typeof transactions.$inferSelect;
+export type InsertTransaction = typeof transactions.$inferInsert;
+
+/**
+ * Valuation Requests (査定リクエスト)
+ * Enhanced version of assessment_requests with MLIT-aligned fields
+ */
+export const valuationRequests = mysqlTable(
+  "valuation_requests",
+  {
+    id: varchar("id", { length: 100 }).primaryKey(), // UUID or custom ID
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    // Input Information
+    inputPrefecture: varchar("inputPrefecture", { length: 50 }).notNull(),
+    inputCity: varchar("inputCity", { length: 100 }).notNull(),
+    inputWard: varchar("inputWard", { length: 100 }),
+    inputDistrict: varchar("inputDistrict", { length: 100 }),
+    propertyType: varchar("propertyType", { length: 50 }).notNull(), // "land", "house", "condo"
+    landAreaM2: decimal("landAreaM2", { precision: 12, scale: 2 }),
+    buildingAreaM2: decimal("buildingAreaM2", { precision: 12, scale: 2 }),
+    buildingYear: int("buildingYear"),
+    stationDistanceMin: int("stationDistanceMin"),
+    // Additional Context
+    ownershipType: varchar("ownershipType", { length: 50 }), // "single", "shared"
+    inheritanceFlag: int("inheritanceFlag").default(0), // 0 or 1 (相続フラグ)
+    // Contact Information
+    ownerName: varchar("ownerName", { length: 255 }),
+    email: varchar("email", { length: 320 }),
+    phone: varchar("phone", { length: 20 }),
+    // Notes
+    notes: text("notes"),
+    // Status
+    status: varchar("status", { length: 50 }).default("pending"), // "pending", "completed", "error"
+  },
+  (table) => ({
+    createdAtIdx: index("idx_valuation_req_created").on(table.createdAt),
+    prefectureIdx: index("idx_valuation_req_prefecture").on(table.inputPrefecture),
+    propertyTypeIdx: index("idx_valuation_req_property_type").on(table.propertyType),
+  })
+);
+
+export type ValuationRequest = typeof valuationRequests.$inferSelect;
+export type InsertValuationRequest = typeof valuationRequests.$inferInsert;
+
+/**
+ * Valuation Results (査定結果)
+ * Enhanced version of assessment_reports with MLIT-aligned calculation details
+ */
+export const valuationResults = mysqlTable(
+  "valuation_results",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    requestId: varchar("requestId", { length: 100 }).notNull(), // Foreign key to valuation_requests
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    // Valuation Results
+    estimatedLowYen: int("estimatedLowYen").notNull(), // 概算下限
+    estimatedHighYen: int("estimatedHighYen").notNull(), // 概算上限
+    estimatedMidYen: int("estimatedMidYen"), // 概算中央値 (calculated)
+    // Methodology
+    compsUsedCount: int("compsUsedCount").notNull(), // Number of comparable transactions
+    method: varchar("method", { length: 100 }).notNull(), // e.g., "median_comps_adjusted"
+    methodVersion: varchar("methodVersion", { length: 50 }).notNull(), // e.g., "v0.1"
+    explanation: text("explanation"), // User-facing explanation
+    // Detailed Analysis
+    marketAnalysis: text("marketAnalysis"), // JSON: market trends, surrounding prices
+    adjustmentFactors: text("adjustmentFactors"), // JSON: building year, station distance, etc.
+    forecastAnalysis: text("forecastAnalysis"), // JSON: 1-year, 3-year, 5-year forecasts
+    // Status
+    status: varchar("status", { length: 50 }).default("completed"), // "pending", "completed", "error"
+    errorMessage: text("errorMessage"),
+  },
+  (table) => ({
+    requestIdIdx: index("idx_valuation_result_request").on(table.requestId),
+    createdAtIdx: index("idx_valuation_result_created").on(table.createdAt),
+  })
+);
+
+export type ValuationResult = typeof valuationResults.$inferSelect;
+export type InsertValuationResult = typeof valuationResults.$inferInsert;
+
+/**
+ * Relations
+ */
+export const transactionsRelations = relations(transactions, ({ one }) => ({
+  datasetVersion: one(datasetVersions, {
+    fields: [transactions.datasetVersionId],
+    references: [datasetVersions.id],
+  }),
+}));
+
+export const valuationResultsRelations = relations(valuationResults, ({ one }) => ({
+  valuationRequest: one(valuationRequests, {
+    fields: [valuationResults.requestId],
+    references: [valuationRequests.id],
+  }),
+}));
