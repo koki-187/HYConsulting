@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle2, MapPin, Home, Building2, LandPlot, ArrowRight, Database, Loader2, Search, ShieldCheck, AlertCircle } from "lucide-react";
+import { CheckCircle2, MapPin, Home, Building2, LandPlot, ArrowRight, Database, Loader2, Search, ShieldCheck, AlertCircle, Mail, Phone } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
@@ -24,6 +24,10 @@ export default function AssessmentForm() {
   const [isSearching, setIsSearching] = useState(false);
   const [assessmentResult, setAssessmentResult] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const [wantContact, setWantContact] = useState(false);
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [contactError, setContactError] = useState<string | null>(null);
 
   const submitAssessment = trpc.assessment.submit.useMutation({
     onSuccess: (data) => {
@@ -37,10 +41,36 @@ export default function AssessmentForm() {
     },
   });
 
+  const validateContactInfo = (): boolean => {
+    if (!wantContact) return true;
+    
+    setContactError(null);
+    
+    if (email && !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+      setContactError("有効なメールアドレスを入力してください");
+      return false;
+    }
+    
+    if (phone && !phone.match(/^[0-9\-\s()]+$/)) {
+      setContactError("有効な電話番号を入力してください");
+      return false;
+    }
+    
+    if (!email && !phone) {
+      setContactError("メールアドレスまたは電話番号を入力してください");
+      return false;
+    }
+    
+    return true;
+  };
+
   const handleSearch = async () => {
     if (!prefecture || !city || !address) {
       setError("都道府県、市区町村、町名・番地を入力してください");
+      return;
+    }
 
+    if (!validateContactInfo()) {
       return;
     }
 
@@ -56,7 +86,8 @@ export default function AssessmentForm() {
         floorArea: area ? parseFloat(area) : undefined,
         buildingAge: buildingYear ? parseInt(buildingYear) : undefined,
         ownerName: "Anonymous",
-        email: "",
+        email: wantContact ? email : "",
+        phone: wantContact ? phone : undefined,
       });
     } catch (err) {
       console.error("Assessment error:", err);
@@ -74,6 +105,10 @@ export default function AssessmentForm() {
     setBuildingYear("");
     setAssessmentResult(null);
     setError(null);
+    setWantContact(false);
+    setEmail("");
+    setPhone("");
+    setContactError(null);
   };
 
   return (
@@ -202,13 +237,13 @@ export default function AssessmentForm() {
                               <SelectValue placeholder="選択してください" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="tokyo">東京都</SelectItem>
-                              <SelectItem value="kanagawa">神奈川県</SelectItem>
-                              <SelectItem value="chiba">千葉県</SelectItem>
-                              <SelectItem value="saitama">埼玉県</SelectItem>
-                              <SelectItem value="osaka">大阪府</SelectItem>
-                              <SelectItem value="kyoto">京都府</SelectItem>
-                              <SelectItem value="hyogo">兵庫県</SelectItem>
+                              <SelectItem value="東京都">東京都</SelectItem>
+                              <SelectItem value="神奈川県">神奈川県</SelectItem>
+                              <SelectItem value="千葉県">千葉県</SelectItem>
+                              <SelectItem value="埼玉県">埼玉県</SelectItem>
+                              <SelectItem value="大阪府">大阪府</SelectItem>
+                              <SelectItem value="京都府">京都府</SelectItem>
+                              <SelectItem value="兵庫県">兵庫県</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
@@ -267,6 +302,81 @@ export default function AssessmentForm() {
                           />
                         </div>
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Step 4: Contact Information (Optional) */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="bg-accent text-primary font-bold w-8 h-8 rounded-full flex items-center justify-center text-lg shadow-sm">4</span>
+                      <Label className="text-xl font-bold text-primary">連絡先情報（オプション）</Label>
+                    </div>
+                    <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 space-y-6">
+                      <div className="flex items-center gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                        <input 
+                          type="checkbox"
+                          id="wantContact"
+                          checked={wantContact}
+                          onChange={(e) => {
+                            setWantContact(e.target.checked);
+                            setContactError(null);
+                          }}
+                          className="w-5 h-5 rounded border-slate-300 text-accent cursor-pointer"
+                        />
+                        <label htmlFor="wantContact" className="flex-1 cursor-pointer">
+                          <p className="font-bold text-slate-700">査定結果についてのご連絡を希望します</p>
+                          <p className="text-sm text-slate-600 mt-1">メールアドレスまたは電話番号を提供いただくと、査定結果の詳細や関連情報をお送りできます。</p>
+                        </label>
+                      </div>
+
+                      {wantContact && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="space-y-4"
+                        >
+                          {contactError && (
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                              <p className="text-red-700 text-sm">{contactError}</p>
+                            </div>
+                          )}
+
+                          <div className="space-y-2">
+                            <Label htmlFor="email" className="text-sm font-bold text-slate-600 flex items-center gap-2">
+                              <Mail className="w-4 h-4" />
+                              メールアドレス
+                            </Label>
+                            <Input 
+                              id="email" 
+                              type="email"
+                              placeholder="例：user@example.com" 
+                              className="h-12 text-lg bg-white border-slate-300 focus:ring-accent"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                            />
+                          </div>
+
+                          <div className="space-y-2">
+                            <Label htmlFor="phone" className="text-sm font-bold text-slate-600 flex items-center gap-2">
+                              <Phone className="w-4 h-4" />
+                              電話番号
+                            </Label>
+                            <Input 
+                              id="phone" 
+                              placeholder="例：090-1234-5678" 
+                              className="h-12 text-lg bg-white border-slate-300 focus:ring-accent"
+                              value={phone}
+                              onChange={(e) => setPhone(e.target.value)}
+                            />
+                          </div>
+
+                          <p className="text-xs text-slate-500 mt-4">
+                            ※ メールアドレスまたは電話番号のいずれかを入力してください。
+                          </p>
+                        </motion.div>
+                      )}
                     </div>
                   </div>
 
@@ -343,66 +453,8 @@ export default function AssessmentForm() {
                           {prefecture} {city} {address}
                         </p>
                       </div>
-
-                      <div className="border-t border-slate-200 pt-6">
-                        <p className="text-sm text-slate-600 mb-4">推定査定価格</p>
-                        <div className="space-y-2">
-                          <p className="text-4xl lg:text-5xl font-bold text-primary">
-                            {assessmentResult?.estimatedPrice ? `¥${assessmentResult.estimatedPrice.toLocaleString()}` : "計算中..."}
-                          </p>
-                          <p className="text-sm text-slate-600">
-                            {assessmentResult?.priceRange ? `（${assessmentResult.priceRange.min.toLocaleString()} ～ ${assessmentResult.priceRange.max.toLocaleString()}）` : ""}
-                          </p>
-                        </div>
-                      </div>
-
-                      {assessmentResult?.marketAnalysis && (
-                        <div className="border-t border-slate-200 pt-6">
-                          <p className="text-sm font-bold text-slate-900 mb-2">市場分析</p>
-                          <p className="text-slate-600 text-sm leading-relaxed">{assessmentResult.marketAnalysis}</p>
-                        </div>
-                      )}
                     </div>
                   </Card>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
-                    <Button 
-                      variant="outline"
-                      size="lg"
-                      onClick={resetForm}
-                      className="flex-1 border-2 border-slate-300 hover:bg-slate-50 text-slate-700 font-bold py-6 rounded-lg"
-                    >
-                      別の物件を査定する
-                    </Button>
-                    <a 
-                      href="https://hyconsulting.jp/contact" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                    >
-                      <Button 
-                        size="lg"
-                        className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
-                      >
-                        詳しく相談する
-                        <ArrowRight className="ml-2 w-5 h-5" />
-                      </Button>
-                    </a>
-                  </div>
-
-                  {/* Additional Info */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                    <div className="flex gap-4">
-                      <ShieldCheck className="w-6 h-6 text-blue-600 flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="font-bold text-blue-900 mb-2">ご注意</p>
-                        <p className="text-sm text-blue-800">
-                          本査定結果は参考値です。実際の査定価格は物件の状態、市場動向、その他の要因により異なる場合があります。詳細な査定については、公式サイトのお問い合わせフォームからご相談ください。
-                        </p>
-                      </div>
-                    </div>
-                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
