@@ -26,9 +26,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="flex-1 text-center lg:text-left z-10"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 border-l-4 border-primary bg-slate-50 mb-8">
-              <span className="text-sm font-bold text-primary tracking-wider">HPをご覧の方へ：そのお悩み、ここで解決します</span>
-            </div>
+
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-slate-900 font-heading tracking-tight">
               老後・相続・不動産<br />
@@ -43,7 +41,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-sm shadow-lg hover:shadow-xl transition-all bg-secondary hover:bg-secondary/90 text-white group font-bold tracking-wide"
+                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full shadow-lg hover:shadow-xl transition-all bg-slate-900 hover:bg-slate-800 text-white group font-bold tracking-wide"
                 onClick={scrollToAssessment}
               >
                 まずは無料査定から
@@ -52,7 +50,7 @@ export default function Hero() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-sm border-2 border-slate-200 hover:bg-slate-50 text-slate-700 font-medium"
+                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full border-2 border-slate-300 hover:bg-slate-50 text-slate-700 font-medium"
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
               >
                 ご相談はこちら
