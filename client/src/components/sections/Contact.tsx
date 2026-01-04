@@ -91,9 +91,6 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-slate-900 mb-6 font-heading border-b border-slate-100 pb-4">
                 お問い合わせフォーム
               </h3>
-              <p className="text-slate-600 mb-8 leading-relaxed">
-                詳細なお問い合わせは、公式サイトのお問い合わせフォームをご利用ください。
-              </p>
               <a 
                 href="https://hyconsulting.jp/contact" 
                 target="_blank" 
