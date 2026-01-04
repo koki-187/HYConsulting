@@ -93,7 +93,7 @@ export default function AssessmentForm() {
                   <RadioGroup 
                     defaultValue="house" 
                     onValueChange={setPropertyType}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                    className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
                   >
                     {[
                       { value: "house", label: "戸建て", icon: Home, desc: "一軒家" },
@@ -105,12 +105,12 @@ export default function AssessmentForm() {
                         <RadioGroupItem value={type.value} id={type.value} className="peer sr-only" />
                         <Label
                           htmlFor={type.value}
-                          className="flex flex-col items-center justify-center gap-2 p-4 rounded-xl border-2 border-slate-100 cursor-pointer hover:bg-slate-50 hover:border-slate-300 peer-data-[state=checked]:border-accent peer-data-[state=checked]:bg-accent/5 peer-data-[state=checked]:shadow-md transition-all h-full group"
+                          className="flex flex-col items-center justify-center gap-2 p-3 sm:p-4 rounded-xl border-2 border-slate-100 cursor-pointer hover:bg-slate-50 hover:border-slate-300 peer-data-[state=checked]:border-accent peer-data-[state=checked]:bg-accent/5 peer-data-[state=checked]:shadow-md transition-all h-full group min-h-[120px] sm:min-h-[140px]"
                         >
-                          <type.icon className="w-10 h-10 text-slate-400 group-hover:text-slate-500 peer-data-[state=checked]:text-accent transition-colors" />
+                          <type.icon className="w-8 h-8 sm:w-10 sm:h-10 text-slate-400 group-hover:text-slate-500 peer-data-[state=checked]:text-accent transition-colors" />
                           <div className="text-center">
-                            <span className="block font-bold text-lg text-slate-700 peer-data-[state=checked]:text-primary">{type.label}</span>
-                            <span className="block text-xs text-slate-400 mt-1">{type.desc}</span>
+                            <span className="block font-bold text-base sm:text-lg text-slate-700 peer-data-[state=checked]:text-primary">{type.label}</span>
+                            <span className="block text-[10px] sm:text-xs text-slate-400 mt-1">{type.desc}</span>
                           </div>
                         </Label>
                       </div>
@@ -185,7 +185,7 @@ export default function AssessmentForm() {
                   <Button 
                     onClick={handleSearch}
                     disabled={isSearching}
-                    className="w-full bg-secondary hover:bg-secondary/90 text-white text-xl lg:text-2xl font-bold py-8 rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 relative overflow-hidden group"
+                    className="w-full bg-secondary hover:bg-secondary/90 text-white text-lg sm:text-xl lg:text-2xl font-bold py-6 sm:py-8 rounded-xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 relative overflow-hidden group min-h-[60px] sm:min-h-[80px]"
                   >
                     {isSearching ? (
                       <>

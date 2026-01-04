@@ -30,12 +30,12 @@ export default function Hero() {
               <span className="text-sm font-bold text-primary tracking-wider">HPをご覧の方へ：そのお悩み、ここで解決します</span>
             </div>
 
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-slate-900 font-heading tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-slate-900 font-heading tracking-tight">
               老後・相続・不動産<br />
               <span className="text-primary">窓口ひとつで解決。</span>
             </h1>
             
-            <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans font-bold">
+            <p className="text-base sm:text-lg text-slate-600 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans font-bold">
               複数の業者への連絡は不要です。<br />
               査定から対策まで、プロがワンストップで対応します。
             </p>
@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-lg px-10 py-7 rounded-sm shadow-lg hover:shadow-xl transition-all bg-secondary hover:bg-secondary/90 text-white group font-bold tracking-wide"
+                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-sm shadow-lg hover:shadow-xl transition-all bg-secondary hover:bg-secondary/90 text-white group font-bold tracking-wide"
                 onClick={scrollToAssessment}
               >
                 まずは無料査定から
@@ -52,7 +52,7 @@ export default function Hero() {
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="w-full sm:w-auto text-lg px-10 py-7 rounded-sm border-2 border-slate-200 hover:bg-slate-50 text-slate-700 font-medium"
+                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-sm border-2 border-slate-200 hover:bg-slate-50 text-slate-700 font-medium"
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
               >
                 ご相談はこちら

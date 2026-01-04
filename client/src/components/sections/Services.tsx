@@ -66,7 +66,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-8 font-heading"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 sm:mb-8 font-heading"
           >
             あなたとご家族の<br className="hidden sm:block" />
             <span className="text-primary relative inline-block">
@@ -104,16 +104,16 @@ export default function Services() {
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 
-                <CardHeader className="pt-8 pb-4 px-8">
+                <CardHeader className="pt-6 sm:pt-8 pb-4 px-6 sm:px-8">
                   <div className={`w-12 h-12 rounded-sm ${service.color} flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300`}>
                     <service.icon className="w-6 h-6" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors leading-snug min-h-[3.5rem] font-heading">
+                  <CardTitle className="text-lg sm:text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors leading-snug min-h-[3rem] sm:min-h-[3.5rem] font-heading">
                     {service.title}
                   </CardTitle>
                 </CardHeader>
                 
-                <CardContent className="px-8 pb-8 flex-grow flex flex-col">
+                <CardContent className="px-6 sm:px-8 pb-6 sm:pb-8 flex-grow flex flex-col">
                   <CardDescription className="text-base text-slate-600 leading-relaxed mb-6 font-sans">
                     {service.description}
                   </CardDescription>
