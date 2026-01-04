@@ -34,8 +34,8 @@ export const appRouter = router({
         floorArea: z.number().optional(),
         landArea: z.number().optional(),
         condition: z.string().optional(),
-        ownerName: z.string(),
-        email: z.string().email(),
+        ownerName: z.string().optional(),
+        email: z.string().email().optional().or(z.literal("")),
         phone: z.string().optional(),
       }))
       .mutation(async ({ input }) => {
@@ -62,8 +62,8 @@ export const appRouter = router({
             floorArea: input.floorArea,
             landArea: input.landArea,
             condition: input.condition,
-            ownerName: input.ownerName,
-            email: input.email,
+            ownerName: input.ownerName || "Anonymous",
+            email: input.email || "noreply@hy-consulting.jp",
             phone: input.phone,
             estimatedPrice: estimatedPrice || undefined,
             assessmentStatus: estimatedPrice ? "completed" : "pending",
