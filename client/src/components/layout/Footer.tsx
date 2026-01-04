@@ -13,7 +13,7 @@ export default function Footer() {
             <Link href="/">
               <a className="flex items-center gap-3 mb-6 w-fit group">
                 <img 
-                  src="/images/logo_new_design.png" 
+                  src="/images/logo_hy_consulting.png" 
                   alt="HY Consulting" 
                   className="h-8 w-auto object-contain"
                 />
