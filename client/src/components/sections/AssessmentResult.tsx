@@ -7,6 +7,7 @@ import { TrendingUp, MapPin, DollarSign, Home, Calendar, Users, BarChart3, Arrow
 import { useState } from "react";
 import { PriceTrendChart } from "@/components/charts/PriceTrendChart";
 import { MarketAnalysisCharts } from "@/components/charts/MarketAnalysisCharts";
+import { generateAssessmentPDF } from "@/lib/pdf-generator";
 import type { PriceTrendData } from "@/components/charts/PriceTrendChart";
 import type { PriceDistributionData, PropertyTypeComparison, StationDistanceAnalysis, BuildingAgeAnalysis } from "@/components/charts/MarketAnalysisCharts";
 
@@ -41,6 +42,28 @@ interface AssessmentResultProps {
 
 export default function AssessmentResult({ result, propertyData, marketAnalysis, onReset }: AssessmentResultProps) {
   const [showDetails, setShowDetails] = useState(false);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+
+  const handlePDFDownload = async () => {
+    try {
+      setIsGeneratingPDF(true);
+      const midPrice = (result.estimatedLowYen + result.estimatedHighYen) / 2;
+      await generateAssessmentPDF({
+        propertyData,
+        result: {
+          ...result,
+          estimatedLowYen: result.estimatedLowYen,
+          estimatedHighYen: result.estimatedHighYen,
+        },
+        generatedDate: new Date(),
+      }, `assessment-${propertyData.prefecture}-${propertyData.city}.pdf`);
+    } catch (error) {
+      console.error('PDF download error:', error);
+      alert('PDF生成に失敗しました');
+    } finally {
+      setIsGeneratingPDF(false);
+    }
+  };
 
   const formatPrice = (price: number) => {
     if (price >= 100000000) {
@@ -224,11 +247,13 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
               共有
             </Button>
             <Button
+              onClick={handlePDFDownload}
+              disabled={isGeneratingPDF}
               variant="outline"
-              className="flex-1 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 font-bold py-3 rounded-lg"
+              className="flex-1 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 font-bold py-3 rounded-lg disabled:opacity-50"
             >
               <Download className="w-5 h-5 mr-2" />
-              レポート
+              {isGeneratingPDF ? "生成中..." : "レポート"}
             </Button>
           </div>
         </div>

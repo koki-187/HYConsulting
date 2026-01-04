@@ -10,6 +10,7 @@ import { CheckCircle2, MapPin, Home, Building2, LandPlot, ArrowRight, Database, 
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
+import AssessmentResult from "./AssessmentResult";
 
 
 export default function AssessmentForm() {
@@ -299,6 +300,29 @@ export default function AssessmentForm() {
                   exit={{ opacity: 0 }}
                   className="space-y-8"
                 >
+                  <AssessmentResult
+                    result={{
+                      estimatedLowYen: assessmentResult?.estimatedLowYen || 0,
+                      estimatedHighYen: assessmentResult?.estimatedHighYen || 0,
+                      explanation: assessmentResult?.message || "",
+                      compsUsedCount: 0,
+                      marketTrend: "stable",
+                      pricePerM2: assessmentResult?.estimatedPrice ? (assessmentResult.estimatedPrice * 10000) / (parseFloat(area) || 100) : 0,
+                      comparableCount: 0,
+                      confidence: 75,
+                    }}
+                    propertyData={{
+                      propertyType,
+                      prefecture,
+                      city,
+                      location: address,
+                      floorArea: area ? parseFloat(area) : undefined,
+                      buildingAge: buildingYear ? parseInt(buildingYear) : undefined,
+                    }}
+                    marketAnalysis={assessmentResult?.marketAnalysis}
+                    onReset={resetForm}
+                  />
+
                   {/* Success Header */}
                   <div className="text-center space-y-4">
                     <div className="flex justify-center">
