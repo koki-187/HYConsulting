@@ -49,16 +49,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/">
             <a className="flex items-center gap-3 group">
-              <div className="flex items-center gap-3">
-                <img 
-                  src="/images/logo_new_design.png" 
-                  alt="HY Consulting" 
-                  className="h-8 lg:h-10 w-auto object-contain"
-                />
-                <span className="text-xl lg:text-2xl font-bold text-[#005BAC] tracking-tight">
-                  HY Consulting
-                </span>
-              </div>
+              <img 
+                src="/images/logo_new_design.png" 
+                alt="HY Consulting" 
+                className="h-8 lg:h-10 w-auto object-contain"
+              />
             </a>
           </Link>
 

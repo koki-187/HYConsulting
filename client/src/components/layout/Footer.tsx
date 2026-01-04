@@ -17,9 +17,6 @@ export default function Footer() {
                   alt="HY Consulting" 
                   className="h-8 w-auto object-contain"
                 />
-                <span className="text-2xl font-bold text-primary tracking-tight">
-                  HY Consulting
-                </span>
               </a>
             </Link>
             <p className="text-slate-600 text-base leading-relaxed mb-8 max-w-md font-sans">
