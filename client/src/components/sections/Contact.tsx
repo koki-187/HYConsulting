@@ -79,7 +79,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Contact Form Link */}
           <motion.div 
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -87,41 +87,23 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="w-full lg:w-1/2"
           >
-            <div className="bg-white p-8 lg:p-10 rounded-sm shadow-2xl">
+            <div className="bg-white p-8 lg:p-10 rounded-sm shadow-2xl h-full flex flex-col justify-center">
               <h3 className="text-xl font-bold text-slate-900 mb-6 font-heading border-b border-slate-100 pb-4">
                 お問い合わせフォーム
               </h3>
-              <form className="space-y-6">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700">お名前 <span className="text-red-500">*</span></label>
-                    <Input placeholder="山田 太郎" className="bg-slate-50 border-slate-200 focus:border-primary rounded-sm" />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700">フリガナ <span className="text-red-500">*</span></label>
-                    <Input placeholder="ヤマダ タロウ" className="bg-slate-50 border-slate-200 focus:border-primary rounded-sm" />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">メールアドレス <span className="text-red-500">*</span></label>
-                  <Input type="email" placeholder="example@email.com" className="bg-slate-50 border-slate-200 focus:border-primary rounded-sm" />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">電話番号</label>
-                  <Input type="tel" placeholder="090-1234-5678" className="bg-slate-50 border-slate-200 focus:border-primary rounded-sm" />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-slate-700">ご相談内容 <span className="text-red-500">*</span></label>
-                  <Textarea placeholder="ご相談内容をご記入ください" className="min-h-[150px] bg-slate-50 border-slate-200 focus:border-primary rounded-sm resize-none" />
-                </div>
-
+              <p className="text-slate-600 mb-8 leading-relaxed">
+                詳細なお問い合わせは、公式サイトのお問い合わせフォームをご利用ください。
+              </p>
+              <a 
+                href="https://hyconsulting.jp/contact" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block"
+              >
                 <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 rounded-sm text-lg shadow-lg hover:shadow-xl transition-all duration-300">
-                  送信する
+                  公式サイトを開く
                 </Button>
-              </form>
+              </a>
             </div>
           </motion.div>
         </div>
