@@ -354,7 +354,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             {[
               {
                 number: 1,
-                title: "無料査定",
+                title: "無料相談",
                 description: "オンラインで粗推估価格を把握",
               },
               {

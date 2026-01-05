@@ -28,6 +28,7 @@ export default function AssessmentForm() {
   const [wantContact, setWantContact] = useState(false);
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
   const [contactError, setContactError] = useState<string | null>(null);
 
   const submitAssessment = trpc.assessment.submit.useMutation({
@@ -62,6 +63,11 @@ export default function AssessmentForm() {
       return false;
     }
     
+    if (!name) {
+      setContactError("お名前を入力してください");
+      return false;
+    }
+    
     return true;
   };
 
@@ -92,7 +98,7 @@ export default function AssessmentForm() {
         location: location,
         floorArea: area ? parseFloat(area) : undefined,
         buildingAge: buildingYear ? parseInt(buildingYear) : undefined,
-        ownerName: "Anonymous",
+        ownerName: wantContact ? name : "Anonymous",
         email: wantContact ? email : "",
         phone: wantContact ? phone : undefined,
       });
@@ -372,6 +378,20 @@ export default function AssessmentForm() {
                               <p className="text-red-700 text-sm">{contactError}</p>
                             </div>
                           )}
+
+                          <div className="space-y-2">
+                            <Label htmlFor="name" className="text-sm font-bold text-slate-600 flex items-center gap-2">
+                              <span className="w-4 h-4 flex items-center justify-center text-primary font-bold text-xs">👤</span>
+                              お名前
+                            </Label>
+                            <Input 
+                              id="name" 
+                              placeholder="例：山田 太郎" 
+                              className="h-12 text-lg bg-white border-slate-300 focus:ring-accent"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                            />
+                          </div>
 
                           <div className="space-y-2">
                             <Label htmlFor="email" className="text-sm font-bold text-slate-600 flex items-center gap-2">
