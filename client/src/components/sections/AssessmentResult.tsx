@@ -29,6 +29,8 @@ interface AssessmentResultProps {
     location: string;
     floorArea?: number;
     buildingAge?: number;
+    nearestStation?: string;
+    walkingMinutes?: number;
   };
   marketAnalysis?: {
     priceTrends?: PriceTrendData[];

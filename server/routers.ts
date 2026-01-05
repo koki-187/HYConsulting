@@ -38,6 +38,8 @@ export const appRouter = router({
         ownerName: z.string().optional(),
         email: z.string().email().optional().or(z.literal("")),
         phone: z.string().optional(),
+        nearestStation: z.string().optional(),
+        walkingMinutes: z.number().optional(),
       }))
       .mutation(async ({ input }) => {
         try {
@@ -76,6 +78,41 @@ export const appRouter = router({
             marketAnalysis = await generateMarketAnalysis(input.prefecture, input.propertyType);
           } catch (e) {
             console.warn("Failed to generate market analysis:", e);
+          }
+
+          // Send data to Google Sheets via webhook
+          if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
+            try {
+              const webhookData = {
+                timestamp: new Date().toISOString(),
+                ownerName: input.ownerName || "匿名",
+                email: input.email || "",
+                phone: input.phone || "",
+                propertyType: input.propertyType,
+                prefecture: input.prefecture,
+                city: input.city,
+                location: input.location,
+                floorArea: input.floorArea || "",
+                buildingAge: input.buildingAge || "",
+                estimatedPrice: estimatedPrice || "",
+                nearestStation: input.nearestStation || "",
+                walkingMinutes: input.walkingMinutes || "",
+              };
+              
+              const webhookResponse = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(webhookData),
+              });
+              
+              if (webhookResponse.ok) {
+                console.log("Data sent to Google Sheets successfully");
+              } else {
+                console.warn("Failed to send data to Google Sheets:", await webhookResponse.text());
+              }
+            } catch (e) {
+              console.warn("Failed to send data to Google Sheets:", e);
+            }
           }
 
           // Send email if user provided email address and it's not the default

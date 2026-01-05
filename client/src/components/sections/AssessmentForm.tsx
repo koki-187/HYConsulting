@@ -476,6 +476,8 @@ export default function AssessmentForm() {
                       prefecture,
                       city,
                       location: stationName ? `${stationName}駅${walkingMinutes ? `徒歩${walkingMinutes}分` : ""}` : "",
+                      nearestStation: stationName || undefined,
+                      walkingMinutes: walkingMinutes ? parseInt(walkingMinutes) : undefined,
                       floorArea: area ? parseFloat(area) : undefined,
                       buildingAge: buildingYear ? parseInt(buildingYear) : undefined,
                     }}
