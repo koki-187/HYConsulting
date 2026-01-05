@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Phone, Mail, MapPin, ExternalLink, ShieldCheck } from "lucide-react";
+import { Mail, ExternalLink, ShieldCheck } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,39 +24,31 @@ export default function Footer() {
               <div className="space-y-3">
                 <h3 className="text-lg font-bold text-slate-900">人生100年時代のパートナー</h3>
                 <p className="text-slate-600 text-sm leading-relaxed max-w-sm">
-                  不動産・相続・終活のプロフェッショナルとして、お客様の人生に寄り添い、最適な解決策をご提案します。横浜・湘南エリアを中心に、地域密着でサポートいたします。
+                  不動産・相続・終活のプロフェッショナルとして、お客様の人生に寄り添い、最適な解決策をご提案します。全国対応でサポートいたします。
                 </p>
               </div>
             </div>
             
-            {/* Contact Info - Redesigned */}
+            {/* Contact Info - Inquiry Only */}
             <div className="space-y-4">
               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">お問い合わせ</h4>
               <div className="space-y-3">
-                <div className="flex items-start gap-3">
-                  <Phone className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider">電話</p>
-                    <p className="text-lg font-bold text-slate-900">045-869-6377</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-xs text-slate-500 uppercase tracking-wider">住所</p>
-                    <p className="text-sm text-slate-700 leading-relaxed">
-                      〒244-0003<br />
-                      神奈川県横浜市戸塚区戸塚町4711-1<br />
-                      オセアン矢沢ビル304
-                    </p>
-                  </div>
-                </div>
                 <div className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-xs text-slate-500 uppercase tracking-wider">メール</p>
                     <p className="text-sm text-slate-700">info@hyconsulting.jp</p>
                   </div>
+                </div>
+                <div className="mt-6">
+                  <a 
+                    href="https://hyconsulting.jp/contact" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-3 bg-accent text-white font-bold rounded-lg hover:bg-accent/90 transition-colors text-sm"
+                  >
+                    お問い合わせフォーム
+                  </a>
                 </div>
               </div>
             </div>

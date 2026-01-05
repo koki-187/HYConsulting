@@ -1,5 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
+
 import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 import { Quote, Star } from "lucide-react";
 
 const testimonials = [
@@ -25,7 +27,7 @@ export default function Testimonials() {
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent opacity-80" />
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}

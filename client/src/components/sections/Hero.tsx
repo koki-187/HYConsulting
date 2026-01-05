@@ -29,7 +29,7 @@ export default function Hero() {
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-8 text-slate-900 font-heading tracking-tight">
               悩む、考える、<br />
-              <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">以前に。</span>
+              <span className="bg-gradient-to-r from-primary via-blue-600 to-primary bg-clip-text text-transparent">その前に。</span>
             </h1>
             
             <div className="mb-8 sm:mb-10">

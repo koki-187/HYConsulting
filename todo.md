@@ -140,3 +140,11 @@
 - [x] Features セクションの文章をユーザー心理に刷さる效果的な文言に変更
 - [x] AssessmentResult へのフロー図と訪問査定 CTA ボタンを追加
 - [x] 全体的な検証とテスト実行（全テスト 11/11 PASSED）
+
+
+## Session 20 - Testimonials削除・Footer最適化・Hero タイトル更新
+
+- [x] Testimonials セクションの重複コンテンツ削除（お客様の声を削減）
+- [x] Footer の電話番号と住所を削除（問い合わせのみに変更完了）
+- [x] Hero セクションのタイトルを新しいメッセージに更新完了
+- [x] 全体的な検証とテスト実行（全テスト 11/11 PASSED、TypeScript 0 エラー）
