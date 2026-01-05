@@ -7,7 +7,7 @@ import FAQ from "@/components/sections/FAQ";
 import Features from "@/components/sections/Features";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
-import Testimonials from "@/components/sections/Testimonials";
+
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
         {/* Build trust and credibility */}
         <Features />
         <Achievements />
-        <Testimonials />
+
         {/* Address remaining questions */}
         <FAQ />
 
