@@ -14,7 +14,7 @@ const services = [
       "あなただけのワンチームをアレンジしワンストップでご支援"
     ],
     color: "bg-blue-100 text-primary",
-    image: "/images/hero_city_16x9.png",
+    image: "/images/services_consulting.png",
     highlight: "初回相談は無料ですのでお気軽にお問合せください。"
   },
   {
