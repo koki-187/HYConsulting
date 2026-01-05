@@ -5,6 +5,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { createAssessmentRequest, calculateAssessmentPrice, seedPropertyDatabase } from "./db";
 import { generateMarketAnalysis } from "./market-analysis";
+import emailService from "./email-service";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -75,6 +76,38 @@ export const appRouter = router({
             marketAnalysis = await generateMarketAnalysis(input.prefecture, input.propertyType);
           } catch (e) {
             console.warn("Failed to generate market analysis:", e);
+          }
+
+          // Send email if user provided email address and it's not the default
+          if (input.email && input.email !== "" && input.email !== "noreply@hy-consulting.jp") {
+            try {
+              const emailData = {
+                propertyType: input.propertyType,
+                prefecture: input.prefecture,
+                city: input.city,
+                location: input.location,
+                estimatedLowYen: estimatedPrice ? estimatedPrice * 0.85 * 10000 : 0,
+                estimatedHighYen: estimatedPrice ? estimatedPrice * 1.15 * 10000 : 0,
+                estimatedPrice: estimatedPrice || 0,
+                message: estimatedPrice 
+                  ? `ご依頼いただいた物件の査定が完了いたしました。推定価格は${estimatedPrice}万円です。詳細はメール本文をご確認ください。` 
+                  : "査定リクエストを受け付けました。後ほど詳細をご連絡いたします。",
+                confidence: 75,
+                pricePerM2: input.floorArea && estimatedPrice ? (estimatedPrice * 10000) / input.floorArea : undefined,
+                floorArea: input.floorArea,
+                buildingAge: input.buildingAge,
+                marketTrend: "stable",
+              };
+              
+              const emailResult = await emailService.sendAssessmentEmail(input.email, emailData);
+              if (emailResult.success) {
+                console.log(`Email sent successfully to ${input.email}`);
+              } else {
+                console.warn(`Failed to send email to ${input.email}:`, emailResult.error);
+              }
+            } catch (e) {
+              console.warn("Failed to send assessment email:", e);
+            }
           }
 
           return {
