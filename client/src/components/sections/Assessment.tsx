@@ -4,11 +4,6 @@ import AssessmentForm from "./AssessmentForm";
 
 const steps = [
   {
-    icon: Calculator,
-    title: "簡易査定（まずは相場を知る）",
-    description: "物件情報と周辺相場データをもとに、概算価格をスピーディーに算出します。まずは相場を知りたい方におすすめです。"
-  },
-  {
     icon: Home,
     title: "訪問査定（正確な価格を知る）",
     description: "現地を実際に訪問し、建物の状態や周辺環境を詳細に調査。より正確な査定価格をご提示します。"

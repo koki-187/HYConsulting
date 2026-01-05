@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle2, MapPin, Home, Building2, LandPlot, ArrowRight, Database, Loader2, Search, ShieldCheck, AlertCircle, Mail, Phone } from "lucide-react";
+import { CheckCircle2, MapPin, Home, Building2, LandPlot, ArrowRight, Database, Loader2, Search, ShieldCheck, AlertCircle, Mail, Phone, Train, Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
@@ -18,7 +18,8 @@ export default function AssessmentForm() {
   const [propertyType, setPropertyType] = useState("house");
   const [prefecture, setPrefecture] = useState("");
   const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
+  const [stationName, setStationName] = useState("");
+  const [walkingMinutes, setWalkingMinutes] = useState("");
   const [area, setArea] = useState("");
   const [buildingYear, setBuildingYear] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -65,8 +66,8 @@ export default function AssessmentForm() {
   };
 
   const handleSearch = async () => {
-    if (!prefecture || !city || !address) {
-      setError("都道府県、市区町村、町名・番地を入力してください");
+    if (!prefecture || !city) {
+      setError("都道府県と市区町村を入力してください");
       return;
     }
 
@@ -78,11 +79,17 @@ export default function AssessmentForm() {
     setError(null);
 
     try {
+      // Create location string from prefecture and city, with optional station info
+      let location = `${prefecture}${city}`;
+      if (stationName) {
+        location += ` (${stationName}駅${walkingMinutes ? `徒歩${walkingMinutes}分` : ""})`;
+      }
+
       await submitAssessment.mutateAsync({
         propertyType,
         prefecture,
         city,
-        location: address,
+        location: location,
         floorArea: area ? parseFloat(area) : undefined,
         buildingAge: buildingYear ? parseInt(buildingYear) : undefined,
         ownerName: "Anonymous",
@@ -100,7 +107,8 @@ export default function AssessmentForm() {
     setPropertyType("house");
     setPrefecture("");
     setCity("");
-    setAddress("");
+    setStationName("");
+    setWalkingMinutes("");
     setArea("");
     setBuildingYear("");
     setAssessmentResult(null);
@@ -258,15 +266,37 @@ export default function AssessmentForm() {
                           />
                         </div>
                       </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="address" className="text-sm font-bold text-slate-600">町名・番地 <span className="text-xs font-normal text-slate-400 ml-2">※詳しいほど正確に査定できます</span></Label>
-                        <Input 
-                          id="address" 
-                          placeholder="例：戸塚町1-2-3" 
-                          className="h-14 text-lg bg-white border-slate-300 focus:ring-accent"
-                          value={address}
-                          onChange={(e) => setAddress(e.target.value)}
-                        />
+                      <div className="space-y-4 pt-4 border-t border-slate-200">
+                        <p className="text-sm text-slate-600 font-bold">最寄り駅情報（オプション）</p>
+                        <div className="grid md:grid-cols-2 gap-6">
+                          <div className="space-y-2">
+                            <Label htmlFor="stationName" className="text-sm font-bold text-slate-600 flex items-center gap-2">
+                              <Train className="w-4 h-4" />
+                              最寄り駅名
+                            </Label>
+                            <Input 
+                              id="stationName" 
+                              placeholder="例：横浜駅" 
+                              className="h-14 text-lg bg-white border-slate-300 focus:ring-accent"
+                              value={stationName}
+                              onChange={(e) => setStationName(e.target.value)}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="walkingMinutes" className="text-sm font-bold text-slate-600 flex items-center gap-2">
+                              <Clock className="w-4 h-4" />
+                              徒歩（分）
+                            </Label>
+                            <Input 
+                              id="walkingMinutes" 
+                              placeholder="例：10" 
+                              type="number"
+                              className="h-14 text-lg bg-white border-slate-300 focus:ring-accent"
+                              value={walkingMinutes}
+                              onChange={(e) => setWalkingMinutes(e.target.value)}
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -425,7 +455,7 @@ export default function AssessmentForm() {
                       propertyType,
                       prefecture,
                       city,
-                      location: address,
+                      location: stationName ? `${stationName}駅${walkingMinutes ? `徒歩${walkingMinutes}分` : ""}` : "",
                       floorArea: area ? parseFloat(area) : undefined,
                       buildingAge: buildingYear ? parseInt(buildingYear) : undefined,
                     }}
@@ -450,7 +480,7 @@ export default function AssessmentForm() {
                       <div>
                         <p className="text-sm text-slate-600 mb-2">査定対象物件</p>
                         <p className="text-lg font-bold text-slate-900">
-                          {prefecture} {city} {address}
+                          {prefecture} {city} {stationName && `(${stationName}駅${walkingMinutes ? `徒歩${walkingMinutes}分` : ""})`}
                         </p>
                       </div>
                     </div>
