@@ -85,6 +85,28 @@ export default function FAQ() {
             ))}
           </Accordion>
         </motion.div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-slate-600 text-lg mb-6">
+            ご質問やご相談がございましたら、<br />
+            お気軽にお問い合わせください。
+          </p>
+          <a
+            href="https://hyconsulting.jp/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+          >
+            訪問査定をご依頼
+          </a>
+        </motion.div>
       </div>
     </section>
   );

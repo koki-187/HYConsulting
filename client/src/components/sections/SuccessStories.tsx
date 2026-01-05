@@ -130,9 +130,14 @@ export default function SuccessStories() {
             あなたの課題も、プロのサポートで解決できます。<br />
             まずはお気軽にご相談ください。
           </p>
-          <button className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+          <a
+            href="https://hyconsulting.jp/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+          >
             無料相談を申し込む
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
