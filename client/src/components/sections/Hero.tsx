@@ -49,7 +49,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-12 py-6 sm:py-7 rounded-full shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white group font-bold tracking-wide"
+                className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-14 py-6 sm:py-8 rounded-full shadow-2xl hover:shadow-2xl transition-all bg-gradient-to-r from-primary to-blue-600 hover:from-primary/90 hover:to-blue-700 text-white group font-bold tracking-wide animate-pulse-soft"
                 onClick={scrollToAssessment}
               >
                 まずは無料査定から

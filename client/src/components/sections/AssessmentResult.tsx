@@ -334,8 +334,67 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
         </motion.div>
       )}
 
+      {/* Assessment Flow & CTA */}
+      <div className="mt-12 pt-8 border-t-2 border-slate-200">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+              次のアクションは？
+            </h3>
+            <p className="text-slate-600 text-lg">
+              正確な価格を知りたい場合は、訪問査定をご依頁ください
+            </p>
+          </div>
+
+          {/* Flow Steps */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                number: 1,
+                title: "無料査定",
+                description: "オンラインで粗推估価格を把握",
+              },
+              {
+                number: 2,
+                title: "訪問査定",
+                description: "プロが現地で詳細な調査を実施",
+              },
+              {
+                number: 3,
+                title: "最適なプランのご提案",
+                description: "あなたに最適な選択肢を提案",
+              },
+            ].map((step, index) => (
+              <div key={index} className="bg-white rounded-lg p-6 border-2 border-slate-200 hover:border-primary/50 transition-all">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary/80 text-white font-bold text-lg mb-4">
+                  {step.number}
+                </div>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h4>
+                <p className="text-slate-600 text-sm">{step.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-8 border-2 border-primary/20 text-center">
+            <h4 className="text-2xl font-bold text-slate-900 mb-3">
+              正確な価格を知りたい方へ
+            </h4>
+            <p className="text-slate-700 mb-6">
+              无料査定の結果をもとに、プロが現地で詳細な調査を実施します。
+            </p>
+            <button className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+              訪問査定をご依頁
+            </button>
+          </div>
+        </motion.div>
+      </div>
+
       {/* Reset Button */}
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-8">
         <Button
           onClick={onReset}
           variant="outline"

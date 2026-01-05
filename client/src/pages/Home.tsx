@@ -2,7 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import Achievements from "@/components/sections/Achievements";
 import Assessment from "@/components/sections/Assessment";
-
+import SuccessStories from "@/components/sections/SuccessStories";
 import FAQ from "@/components/sections/FAQ";
 import Features from "@/components/sections/Features";
 import Hero from "@/components/sections/Hero";
@@ -22,6 +22,8 @@ export default function Home() {
         <Assessment />
         {/* After assessment, show services that match their needs */}
         <Services />
+        {/* Show customer success stories to build trust */}
+        <SuccessStories />
         {/* Build trust and credibility */}
         <Features />
         <Achievements />
