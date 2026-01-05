@@ -83,20 +83,44 @@ export const appRouter = router({
           // Send data to Google Sheets via webhook
           if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
             try {
+              // Calculate price range in 万円 (10,000 yen units)
+              const estimatedLowManYen = estimatedPrice ? Math.round(estimatedPrice * 0.85) : 0;
+              const estimatedHighManYen = estimatedPrice ? Math.round(estimatedPrice * 1.15) : 0;
+              const priceRangeText = estimatedPrice 
+                ? `${estimatedLowManYen.toLocaleString('ja-JP')}万円～${estimatedHighManYen.toLocaleString('ja-JP')}万円`
+                : "査定中";
+
+              // Format property type in Japanese
+              const propertyTypeMap: Record<string, string> = {
+                house: "戸建て",
+                mansion: "マンション",
+                land: "土地",
+                apartment: "アパート",
+                condo: "マンション",
+              };
+              const propertyTypeJa = propertyTypeMap[input.propertyType] || input.propertyType;
+
+              // Format location (prefecture + city)
+              const locationText = `${input.prefecture}${input.city}`;
+
+              // Format station info
+              const stationText = input.nearestStation || "未入力";
+              const walkingText = input.walkingMinutes ? `${input.walkingMinutes}分` : "未入力";
+
               const webhookData = {
                 timestamp: new Date().toISOString(),
                 ownerName: input.ownerName || "匿名",
                 email: input.email || "",
                 phone: input.phone || "",
-                propertyType: input.propertyType,
+                propertyType: propertyTypeJa,
                 prefecture: input.prefecture,
                 city: input.city,
-                location: input.location,
+                address: locationText,
                 floorArea: input.floorArea || "",
                 buildingAge: input.buildingAge || "",
-                estimatedPrice: estimatedPrice || "",
-                nearestStation: input.nearestStation || "",
-                walkingMinutes: input.walkingMinutes || "",
+                estimatedPrice: priceRangeText,
+                nearestStation: stationText,
+                walkingMinutes: walkingText,
               };
               
               const webhookResponse = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {

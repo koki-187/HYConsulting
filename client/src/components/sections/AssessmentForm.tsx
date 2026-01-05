@@ -53,9 +53,12 @@ export default function AssessmentForm() {
       return false;
     }
     
-    if (phone && !phone.match(/^[0-9\-\s()]+$/)) {
-      setContactError("有効な電話番号を入力してください");
-      return false;
+    if (phone) {
+      // Phone must be exactly 11 digits, no hyphens or other characters
+      if (!phone.match(/^[0-9]{11}$/)) {
+        setContactError("電話番号は11桁の数字で入力してください（ハイフン不要）");
+        return false;
+      }
     }
     
     if (!email && !phone) {
@@ -415,10 +418,17 @@ export default function AssessmentForm() {
                             </Label>
                             <Input 
                               id="phone" 
-                              placeholder="例：090-1234-5678" 
+                              placeholder="例：09012345678（11桁の数字、ハイフン不要）" 
                               className="h-12 text-lg bg-white border-slate-300 focus:ring-accent"
                               value={phone}
-                              onChange={(e) => setPhone(e.target.value)}
+                              onChange={(e) => {
+                                // Only allow digits, max 11 characters
+                                const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 11);
+                                setPhone(value);
+                              }}
+                              maxLength={11}
+                              inputMode="numeric"
+                              pattern="[0-9]{11}"
                             />
                           </div>
 

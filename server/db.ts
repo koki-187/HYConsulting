@@ -172,8 +172,9 @@ export async function calculateAssessmentPrice(
     const conditionFactor = conditionMultiplier[condition] || 0.85;
 
     // Calculate estimated price
+    // pricePerSqm is already in 万円/㎡, so no need to divide by 10000
     const estimatedPrice = Math.round(
-      (avgPricePerSqm * floorArea * ageAdjustment * conditionFactor) / 10000
+      avgPricePerSqm * floorArea * ageAdjustment * conditionFactor
     );
 
     return estimatedPrice;
@@ -195,6 +196,46 @@ export async function seedPropertyDatabase() {
   }
 
   const sampleData: InsertPropertyDatabase[] = [
+    // 横浜市中区 - マンション (テストタロウデータ)
+    {
+      propertyType: "mansion",
+      prefecture: "神奈川県",
+      city: "横浜市中区",
+      location: "横浜市中区 (横浜駅徒歩5分)",
+      buildingAge: 10,
+      floorArea: 70,
+      condition: "good",
+      soldPrice: 3500,
+      pricePerSqm: "50.00",
+      transactionDate: "2024-01",
+      source: "MLIT",
+    },
+    {
+      propertyType: "mansion",
+      prefecture: "神奈川県",
+      city: "横浜市中区",
+      location: "横浜市中区",
+      buildingAge: 8,
+      floorArea: 75,
+      condition: "excellent",
+      soldPrice: 4000,
+      pricePerSqm: "53.33",
+      transactionDate: "2024-02",
+      source: "MLIT",
+    },
+    {
+      propertyType: "mansion",
+      prefecture: "神奈川県",
+      city: "横浜市中区",
+      location: "横浜市中区",
+      buildingAge: 12,
+      floorArea: 65,
+      condition: "good",
+      soldPrice: 3200,
+      pricePerSqm: "49.23",
+      transactionDate: "2024-01",
+      source: "MLIT",
+    },
     // 横浜市戸塚区 - アパート
     {
       propertyType: "apartment",

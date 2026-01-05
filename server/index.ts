@@ -2,11 +2,30 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
+import emailService from "./email-service";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
+  // Initialize email service
+  try {
+    await emailService.initialize({
+      host: process.env.EMAIL_HOST || "smtp.gmail.com",
+      port: parseInt(process.env.EMAIL_PORT || "587"),
+      secure: false, // Use STARTTLS
+      auth: {
+        user: process.env.EMAIL_USER || process.env.EMAIL_FROM || "info@hyconsulting.jp",
+        pass: process.env.EMAIL_PASSWORD || "",
+      },
+      from: process.env.EMAIL_FROM || "info@hyconsulting.jp",
+    });
+    console.log("✅ Email service initialized");
+  } catch (error) {
+    console.warn("⚠️ Email service initialization failed:", error);
+    console.warn("⚠️ Email notifications will be disabled");
+  }
+
   const app = express();
   const server = createServer(app);
 

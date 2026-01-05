@@ -76,15 +76,34 @@ export async function generatePriceTrendData(
     ? and(eq(transactions.prefecture, prefecture), eq(transactions.propertyType, propertyType))
     : eq(transactions.prefecture, prefecture);
 
+  // Get all prices to calculate median manually (MySQL doesn't support MEDIAN)
+  const priceResults = await db
+    .select({
+      priceYen: transactions.priceYen,
+    })
+    .from(transactions)
+    .where(whereConditions);
+
+  const prices = priceResults.map(r => Number(r.priceYen)).filter(p => p > 0).sort((a, b) => a - b);
+  const medianPrice = prices.length > 0
+    ? (prices.length % 2 === 0
+      ? (prices[prices.length / 2 - 1] + prices[prices.length / 2]) / 2
+      : prices[Math.floor(prices.length / 2)])
+    : 0;
+
   const result = await db
     .select({
       averagePrice: sql<number>`AVG(${transactions.priceYen})`,
-      medianPrice: sql<number>`MEDIAN(${transactions.priceYen})`,
       count: sql<number>`COUNT(*)`,
     })
     .from(transactions)
     .where(whereConditions);
-  const baseData = result[0];
+  
+  const baseData = {
+    averagePrice: result[0]?.averagePrice || 0,
+    medianPrice,
+    count: result[0]?.count || 0,
+  };
 
   // Generate 12 months of trend data with slight variations
   for (let i = 0; i < 12; i++) {
@@ -158,10 +177,29 @@ export async function generatePropertyTypeComparison(
   const comparison: PropertyTypeComparison[] = [];
 
   for (const type of propertyTypes) {
+    // Get all prices to calculate median manually
+    const priceResults = await db
+      .select({
+        priceYen: transactions.priceYen,
+      })
+      .from(transactions)
+      .where(
+        and(
+          eq(transactions.prefecture, prefecture),
+          eq(transactions.propertyType, type)
+        )
+      );
+
+    const prices = priceResults.map(r => Number(r.priceYen)).filter(p => p > 0).sort((a, b) => a - b);
+    const medianPrice = prices.length > 0
+      ? (prices.length % 2 === 0
+        ? (prices[prices.length / 2 - 1] + prices[prices.length / 2]) / 2
+        : prices[Math.floor(prices.length / 2)])
+      : 0;
+
     const result = await db
       .select({
         averagePrice: sql<number>`AVG(${transactions.priceYen})`,
-        medianPrice: sql<number>`MEDIAN(${transactions.priceYen})`,
         count: sql<number>`COUNT(*)`,
       })
       .from(transactions)
@@ -176,8 +214,8 @@ export async function generatePropertyTypeComparison(
       const data = result[0];
       comparison.push({
         type: type === "land" ? "土地" : type === "house" ? "戸建て" : "マンション",
-        averagePrice: Math.round(data.averagePrice),
-        medianPrice: Math.round(data.medianPrice),
+        averagePrice: Math.round(data.averagePrice || 0),
+        medianPrice: Math.round(medianPrice),
         count: data.count,
       });
     }
@@ -307,17 +345,38 @@ export async function generateMarketAnalysis(
     ? and(eq(transactions.prefecture, prefecture), eq(transactions.propertyType, propertyType))
     : eq(transactions.prefecture, prefecture);
 
+  // Get all prices to calculate median manually
+  const priceResults = await db
+    .select({
+      priceYen: transactions.priceYen,
+    })
+    .from(transactions)
+    .where(summaryConditions);
+
+  const prices = priceResults.map(r => Number(r.priceYen)).filter(p => p > 0).sort((a, b) => a - b);
+  const medianPrice = prices.length > 0
+    ? (prices.length % 2 === 0
+      ? (prices[prices.length / 2 - 1] + prices[prices.length / 2]) / 2
+      : prices[Math.floor(prices.length / 2)])
+    : 0;
+
   const summaryResult = await db
     .select({
       averagePrice: sql<number>`AVG(${transactions.priceYen})`,
-      medianPrice: sql<number>`MEDIAN(${transactions.priceYen})`,
       minPrice: sql<number>`MIN(${transactions.priceYen})`,
       maxPrice: sql<number>`MAX(${transactions.priceYen})`,
       count: sql<number>`COUNT(*)`,
     })
     .from(transactions)
     .where(summaryConditions) as any;
-  const summary = summaryResult[0];
+  
+  const summary = {
+    averagePrice: summaryResult[0]?.averagePrice || 0,
+    medianPrice,
+    minPrice: summaryResult[0]?.minPrice || 0,
+    maxPrice: summaryResult[0]?.maxPrice || 0,
+    count: summaryResult[0]?.count || 0,
+  };
 
   // Generate all analysis data in parallel
   const [priceTrends, priceDistribution, propertyComparison, stationAnalysis, buildingAnalysis] =

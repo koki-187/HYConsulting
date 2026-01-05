@@ -68,10 +68,9 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
   };
 
   const formatPrice = (price: number) => {
-    if (price >= 100000000) {
-      return `¥${(price / 100000000).toFixed(1)}億`;
-    }
-    return `¥${(price / 1000000).toFixed(1)}M`;
+    // Format in 万円 (10,000 yen units)
+    const manYen = Math.round(price / 10000);
+    return `${manYen.toLocaleString('ja-JP')}万円`;
   };
 
   const formatPriceDetailed = (price: number) => {
@@ -120,10 +119,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             <p className="text-slate-600 text-sm font-medium mb-2">推定価格</p>
             <div className="flex items-baseline gap-4 mb-4">
               <div className="text-5xl lg:text-6xl font-bold text-primary">
-                {formatPrice(midPrice)}
-              </div>
-              <div className="text-lg text-slate-600">
-                <span className="font-bold text-slate-700">{rangePercent}%</span> の幅
+                {formatPrice(result.estimatedLowYen)}～{formatPrice(result.estimatedHighYen)}
               </div>
             </div>
 
@@ -357,7 +353,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
               {
                 number: 1,
                 title: "無料相談",
-                description: "オンラインで粗推估価格を把握",
+                description: "まずはお気軽にご相談下さい",
               },
               {
                 number: 2,
