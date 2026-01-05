@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, HeartHandshake, Home, PiggyBank } from "lucide-react";
+import { ArrowRight, HeartHandshake, Home, PiggyBank } from "lucide-react";
 
 export default function Hero() {
   const scrollToAssessment = () => {
@@ -27,15 +27,14 @@ export default function Hero() {
             className="flex-1 text-center lg:text-left z-10"
           >
 
-
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-6 text-slate-900 font-heading tracking-tight">
-              老後・相続・不動産<br />
-              <span className="text-primary">窓口ひとつで解決。</span>
+              悩む、考える、以前に。<br />
+              <span className="text-primary">初めに大事な事は、<br />ご自身の状況を把握する事です。</span>
             </h1>
             
-            <p className="text-base sm:text-lg text-slate-600 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans font-bold">
-              複数の業者への連絡は不要です。<br />
-              査定から対策まで、プロがワンストップで対応します。
+            <p className="text-base sm:text-lg text-slate-600 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-sans">
+              不動産の価値を知ることから、<br />
+              老後・相続・資産活用の最適な選択肢が見えてきます。
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
@@ -51,7 +50,7 @@ export default function Hero() {
                 variant="outline" 
                 size="lg" 
                 className="w-full sm:w-auto text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 rounded-full border-2 border-slate-300 hover:bg-slate-50 text-slate-700 font-medium"
-                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() => window.open('https://hyconsulting.jp/contact', '_blank')}
               >
                 ご相談はこちら
               </Button>

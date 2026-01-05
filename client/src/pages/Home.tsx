@@ -15,12 +15,18 @@ export default function Home() {
       <Header />
       
       <main className="flex-grow">
+        {/* Strategic Lead Generation Flow */}
         <Hero />
-        <Services />
+        {/* Users from HP link arrive at Hero with a specific need */}
+        {/* Next step: Assessment to understand their situation */}
         <Assessment />
+        {/* After assessment, show services that match their needs */}
+        <Services />
+        {/* Build trust and credibility */}
         <Features />
         <Achievements />
         <Testimonials />
+        {/* Address remaining questions */}
         <FAQ />
 
       </main>
