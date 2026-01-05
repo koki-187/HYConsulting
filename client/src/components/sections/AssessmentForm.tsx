@@ -15,7 +15,7 @@ import AssessmentResult from "./AssessmentResult";
 
 export default function AssessmentForm() {
 
-  const [propertyType, setPropertyType] = useState("house");
+  const [propertyType, setPropertyType] = useState("");
   const [prefecture, setPrefecture] = useState("");
   const [city, setCity] = useState("");
   const [stationName, setStationName] = useState("");
@@ -75,6 +75,11 @@ export default function AssessmentForm() {
   };
 
   const handleSearch = async () => {
+    if (!propertyType) {
+      setError("物件種別を選択してください");
+      return;
+    }
+
     if (!prefecture || !city) {
       setError("都道府県と市区町村を入力してください");
       return;
@@ -104,6 +109,8 @@ export default function AssessmentForm() {
         ownerName: wantContact ? name : "Anonymous",
         email: wantContact ? email : "",
         phone: wantContact ? phone : undefined,
+        nearestStation: stationName || undefined,
+        walkingMinutes: walkingMinutes ? parseInt(walkingMinutes) : undefined,
       });
     } catch (err) {
       console.error("Assessment error:", err);
@@ -113,7 +120,7 @@ export default function AssessmentForm() {
   };
 
   const resetForm = () => {
-    setPropertyType("house");
+    setPropertyType("");
     setPrefecture("");
     setCity("");
     setStationName("");
