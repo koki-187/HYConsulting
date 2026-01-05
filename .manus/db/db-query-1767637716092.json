@@ -1,0 +1,22 @@
+{
+  "query": "SELECT DISTINCT propertyType, COUNT(*) as count\nFROM transactions\nGROUP BY propertyType\nORDER BY count DESC\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT propertyType, COUNT(*) as count\nFROM transactions\nGROUP BY propertyType\nORDER BY count DESC\nLIMIT 20;",
+  "rows": [
+    {
+      "propertyType": "condo",
+      "count": "33457"
+    },
+    {
+      "propertyType": "land",
+      "count": "33313"
+    },
+    {
+      "propertyType": "house",
+      "count": "33238"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\tcount\ncondo\t33457\nland\t33313\nhouse\t33238\n",
+  "stderr": "",
+  "execution_time_ms": 1547
+}

@@ -1,0 +1,35 @@
+{
+  "query": "SELECT prefecture, city, COUNT(*) as count\nFROM transactions\nWHERE prefecture = '神奈川県'\nGROUP BY prefecture, city\nORDER BY count DESC\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, city, COUNT(*) as count\nFROM transactions\nWHERE prefecture = '神奈川県'\nGROUP BY prefecture, city\nORDER BY count DESC\nLIMIT 20;",
+  "rows": [
+    {
+      "prefecture": "神奈川県",
+      "city": "藤沢市",
+      "count": "1055"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市",
+      "count": "1044"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市",
+      "count": "1043"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "厚木市",
+      "count": "1033"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "相模原市",
+      "count": "1029"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcity\tcount\n神奈川県\t藤沢市\t1055\n神奈川県\t川崎市\t1044\n神奈川県\t横浜市\t1043\n神奈川県\t厚木市\t1033\n神奈川県\t相模原市\t1029\n",
+  "stderr": "",
+  "execution_time_ms": 1534
+}

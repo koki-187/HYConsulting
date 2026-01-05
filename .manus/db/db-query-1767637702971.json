@@ -1,0 +1,9 @@
+{
+  "query": "SELECT \n  district,\n  priceYen,\n  priceYen / 10000 as price_man,\n  buildingAreaM2,\n  (priceYen / 10000) / buildingAreaM2 as price_per_sqm_man,\n  buildingYear,\n  nearestStation,\n  stationDistanceMin\nFROM transactions\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市中区' \n  AND propertyType = 'マンション'\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  district,\n  priceYen,\n  priceYen / 10000 as price_man,\n  buildingAreaM2,\n  (priceYen / 10000) / buildingAreaM2 as price_per_sqm_man,\n  buildingYear,\n  nearestStation,\n  stationDistanceMin\nFROM transactions\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市中区' \n  AND propertyType = 'マンション'\nLIMIT 10;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1538
+}

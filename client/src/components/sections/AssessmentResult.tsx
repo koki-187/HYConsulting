@@ -339,11 +339,11 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
           whileInView={{ opacity: 1, y: 0 }}
         >
           <div className="text-center mb-8">
-            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3 font-sans">
               次のアクションは？
             </h3>
-            <p className="text-slate-600 text-lg">
-              正確な価格を知りたい場合は、訪問査定をご依頁ください
+            <p className="text-slate-600 text-lg font-sans">
+              正確な価格を知りたい場合は、訪問査定をご依頼ください
             </p>
           </div>
 
@@ -370,8 +370,8 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary/80 text-white font-bold text-lg mb-4">
                   {step.number}
                 </div>
-                <h4 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h4>
-                <p className="text-slate-600 text-sm">{step.description}</p>
+                <h4 className="text-lg font-bold text-slate-900 mb-2 font-sans">{step.title}</h4>
+                <p className="text-slate-600 text-sm font-sans">{step.description}</p>
               </div>
             ))}
           </div>

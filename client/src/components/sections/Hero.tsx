@@ -82,50 +82,51 @@ export default function Hero() {
               />
               
               {/* Glassmorphism Panel Overlay - Bottom Center */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-8 bg-gradient-to-t from-black/40 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-6">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="w-full bg-white/25 backdrop-blur-xl border border-white/30 rounded-2xl p-6 lg:p-8 shadow-2xl"
+                  className="w-full bg-white/90 backdrop-blur-md border border-white/50 rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-xl"
+                  style={{ backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
                 >
-                  <div className="flex justify-around items-center gap-4 lg:gap-8">
+                  <div className="flex justify-around items-center gap-2 sm:gap-4 lg:gap-6">
                     {/* Item 1: Asset */}
-                    <div className="flex flex-col items-center text-center gap-3 p-3 rounded-lg hover:bg-white/20 transition-colors">
-                      <div className="w-10 h-10 lg:w-12 lg:h-12 bg-white/40 rounded-full flex items-center justify-center text-white shrink-0 backdrop-blur">
+                    <div className="flex flex-col items-center text-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-slate-50 transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
                         <PiggyBank className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-white font-bold uppercase tracking-wider mb-1">Asset</p>
-                        <p className="text-sm lg:text-base font-bold text-white leading-tight">老後資金</p>
+                        <p className="text-[10px] sm:text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5 sm:mb-1">Asset</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-slate-800 leading-tight">老後資金</p>
                       </div>
                     </div>
 
                     {/* Divider */}
-                    <div className="w-px h-12 bg-white/30" />
+                    <div className="w-px h-10 sm:h-12 bg-slate-200" />
 
                     {/* Item 2: Real Estate */}
-                    <div className="flex flex-col items-center text-center gap-3 p-3 rounded-lg hover:bg-white/20 transition-colors">
-                      <div className="w-10 h-10 lg:w-12 lg:h-12 bg-white/40 rounded-full flex items-center justify-center text-white shrink-0 backdrop-blur">
+                    <div className="flex flex-col items-center text-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-slate-50 transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
                         <Home className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-white font-bold uppercase tracking-wider mb-1">Real Estate</p>
-                        <p className="text-sm lg:text-base font-bold text-white leading-tight">空き家・売却</p>
+                        <p className="text-[10px] sm:text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5 sm:mb-1">Real Estate</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-slate-800 leading-tight">空き家・売却</p>
                       </div>
                     </div>
 
                     {/* Divider */}
-                    <div className="w-px h-12 bg-white/30" />
+                    <div className="w-px h-10 sm:h-12 bg-slate-200" />
 
                     {/* Item 3: Support */}
-                    <div className="flex flex-col items-center text-center gap-3 p-3 rounded-lg hover:bg-white/20 transition-colors">
-                      <div className="w-10 h-10 lg:w-12 lg:h-12 bg-white/40 rounded-full flex items-center justify-center text-white shrink-0 backdrop-blur">
+                    <div className="flex flex-col items-center text-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-slate-50 transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
                         <HeartHandshake className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                       <div>
-                        <p className="text-[11px] text-white font-bold uppercase tracking-wider mb-1">Support</p>
-                        <p className="text-sm lg:text-base font-bold text-white leading-tight">生前整理</p>
+                        <p className="text-[10px] sm:text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-0.5 sm:mb-1">Support</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-slate-800 leading-tight">生前整理</p>
                       </div>
                     </div>
                   </div>

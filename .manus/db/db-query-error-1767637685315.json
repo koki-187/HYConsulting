@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  address,\n  priceYen,\n  priceYen / 10000 as price_man,\n  areaSqm,\n  (priceYen / 10000) / areaSqm as price_per_sqm_man,\n  buildingAge,\n  nearestStation,\n  walkingMinutes\nFROM transactions\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市中区' \n  AND propertyType = 'マンション'\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  address,\n  priceYen,\n  priceYen / 10000 as price_man,\n  areaSqm,\n  (priceYen / 10000) / areaSqm as price_per_sqm_man,\n  buildingAge,\n  nearestStation,\n  walkingMinutes\nFROM transactions\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市中区' \n  AND propertyType = 'マンション'\nLIMIT 10;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'address' in 'field list'"
+  ]
+}

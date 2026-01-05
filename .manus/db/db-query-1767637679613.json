@@ -1,0 +1,17 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_records,\n  AVG(priceYen) as avg_price_yen,\n  AVG(priceYen) / 10000 as avg_price_man,\n  MIN(priceYen) / 10000 as min_price_man,\n  MAX(priceYen) / 10000 as max_price_man\nFROM transactions\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市中区' \n  AND propertyType = 'マンション';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  COUNT(*) as total_records,\n  AVG(priceYen) as avg_price_yen,\n  AVG(priceYen) / 10000 as avg_price_man,\n  MIN(priceYen) / 10000 as min_price_man,\n  MAX(priceYen) / 10000 as max_price_man\nFROM transactions\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市中区' \n  AND propertyType = 'マンション';",
+  "rows": [
+    {
+      "total_records": "0",
+      "avg_price_yen": "NULL",
+      "avg_price_man": "NULL",
+      "min_price_man": "NULL",
+      "max_price_man": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_records\tavg_price_yen\tavg_price_man\tmin_price_man\tmax_price_man\n0\tNULL\tNULL\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1726
+}

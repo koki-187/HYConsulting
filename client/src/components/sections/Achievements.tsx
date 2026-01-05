@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const achievements = [
   {
-    category: "不動産事業支援",
+    category: "老後の資金計画",
     title: "高齢者施設斡旋業のご支援",
     result: "資金計画・相続対策",
     description: "介護施設入居前後の資金計画や相続の不安に対し、不動産の有効活用を通じて安心できる老後の暮らしを支援します。",
