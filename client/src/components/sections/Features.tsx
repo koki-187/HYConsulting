@@ -137,21 +137,7 @@ export default function Features() {
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <p className="text-slate-600 text-lg mb-6">
-            複雑な問題も、プロのネットワークで解決します。<br />
-            まずはお気軽にご相談ください。
-          </p>
-          <button className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg">
-            無料相談を申し込む
-          </button>
-        </motion.div>
+
       </div>
     </section>
   );

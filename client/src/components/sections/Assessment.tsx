@@ -54,27 +54,7 @@ export default function Assessment() {
           <AssessmentForm />
         </div>
 
-        {/* Assessment Types Explanation */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {steps.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 + 0.3 }}
-              className="bg-white p-8 rounded-sm shadow-sm border border-slate-200 hover:border-primary/50 transition-all duration-300 group"
-            >
-              <div className="w-16 h-16 bg-slate-50 rounded-sm flex items-center justify-center text-primary mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                <step.icon className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4 font-heading">{step.title}</h3>
-              <p className="text-slate-600 leading-relaxed font-sans text-sm">
-                {step.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+
       </div>
     </section>
   );
