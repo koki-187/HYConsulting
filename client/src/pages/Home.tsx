@@ -2,7 +2,7 @@ import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import Achievements from "@/components/sections/Achievements";
 import Assessment from "@/components/sections/Assessment";
-import Contact from "@/components/sections/Contact";
+
 import FAQ from "@/components/sections/FAQ";
 import Features from "@/components/sections/Features";
 import Hero from "@/components/sections/Hero";
@@ -22,7 +22,7 @@ export default function Home() {
         <Achievements />
         <Testimonials />
         <FAQ />
-        <Contact />
+
       </main>
       
       <Footer />
