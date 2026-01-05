@@ -6,17 +6,19 @@ import { Star, Quote } from "lucide-react";
 
 const stories = [
   {
-    title: "相続対策で家族の絆を守った",
-    category: "相続・終活",
-    description: "複雑な相続問題を整理し、家族間のトラブルを未然に防ぐことができました。プロのアドバイスのおかげで、安心して次世代に資産を引き継げます。",
-    result: "相続税を最適化し、家族の満足度 100%を実現",
+    title: "相続の複雑な手続きをワンストップで解決",
+    category: "相続・財産分与",
+    client: "S・A 様（50代）",
+    description: "相続の折、不動産の売買だけでなく、遺産分割協議から相続財産評価の分析、相続登記まで。複雑に絡み合った相続問題を整理し、家族間のトラブルを未然に防ぐことができました。",
+    result: "ワンストップサービスにより、一気通貫でスムーズに相続対策を実行。クライアント様からの高評価を実現",
     rating: 5
   },
   {
-    title: "空き家を資産に変えた",
-    category: "不動産活用",
-    description: "放置していた実家を、活用可能な資産に転換。地域のニーズに合わせた活用方法を提案してもらい、毎月の収入源に。",
-    result: "年間 300万円の収益化に成功",
+    title: "放置していた実家を年間200万円の収入源に",
+    category: "不動産売買・資産整理・不動産活用",
+    client: "T・A 様（60代）",
+    description: "放置状態になっていた実家を売却するか悩んでいた際、あらゆるデータを調べた上で、第3の選択肢を提案。'一部を売却、一部を活用可能な資産として残す'という戦略により、先祖代々の土地を守りながら、売却益を活用して新たな収益物件を構築。",
+    result: "空き家状態のご実家を資金をかけずに先祖代々の土地を守ることと年間200万円の収益化に成功",
     rating: 5
   },
   {
@@ -90,9 +92,16 @@ export default function SuccessStories() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
                   {story.title}
                 </h3>
+
+                {/* Client Name */}
+                {story.client && (
+                  <p className="text-sm font-semibold text-slate-600 mb-3">
+                    {story.client}
+                  </p>
+                )}
 
                 {/* Description */}
                 <p className="text-slate-700 text-sm leading-relaxed mb-4">
