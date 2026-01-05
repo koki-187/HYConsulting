@@ -4,17 +4,17 @@ import { Users, Building, FileText } from "lucide-react";
 const features = [
   {
     title: "ワンストップ対応",
-    description: "税理士、弁護士、司法書士、FP等、各分野の専門家と連携。窓口を一本化し、複雑な課題もスムーズに解決へと導きます。",
+    description: "シニア層の様々なお悩みに対応できるよう、法律=弁護士、税金=税理士、登記関連=司法書士、不動産=宅地建物取引士、さらにはシニア層のニーズに特化した高齢者施設のご紹介、遺品整理や墓じまいなど、HYコンサルティングがワンストップでサービスが提供できます。",
     icon: Users
   },
   {
     title: "地域密着のネットワーク",
-    description: "横浜・戸塚エリアを中心に、地域に根差した活動を展開。地元の不動産事情に精通し、最適な提案を行います。",
+    description: "日本全国の士業、各分野の専門家とのネットワークを持ち、ユーザー様のご事情に対応ができるように体制を整えています。横浜・戸塚エリアを中心に、地域に根差した活動を展開し、最適な提案を行います。",
     icon: Building
   },
   {
     title: "幅広い専門知識",
-    description: "不動産だけでなく、相続、介護、空き家問題など、関連する分野の知識も豊富。多角的な視点からアドバイスを提供します。",
+    description: "不動産だけでなく、相続、介護、空き家問題など、関連する分野の知識も豊富。複雑に絡み合う法律や権利、手続きを整理し、多角的な視点からアドバイスを提供します。豊富な経験と実績から導かれる将来のリスクや可能性を予期しながらサポート。",
     icon: FileText
   }
 ];
@@ -42,7 +42,7 @@ export default function Features() {
             transition={{ duration: 0.6 }}
             className="w-full lg:w-1/2 relative order-2 lg:order-1"
           >
-            <div className="relative rounded-sm overflow-hidden shadow-2xl border border-slate-700">
+            <div className="relative rounded-lg overflow-hidden shadow-2xl border border-slate-700">
               {/* Main Illustration */}
               <img 
                 src="/images/features_experts_bg.png" 
@@ -54,10 +54,10 @@ export default function Features() {
               <motion.div 
                 animate={{ y: [0, -5, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                className="absolute bottom-6 right-6 bg-white p-6 rounded-sm shadow-lg border-l-4 border-primary max-w-[240px] hidden md:block z-20"
+                className="absolute bottom-6 right-6 bg-white p-6 rounded-lg shadow-lg border-l-4 border-primary max-w-[240px] hidden md:block z-20"
               >
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-slate-100 flex items-center justify-center text-primary">
+                  <div className="w-10 h-10 bg-slate-100 flex items-center justify-center text-primary rounded-lg">
                     <Users className="w-5 h-5" />
                   </div>
                   <p className="text-sm font-bold text-slate-900">専門家ネットワーク</p>
@@ -86,9 +86,9 @@ export default function Features() {
               transition={{ delay: 0.1 }}
               className="text-3xl lg:text-4xl font-bold text-white mb-10 font-heading leading-tight"
             >
-              HYコンサルティングが<br />
+              なぜHYコンサルティングが<br />
               <span className="text-white relative inline-block">
-                選ばれる理由
+                選ばれているのか？
               </span>
             </motion.h2>
 
@@ -100,10 +100,10 @@ export default function Features() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 + 0.2 }}
-                  className="flex gap-6 bg-white/5 backdrop-blur-sm p-6 rounded-sm border border-white/10 hover:bg-white/10 transition-all duration-300"
+                  className="flex gap-6 bg-white/5 backdrop-blur-sm p-6 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300 group"
                 >
                   <div className="flex-shrink-0 mt-1">
-                    <div className="w-12 h-12 rounded-sm bg-white/10 flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center text-white group-hover:bg-primary group-hover:text-white transition-colors duration-300">
                       <feature.icon className="w-6 h-6" />
                     </div>
                   </div>

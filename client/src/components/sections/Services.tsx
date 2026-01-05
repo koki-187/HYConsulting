@@ -4,49 +4,52 @@ import { ArrowRight, Home, Building2, HeartHandshake } from "lucide-react";
 
 const services = [
   {
-    icon: HeartHandshake,
-    title: "老後資金・介護・相続の終活支援",
-    description: "老後の生活設計から資金計画、介護施設の選定、そして円満な相続までをトータルサポートします。専門家（税理士・司法書士・FP）と連携し、複雑な手続きや将来の不安を解消。ご家族の想いを大切にしながら、安心できる未来を設計します。",
-    details: [
-      "老後ライフプランの作成・資金シミュレーション",
-      "有料老人ホーム・高齢者住宅の紹介・入居支援",
-      "遺言書作成・家族信託・生前贈与のサポート",
-      "遺品整理・死後事務委任契約の締結"
-    ],
-    color: "bg-slate-100 text-primary",
-    image: "/images/hero_senior_couple.png"
-  },
-  {
     icon: Home,
     title: "不動産購入・売却・活用支援",
-    description: "お客様のライフステージに合わせた最適な不動産戦略をご提案します。自宅の売却・住み替えはもちろん、収益物件の購入や遊休地の有効活用まで幅広く対応。市場分析に基づいた適正価格での取引を実現し、資産価値の最大化を目指します。",
+    description: "「どこに相談したらいいかわからない」「日本全国・複数の不動産でも窓口を一本化したい」「売る、買うだけでなく、法律や税金も含めて総合的にアドバイス欲しい」—そんなご希望のある方は丸っとHY Consultingにお任せください。",
     details: [
-      "居住用不動産の売却・購入・住み替え支援",
-      "収益不動産（アパート・マンション）の運用提案",
-      "相続不動産の売却・権利調整・登記手続き",
-      "リフォーム・リノベーションによる価値向上"
+      "買う、売るなどの意思決定に至るまでのプロセスを大切に",
+      "ご事情・ライフプランを起点とした包括的な選択肢をご提案",
+      "税理士、弁護士、司法書士、FP等の専門家ネットワークを駆使",
+      "あなただけのワンチームをアレンジしワンストップでご支援"
     ],
-    color: "bg-slate-100 text-primary",
-    image: "/images/service_consultation.png"
+    color: "bg-blue-100 text-primary",
+    image: "/images/hero_city_16x9.png",
+    highlight: "初回相談は無料ですのでお気軽にお問合せください。"
+  },
+  {
+    icon: HeartHandshake,
+    title: "老後資金・介護・相続の終活支援",
+    description: "「老後資金はいくら必要なのか試算して欲しい」「不動産や金融商品など自分に合った資産運用方法を知りたい」「介護サービスや老人ホーム等の高齢者施設を探している」「相続に向けた財産の整理、今からできる節税方法を知りたい」—そんなご希望のある方はHY Consultingにお任せください。",
+    details: [
+      "シニア世代の様々なお悩みにワンストップで解決できるプラットフォーム",
+      "税理士、司法書士などの士業と連携し、老人ホーム等の高齢者施設のご紹介",
+      "遺品整理や墓じまいまで日本全国のパートナーをアサイン",
+      "豊富な経験と実績から導かれる将来のリスクや可能性を予期しながらサポート"
+    ],
+    color: "bg-amber-100 text-primary",
+    image: "/images/hero_senior_couple.png",
+    highlight: "初回相談は無料ですのでお気軽にお問合せください。"
   },
   {
     icon: Building2,
     title: "０円物件・負動産の処分活用支援",
-    description: "「売れない」「貸せない」「管理できない」といった、いわゆる“負動産”の問題を解決します。他社で断られた物件でも、独自のネットワークとノウハウで引き取りや活用方法をご提案。固定資産税や管理責任の負担から解放されるようサポートします。",
+    description: "「どこの不動産会社も取り扱ってもらえない」「売ることも、貸すことも、引き取ってもらうこともできない」「所有者が行方不明で手が付けられない」「山、畑、田など、住宅でない不動産はどうしたらいいのか」—そんなお悩みのある方はHY Consultingにお任せください。",
     details: [
-      "長期間売れていない空き家・空き地の処分相談",
-      "再建築不可物件・市街化調整区域の活用提案",
-      "遠隔地の管理不全空き家の巡回・管理代行",
-      "近隣トラブルや権利関係が複雑な物件の整理"
+      "売れる貸せる不動産だけでなく、どこの不動産会社も取り扱ってくれない不動産の利活用や処分",
+      "空き家や遊休地の利活用、地方移住者の支援、住宅確保要配慮者への住宅の提供",
+      "社会や行政が求めている用途への利活用を模索",
+      "限りある資源を日本の社会の中で有効に循環させられるよう社会貢献にもチャレンジ"
     ],
-    color: "bg-slate-100 text-primary",
-    image: "/images/service_renovation.png"
+    color: "bg-green-100 text-primary",
+    image: "/images/service_renovation.png",
+    highlight: "「どうせ無理だ」と諦める前にまずは相談してみてください。"
   }
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+    <section id="services" className="py-20 lg:py-32 bg-white relative overflow-hidden">
       {/* Background decoration - Professional */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
@@ -94,7 +97,7 @@ export default function Services() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 + 0.3 }}
             >
-              <Card className="h-full border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-sm flex flex-col">
+              <Card className="h-full border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-lg flex flex-col">
                 <div className="aspect-[4/3] overflow-hidden bg-slate-100 relative">
                   <img 
                     src={service.image} 
@@ -105,7 +108,7 @@ export default function Services() {
                 </div>
                 
                 <CardHeader className="pt-6 sm:pt-8 pb-4 px-6 sm:px-8">
-                  <div className={`w-12 h-12 rounded-sm ${service.color} flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300`}>
+                  <div className={`w-12 h-12 rounded-lg ${service.color} flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300`}>
                     <service.icon className="w-6 h-6" />
                   </div>
                   <CardTitle className="text-lg sm:text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors leading-snug min-h-[3rem] sm:min-h-[3.5rem] font-heading">
@@ -120,7 +123,7 @@ export default function Services() {
                   
                   <div className="mt-auto pt-6 border-t border-slate-100">
                     <h4 className="text-sm font-bold text-primary mb-3">主な支援内容</h4>
-                    <ul className="space-y-2">
+                    <ul className="space-y-2 mb-6">
                       {service.details.map((detail, i) => (
                         <li key={i} className="text-sm text-slate-600 flex items-start">
                           <span className="inline-block w-1.5 h-1.5 bg-accent rounded-full mt-1.5 mr-2 flex-shrink-0" />
@@ -128,6 +131,9 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
+                    <p className="text-sm font-semibold text-primary italic border-t border-slate-100 pt-4">
+                      {service.highlight}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
