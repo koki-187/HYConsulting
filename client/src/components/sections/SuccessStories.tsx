@@ -64,17 +64,16 @@ export default function SuccessStories() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/30">
-            Case Studies
+            Success Stories
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            確かな実績と<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              具体的な解決事例
+              お客様の成功事例
             </span>
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            個人のお客様から企業様まで、様々な課題を解決してきた実績があります。<br />
-            その一部をご紹介します。
+            HY Consulting のサポートで、多くのお客様が<br />
+            人生の課題を解決し、新しい選択肢を手に入れています。
           </p>
         </motion.div>
 
