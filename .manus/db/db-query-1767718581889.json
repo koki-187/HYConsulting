@@ -1,0 +1,66 @@
+{
+  "query": "SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'aggregated_real_estate_data' ORDER BY ordinal_position LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'aggregated_real_estate_data' ORDER BY ordinal_position LIMIT 20;",
+  "rows": [
+    {
+      "column_name": "id",
+      "data_type": "int"
+    },
+    {
+      "column_name": "propertyType",
+      "data_type": "varchar"
+    },
+    {
+      "column_name": "prefecture",
+      "data_type": "varchar"
+    },
+    {
+      "column_name": "city",
+      "data_type": "varchar"
+    },
+    {
+      "column_name": "district",
+      "data_type": "varchar"
+    },
+    {
+      "column_name": "buildingAgeGroup",
+      "data_type": "varchar"
+    },
+    {
+      "column_name": "totalPriceYen",
+      "data_type": "decimal"
+    },
+    {
+      "column_name": "totalAreaM2",
+      "data_type": "decimal"
+    },
+    {
+      "column_name": "transactionCount",
+      "data_type": "int"
+    },
+    {
+      "column_name": "pricePerTsubo",
+      "data_type": "int"
+    },
+    {
+      "column_name": "averagePriceYen",
+      "data_type": "int"
+    },
+    {
+      "column_name": "averageAreaM2",
+      "data_type": "decimal"
+    },
+    {
+      "column_name": "datasetVersionId",
+      "data_type": "varchar"
+    },
+    {
+      "column_name": "createdAt",
+      "data_type": "timestamp"
+    }
+  ],
+  "messages": [],
+  "stdout": "column_name\tdata_type\nid\tint\npropertyType\tvarchar\nprefecture\tvarchar\ncity\tvarchar\ndistrict\tvarchar\nbuildingAgeGroup\tvarchar\ntotalPriceYen\tdecimal\ntotalAreaM2\tdecimal\ntransactionCount\tint\npricePerTsubo\tint\naveragePriceYen\tint\naverageAreaM2\tdecimal\ndatasetVersionId\tvarchar\ncreatedAt\ttimestamp\n",
+  "stderr": "",
+  "execution_time_ms": 1646
+}

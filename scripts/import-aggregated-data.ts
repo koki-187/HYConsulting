@@ -90,7 +90,7 @@ async function main() {
   let errorEntries = 0;
   const errors: any[] = [];
 
-  const batchSize = 1000;
+  const batchSize = 100;
   let batch: any[] = [];
 
   for (const [propertyType, prefectures] of Object.entries(rawData)) {

@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total_records, COUNT(DISTINCT prefecture) as prefectures, COUNT(DISTINCT city) as cities FROM aggregated_real_estate_data;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as total_records, COUNT(DISTINCT prefecture) as prefectures, COUNT(DISTINCT city) as cities FROM aggregated_real_estate_data;",
+  "rows": [
+    {
+      "total_records": "36600",
+      "prefectures": "12",
+      "cities": "652"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_records\tprefectures\tcities\n36600\t12\t652\n",
+  "stderr": "",
+  "execution_time_ms": 1607
+}

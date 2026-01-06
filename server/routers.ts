@@ -4,6 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { createAssessmentRequest, calculateAssessmentPrice, seedPropertyDatabase } from "./db";
+import { calculateAssessment } from "./assessment-aggregated";
 import { generateMarketAnalysis } from "./market-analysis";
 import emailService from "./email-service";
 
@@ -43,17 +44,18 @@ export const appRouter = router({
       }))
       .mutation(async ({ input }) => {
         try {
-          // Seed database if needed
-          await seedPropertyDatabase();
+          // Calculate estimated price using aggregated data
+          const assessmentResult = await calculateAssessment({
+            prefecture: input.prefecture,
+            city: input.city,
+            propertyType: input.propertyType as "land" | "house" | "condo" | "apartment",
+            landAreaM2: input.landArea,
+            buildingAreaM2: input.floorArea,
+            buildingYear: input.buildingAge ? new Date().getFullYear() - input.buildingAge : undefined,
+            stationDistanceMin: input.walkingMinutes,
+          });
           
-          // Calculate estimated price
-          const estimatedPrice = await calculateAssessmentPrice(
-            input.propertyType,
-            input.location,
-            input.buildingAge || 0,
-            input.floorArea || 0,
-            input.condition || "fair"
-          );
+          const estimatedPrice = Math.round(assessmentResult.estimatedMidYen / 10000); // Convert to 万円
 
           // Create assessment request
           const result = await createAssessmentRequest({
@@ -84,8 +86,8 @@ export const appRouter = router({
           if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
             try {
               // Calculate price range in 万円 (10,000 yen units)
-              const estimatedLowManYen = estimatedPrice ? Math.round(estimatedPrice * 0.85) : 0;
-              const estimatedHighManYen = estimatedPrice ? Math.round(estimatedPrice * 1.15) : 0;
+              const estimatedLowManYen = Math.round(assessmentResult.estimatedLowYen / 10000);
+              const estimatedHighManYen = Math.round(assessmentResult.estimatedHighYen / 10000);
               const priceRangeText = estimatedPrice 
                 ? `${estimatedLowManYen.toLocaleString('ja-JP')}万円～${estimatedHighManYen.toLocaleString('ja-JP')}万円`
                 : "査定中";
@@ -147,8 +149,8 @@ export const appRouter = router({
                 prefecture: input.prefecture,
                 city: input.city,
                 location: input.location,
-                estimatedLowYen: estimatedPrice ? estimatedPrice * 0.85 * 10000 : 0,
-                estimatedHighYen: estimatedPrice ? estimatedPrice * 1.15 * 10000 : 0,
+                estimatedLowYen: assessmentResult.estimatedLowYen,
+                estimatedHighYen: assessmentResult.estimatedHighYen,
                 estimatedPrice: estimatedPrice || 0,
                 message: estimatedPrice 
                   ? `ご依頼いただいた物件の査定が完了いたしました。推定価格は${estimatedPrice}万円です。詳細はメール本文をご確認ください。` 
@@ -174,12 +176,22 @@ export const appRouter = router({
           return {
             success: true,
             estimatedPrice: estimatedPrice,
-            estimatedLowYen: estimatedPrice ? estimatedPrice * 0.85 * 10000 : 0,
-            estimatedHighYen: estimatedPrice ? estimatedPrice * 1.15 * 10000 : 0,
-            message: estimatedPrice 
-              ? `査定価格: ${estimatedPrice}万円` 
-              : "査定リクエストを受け付けました。後ほど詳細をご連絡いたします。",
-            marketAnalysis: marketAnalysis,
+            estimatedLowYen: assessmentResult.estimatedLowYen,
+            estimatedHighYen: assessmentResult.estimatedHighYen,
+            estimatedMidYen: assessmentResult.estimatedMidYen,
+            message: `査定価格: ${estimatedPrice}万円`,
+            explanation: assessmentResult.explanation,
+            compsUsedCount: assessmentResult.compsUsedCount,
+            method: assessmentResult.method,
+            methodVersion: assessmentResult.methodVersion,
+            marketAnalysis: {
+              surroundingPrice: assessmentResult.marketAnalysis.surroundingPrice,
+              transactionCount: assessmentResult.marketAnalysis.transactionCount,
+              avgPricePerM2: assessmentResult.marketAnalysis.avgPricePerM2,
+              marketTrend: assessmentResult.marketAnalysis.marketTrend,
+            },
+            adjustmentFactors: assessmentResult.adjustmentFactors,
+            forecastAnalysis: assessmentResult.forecastAnalysis,
             propertyData: {
               propertyType: input.propertyType,
               prefecture: input.prefecture,
