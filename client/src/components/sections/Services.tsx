@@ -14,8 +14,7 @@ const services = [
       "あなただけのワンチームをアレンジしワンストップでご支援"
     ],
     color: "bg-blue-100 text-primary",
-    image: "/images/services_consulting.png",
-    highlight: "初回相談は無料ですのでお気軽にお問合せください。"
+    image: "/images/services_consulting.png"
   },
   {
     icon: HeartHandshake,
@@ -28,8 +27,7 @@ const services = [
       "豊富な経験と実績から導かれる将来のリスクや可能性を予期しながらサポート"
     ],
     color: "bg-amber-100 text-primary",
-    image: "/images/hero_senior_couple.png",
-    highlight: "初回相談は無料ですのでお気軽にお問合せください。"
+    image: "/images/hero_senior_couple.png"
   },
   {
     icon: Building2,
@@ -42,8 +40,7 @@ const services = [
       "限りある資源を日本の社会の中で有効に循環させられるよう社会貢献にもチャレンジ"
     ],
     color: "bg-green-100 text-primary",
-    image: "/images/service_renovation.png",
-    highlight: "「どうせ無理だ」と諦める前にまずは相談してみてください。"
+    image: "/images/service_renovation.png"
   }
 ];
 
@@ -131,9 +128,6 @@ export default function Services() {
                         </li>
                       ))}
                     </ul>
-                    <p className="text-sm font-semibold text-primary italic border-t border-slate-100 pt-4">
-                      {service.highlight}
-                    </p>
                   </div>
                 </CardContent>
               </Card>

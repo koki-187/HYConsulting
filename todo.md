@@ -693,3 +693,12 @@
 - [x] Home.tsxからインポートとコンポーネント呼び出しを削除
 - [x] ブラウザで削除を確認（TypeScript 0エラー、LSP 0エラー）
 - [x] チェックポイント保存
+
+
+## Session 47: Session 46修正 - Features復元・透過性強化・Footer文言削除
+- [x] Services.tsxから「初回相談は無料ですのでお気軽にお問合せください。」「どうせ無理だ」と諦める前にまずは相談してみてください。」を削除
+- [x] Heroセクションのガラスモーフィズムパネルの透過性を強化（bg-white/25 → bg-white/15、border-white/40 → border-white/30）
+- [x] Features.tsxを復元（ヘッダー「なぜHYコンサルティングが選ばれているのか？」と説明文のみ、3つのカードは削除）
+- [x] Home.tsxにFeaturesコンポーネントを再追加
+- [x] ブラウザで修正を確認（TypeScript 0エラー、LSP 0エラー）
+- [x] チェックポイント保存

@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Achievements from "@/components/sections/Achievements";
 import Assessment from "@/components/sections/Assessment";
 import FAQ from "@/components/sections/FAQ";
+import Features from "@/components/sections/Features";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 
@@ -20,7 +21,8 @@ export default function Home() {
         <Assessment />
         {/* After assessment, show services that match their needs */}
         <Services />
-
+        {/* Show why HY Consulting is chosen */}
+        <Features />
         <Achievements />
 
         {/* Address remaining questions */}

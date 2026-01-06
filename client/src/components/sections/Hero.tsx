@@ -90,7 +90,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="w-[85%] sm:w-[90%] lg:w-full bg-white/25 backdrop-blur-xl border border-white/40 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 shadow-2xl"
+                  className="w-[85%] sm:w-[90%] lg:w-full bg-white/15 backdrop-blur-xl border border-white/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 shadow-2xl"
                   style={{ backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
                 >
                   <div className="flex justify-around items-center gap-2 sm:gap-4 lg:gap-6">
