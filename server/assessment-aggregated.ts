@@ -266,7 +266,17 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
   const comps = await findComparables(input);
 
   if (comps.length === 0) {
-    throw new Error(`No comparable data found for ${input.prefecture} ${input.city} ${input.propertyType}`);
+    const propertyTypeJa = mapPropertyType(input.propertyType);
+    console.error(`❌ No comparable data found`);
+    console.error(`  Prefecture: ${input.prefecture}`);
+    console.error(`  City: ${input.city}`);
+    console.error(`  Property Type: ${propertyTypeJa}`);
+    
+    throw new Error(
+      `申し訳ございません。${input.prefecture}${input.city}の${propertyTypeJa}に関する取引データが見つかりませんでした。` +
+      `\n\n現在、全国のデータを順次投入中です。しばらく経ってから再度お試しいただくか、` +
+      `お電話（0120-XXX-XXX）にて直接お問い合わせください。`
+    );
   }
 
   console.log(`\n✅ Found ${comps.length} comparable records`);

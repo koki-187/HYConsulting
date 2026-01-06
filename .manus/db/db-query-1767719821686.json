@@ -1,0 +1,17 @@
+{
+  "query": "SELECT COUNT(*) as total_records, \n       COUNT(DISTINCT prefecture) as prefectures,\n       COUNT(DISTINCT \"propertyType\") as property_types,\n       MIN(\"createdAt\") as first_import,\n       MAX(\"createdAt\") as last_import\nFROM aggregated_real_estate_data;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as total_records, \n       COUNT(DISTINCT prefecture) as prefectures,\n       COUNT(DISTINCT \"propertyType\") as property_types,\n       MIN(\"createdAt\") as first_import,\n       MAX(\"createdAt\") as last_import\nFROM aggregated_real_estate_data;",
+  "rows": [
+    {
+      "total_records": "36600",
+      "prefectures": "12",
+      "property_types": "1",
+      "first_import": "createdAt",
+      "last_import": "createdAt"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_records\tprefectures\tproperty_types\tfirst_import\tlast_import\n36600\t12\t1\tcreatedAt\tcreatedAt\n",
+  "stderr": "",
+  "execution_time_ms": 1562
+}

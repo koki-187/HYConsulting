@@ -21,6 +21,12 @@ interface AssessmentResultProps {
     pricePerM2?: number;
     comparableCount?: number;
     confidence?: number;
+    marketAnalysis?: {
+      transactionCount: number;
+      surroundingPrice: number;
+      avgPricePerM2: number;
+      marketTrend: string;
+    };
   };
   propertyData: {
     propertyType: string;
@@ -186,8 +192,8 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                 <BarChart3 className="w-5 h-5 text-primary" />
                 <h4 className="font-bold text-slate-700">類似取引</h4>
               </div>
-              <p className="text-2xl font-bold text-primary mb-1">{result.compsUsedCount}</p>
-              <p className="text-sm text-slate-600">件の類似取引事例を参照</p>
+              <p className="text-2xl font-bold text-primary mb-1">{result.marketAnalysis?.transactionCount || result.compsUsedCount}</p>
+              <p className="text-sm text-slate-600">件の取引データを参照</p>
             </div>
 
             {/* Market Trend */}
@@ -298,8 +304,8 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                 <span className="font-bold text-slate-700">{result.comparableCount || 0} 件</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                <span className="text-sm text-slate-600">査定に使用した取引</span>
-                <span className="font-bold text-slate-700">{result.compsUsedCount} 件</span>
+                <span className="text-sm text-slate-600">参照した取引データ</span>
+                <span className="font-bold text-slate-700">{result.marketAnalysis?.transactionCount || result.compsUsedCount} 件</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                 <span className="text-sm text-slate-600">市場トレンド</span>

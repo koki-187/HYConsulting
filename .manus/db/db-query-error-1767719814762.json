@@ -1,0 +1,8 @@
+{
+  "query": "SELECT COUNT(*) as total_records, \n       COUNT(DISTINCT prefecture) as prefectures,\n       COUNT(DISTINCT property_type) as property_types,\n       MIN(created_at) as first_import,\n       MAX(created_at) as last_import\nFROM aggregated_real_estate_data;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as total_records, \n       COUNT(DISTINCT prefecture) as prefectures,\n       COUNT(DISTINCT property_type) as property_types,\n       MIN(created_at) as first_import,\n       MAX(created_at) as last_import\nFROM aggregated_real_estate_data;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'property_type' in ''"
+  ]
+}
