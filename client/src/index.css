@@ -192,59 +192,116 @@
   animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Water Bubble Float Animations - Session 44 Complete Redesign */
-/* 3-Layer depth system with varied animation speeds */
-/* Reference: https://hyconsulting.jp/ (pasted_file_DvQnaL_image.png) */
+/* Water Bubble Float Animations - Session 45 Complete Recreation */
+/* 18-bubble system with dramatic blur variation (2-25px) */
+/* Reference: https://hyconsulting.jp/ (pasted_file_xkjxQR_image.png) */
+/* User feedback: "水玉とはっきり認識できる" + "奥行きが生まれ、立体感を感じる" */
 
-/* LAYER 1: BACKGROUND (Large bubbles, slow 25-35s) */
-@keyframes hy-float-slow-1 {
+/* ============================================ */
+/* BACKGROUND LAYER (6 bubbles) - Atmospheric Depth */
+/* 320-400px, blur 20-25px, opacity 0.30-0.38, animation 35-40s */
+/* Very slow, gentle floating for background atmosphere */
+/* ============================================ */
+
+@keyframes hy-float-bg-1 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-35px) translateX(15px); }
+  100% { transform: translateY(-40px) translateX(20px); }
 }
 
-@keyframes hy-float-slow-2 {
+@keyframes hy-float-bg-2 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(40px) translateX(-12px); }
+  100% { transform: translateY(45px) translateX(-18px); }
 }
 
-@keyframes hy-float-slow-3 {
+@keyframes hy-float-bg-3 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-30px) translateX(18px); }
+  100% { transform: translateY(-35px) translateX(22px); }
 }
 
-/* LAYER 2: MIDDLE (Medium bubbles, medium 15-22s) */
-@keyframes hy-float-medium-1 {
+@keyframes hy-float-bg-4 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(25px) translateX(-10px); }
+  100% { transform: translateY(38px) translateX(-15px); }
 }
 
-@keyframes hy-float-medium-2 {
+@keyframes hy-float-bg-5 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-28px) translateX(12px); }
+  100% { transform: translateY(-42px) translateX(17px); }
 }
 
-@keyframes hy-float-medium-3 {
+@keyframes hy-float-bg-6 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(32px) translateX(-8px); }
+  100% { transform: translateY(40px) translateX(-20px); }
 }
 
-/* LAYER 3: FOREGROUND (Small bubbles, fast 8-14s) */
-@keyframes hy-float-fast-1 {
+/* ============================================ */
+/* MIDDLE LAYER (6 bubbles) - Transitional Depth */
+/* 160-250px, blur 11-15px, opacity 0.48-0.58, animation 19-24s */
+/* Moderate speed, bridges foreground and background */
+/* ============================================ */
+
+@keyframes hy-float-mid-1 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(30px) translateX(-12px); }
+}
+
+@keyframes hy-float-mid-2 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-32px) translateX(14px); }
+}
+
+@keyframes hy-float-mid-3 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(35px) translateX(-10px); }
+}
+
+@keyframes hy-float-mid-4 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-28px) translateX(16px); }
+}
+
+@keyframes hy-float-mid-5 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(33px) translateX(-13px); }
+}
+
+@keyframes hy-float-mid-6 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-30px) translateX(15px); }
+}
+
+/* ============================================ */
+/* FOREGROUND LAYER (6 bubbles) - Sharp Focus */
+/* 50-110px, blur 2-4px, opacity 0.70-0.85, animation 9-14s */
+/* CLEAR OUTLINES - "はっきりとした水玉" */
+/* Faster movement, creates focal points */
+/* ============================================ */
+
+@keyframes hy-float-fg-1 {
   0% { transform: translateY(0) translateX(0) scale(1); }
-  100% { transform: translateY(-20px) translateX(8px) scale(1.05); }
+  100% { transform: translateY(-22px) translateX(10px) scale(1.05); }
 }
 
-@keyframes hy-float-fast-2 {
+@keyframes hy-float-fg-2 {
   0% { transform: translateY(0) translateX(0) scale(1); }
-  100% { transform: translateY(22px) translateX(-6px) scale(1.08); }
+  100% { transform: translateY(25px) translateX(-8px) scale(1.08); }
 }
 
-@keyframes hy-float-fast-3 {
+@keyframes hy-float-fg-3 {
   0% { transform: translateY(0) translateX(0) scale(1); }
-  100% { transform: translateY(-18px) translateX(10px) scale(1.06); }
+  100% { transform: translateY(-20px) translateX(12px) scale(1.06); }
 }
 
-@keyframes hy-float-fast-4 {
+@keyframes hy-float-fg-4 {
   0% { transform: translateY(0) translateX(0) scale(1); }
-  100% { transform: translateY(24px) translateX(-7px) scale(1.07); }
+  100% { transform: translateY(28px) translateX(-9px) scale(1.07); }
+}
+
+@keyframes hy-float-fg-5 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  100% { transform: translateY(-24px) translateX(11px) scale(1.06); }
+}
+
+@keyframes hy-float-fg-6 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  100% { transform: translateY(26px) translateX(-10px) scale(1.08); }
 }
