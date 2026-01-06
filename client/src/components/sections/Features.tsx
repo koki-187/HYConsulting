@@ -26,6 +26,21 @@ export default function Features() {
           </p>
         </motion.div>
 
+        {/* Network Illustration */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="max-w-4xl mx-auto mb-16"
+        >
+          <img
+            src="/network-illustration.png"
+            alt="HY Consulting Professional Network"
+            className="w-full h-auto rounded-2xl shadow-2xl"
+          />
+        </motion.div>
+
         {/* 3 feature cards removed as per user request */}
       </div>
     </section>
