@@ -81,21 +81,26 @@ export default function Hero() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               
-              {/* Animated Water Bubbles Background */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
-                {/* Large bubbles - light */}
-                <div className="absolute w-48 h-48 rounded-full bg-white/20 blur-2xl animate-bubble-slow" style={{ left: '10%', bottom: '0%', animationDelay: '0s' }} />
-                <div className="absolute w-56 h-56 rounded-full bg-white/15 blur-3xl animate-bubble-slow" style={{ left: '70%', bottom: '5%', animationDelay: '1s' }} />
+              {/* Animated Water Bubbles Background - Subtle Effect */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 2 }}>
+                {/* Large bubbles - very subtle */}
+                <div className="absolute w-24 h-24 rounded-full bg-white/8 blur-3xl animate-bubble-slow" style={{ left: '8%', bottom: '0%', animationDelay: '0s' }} />
+                <div className="absolute w-32 h-32 rounded-full bg-white/6 blur-3xl animate-bubble-slow" style={{ left: '72%', bottom: '5%', animationDelay: '2s' }} />
+                <div className="absolute w-28 h-28 rounded-full bg-white/7 blur-3xl animate-bubble-slow" style={{ left: '45%', bottom: '3%', animationDelay: '4s' }} />
                 
-                {/* Medium bubbles - moderate */}
-                <div className="absolute w-36 h-36 rounded-full bg-white/25 blur-xl animate-bubble-medium" style={{ left: '30%', bottom: '10%', animationDelay: '0.5s' }} />
-                <div className="absolute w-32 h-32 rounded-full bg-white/30 blur-xl animate-bubble-medium" style={{ left: '85%', bottom: '15%', animationDelay: '1.5s' }} />
-                <div className="absolute w-40 h-40 rounded-full bg-white/20 blur-2xl animate-bubble-medium" style={{ left: '50%', bottom: '8%', animationDelay: '2s' }} />
+                {/* Medium bubbles - subtle */}
+                <div className="absolute w-20 h-20 rounded-full bg-white/10 blur-2xl animate-bubble-medium" style={{ left: '15%', bottom: '8%', animationDelay: '1s' }} />
+                <div className="absolute w-18 h-18 rounded-full bg-white/12 blur-2xl animate-bubble-medium" style={{ left: '55%', bottom: '10%', animationDelay: '3s' }} />
+                <div className="absolute w-22 h-22 rounded-full bg-white/9 blur-2xl animate-bubble-medium" style={{ left: '85%', bottom: '12%', animationDelay: '5s' }} />
+                <div className="absolute w-16 h-16 rounded-full bg-white/11 blur-2xl animate-bubble-medium" style={{ left: '30%', bottom: '6%', animationDelay: '2.5s' }} />
                 
-                {/* Small bubbles - visible */}
-                <div className="absolute w-24 h-24 rounded-full bg-white/35 blur-lg animate-bubble-fast" style={{ left: '20%', bottom: '12%', animationDelay: '0s' }} />
-                <div className="absolute w-20 h-20 rounded-full bg-white/40 blur-lg animate-bubble-fast" style={{ left: '60%', bottom: '18%', animationDelay: '1s' }} />
-                <div className="absolute w-28 h-28 rounded-full bg-white/30 blur-xl animate-bubble-fast" style={{ left: '90%', bottom: '20%', animationDelay: '0.5s' }} />
+                {/* Small bubbles - more visible */}
+                <div className="absolute w-12 h-12 rounded-full bg-white/15 blur-xl animate-bubble-fast" style={{ left: '20%', bottom: '15%', animationDelay: '0s' }} />
+                <div className="absolute w-10 h-10 rounded-full bg-white/18 blur-xl animate-bubble-fast" style={{ left: '65%', bottom: '18%', animationDelay: '1.5s' }} />
+                <div className="absolute w-14 h-14 rounded-full bg-white/13 blur-xl animate-bubble-fast" style={{ left: '90%', bottom: '20%', animationDelay: '3s' }} />
+                <div className="absolute w-11 h-11 rounded-full bg-white/16 blur-xl animate-bubble-fast" style={{ left: '40%', bottom: '22%', animationDelay: '4.5s' }} />
+                <div className="absolute w-13 h-13 rounded-full bg-white/14 blur-xl animate-bubble-fast" style={{ left: '75%', bottom: '25%', animationDelay: '2s' }} />
+                <div className="absolute w-12 h-12 rounded-full bg-white/17 blur-xl animate-bubble-fast" style={{ left: '10%', bottom: '28%', animationDelay: '5.5s' }} />
               </div>
 
               {/* Glassmorphism Panel Overlay - Bottom Center */}
