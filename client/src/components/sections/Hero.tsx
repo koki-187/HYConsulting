@@ -101,7 +101,7 @@ export default function Hero() {
                       </div>
                       <div>
                         <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Asset</p>
-                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">老後資金</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">老後資金・資産運用</p>
                       </div>
                     </div>
 
@@ -115,7 +115,7 @@ export default function Hero() {
                       </div>
                       <div>
                         <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Real Estate</p>
-                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">空き家・売却</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">利活用・売却・管理</p>
                       </div>
                     </div>
 
@@ -129,7 +129,7 @@ export default function Hero() {
                       </div>
                       <div>
                         <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Support</p>
-                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">生前整理</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">登記・相続・税金</p>
                       </div>
                     </div>
                   </div>

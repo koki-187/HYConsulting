@@ -35,7 +35,7 @@ export default function Assessment() {
             transition={{ delay: 0.1 }}
             className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading"
           >
-            無料不動産査定
+            <span className="text-red-600 font-extrabold">「匿名・無料」</span>無料不動産査定
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,13 @@ export default function Assessment() {
             className="text-lg text-slate-600 font-sans" style={{width: '770px'}}
           >
             たった３つの物件情報を入力するだけで瞬時に概算価格を算出。<br className="hidden lg:block" />
-            国土交通省のデータベースと連動し膚大な取引事例と公的データから概算価格を導き出します。
+            国土交通省のデータベースと連動し膚大な取引事例と公的データから概算価格を導き出します。<br className="hidden lg:block" />
+            <br className="hidden lg:block" />
+            <span className="text-base font-semibold text-slate-700">あなたの不動産、今いくら？即時査定</span><br className="hidden lg:block" />
+            <br className="hidden lg:block" />
+            <span className="text-base font-semibold text-slate-700">かんたん無料！概算価格査定</span><br className="hidden lg:block" />
+            <span className="text-sm text-slate-500">※詳細情報を入力する程、査定結果の精度があがります。</span><br className="hidden lg:block" />
+            <span className="text-sm text-slate-500">※入力完了後、その場で結果が表示されます。</span>
           </motion.p>
         </div>
 

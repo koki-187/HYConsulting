@@ -1,5 +1,5 @@
-import { getDb } from './server/db.js';
-import { aggregatedRealEstateData } from './drizzle/schema.js';
+import { getDb } from './server/db.ts';
+import { aggregatedRealEstateData } from './drizzle/schema.ts';
 import { sql } from 'drizzle-orm';
 
 const db = await getDb();
