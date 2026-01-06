@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import SchemaMarkup from "./components/SchemaMarkup";
+import WaterBubbleBackground from "./components/WaterBubbleBackground";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -28,6 +29,7 @@ function App() {
   return (
     <ErrorBoundary>
       <SchemaMarkup />
+      <WaterBubbleBackground />
       <ThemeProvider
         defaultTheme="light"
         // switchable
