@@ -586,3 +586,15 @@
 - [ ] 査定システムの精度確認（本番環境）
 - [ ] データベースの整合性確認
 - [ ] 全機能の動作確認（本番環境）
+
+
+## Session 39 (Continuation) - Water Bubble & Glassmorphism Fix Based on Reference Site
+- [x] Identify why water bubbles are not visible (current implementation uses top positioning, not bottom-to-top animation)
+- [x] Adjust water bubble blur (30-50px), opacity (15-25%), size, and positioning to match reference site
+- [x] Change initial position from top to bottom (-10% to -15%)
+- [x] Verify CSS keyframes are correctly defined (bubble-float-slow/medium/fast)
+- [x] Add glassmorphism transparency effect to hero text container matching reference design (bg-white/10 → bg-white/25)
+- [ ] Compare development server visually with reference site
+- [ ] Deploy to production
+- [ ] Verify water bubbles and glassmorphism in production environment
+- [ ] Complete only after production verification
