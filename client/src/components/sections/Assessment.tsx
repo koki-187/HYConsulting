@@ -42,10 +42,10 @@ export default function Assessment() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 font-sans" style={{width: '770px'}}
+            className="text-lg text-slate-600 font-sans max-w-3xl mx-auto"
           >
             たった３つの物件情報を入力するだけで瞬時に概算価格を算出。<br className="hidden lg:block" />
-            国土交通省のデータベースと連動し膚大な取引事例と公的データから概算価格を導き出します。<br className="hidden lg:block" />
+            国土交通省のデータベースと連動し膨大な取引事例と公的データから概算価格を導き出します。<br className="hidden lg:block" />
             <br className="hidden lg:block" />
             <span className="text-base font-semibold text-slate-700">あなたの不動産、今いくら？</span><br className="hidden lg:block" />
             <br className="hidden lg:block" />

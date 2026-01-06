@@ -1,66 +1,29 @@
-/**
- * Quick Database Status Check
- */
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import { sql } from 'drizzle-orm';
 
-import { getDb } from "./server/db.js";
-import { aggregatedRealEstateData } from "./drizzle/schema.js";
-import { sql } from "drizzle-orm";
+const connectionString = process.env.DATABASE_URL;
+const client = postgres(connectionString, { max: 1 });
+const db = drizzle(client);
 
-async function checkStatus() {
-  console.log("\n" + "=".repeat(80));
-  console.log("データベース状況確認");
-  console.log("=".repeat(80) + "\n");
+const result = await db.execute(sql`
+  SELECT prefecture, COUNT(*)::int as count 
+  FROM transactions 
+  GROUP BY prefecture 
+  ORDER BY count DESC
+`);
 
-  const db = await getDb();
-  if (!db) {
-    console.error("❌ データベース接続失敗");
-    process.exit(1);
-  }
+console.log('\n=== Database Status ===\n');
+const majorCities = ['東京都', '神奈川県', '大阪府', '愛知県', '福岡県'];
+let total = 0;
 
-  try {
-    // Total count
-    const countResult = await db
-      .select({ count: sql`COUNT(*)::int` })
-      .from(aggregatedRealEstateData);
-    
-    console.log(`✅ 総レコード数: ${countResult[0].count.toLocaleString()}件`);
+result.forEach((row, index) => {
+  const mark = majorCities.includes(row.prefecture) ? '★' : ' ';
+  console.log(`${mark} ${String(index + 1).padStart(2)}. ${row.prefecture.padEnd(10)} ${row.count.toLocaleString().padStart(10)} 件`);
+  total += row.count;
+});
 
-    // By prefecture
-    const prefResult = await db
-      .select({
-        prefecture: aggregatedRealEstateData.prefecture,
-        count: sql`COUNT(*)::int`,
-      })
-      .from(aggregatedRealEstateData)
-      .groupBy(aggregatedRealEstateData.prefecture)
-      .orderBy(sql`COUNT(*) DESC`)
-      .limit(10);
+console.log(`\n合計: ${total.toLocaleString()} 件\n`);
 
-    console.log("\n📊 都道府県別レコード数（上位10件）:");
-    for (const row of prefResult) {
-      console.log(`  ${row.prefecture}: ${row.count.toLocaleString()}件`);
-    }
-
-    // By property type
-    const typeResult = await db
-      .select({
-        propertyType: aggregatedRealEstateData.propertyType,
-        count: sql`COUNT(*)::int`,
-      })
-      .from(aggregatedRealEstateData)
-      .groupBy(aggregatedRealEstateData.propertyType);
-
-    console.log("\n🏠 物件種別レコード数:");
-    for (const row of typeResult) {
-      console.log(`  ${row.propertyType}: ${row.count.toLocaleString()}件`);
-    }
-
-    console.log("\n" + "=".repeat(80) + "\n");
-  } catch (error) {
-    console.error("❌ エラー:", error.message);
-  }
-
-  process.exit(0);
-}
-
-checkStatus();
+await client.end();
+process.exit(0);
