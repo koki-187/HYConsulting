@@ -44,7 +44,7 @@ const successStories = [
     description:
       "先立たれた主人に任せっきりで、ほとんど関与してこなかった不動産をどうすれば良いか悩んでた際に、不動産の売買だけでなく税務申告の事、相続や遺言の事まで何かあれば、いつも親身に相談に乗って頂けて本当に頼りにさせて頂いてます。",
     result: "3ヶ月で処分完了、精神的な負担が軽減",
-    image: "/success-story-4.png",
+    image: "/success-story-4-new.png",
     rating: 5,
   },
 ];
@@ -56,27 +56,6 @@ export default function SuccessStories() {
       className="py-20 lg:py-32 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden"
     >
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block px-4 py-1 mb-4 text-xs font-bold tracking-[0.2em] text-primary uppercase border-b border-primary/30">
-            Success Stories
-          </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-              お客様の成功事例
-            </span>
-          </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
-            HY Consulting のサポートで、多くのお客様が<br />
-            人生の課題を解決し、新しい選択肢を手に入れています。
-          </p>
-        </motion.div>
-
         {/* Success Story Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {successStories.map((story, index) => (

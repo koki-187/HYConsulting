@@ -1,6 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import Achievements from "@/components/sections/Achievements";
+
 import Assessment from "@/components/sections/Assessment";
 import FAQ from "@/components/sections/FAQ";
 import Features from "@/components/sections/Features";
@@ -26,7 +26,6 @@ export default function Home() {
         <Features />
         {/* Show success stories and case studies */}
         <SuccessStories />
-        <Achievements />
 
         {/* Address remaining questions */}
         <FAQ />
