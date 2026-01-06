@@ -90,16 +90,16 @@ export default function Hero() {
                 
                 {/* Medium bubbles - subtle */}
                 <div className="absolute w-20 h-20 rounded-full bg-white/10 blur-2xl animate-bubble-medium" style={{ left: '15%', bottom: '8%', animationDelay: '1s' }} />
-                <div className="absolute w-18 h-18 rounded-full bg-white/12 blur-2xl animate-bubble-medium" style={{ left: '55%', bottom: '10%', animationDelay: '3s' }} />
-                <div className="absolute w-22 h-22 rounded-full bg-white/9 blur-2xl animate-bubble-medium" style={{ left: '85%', bottom: '12%', animationDelay: '5s' }} />
+                <div className="absolute w-16 h-16 rounded-full bg-white/12 blur-2xl animate-bubble-medium" style={{ left: '55%', bottom: '10%', animationDelay: '3s' }} />
+                <div className="absolute w-20 h-20 rounded-full bg-white/9 blur-2xl animate-bubble-medium" style={{ left: '85%', bottom: '12%', animationDelay: '5s' }} />
                 <div className="absolute w-16 h-16 rounded-full bg-white/11 blur-2xl animate-bubble-medium" style={{ left: '30%', bottom: '6%', animationDelay: '2.5s' }} />
                 
                 {/* Small bubbles - more visible */}
                 <div className="absolute w-12 h-12 rounded-full bg-white/15 blur-xl animate-bubble-fast" style={{ left: '20%', bottom: '15%', animationDelay: '0s' }} />
                 <div className="absolute w-10 h-10 rounded-full bg-white/18 blur-xl animate-bubble-fast" style={{ left: '65%', bottom: '18%', animationDelay: '1.5s' }} />
                 <div className="absolute w-14 h-14 rounded-full bg-white/13 blur-xl animate-bubble-fast" style={{ left: '90%', bottom: '20%', animationDelay: '3s' }} />
-                <div className="absolute w-11 h-11 rounded-full bg-white/16 blur-xl animate-bubble-fast" style={{ left: '40%', bottom: '22%', animationDelay: '4.5s' }} />
-                <div className="absolute w-13 h-13 rounded-full bg-white/14 blur-xl animate-bubble-fast" style={{ left: '75%', bottom: '25%', animationDelay: '2s' }} />
+                <div className="absolute w-12 h-12 rounded-full bg-white/16 blur-xl animate-bubble-fast" style={{ left: '40%', bottom: '22%', animationDelay: '4.5s' }} />
+                <div className="absolute w-12 h-12 rounded-full bg-white/14 blur-xl animate-bubble-fast" style={{ left: '75%', bottom: '25%', animationDelay: '2s' }} />
                 <div className="absolute w-12 h-12 rounded-full bg-white/17 blur-xl animate-bubble-fast" style={{ left: '10%', bottom: '28%', animationDelay: '5.5s' }} />
               </div>
 
