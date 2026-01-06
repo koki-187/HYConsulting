@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, HeartHandshake, Home, PiggyBank } from "lucide-react";
-import WaterBubbleBackground from "@/components/WaterBubbleBackground";
+
 
 export default function Hero() {
   const scrollToAssessment = () => {
@@ -13,8 +13,7 @@ export default function Hero() {
 
   return (
     <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
-      {/* Water Bubble Background - Hero section ONLY */}
-      <WaterBubbleBackground />
+
       {/* Animated background elements */}
       <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-0 left-0 -z-10 w-96 h-96 bg-blue-100/5 rounded-full blur-3xl animate-pulse delay-700" />
