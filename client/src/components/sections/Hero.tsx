@@ -81,52 +81,69 @@ export default function Hero() {
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               
+              {/* Animated Water Bubbles Background */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                {/* Large bubbles - light */}
+                <div className="absolute w-32 h-32 rounded-full bg-blue-400/10 blur-2xl animate-bubble-slow" style={{ left: '10%', bottom: '-10%', animationDelay: '0s' }} />
+                <div className="absolute w-40 h-40 rounded-full bg-blue-300/15 blur-3xl animate-bubble-slow" style={{ left: '70%', bottom: '-15%', animationDelay: '2s' }} />
+                
+                {/* Medium bubbles - moderate */}
+                <div className="absolute w-24 h-24 rounded-full bg-blue-500/20 blur-xl animate-bubble-medium" style={{ left: '30%', bottom: '-8%', animationDelay: '1s' }} />
+                <div className="absolute w-20 h-20 rounded-full bg-blue-400/25 blur-xl animate-bubble-medium" style={{ left: '85%', bottom: '-6%', animationDelay: '3s' }} />
+                <div className="absolute w-28 h-28 rounded-full bg-blue-300/15 blur-2xl animate-bubble-medium" style={{ left: '50%', bottom: '-10%', animationDelay: '4s' }} />
+                
+                {/* Small bubbles - darker */}
+                <div className="absolute w-16 h-16 rounded-full bg-blue-600/30 blur-lg animate-bubble-fast" style={{ left: '20%', bottom: '-5%', animationDelay: '0.5s' }} />
+                <div className="absolute w-12 h-12 rounded-full bg-blue-500/35 blur-lg animate-bubble-fast" style={{ left: '60%', bottom: '-4%', animationDelay: '2.5s' }} />
+                <div className="absolute w-14 h-14 rounded-full bg-blue-600/25 blur-md animate-bubble-fast" style={{ left: '90%', bottom: '-5%', animationDelay: '1.5s' }} />
+              </div>
+
               {/* Glassmorphism Panel Overlay - Bottom Center */}
-              <div className="absolute bottom-0 left-0 right-0 flex justify-center p-2 sm:p-3 lg:p-6">
+              <div className="absolute bottom-0 left-0 right-0 flex justify-center p-3 sm:p-4 lg:p-6">
                 <motion.div 
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="w-[60%] sm:w-[65%] lg:w-[75%] bg-white/20 backdrop-blur-xl border border-white/30 rounded-lg sm:rounded-xl lg:rounded-2xl p-2 sm:p-3 lg:p-5 shadow-2xl"
-                  style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
+                  className="w-[85%] sm:w-[90%] lg:w-full bg-white/10 backdrop-blur-xl border border-white/30 rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 shadow-2xl"
+                  style={{ backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
                 >
-                  <div className="flex justify-around items-center gap-1 sm:gap-2 lg:gap-4">
+                  <div className="flex justify-around items-center gap-2 sm:gap-4 lg:gap-6">
                     {/* Item 1: Asset */}
-                    <div className="flex flex-col items-center text-center gap-1 sm:gap-2 p-1 sm:p-2 rounded-md hover:bg-white/20 transition-colors">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-white/40 rounded-full flex items-center justify-center text-white shrink-0">
-                        <PiggyBank className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                    <div className="flex flex-col items-center text-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-white/10 transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shrink-0">
+                        <PiggyBank className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                       <div>
-                        <p className="text-[8px] sm:text-[9px] lg:text-[10px] text-white font-bold uppercase tracking-wider mb-0.5">Asset</p>
-                        <p className="text-[10px] sm:text-xs lg:text-sm font-bold text-white leading-tight">老後資金</p>
+                        <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Asset</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">老後資金</p>
                       </div>
                     </div>
 
                     {/* Divider */}
-                    <div className="w-px h-8 sm:h-9 lg:h-10 bg-white/30" />
+                    <div className="w-px h-10 sm:h-12 bg-white/30" />
 
                     {/* Item 2: Real Estate */}
-                    <div className="flex flex-col items-center text-center gap-1 sm:gap-2 p-1 sm:p-2 rounded-md hover:bg-white/20 transition-colors">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-white/40 rounded-full flex items-center justify-center text-white shrink-0">
-                        <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                    <div className="flex flex-col items-center text-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-white/10 transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shrink-0">
+                        <Home className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                       <div>
-                        <p className="text-[8px] sm:text-[9px] lg:text-[10px] text-white font-bold uppercase tracking-wider mb-0.5">Real Estate</p>
-                        <p className="text-[10px] sm:text-xs lg:text-sm font-bold text-white leading-tight">空き家・売却</p>
+                        <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Real Estate</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">空き家・売却</p>
                       </div>
                     </div>
 
                     {/* Divider */}
-                    <div className="w-px h-8 sm:h-9 lg:h-10 bg-white/30" />
+                    <div className="w-px h-10 sm:h-12 bg-white/30" />
 
                     {/* Item 3: Support */}
-                    <div className="flex flex-col items-center text-center gap-1 sm:gap-2 p-1 sm:p-2 rounded-md hover:bg-white/20 transition-colors">
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-white/40 rounded-full flex items-center justify-center text-white shrink-0">
-                        <HeartHandshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                    <div className="flex flex-col items-center text-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:bg-white/10 transition-colors">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 lg:w-12 lg:h-12 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white shrink-0">
+                        <HeartHandshake className="w-5 h-5 lg:w-6 lg:h-6" />
                       </div>
                       <div>
-                        <p className="text-[8px] sm:text-[9px] lg:text-[10px] text-white font-bold uppercase tracking-wider mb-0.5">Support</p>
-                        <p className="text-[10px] sm:text-xs lg:text-sm font-bold text-white leading-tight">生前整理</p>
+                        <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Support</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">生前整理</p>
                       </div>
                     </div>
                   </div>
