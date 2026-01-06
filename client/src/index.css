@@ -41,6 +41,9 @@
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-bubble-slow: bubble-float-slow 28s ease-in-out infinite;
+  --animate-bubble-medium: bubble-float-medium 22s ease-in-out infinite;
+  --animate-bubble-fast: bubble-float-fast 18s ease-in-out infinite;
 
   @keyframes accordion-down {
     from {

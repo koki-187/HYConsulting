@@ -3,148 +3,167 @@
  * 
  * Full-screen fixed background with animated blue water bubbles
  * Based on reference site: https://hyconsulting.jp/
+ * 
+ * Key specifications from reference:
+ * - Color: Blue gradient (#005BAC primary blue)
+ * - Opacity: Very low (8% - 18%)
+ * - Blur: Strong effect (90px - 100px)
+ * - Initial position: Off-screen bottom (-10% to -15%)
+ * - Animation: Bottom to top, 15s - 28s duration
  */
 
 export default function WaterBubbleBackground() {
   return (
     <div 
-      className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 1 }}
+      className="fixed inset-0 w-screen h-screen pointer-events-none overflow-hidden"
+      style={{ zIndex: 0 }}
       aria-hidden="true"
     >
-      {/* Large Bubbles - Highly visible with moderate blur */}
+      {/* Large Bubbles (120px - 180px) - Very subtle with strong blur */}
       <div 
-        className="absolute rounded-full bg-blue-400/30 animate-bubble-slow"
+        className="absolute rounded-full bg-blue-500/8 animate-bubble-slow"
         style={{
-          width: '120px',
-          height: '120px',
-          left: '8%',
-          bottom: '10%',
-          filter: 'blur(30px)'
+          width: '160px',
+          height: '160px',
+          left: '10%',
+          bottom: '-10%',
+          filter: 'blur(95px)'
         }}
       />
       <div 
-        className="absolute rounded-full bg-blue-300/35 animate-bubble-medium"
+        className="absolute rounded-full bg-blue-400/10 animate-bubble-medium"
+        style={{
+          width: '180px',
+          height: '180px',
+          left: '70%',
+          bottom: '-12%',
+          filter: 'blur(100px)',
+          animationDelay: '2s'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-600/9 animate-bubble-slow"
         style={{
           width: '140px',
           height: '140px',
-          left: '75%',
-          bottom: '15%',
-          filter: 'blur(35px)'
+          left: '45%',
+          bottom: '-15%',
+          filter: 'blur(92px)',
+          animationDelay: '4s'
         }}
       />
       <div 
-        className="absolute rounded-full bg-cyan-400/25 animate-bubble-slow"
+        className="absolute rounded-full bg-blue-300/12 animate-bubble-medium"
         style={{
-          width: '100px',
-          height: '100px',
-          left: '45%',
-          bottom: '20%',
-          filter: 'blur(25px)'
+          width: '120px',
+          height: '120px',
+          left: '85%',
+          bottom: '-11%',
+          filter: 'blur(90px)',
+          animationDelay: '1s'
         }}
       />
 
-      {/* Medium Bubbles */}
+      {/* Medium Bubbles (70px - 100px) */}
       <div 
-        className="absolute rounded-full bg-blue-500/30 animate-bubble-fast"
-        style={{
-          width: '80px',
-          height: '80px',
-          left: '20%',
-          bottom: '25%',
-          filter: 'blur(20px)'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-blue-400/35 animate-bubble-medium"
+        className="absolute rounded-full bg-blue-500/14 animate-bubble-fast"
         style={{
           width: '90px',
           height: '90px',
+          left: '20%',
+          bottom: '-13%',
+          filter: 'blur(94px)',
+          animationDelay: '3s'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-400/15 animate-bubble-medium"
+        style={{
+          width: '100px',
+          height: '100px',
           left: '60%',
-          bottom: '30%',
-          filter: 'blur(22px)'
+          bottom: '-14%',
+          filter: 'blur(96px)',
+          animationDelay: '0.5s'
         }}
       />
       <div 
-        className="absolute rounded-full bg-cyan-300/28 animate-bubble-slow"
+        className="absolute rounded-full bg-blue-600/13 animate-bubble-slow"
         style={{
-          width: '75px',
-          height: '75px',
-          left: '85%',
-          bottom: '18%',
-          filter: 'blur(18px)'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-blue-300/32 animate-bubble-fast"
-        style={{
-          width: '85px',
-          height: '85px',
+          width: '80px',
+          height: '80px',
           left: '35%',
-          bottom: '12%',
-          filter: 'blur(20px)'
+          bottom: '-10%',
+          filter: 'blur(93px)',
+          animationDelay: '2.5s'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-300/16 animate-bubble-fast"
+        style={{
+          width: '95px',
+          height: '95px',
+          left: '75%',
+          bottom: '-12%',
+          filter: 'blur(97px)',
+          animationDelay: '1.5s'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-500/11 animate-bubble-medium"
+        style={{
+          width: '70px',
+          height: '70px',
+          left: '50%',
+          bottom: '-11%',
+          filter: 'blur(91px)',
+          animationDelay: '3.5s'
         }}
       />
 
-      {/* Small Bubbles */}
+      {/* Small Bubbles (35px - 55px) */}
       <div 
-        className="absolute rounded-full bg-blue-600/40 animate-bubble-fast"
+        className="absolute rounded-full bg-blue-600/17 animate-bubble-fast"
         style={{
           width: '50px',
           height: '50px',
           left: '15%',
-          bottom: '35%',
-          filter: 'blur(15px)'
+          bottom: '-14%',
+          filter: 'blur(98px)',
+          animationDelay: '0.8s'
         }}
       />
       <div 
-        className="absolute rounded-full bg-blue-500/38 animate-bubble-medium"
+        className="absolute rounded-full bg-blue-500/18 animate-bubble-medium"
         style={{
           width: '55px',
           height: '55px',
-          left: '50%',
-          bottom: '40%',
-          filter: 'blur(16px)'
+          left: '65%',
+          bottom: '-13%',
+          filter: 'blur(99px)',
+          animationDelay: '2.2s'
         }}
       />
       <div 
-        className="absolute rounded-full bg-cyan-500/35 animate-bubble-slow"
+        className="absolute rounded-full bg-blue-400/16 animate-bubble-slow"
         style={{
           width: '45px',
           height: '45px',
-          left: '70%',
-          bottom: '28%',
-          filter: 'blur(14px)'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-blue-400/42 animate-bubble-fast"
-        style={{
-          width: '60px',
-          height: '60px',
           left: '90%',
-          bottom: '22%',
-          filter: 'blur(17px)'
+          bottom: '-15%',
+          filter: 'blur(95px)',
+          animationDelay: '1.8s'
         }}
       />
       <div 
-        className="absolute rounded-full bg-blue-300/36 animate-bubble-medium"
+        className="absolute rounded-full bg-blue-300/15 animate-bubble-fast"
         style={{
-          width: '52px',
-          height: '52px',
+          width: '40px',
+          height: '40px',
           left: '25%',
-          bottom: '45%',
-          filter: 'blur(15px)'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-cyan-400/33 animate-bubble-slow"
-        style={{
-          width: '48px',
-          height: '48px',
-          left: '65%',
-          bottom: '38%',
-          filter: 'blur(14px)'
+          bottom: '-12%',
+          filter: 'blur(92px)',
+          animationDelay: '3.2s'
         }}
       />
     </div>

@@ -1,5 +1,17 @@
 # HY Consulting LP - TODO
 
+## Current Phase: Session 39 - Water Bubble Animation Fix (Reference Video Analysis)
+
+### 水玉アニメーション修正（参考動画分析）
+- [x] ユーザー提供の参考動画を分析
+- [x] 正しい水玉アニメーションの仕様を特定
+- [x] 参考サイト（https://hyconsulting.jp/）の水玉を再確認
+- [x] 正しい水玉アニメーションを実装
+- [x] CSS アニメーション定義を追加（animate-bubble-slow/medium/fast）
+- [x] 開発サーバーで動作確認
+- [ ] チェックポイントを公開して本番環境で確認
+- [ ] ユーザーに完了報告（本番環境での確認済み）
+
 ## Current Phase: Session 10 - 包括的なファクト・エラーチェック・本番準備
 
 - [x] Test 7 駅距離調整バグ修正
