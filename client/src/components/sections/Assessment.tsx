@@ -33,9 +33,15 @@ export default function Assessment() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading"
+            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading relative inline-block"
           >
-            <span className="text-red-600 font-extrabold">「匿名・無料」</span>無料不動産査定
+            {/* Speech Bubble Badge */}
+            <span className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-3 rounded-2xl font-extrabold text-xl shadow-2xl animate-pulse relative">
+              匿名・無料
+              {/* Triangle pointer */}
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-red-500"></span>
+            </span>
+            <span className="mt-8 block">無料不動産査定</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
