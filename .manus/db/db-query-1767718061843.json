@@ -1,0 +1,16 @@
+{
+  "query": "SELECT DISTINCT city FROM aggregated_real_estate_data WHERE prefecture = '北海道' LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT city FROM aggregated_real_estate_data WHERE prefecture = '北海道' LIMIT 10",
+  "rows": [
+    {
+      "city": "札幌市中央区"
+    },
+    {
+      "city": "札幌市北区"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\n札幌市中央区\n札幌市北区\n",
+  "stderr": "",
+  "execution_time_ms": 1593
+}

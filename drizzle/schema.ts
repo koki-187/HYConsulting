@@ -308,6 +308,70 @@ export type ValuationResult = typeof valuationResults.$inferSelect;
 export type InsertValuationResult = typeof valuationResults.$inferInsert;
 
 /**
+ * Aggregated Real Estate Data (集計不動産データ)
+ * Nationwide aggregated transaction data by property type, location, and building age group
+ * Source: MLIT (Ministry of Land, Infrastructure, Transport and Tourism)
+ * Coverage: 47 prefectures, 7,760 municipalities, 189,391 districts
+ */
+export const aggregatedRealEstateData = mysqlTable(
+  "aggregated_real_estate_data",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    // Geographic Information
+    propertyType: varchar("propertyType", { length: 50 }).notNull(), // "マンション", "一戸建て", "土地", "林地", "農地"
+    prefecture: varchar("prefecture", { length: 50 }).notNull(),
+    city: varchar("city", { length: 100 }).notNull(),
+    district: varchar("district", { length: 100 }).notNull(),
+    // Building Age Group
+    buildingAgeGroup: varchar("buildingAgeGroup", { length: 50 }).notNull(), // "0～5年", "5～10年", "10～15年", "15～20年", "20～30年", "30年以上", "不明"
+    // Aggregated Data
+    totalPriceYen: decimal("totalPriceYen", { precision: 20, scale: 2 }).notNull(), // Total price in yen
+    totalAreaM2: decimal("totalAreaM2", { precision: 15, scale: 2 }).notNull(), // Total area in square meters
+    transactionCount: int("transactionCount").notNull(), // Number of transactions
+    pricePerTsubo: int("pricePerTsubo").notNull(), // Price per tsubo (yen/坪)
+    averagePriceYen: int("averagePriceYen").notNull(), // Average price in yen
+    averageAreaM2: decimal("averageAreaM2", { precision: 10, scale: 2 }).notNull(), // Average area in square meters
+    // Metadata
+    datasetVersionId: varchar("datasetVersionId", { length: 100 }).notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+  },
+  (table) => ({
+    // Composite index for assessment queries
+    lookupIdx: index("idx_agg_lookup").on(
+      table.propertyType,
+      table.prefecture,
+      table.city,
+      table.district,
+      table.buildingAgeGroup
+    ),
+    prefectureIdx: index("idx_agg_prefecture").on(table.prefecture),
+    cityIdx: index("idx_agg_city").on(table.city),
+    propertyTypeIdx: index("idx_agg_property_type").on(table.propertyType),
+    prefectureCityIdx: index("idx_agg_pref_city").on(table.prefecture, table.city),
+  })
+);
+
+export type AggregatedRealEstateData = typeof aggregatedRealEstateData.$inferSelect;
+export type InsertAggregatedRealEstateData = typeof aggregatedRealEstateData.$inferInsert;
+
+/**
+ * Assessment Error Log (査定エラーログ)
+ * Tracks all assessment errors for debugging and monitoring
+ */
+export const assessmentErrorLog = mysqlTable("assessment_error_log", {
+  id: int("id").autoincrement().primaryKey(),
+  errorType: varchar("errorType", { length: 100 }).notNull(), // "DATA_NOT_FOUND", "VALIDATION_ERROR", "CALCULATION_ERROR", "SYSTEM_ERROR"
+  input: text("input").notNull(), // JSON string of input parameters
+  errorMessage: text("errorMessage"),
+  stackTrace: text("stackTrace"),
+  userMessage: text("userMessage"), // User-facing error message
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type AssessmentErrorLog = typeof assessmentErrorLog.$inferSelect;
+export type InsertAssessmentErrorLog = typeof assessmentErrorLog.$inferInsert;
+
+/**
  * Relations
  */
 export const transactionsRelations = relations(transactions, ({ one }) => ({

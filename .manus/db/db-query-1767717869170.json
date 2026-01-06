@@ -1,0 +1,110 @@
+{
+  "query": "SELECT propertyType, prefecture, city, district, buildingAgeGroup, \n       transactionCount, averagePriceYen, pricePerTsubo\nFROM aggregated_real_estate_data\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT propertyType, prefecture, city, district, buildingAgeGroup, \n       transactionCount, averagePriceYen, pricePerTsubo\nFROM aggregated_real_estate_data\nLIMIT 10;",
+  "rows": [
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "旭ケ丘",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "10",
+      "averagePriceYen": "37700000",
+      "pricePerTsubo": "472972"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "大通西",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "4",
+      "averagePriceYen": "287500000",
+      "pricePerTsubo": "2667830"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "大通東",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "4",
+      "averagePriceYen": "156500000",
+      "pricePerTsubo": "2028847"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北１条西",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5",
+      "averagePriceYen": "101600000",
+      "pricePerTsubo": "1796086"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北１条東",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "8",
+      "averagePriceYen": "165375000",
+      "pricePerTsubo": "1822316"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北２条西",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "2",
+      "averagePriceYen": "84500000",
+      "pricePerTsubo": "1095448"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北２条東",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "6",
+      "averagePriceYen": "62700000",
+      "pricePerTsubo": "891496"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北３条西",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "6",
+      "averagePriceYen": "47500000",
+      "pricePerTsubo": "856500"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北３条東",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "4",
+      "averagePriceYen": "278000000",
+      "pricePerTsubo": "2552804"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "北海道",
+      "city": "札幌市中央区",
+      "district": "北４条西",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5",
+      "averagePriceYen": "69800000",
+      "pricePerTsubo": "860985"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\tprefecture\tcity\tdistrict\tbuildingAgeGroup\ttransactionCount\taveragePriceYen\tpricePerTsubo\n土地\t北海道\t札幌市中央区\t旭ケ丘\t不明\t10\t37700000\t472972\n土地\t北海道\t札幌市中央区\t大通西\t不明\t4\t287500000\t2667830\n土地\t北海道\t札幌市中央区\t大通東\t不明\t4\t156500000\t2028847\n土地\t北海道\t札幌市中央区\t北１条西\t不明\t5\t101600000\t1796086\n土地\t北海道\t札幌市中央区\t北１条東\t不明\t8\t165375000\t1822316\n土地\t北海道\t札幌市中央区\t北２条西\t不明\t2\t84500000\t1095448\n土地\t北海道\t札幌市中央区\t北２条東\t不明\t6\t62700000\t891496\n土地\t北海道\t札幌市中央区\t北３条西\t不明\t6\t47500000\t856500\n土地\t北海道\t札幌市中央区\t北３条東\t不明\t4\t278000000\t2552804\n土地\t北海道\t札幌市中央区\t北４条西\t不明\t5\t69800000\t860985\n",
+  "stderr": "",
+  "execution_time_ms": 1533
+}

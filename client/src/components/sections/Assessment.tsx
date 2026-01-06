@@ -44,8 +44,8 @@ export default function Assessment() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-600 font-sans"
           >
-            国土交通省のデータベースと連動し、適正な価格を即座に算出。<br className="hidden lg:block" />
-            お客様のニーズに合わせて、3つの査定方法をご用意しております。
+            たった３つの物件情報を入力するだけで瞬時に概算価格を算出。<br className="hidden lg:block" />
+            国土交通省のデータベースと連動し膚大な取引事例と公的データから概算価格を導き出します。
           </motion.p>
         </div>
 
