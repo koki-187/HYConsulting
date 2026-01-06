@@ -192,40 +192,59 @@
   animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Water Bubble Float Animations - Based on detailed implementation instructions */
-/* Vertical floating animation matching https://hyconsulting.jp/ */
+/* Water Bubble Float Animations - Session 44 Complete Redesign */
+/* 3-Layer depth system with varied animation speeds */
+/* Reference: https://hyconsulting.jp/ (pasted_file_DvQnaL_image.png) */
 
-@keyframes hy-float-1 {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-30px); }
-}
-
-@keyframes hy-float-2 {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(30px); }
-}
-
-@keyframes hy-float-3 {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(30px); }
-}
-
-@keyframes hy-float-4 {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-30px); }
-}
-
-@keyframes hy-float-5 {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(30px); }
-}
-
-@keyframes hy-float-6 {
+/* LAYER 1: BACKGROUND (Large bubbles, slow 25-35s) */
+@keyframes hy-float-slow-1 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(-25px) translateX(10px); }
+  100% { transform: translateY(-35px) translateX(15px); }
 }
 
-@keyframes hy-float-7 {
+@keyframes hy-float-slow-2 {
   0% { transform: translateY(0) translateX(0); }
-  100% { transform: translateY(35px) translateX(-8px); }
+  100% { transform: translateY(40px) translateX(-12px); }
+}
+
+@keyframes hy-float-slow-3 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-30px) translateX(18px); }
+}
+
+/* LAYER 2: MIDDLE (Medium bubbles, medium 15-22s) */
+@keyframes hy-float-medium-1 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(25px) translateX(-10px); }
+}
+
+@keyframes hy-float-medium-2 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-28px) translateX(12px); }
+}
+
+@keyframes hy-float-medium-3 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(32px) translateX(-8px); }
+}
+
+/* LAYER 3: FOREGROUND (Small bubbles, fast 8-14s) */
+@keyframes hy-float-fast-1 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  100% { transform: translateY(-20px) translateX(8px) scale(1.05); }
+}
+
+@keyframes hy-float-fast-2 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  100% { transform: translateY(22px) translateX(-6px) scale(1.08); }
+}
+
+@keyframes hy-float-fast-3 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  100% { transform: translateY(-18px) translateX(10px) scale(1.06); }
+}
+
+@keyframes hy-float-fast-4 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  100% { transform: translateY(24px) translateX(-7px) scale(1.07); }
 }
