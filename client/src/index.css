@@ -219,3 +219,13 @@
   0% { transform: translateY(0); }
   100% { transform: translateY(30px); }
 }
+
+@keyframes hy-float-6 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-25px) translateX(10px); }
+}
+
+@keyframes hy-float-7 {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(35px) translateX(-8px); }
+}
