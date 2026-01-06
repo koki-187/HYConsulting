@@ -15,7 +15,7 @@
  */
 
 import { readFileSync } from 'fs';
-import { db } from '../server/db.ts';
+import { getDb } from '../server/db.ts';
 import { aggregatedRealEstateData, datasetVersions } from '../drizzle/schema.ts';
 import { eq } from 'drizzle-orm';
 
@@ -45,6 +45,7 @@ const datasetVersionId = `mlit_aggregated_2026Q1`;
 if (!isDryRun) {
   console.log('📦 データセットバージョン作成中...');
   try {
+    const db = await getDb();
     await db.insert(datasetVersions).values({
       id: datasetVersionId,
       source: 'MLIT 不動産取引価格情報（集計版）',
@@ -155,6 +156,7 @@ for (const [propertyType, prefectures] of Object.entries(rawData)) {
 
             // Insert batch
             if (batch.length >= batchSize && !isDryRun) {
+              const db = await getDb();
               await db.insert(aggregatedRealEstateData).values(batch);
               console.log(`  ✓ Inserted ${insertedEntries} entries (${totalEntries} processed)`);
               batch = [];
@@ -185,6 +187,7 @@ for (const [propertyType, prefectures] of Object.entries(rawData)) {
 
 // Insert remaining batch
 if (batch.length > 0 && !isDryRun) {
+  const db = await getDb();
   await db.insert(aggregatedRealEstateData).values(batch);
   console.log(`  ✓ Inserted final batch: ${batch.length} entries`);
 }

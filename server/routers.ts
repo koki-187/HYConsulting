@@ -203,10 +203,7 @@ export const appRouter = router({
           };
         } catch (error) {
           console.error("Assessment submission error:", error);
-          return {
-            success: false,
-            message: "査定リクエストの送信に失敗しました。",
-          };
+          throw new Error(error instanceof Error ? error.message : "査定リクエストの送信に失敗しました。");
         }
       }),
 

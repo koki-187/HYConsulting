@@ -1,0 +1,50 @@
+{
+  "query": "SELECT COUNT(*) as count, city FROM aggregated_real_estate_data WHERE prefecture = '北海道' AND city LIKE '%札幌%' GROUP BY city LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as count, city FROM aggregated_real_estate_data WHERE prefecture = '北海道' AND city LIKE '%札幌%' GROUP BY city LIMIT 10",
+  "rows": [
+    {
+      "count": "345",
+      "city": "札幌市中央区"
+    },
+    {
+      "count": "467",
+      "city": "札幌市北区"
+    },
+    {
+      "count": "308",
+      "city": "札幌市南区"
+    },
+    {
+      "count": "124",
+      "city": "札幌市厚別区"
+    },
+    {
+      "count": "252",
+      "city": "札幌市手稲区"
+    },
+    {
+      "count": "416",
+      "city": "札幌市東区"
+    },
+    {
+      "count": "172",
+      "city": "札幌市清田区"
+    },
+    {
+      "count": "236",
+      "city": "札幌市白石区"
+    },
+    {
+      "count": "300",
+      "city": "札幌市西区"
+    },
+    {
+      "count": "196",
+      "city": "札幌市豊平区"
+    }
+  ],
+  "messages": [],
+  "stdout": "count\tcity\n345\t札幌市中央区\n467\t札幌市北区\n308\t札幌市南区\n124\t札幌市厚別区\n252\t札幌市手稲区\n416\t札幌市東区\n172\t札幌市清田区\n236\t札幌市白石区\n300\t札幌市西区\n196\t札幌市豊平区\n",
+  "stderr": "",
+  "execution_time_ms": 1530
+}

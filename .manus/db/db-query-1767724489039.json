@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as total_records FROM aggregated_real_estate_data",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as total_records FROM aggregated_real_estate_data",
+  "rows": [
+    {
+      "total_records": "55100"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_records\n55100\n",
+  "stderr": "",
+  "execution_time_ms": 1533
+}
