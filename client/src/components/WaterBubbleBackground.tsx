@@ -1,16 +1,14 @@
 /**
  * Water Bubble Background Component
  * 
- * Matching reference site: https://hyconsulting.jp/
+ * Implementation based on detailed instructions document
+ * Reference site: https://hyconsulting.jp/
  * 
- * Key specifications based on visual analysis:
- * - Total bubbles: 5 (not 13)
- * - Positioning: Strategic corners and edges (not random bottom)
- * - Colors: Blue-green gradient + blue variants
- * - Opacity: 10-50% (wider range)
- * - Blur: 30-70px (more variance)
- * - Animation: Subtle drift/oscillation (not bottom-to-top)
- * - Speed: 22-35s cycles (slower)
+ * Specifications:
+ * - 5 bubbles with specific positions, sizes, colors
+ * - Radial gradients with transparency
+ * - Vertical floating animation (ease-in-out, infinite, alternate)
+ * - Strong blur effects (40-70px)
  */
 
 export default function WaterBubbleBackground() {
@@ -20,82 +18,82 @@ export default function WaterBubbleBackground() {
       style={{ zIndex: 1 }}
       aria-hidden="true"
     >
-      {/* Bubble 1: Upper Left - Blue-Green Gradient (most visible) */}
+      {/* Bubble 1: 左上の大きな水玉 - 薄い青色 */}
       <div 
         className="absolute rounded-full"
         style={{
-          width: '280px',
-          height: '280px',
-          left: '-5%',
-          top: '10%',
-          background: 'linear-gradient(135deg, #4ade80, #3b82f6)',
-          opacity: 0.25,
-          filter: 'blur(55px)',
-          animation: 'bubble-drift-slow 35s ease-in-out infinite'
+          width: '400px',
+          height: '400px',
+          top: '50px',
+          left: '-100px',
+          background: 'radial-gradient(circle at 40% 40%, rgba(91, 168, 214, 0.6), rgba(91, 168, 214, 0.2))',
+          filter: 'blur(60px)',
+          opacity: 0.8,
+          animation: 'hy-float-1 10s ease-in-out infinite alternate'
         }}
       />
       
-      {/* Bubble 2: Middle Left - Blue */}
+      {/* Bubble 2: 中央上部の小さな水玉 - 濃い青色 */}
       <div 
         className="absolute rounded-full"
         style={{
-          width: '220px',
-          height: '220px',
-          left: '5%',
-          top: '40%',
-          background: 'linear-gradient(135deg, #60a5fa, #3b82f6)',
-          opacity: 0.30,
-          filter: 'blur(45px)',
-          animation: 'bubble-drift-medium 28s ease-in-out infinite',
-          animationDelay: '3s'
-        }}
-      />
-      
-      {/* Bubble 3: Upper Right - Solid Blue (most opaque) */}
-      <div 
-        className="absolute rounded-full"
-        style={{
-          width: '300px',
-          height: '300px',
-          right: '-8%',
-          top: '8%',
-          background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',
-          opacity: 0.45,
+          width: '120px',
+          height: '120px',
+          top: '100px',
+          left: '45%',
+          background: 'radial-gradient(circle at 35% 35%, rgba(45, 127, 184, 0.7), rgba(45, 127, 184, 0.3))',
           filter: 'blur(40px)',
-          animation: 'bubble-drift-slow 32s ease-in-out infinite',
-          animationDelay: '5s'
+          opacity: 0.8,
+          animation: 'hy-float-2 8s ease-in-out infinite alternate',
+          animationDelay: '2s'
         }}
       />
       
-      {/* Bubble 4: Bottom Left - Subtle */}
+      {/* Bubble 3: 右上の大きな水玉 - 濃い青色 */}
       <div 
         className="absolute rounded-full"
         style={{
-          width: '200px',
-          height: '200px',
-          left: '10%',
-          bottom: '15%',
-          background: 'linear-gradient(135deg, #93c5fd, #60a5fa)',
-          opacity: 0.18,
-          filter: 'blur(50px)',
-          animation: 'bubble-drift-fast 22s ease-in-out infinite',
-          animationDelay: '7s'
+          width: '350px',
+          height: '350px',
+          top: '0px',
+          right: '5%',
+          background: 'radial-gradient(circle at 40% 40%, rgba(29, 90, 154, 0.7), rgba(29, 90, 154, 0.3))',
+          filter: 'blur(70px)',
+          opacity: 0.8,
+          animation: 'hy-float-3 12s ease-in-out infinite alternate',
+          animationDelay: '4s'
         }}
       />
       
-      {/* Bubble 5: Bottom Right - Subtle */}
+      {/* Bubble 4: 中央下部の水玉 - 中間の青色 */}
       <div 
         className="absolute rounded-full"
         style={{
           width: '180px',
           height: '180px',
-          right: '12%',
-          bottom: '20%',
-          background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
-          opacity: 0.20,
-          filter: 'blur(48px)',
-          animation: 'bubble-drift-medium 25s ease-in-out infinite',
-          animationDelay: '2s'
+          top: '550px',
+          left: '40%',
+          background: 'radial-gradient(circle at 35% 35%, rgba(74, 159, 212, 0.6), rgba(74, 159, 212, 0.3))',
+          filter: 'blur(50px)',
+          opacity: 0.8,
+          animation: 'hy-float-4 9s ease-in-out infinite alternate',
+          animationDelay: '1s'
+        }}
+      />
+      
+      {/* Bubble 5: 右下の水玉 - 薄い青色 */}
+      <div 
+        className="absolute rounded-full"
+        style={{
+          width: '150px',
+          height: '150px',
+          top: '600px',
+          right: '15%',
+          background: 'radial-gradient(circle at 35% 35%, rgba(107, 181, 224, 0.6), rgba(107, 181, 224, 0.2))',
+          filter: 'blur(45px)',
+          opacity: 0.8,
+          animation: 'hy-float-5 11s ease-in-out infinite alternate',
+          animationDelay: '3s'
         }}
       />
     </div>

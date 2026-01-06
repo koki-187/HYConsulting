@@ -192,41 +192,30 @@
   animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Water Bubble Drift Animations - Matching https://hyconsulting.jp/ exactly */
-/* Subtle oscillation and drift, not linear bottom-to-top movement */
+/* Water Bubble Float Animations - Based on detailed implementation instructions */
+/* Vertical floating animation matching https://hyconsulting.jp/ */
 
-@keyframes bubble-drift-slow {
-  0%, 100% { 
-    transform: translate(0, 0) scale(1); 
-  }
-  25% { 
-    transform: translate(15px, -20px) scale(1.05); 
-  }
-  50% { 
-    transform: translate(-10px, -35px) scale(1.1); 
-  }
-  75% { 
-    transform: translate(20px, -15px) scale(1.05); 
-  }
+@keyframes hy-float-1 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-30px); }
 }
 
-@keyframes bubble-drift-medium {
-  0%, 100% { 
-    transform: translate(0, 0) scale(1); 
-  }
-  33% { 
-    transform: translate(-12px, -25px) scale(1.08); 
-  }
-  66% { 
-    transform: translate(18px, -40px) scale(1.12); 
-  }
+@keyframes hy-float-2 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(30px); }
 }
 
-@keyframes bubble-drift-fast {
-  0%, 100% { 
-    transform: translate(0, 0) scale(1); 
-  }
-  50% { 
-    transform: translate(-15px, -30px) scale(1.15); 
-  }
+@keyframes hy-float-3 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(30px); }
+}
+
+@keyframes hy-float-4 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-30px); }
+}
+
+@keyframes hy-float-5 {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(30px); }
 }
