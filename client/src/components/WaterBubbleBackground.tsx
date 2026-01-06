@@ -9,204 +9,142 @@ export default function WaterBubbleBackground() {
   return (
     <div 
       className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 0 }}
+      style={{ zIndex: 1 }}
       aria-hidden="true"
     >
-      {/* Large Bubbles - 150px ~ 200px */}
+      {/* Large Bubbles - Highly visible with moderate blur */}
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-400/10 to-blue-500/8"
+        className="absolute rounded-full bg-blue-400/30 animate-bubble-slow"
         style={{
-          width: '180px',
-          height: '180px',
-          left: '5%',
-          bottom: '-10%',
-          filter: 'blur(90px)',
-          animation: 'bubble-float-slow 25s ease-in-out infinite',
-          animationDelay: '0s'
+          width: '120px',
+          height: '120px',
+          left: '8%',
+          bottom: '10%',
+          filter: 'blur(30px)'
         }}
       />
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-300/12 to-blue-400/10"
+        className="absolute rounded-full bg-blue-300/35 animate-bubble-medium"
         style={{
-          width: '200px',
-          height: '200px',
+          width: '140px',
+          height: '140px',
           left: '75%',
-          bottom: '-15%',
-          filter: 'blur(100px)',
-          animation: 'bubble-float-slow 28s ease-in-out infinite',
-          animationDelay: '3s'
+          bottom: '15%',
+          filter: 'blur(35px)'
         }}
       />
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-cyan-400/10 to-blue-400/8"
-        style={{
-          width: '160px',
-          height: '160px',
-          left: '45%',
-          bottom: '-8%',
-          filter: 'blur(85px)',
-          animation: 'bubble-float-slow 26s ease-in-out infinite',
-          animationDelay: '6s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-500/9 to-blue-600/7"
-        style={{
-          width: '170px',
-          height: '170px',
-          left: '88%',
-          bottom: '-12%',
-          filter: 'blur(95px)',
-          animation: 'bubble-float-slow 27s ease-in-out infinite',
-          animationDelay: '9s'
-        }}
-      />
-
-      {/* Medium Bubbles - 80px ~ 120px */}
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-400/12 to-blue-500/10"
-        style={{
-          width: '110px',
-          height: '110px',
-          left: '15%',
-          bottom: '-5%',
-          filter: 'blur(70px)',
-          animation: 'bubble-float-medium 22s ease-in-out infinite',
-          animationDelay: '1s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-cyan-300/14 to-blue-400/12"
+        className="absolute rounded-full bg-cyan-400/25 animate-bubble-slow"
         style={{
           width: '100px',
           height: '100px',
-          left: '55%',
-          bottom: '-3%',
-          filter: 'blur(65px)',
-          animation: 'bubble-float-medium 20s ease-in-out infinite',
-          animationDelay: '4s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-300/13 to-cyan-400/11"
-        style={{
-          width: '95px',
-          height: '95px',
-          left: '30%',
-          bottom: '-4%',
-          filter: 'blur(68px)',
-          animation: 'bubble-float-medium 21s ease-in-out infinite',
-          animationDelay: '7s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-400/11 to-blue-500/9"
-        style={{
-          width: '105px',
-          height: '105px',
-          left: '68%',
-          bottom: '-6%',
-          filter: 'blur(72px)',
-          animation: 'bubble-float-medium 23s ease-in-out infinite',
-          animationDelay: '10s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-cyan-400/12 to-blue-400/10"
-        style={{
-          width: '90px',
-          height: '90px',
-          left: '92%',
-          bottom: '-2%',
-          filter: 'blur(63px)',
-          animation: 'bubble-float-medium 19s ease-in-out infinite',
-          animationDelay: '13s'
+          left: '45%',
+          bottom: '20%',
+          filter: 'blur(25px)'
         }}
       />
 
-      {/* Small Bubbles - 40px ~ 60px */}
+      {/* Medium Bubbles */}
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-400/15 to-blue-500/13"
+        className="absolute rounded-full bg-blue-500/30 animate-bubble-fast"
         style={{
-          width: '55px',
-          height: '55px',
-          left: '10%',
-          bottom: '0%',
-          filter: 'blur(50px)',
-          animation: 'bubble-float-fast 18s ease-in-out infinite',
-          animationDelay: '0s'
+          width: '80px',
+          height: '80px',
+          left: '20%',
+          bottom: '25%',
+          filter: 'blur(20px)'
         }}
       />
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-cyan-300/16 to-blue-400/14"
+        className="absolute rounded-full bg-blue-400/35 animate-bubble-medium"
+        style={{
+          width: '90px',
+          height: '90px',
+          left: '60%',
+          bottom: '30%',
+          filter: 'blur(22px)'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-cyan-300/28 animate-bubble-slow"
+        style={{
+          width: '75px',
+          height: '75px',
+          left: '85%',
+          bottom: '18%',
+          filter: 'blur(18px)'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-300/32 animate-bubble-fast"
+        style={{
+          width: '85px',
+          height: '85px',
+          left: '35%',
+          bottom: '12%',
+          filter: 'blur(20px)'
+        }}
+      />
+
+      {/* Small Bubbles */}
+      <div 
+        className="absolute rounded-full bg-blue-600/40 animate-bubble-fast"
         style={{
           width: '50px',
           height: '50px',
-          left: '25%',
-          bottom: '2%',
-          filter: 'blur(48px)',
-          animation: 'bubble-float-fast 17s ease-in-out infinite',
-          animationDelay: '2s'
+          left: '15%',
+          bottom: '35%',
+          filter: 'blur(15px)'
         }}
       />
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-300/17 to-cyan-400/15"
+        className="absolute rounded-full bg-blue-500/38 animate-bubble-medium"
         style={{
-          width: '60px',
-          height: '60px',
-          left: '40%',
-          bottom: '1%',
-          filter: 'blur(52px)',
-          animation: 'bubble-float-fast 19s ease-in-out infinite',
-          animationDelay: '5s'
+          width: '55px',
+          height: '55px',
+          left: '50%',
+          bottom: '40%',
+          filter: 'blur(16px)'
         }}
       />
       <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-400/14 to-blue-500/12"
-        style={{
-          width: '48px',
-          height: '48px',
-          left: '58%',
-          bottom: '3%',
-          filter: 'blur(46px)',
-          animation: 'bubble-float-fast 16s ease-in-out infinite',
-          animationDelay: '8s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-cyan-400/16 to-blue-400/14"
-        style={{
-          width: '52px',
-          height: '52px',
-          left: '72%',
-          bottom: '0%',
-          filter: 'blur(49px)',
-          animation: 'bubble-float-fast 17.5s ease-in-out infinite',
-          animationDelay: '11s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-500/15 to-blue-600/13"
-        style={{
-          width: '58px',
-          height: '58px',
-          left: '85%',
-          bottom: '2%',
-          filter: 'blur(51px)',
-          animation: 'bubble-float-fast 18.5s ease-in-out infinite',
-          animationDelay: '14s'
-        }}
-      />
-      <div 
-        className="absolute rounded-full bg-gradient-to-br from-blue-300/18 to-cyan-300/16"
+        className="absolute rounded-full bg-cyan-500/35 animate-bubble-slow"
         style={{
           width: '45px',
           height: '45px',
-          left: '95%',
-          bottom: '1%',
-          filter: 'blur(44px)',
-          animation: 'bubble-float-fast 15.5s ease-in-out infinite',
-          animationDelay: '17s'
+          left: '70%',
+          bottom: '28%',
+          filter: 'blur(14px)'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-400/42 animate-bubble-fast"
+        style={{
+          width: '60px',
+          height: '60px',
+          left: '90%',
+          bottom: '22%',
+          filter: 'blur(17px)'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-blue-300/36 animate-bubble-medium"
+        style={{
+          width: '52px',
+          height: '52px',
+          left: '25%',
+          bottom: '45%',
+          filter: 'blur(15px)'
+        }}
+      />
+      <div 
+        className="absolute rounded-full bg-cyan-400/33 animate-bubble-slow"
+        style={{
+          width: '48px',
+          height: '48px',
+          left: '65%',
+          bottom: '38%',
+          filter: 'blur(14px)'
         }}
       />
     </div>
