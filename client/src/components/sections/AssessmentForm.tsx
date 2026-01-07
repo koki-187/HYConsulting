@@ -33,13 +33,15 @@ export default function AssessmentForm() {
 
   const submitAssessment = trpc.assessment.submit.useMutation({
     onSuccess: (data) => {
+      console.log("✅ Assessment API Success:", data);
       setAssessmentResult(data);
       setError(null);
-
+      setIsSearching(false);
     },
     onError: (err) => {
+      console.error("❌ Assessment API Error:", err);
       setError(err.message || "査定処理中にエラーが発生しました");
-
+      setIsSearching(false);
     },
   });
 
@@ -89,6 +91,16 @@ export default function AssessmentForm() {
       return;
     }
 
+    console.log("🔍 Starting assessment with data:", {
+      propertyType,
+      prefecture,
+      city,
+      area,
+      buildingYear,
+      stationName,
+      walkingMinutes,
+    });
+
     setIsSearching(true);
     setError(null);
 
@@ -99,7 +111,8 @@ export default function AssessmentForm() {
         location += ` (${stationName}駅${walkingMinutes ? `徒歩${walkingMinutes}分` : ""})`;
       }
 
-      await submitAssessment.mutateAsync({
+      console.log("📤 Sending API request...");
+      const result = await submitAssessment.mutateAsync({
         propertyType,
         prefecture,
         city,
@@ -112,9 +125,12 @@ export default function AssessmentForm() {
         nearestStation: stationName || undefined,
         walkingMinutes: walkingMinutes ? parseInt(walkingMinutes) : undefined,
       });
+      console.log("📥 API response received:", result);
     } catch (err) {
-      console.error("Assessment error:", err);
+      console.error("❌ Assessment error in handleSearch:", err);
+      setError(err instanceof Error ? err.message : "査定処理中にエラーが発生しました");
     } finally {
+      console.log("🏁 Assessment process completed, setting isSearching to false");
       setIsSearching(false);
     }
   };
@@ -214,7 +230,7 @@ export default function AssessmentForm() {
                     >
                       {[
                         { value: "house", label: "戸建て", icon: Home, desc: "一軒家" },
-                        { value: "mansion", label: "マンション", icon: Building2, desc: "区分所有" },
+                        { value: "condo", label: "マンション", icon: Building2, desc: "区分所有" },
                         { value: "land", label: "土地", icon: LandPlot, desc: "更地・古家付" },
                         { value: "apartment", label: "アパート", icon: Home, desc: "一棟収益" },
                       ].map((type) => (

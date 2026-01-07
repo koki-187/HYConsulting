@@ -1,0 +1,150 @@
+{
+  "query": "SELECT \n  city,\n  COUNT(*) as record_count,\n  SUM(transactionCount) as total_transactions,\n  SUM(totalPriceYen) as total_price_yen,\n  SUM(totalAreaM2) as total_area_m2\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県'\nGROUP BY city\nORDER BY record_count DESC\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  city,\n  COUNT(*) as record_count,\n  SUM(transactionCount) as total_transactions,\n  SUM(totalPriceYen) as total_price_yen,\n  SUM(totalAreaM2) as total_area_m2\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県'\nGROUP BY city\nORDER BY record_count DESC\nLIMIT 20;",
+  "rows": [
+    {
+      "city": "横浜市鶴見区",
+      "record_count": "309",
+      "total_transactions": "2497",
+      "total_price_yen": "140364330000.00",
+      "total_area_m2": "359905.00"
+    },
+    {
+      "city": "平塚市",
+      "record_count": "91",
+      "total_transactions": "810",
+      "total_price_yen": "23015650000.00",
+      "total_area_m2": "212020.00"
+    },
+    {
+      "city": "横須賀市",
+      "record_count": "86",
+      "total_transactions": "830",
+      "total_price_yen": "21333540000.00",
+      "total_area_m2": "184010.00"
+    },
+    {
+      "city": "小田原市",
+      "record_count": "68",
+      "total_transactions": "839",
+      "total_price_yen": "19454700000.00",
+      "total_area_m2": "244920.00"
+    },
+    {
+      "city": "藤沢市",
+      "record_count": "65",
+      "total_transactions": "1265",
+      "total_price_yen": "63546750000.00",
+      "total_area_m2": "299415.00"
+    },
+    {
+      "city": "秦野市",
+      "record_count": "61",
+      "total_transactions": "689",
+      "total_price_yen": "12300270000.00",
+      "total_area_m2": "212035.00"
+    },
+    {
+      "city": "厚木市",
+      "record_count": "59",
+      "total_transactions": "637",
+      "total_price_yen": "19612390000.00",
+      "total_area_m2": "196860.00"
+    },
+    {
+      "city": "横浜市神奈川区",
+      "record_count": "58",
+      "total_transactions": "536",
+      "total_price_yen": "32669910000.00",
+      "total_area_m2": "104730.00"
+    },
+    {
+      "city": "茅ヶ崎市",
+      "record_count": "58",
+      "total_transactions": "928",
+      "total_price_yen": "36234955500.00",
+      "total_area_m2": "195925.00"
+    },
+    {
+      "city": "横浜市中区",
+      "record_count": "54",
+      "total_transactions": "280",
+      "total_price_yen": "28187220000.00",
+      "total_area_m2": "56870.00"
+    },
+    {
+      "city": "川崎市川崎区",
+      "record_count": "51",
+      "total_transactions": "305",
+      "total_price_yen": "21556500000.00",
+      "total_area_m2": "46990.00"
+    },
+    {
+      "city": "横浜市南区",
+      "record_count": "50",
+      "total_transactions": "455",
+      "total_price_yen": "22098100000.00",
+      "total_area_m2": "77570.00"
+    },
+    {
+      "city": "相模原市緑区",
+      "record_count": "45",
+      "total_transactions": "442",
+      "total_price_yen": "10986240000.00",
+      "total_area_m2": "149670.00"
+    },
+    {
+      "city": "鎌倉市",
+      "record_count": "43",
+      "total_transactions": "754",
+      "total_price_yen": "40702650000.00",
+      "total_area_m2": "177510.00"
+    },
+    {
+      "city": "横浜市青葉区",
+      "record_count": "41",
+      "total_transactions": "452",
+      "total_price_yen": "33133601000.00",
+      "total_area_m2": "110600.00"
+    },
+    {
+      "city": "横浜市旭区",
+      "record_count": "40",
+      "total_transactions": "669",
+      "total_price_yen": "24250253000.00",
+      "total_area_m2": "145655.00"
+    },
+    {
+      "city": "横浜市保土ケ谷区",
+      "record_count": "39",
+      "total_transactions": "478",
+      "total_price_yen": "17176830000.00",
+      "total_area_m2": "103510.00"
+    },
+    {
+      "city": "横浜市都筑区",
+      "record_count": "39",
+      "total_transactions": "276",
+      "total_price_yen": "19492100000.00",
+      "total_area_m2": "81885.00"
+    },
+    {
+      "city": "相模原市中央区",
+      "record_count": "39",
+      "total_transactions": "576",
+      "total_price_yen": "21115180000.00",
+      "total_area_m2": "138550.00"
+    },
+    {
+      "city": "川崎市中原区",
+      "record_count": "37",
+      "total_transactions": "321",
+      "total_price_yen": "26074620000.00",
+      "total_area_m2": "44410.00"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\trecord_count\ttotal_transactions\ttotal_price_yen\ttotal_area_m2\n横浜市鶴見区\t309\t2497\t140364330000.00\t359905.00\n平塚市\t91\t810\t23015650000.00\t212020.00\n横須賀市\t86\t830\t21333540000.00\t184010.00\n小田原市\t68\t839\t19454700000.00\t244920.00\n藤沢市\t65\t1265\t63546750000.00\t299415.00\n秦野市\t61\t689\t12300270000.00\t212035.00\n厚木市\t59\t637\t19612390000.00\t196860.00\n横浜市神奈川区\t58\t536\t32669910000.00\t104730.00\n茅ヶ崎市\t58\t928\t36234955500.00\t195925.00\n横浜市中区\t54\t280\t28187220000.00\t56870.00\n川崎市川崎区\t51\t305\t21556500000.00\t46990.00\n横浜市南区\t50\t455\t22098100000.00\t77570.00\n相模原市緑区\t45\t442\t10986240000.00\t149670.00\n鎌倉市\t43\t754\t40702650000.00\t177510.00\n横浜市青葉区\t41\t452\t33133601000.00\t110600.00\n横浜市旭区\t40\t669\t24250253000.00\t145655.00\n横浜市保土ケ谷区\t39\t478\t17176830000.00\t103510.00\n横浜市都筑区\t39\t276\t19492100000.00\t81885.00\n相模原市中央区\t39\t576\t21115180000.00\t138550.00\n川崎市中原区\t37\t321\t26074620000.00\t44410.00\n",
+  "stderr": "",
+  "execution_time_ms": 1548
+}

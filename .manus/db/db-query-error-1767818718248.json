@@ -1,0 +1,8 @@
+{
+  "query": "SELECT DISTINCT property_type FROM aggregated_real_estate_data ORDER BY property_type;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT property_type FROM aggregated_real_estate_data ORDER BY property_type;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'property_type' in 'field list'"
+  ]
+}

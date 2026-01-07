@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(DISTINCT prefecture) as prefecture_count FROM aggregated_real_estate_data;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(DISTINCT prefecture) as prefecture_count FROM aggregated_real_estate_data;",
+  "rows": [
+    {
+      "prefecture_count": "15"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture_count\n15\n",
+  "stderr": "",
+  "execution_time_ms": 1600
+}

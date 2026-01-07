@@ -1,0 +1,70 @@
+{
+  "query": "SELECT DISTINCT prefecture FROM aggregated_real_estate_data ORDER BY prefecture LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT prefecture FROM aggregated_real_estate_data ORDER BY prefecture LIMIT 20;",
+  "rows": [
+    {
+      "prefecture": "三重県"
+    },
+    {
+      "prefecture": "京都府"
+    },
+    {
+      "prefecture": "兵庫県"
+    },
+    {
+      "prefecture": "北海道"
+    },
+    {
+      "prefecture": "千葉県"
+    },
+    {
+      "prefecture": "埼玉県"
+    },
+    {
+      "prefecture": "大阪府"
+    },
+    {
+      "prefecture": "宮城県"
+    },
+    {
+      "prefecture": "山形県"
+    },
+    {
+      "prefecture": "岡山県"
+    },
+    {
+      "prefecture": "岩手県"
+    },
+    {
+      "prefecture": "広島県"
+    },
+    {
+      "prefecture": "愛知県"
+    },
+    {
+      "prefecture": "新潟県"
+    },
+    {
+      "prefecture": "東京都"
+    },
+    {
+      "prefecture": "栃木県"
+    },
+    {
+      "prefecture": "滋賀県"
+    },
+    {
+      "prefecture": "神奈川県"
+    },
+    {
+      "prefecture": "福岡県"
+    },
+    {
+      "prefecture": "福島県"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\n三重県\n京都府\n兵庫県\n北海道\n千葉県\n埼玉県\n大阪府\n宮城県\n山形県\n岡山県\n岩手県\n広島県\n愛知県\n新潟県\n東京都\n栃木県\n滋賀県\n神奈川県\n福岡県\n福島県\n",
+  "stderr": "",
+  "execution_time_ms": 1591
+}

@@ -1,0 +1,310 @@
+{
+  "query": "SELECT prefecture, city, district, propertyType, buildingAgeGroup, transactionCount, averagePriceYen, averageAreaM2 FROM aggregated_real_estate_data WHERE prefecture = '東京都' LIMIT 30;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, city, district, propertyType, buildingAgeGroup, transactionCount, averagePriceYen, averageAreaM2 FROM aggregated_real_estate_data WHERE prefecture = '東京都' LIMIT 30;",
+  "rows": [
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "115",
+      "averagePriceYen": "209211032",
+      "averageAreaM2": "84.94"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "74",
+      "averagePriceYen": "211826840",
+      "averageAreaM2": "173.28"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "94",
+      "averagePriceYen": "217388636",
+      "averageAreaM2": "80.05"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "10～15年",
+      "transactionCount": "39",
+      "averagePriceYen": "220551692",
+      "averageAreaM2": "74.23"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "5～10年",
+      "transactionCount": "55",
+      "averagePriceYen": "212477499",
+      "averageAreaM2": "169.24"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "10～15年",
+      "transactionCount": "42",
+      "averagePriceYen": "210420530",
+      "averageAreaM2": "178.93"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "25～30年",
+      "transactionCount": "45",
+      "averagePriceYen": "194552349",
+      "averageAreaM2": "182.51"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "348",
+      "averagePriceYen": "358785482",
+      "averageAreaM2": "304.84"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "15～20年",
+      "transactionCount": "53",
+      "averagePriceYen": "208789235",
+      "averageAreaM2": "76.51"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "0～5年",
+      "transactionCount": "46",
+      "averagePriceYen": "205334596",
+      "averageAreaM2": "181.98"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "350",
+      "averagePriceYen": "366442903",
+      "averageAreaM2": "299.81"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "371",
+      "averagePriceYen": "372258074",
+      "averageAreaM2": "294.20"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "20～25年",
+      "transactionCount": "40",
+      "averagePriceYen": "220561613",
+      "averageAreaM2": "76.65"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "0～5年",
+      "transactionCount": "44",
+      "averagePriceYen": "203953018",
+      "averageAreaM2": "81.36"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "5～10年",
+      "transactionCount": "44",
+      "averagePriceYen": "208606445",
+      "averageAreaM2": "189.36"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "77",
+      "averagePriceYen": "205248675",
+      "averageAreaM2": "186.17"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "105",
+      "averagePriceYen": "203983414",
+      "averageAreaM2": "172.42"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "5～10年",
+      "transactionCount": "49",
+      "averagePriceYen": "212901314",
+      "averageAreaM2": "75.02"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "95",
+      "averagePriceYen": "192067883",
+      "averageAreaM2": "167.48"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "5～10年",
+      "transactionCount": "47",
+      "averagePriceYen": "216282419",
+      "averageAreaM2": "81.13"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "103",
+      "averagePriceYen": "205838801",
+      "averageAreaM2": "79.14"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "334",
+      "averagePriceYen": "375759035",
+      "averageAreaM2": "288.75"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "10～15年",
+      "transactionCount": "49",
+      "averagePriceYen": "205229832",
+      "averageAreaM2": "86.45"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "10～15年",
+      "transactionCount": "44",
+      "averagePriceYen": "204943513",
+      "averageAreaM2": "182.80"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "0～5年",
+      "transactionCount": "41",
+      "averagePriceYen": "224951289",
+      "averageAreaM2": "80.10"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "30年以上",
+      "transactionCount": "92",
+      "averagePriceYen": "211772921",
+      "averageAreaM2": "78.83"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "5～10年",
+      "transactionCount": "36",
+      "averagePriceYen": "181303679",
+      "averageAreaM2": "74.14"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "25～30年",
+      "transactionCount": "50",
+      "averagePriceYen": "216808738",
+      "averageAreaM2": "167.00"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "20～25年",
+      "transactionCount": "47",
+      "averagePriceYen": "209097765",
+      "averageAreaM2": "79.15"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "20～25年",
+      "transactionCount": "39",
+      "averagePriceYen": "225835172",
+      "averageAreaM2": "176.15"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcity\tdistrict\tpropertyType\tbuildingAgeGroup\ttransactionCount\taveragePriceYen\taverageAreaM2\n東京都\t千代田区\t千代田区\tマンション\t30年以上\t115\t209211032\t84.94\n東京都\t千代田区\t千代田区\t一戸建て\t30年以上\t74\t211826840\t173.28\n東京都\t新宿区\t新宿区\tマンション\t30年以上\t94\t217388636\t80.05\n東京都\t中央区\t中央区\tマンション\t10～15年\t39\t220551692\t74.23\n東京都\t渋谷区\t渋谷区\t一戸建て\t5～10年\t55\t212477499\t169.24\n東京都\t千代田区\t千代田区\t一戸建て\t10～15年\t42\t210420530\t178.93\n東京都\t千代田区\t千代田区\t一戸建て\t25～30年\t45\t194552349\t182.51\n東京都\t港区\t港区\t土地\t不明\t348\t358785482\t304.84\n東京都\t渋谷区\t渋谷区\tマンション\t15～20年\t53\t208789235\t76.51\n東京都\t中央区\t中央区\t一戸建て\t0～5年\t46\t205334596\t181.98\n東京都\t千代田区\t千代田区\t土地\t不明\t350\t366442903\t299.81\n東京都\t渋谷区\t渋谷区\t土地\t不明\t371\t372258074\t294.20\n東京都\t港区\t港区\tマンション\t20～25年\t40\t220561613\t76.65\n東京都\t港区\t港区\tマンション\t0～5年\t44\t203953018\t81.36\n東京都\t千代田区\t千代田区\t一戸建て\t5～10年\t44\t208606445\t189.36\n東京都\t港区\t港区\t一戸建て\t30年以上\t77\t205248675\t186.17\n東京都\t新宿区\t新宿区\t一戸建て\t30年以上\t105\t203983414\t172.42\n東京都\t中央区\t中央区\tマンション\t5～10年\t49\t212901314\t75.02\n東京都\t渋谷区\t渋谷区\t一戸建て\t30年以上\t95\t192067883\t167.48\n東京都\t港区\t港区\tマンション\t5～10年\t47\t216282419\t81.13\n東京都\t港区\t港区\tマンション\t30年以上\t103\t205838801\t79.14\n東京都\t新宿区\t新宿区\t土地\t不明\t334\t375759035\t288.75\n東京都\t渋谷区\t渋谷区\tマンション\t10～15年\t49\t205229832\t86.45\n東京都\t港区\t港区\t一戸建て\t10～15年\t44\t204943513\t182.80\n東京都\t新宿区\t新宿区\tマンション\t0～5年\t41\t224951289\t80.10\n東京都\t渋谷区\t渋谷区\tマンション\t30年以上\t92\t211772921\t78.83\n東京都\t渋谷区\t渋谷区\tマンション\t5～10年\t36\t181303679\t74.14\n東京都\t中央区\t中央区\t一戸建て\t25～30年\t50\t216808738\t167.00\n東京都\t中央区\t中央区\tマンション\t20～25年\t47\t209097765\t79.15\n東京都\t中央区\t中央区\t一戸建て\t20～25年\t39\t225835172\t176.15\n",
+  "stderr": "",
+  "execution_time_ms": 1505
+}

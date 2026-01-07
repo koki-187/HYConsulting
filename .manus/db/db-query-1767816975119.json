@@ -1,0 +1,31 @@
+{
+  "query": "SELECT \n  propertyType,\n  COUNT(*) as record_count,\n  SUM(transactionCount) as total_transactions,\n  SUM(totalPriceYen) as total_price_yen,\n  SUM(totalAreaM2) as total_area_m2\nFROM aggregated_real_estate_data\nGROUP BY propertyType\nORDER BY record_count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  propertyType,\n  COUNT(*) as record_count,\n  SUM(transactionCount) as total_transactions,\n  SUM(totalPriceYen) as total_price_yen,\n  SUM(totalAreaM2) as total_area_m2\nFROM aggregated_real_estate_data\nGROUP BY propertyType\nORDER BY record_count DESC;",
+  "rows": [
+    {
+      "propertyType": "土地",
+      "record_count": "81682",
+      "total_transactions": "626088",
+      "total_price_yen": "11132709689180.00",
+      "total_area_m2": "234085480.00"
+    },
+    {
+      "propertyType": "一戸建て",
+      "record_count": "2418",
+      "total_transactions": "9138",
+      "total_price_yen": "395194911200.00",
+      "total_area_m2": "1840935.00"
+    },
+    {
+      "propertyType": "マンション",
+      "record_count": "2",
+      "total_transactions": "2",
+      "total_price_yen": "184000000.00",
+      "total_area_m2": "140.00"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\trecord_count\ttotal_transactions\ttotal_price_yen\ttotal_area_m2\n土地\t81682\t626088\t11132709689180.00\t234085480.00\n一戸建て\t2418\t9138\t395194911200.00\t1840935.00\nマンション\t2\t2\t184000000.00\t140.00\n",
+  "stderr": "",
+  "execution_time_ms": 1619
+}

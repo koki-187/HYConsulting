@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as kanagawa_count FROM aggregated_real_estate_data WHERE prefecture = '神奈川県';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as kanagawa_count FROM aggregated_real_estate_data WHERE prefecture = '神奈川県';",
+  "rows": [
+    {
+      "kanagawa_count": "2002"
+    }
+  ],
+  "messages": [],
+  "stdout": "kanagawa_count\n2002\n",
+  "stderr": "",
+  "execution_time_ms": 1550
+}

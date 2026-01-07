@@ -1,29 +1,31 @@
-import fetch from 'node-fetch';
+import { calculateAssessment } from "./server/assessment-aggregated.ts";
 
-const testData = {
-  propertyType: 'house',
-  prefecture: '北海道',
-  city: '札幌市',
-  area: null,
-  buildingYear: null,
-  stationName: null,
-  walkingMinutes: null
-};
-
-console.log('Testing assessment API with:', JSON.stringify(testData, null, 2));
+console.log("=== 査定APIテスト開始 ===");
+console.log("入力データ:");
+console.log("- 都道府県: 東京都");
+console.log("- 市区町村: 千代田区");
+console.log("- 物件種別: マンション (condo)");
+console.log("- 面積: 70㎡");
+console.log("- 築年数: 15年");
+console.log("");
 
 try {
-  const response = await fetch('http://localhost:3000/api/trpc/assessment.getEstimate', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(testData)
+  const result = await calculateAssessment({
+    prefecture: "東京都",
+    city: "千代田区",
+    propertyType: "condo",
+    buildingAreaM2: 70,
+    buildingYear: 2011, // 2026 - 15 = 2011
   });
   
-  console.log('Response status:', response.status);
-  const text = await response.text();
-  console.log('Response body:', text);
+  console.log("✅ 査定成功！");
+  console.log("");
+  console.log("結果:");
+  console.log(JSON.stringify(result, null, 2));
 } catch (error) {
-  console.error('Error:', error.message);
+  console.error("❌ 査定エラー:");
+  console.error(error);
+  console.error("");
+  console.error("スタックトレース:");
+  console.error(error.stack);
 }

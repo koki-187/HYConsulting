@@ -1,0 +1,130 @@
+{
+  "query": "SELECT prefecture, city, district, propertyType, COUNT(*) as count, SUM(transactionCount) as total_transactions FROM aggregated_real_estate_data WHERE prefecture = '東京都' GROUP BY prefecture, city, district, propertyType ORDER BY total_transactions DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, city, district, propertyType, COUNT(*) as count, SUM(transactionCount) as total_transactions FROM aggregated_real_estate_data WHERE prefecture = '東京都' GROUP BY prefecture, city, district, propertyType ORDER BY total_transactions DESC LIMIT 20;",
+  "rows": [
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "土地",
+      "count": "1",
+      "total_transactions": "371"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "マンション",
+      "count": "7",
+      "total_transactions": "366"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "一戸建て",
+      "count": "7",
+      "total_transactions": "366"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "マンション",
+      "count": "7",
+      "total_transactions": "359"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "マンション",
+      "count": "7",
+      "total_transactions": "356"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "土地",
+      "count": "1",
+      "total_transactions": "354"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "中央区",
+      "district": "中央区",
+      "propertyType": "一戸建て",
+      "count": "7",
+      "total_transactions": "350"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "土地",
+      "count": "1",
+      "total_transactions": "350"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "一戸建て",
+      "count": "7",
+      "total_transactions": "349"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "土地",
+      "count": "1",
+      "total_transactions": "348"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "土地",
+      "count": "1",
+      "total_transactions": "334"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "渋谷区",
+      "district": "渋谷区",
+      "propertyType": "マンション",
+      "count": "7",
+      "total_transactions": "332"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "新宿区",
+      "district": "新宿区",
+      "propertyType": "マンション",
+      "count": "7",
+      "total_transactions": "328"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "港区",
+      "district": "港区",
+      "propertyType": "一戸建て",
+      "count": "7",
+      "total_transactions": "321"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "district": "千代田区",
+      "propertyType": "一戸建て",
+      "count": "7",
+      "total_transactions": "321"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcity\tdistrict\tpropertyType\tcount\ttotal_transactions\n東京都\t渋谷区\t渋谷区\t土地\t1\t371\n東京都\t港区\t港区\tマンション\t7\t366\n東京都\t渋谷区\t渋谷区\t一戸建て\t7\t366\n東京都\t千代田区\t千代田区\tマンション\t7\t359\n東京都\t中央区\t中央区\tマンション\t7\t356\n東京都\t中央区\t中央区\t土地\t1\t354\n東京都\t中央区\t中央区\t一戸建て\t7\t350\n東京都\t千代田区\t千代田区\t土地\t1\t350\n東京都\t新宿区\t新宿区\t一戸建て\t7\t349\n東京都\t港区\t港区\t土地\t1\t348\n東京都\t新宿区\t新宿区\t土地\t1\t334\n東京都\t渋谷区\t渋谷区\tマンション\t7\t332\n東京都\t新宿区\t新宿区\tマンション\t7\t328\n東京都\t港区\t港区\t一戸建て\t7\t321\n東京都\t千代田区\t千代田区\t一戸建て\t7\t321\n",
+  "stderr": "",
+  "execution_time_ms": 1526
+}

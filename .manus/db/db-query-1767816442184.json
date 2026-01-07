@@ -1,0 +1,55 @@
+{
+  "query": "SELECT DISTINCT prefecture FROM aggregated_real_estate_data ORDER BY prefecture;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT prefecture FROM aggregated_real_estate_data ORDER BY prefecture;",
+  "rows": [
+    {
+      "prefecture": "北海道"
+    },
+    {
+      "prefecture": "千葉県"
+    },
+    {
+      "prefecture": "埼玉県"
+    },
+    {
+      "prefecture": "宮城県"
+    },
+    {
+      "prefecture": "山形県"
+    },
+    {
+      "prefecture": "岩手県"
+    },
+    {
+      "prefecture": "愛知県"
+    },
+    {
+      "prefecture": "栃木県"
+    },
+    {
+      "prefecture": "神奈川県"
+    },
+    {
+      "prefecture": "福岡県"
+    },
+    {
+      "prefecture": "福島県"
+    },
+    {
+      "prefecture": "秋田県"
+    },
+    {
+      "prefecture": "群馬県"
+    },
+    {
+      "prefecture": "茨城県"
+    },
+    {
+      "prefecture": "青森県"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\n北海道\n千葉県\n埼玉県\n宮城県\n山形県\n岩手県\n愛知県\n栃木県\n神奈川県\n福岡県\n福島県\n秋田県\n群馬県\n茨城県\n青森県\n",
+  "stderr": "",
+  "execution_time_ms": 1577
+}
