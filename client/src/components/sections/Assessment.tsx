@@ -14,7 +14,7 @@ export default function Assessment() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -31,52 +31,52 @@ export default function Assessment() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading"
+            className="text-3xl lg:text-4xl font-bold text-slate-900 mb-10 font-heading"
           >
             無料不動産査定
           </motion.h2>
           
-          {/* Pattern 5 (拡大版) + Pattern 4 (パルス効果) + スプリングアニメーション統一 */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 my-6">
-            {/* 匿名・無料 Badge - 拡大版 + パルス効果 */}
+          {/* 拡大版バッジ + 強化スプリングアニメーション */}
+          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 mb-12">
+            {/* 匿名・無料 Badge - さらに拡大 + 強化スプリング */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-3 px-7 py-4 rounded-3xl bg-white border-2 border-pink-400 shadow-xl hover:shadow-2xl transition-all animate-pulse"
+              transition={{ delay: 0.2, type: "spring", stiffness: 150, damping: 10 }}
+              className="inline-flex items-center gap-4 px-9 py-5 rounded-3xl bg-white border-2 border-pink-400 shadow-2xl hover:shadow-3xl transition-all animate-pulse"
             >
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-pink-500 shadow-lg">
-                <Shield className="w-8 h-8 text-white" fill="white" strokeWidth={0} />
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-pink-500 shadow-xl">
+                <Shield className="w-10 h-10 text-white" fill="white" strokeWidth={0} />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-pink-700 font-bold text-lg tracking-wide">
+                <span className="text-pink-700 font-bold text-xl tracking-wide">
                   匿名・無料
                 </span>
-                <span className="text-pink-400 text-[10px] font-medium uppercase tracking-wider">
+                <span className="text-pink-400 text-[11px] font-medium uppercase tracking-wider">
                   Anonymous & Free
                 </span>
               </div>
             </motion.div>
 
-            {/* 最短60秒 Badge - 拡大版 + パルス効果 */}
+            {/* 最短60秒 Badge - さらに拡大 + 強化スプリング */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.7 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-3 px-7 py-4 rounded-3xl bg-white border-2 border-blue-400 shadow-xl hover:shadow-2xl transition-all animate-pulse"
+              transition={{ delay: 0.3, type: "spring", stiffness: 150, damping: 10 }}
+              className="inline-flex items-center gap-4 px-9 py-5 rounded-3xl bg-white border-2 border-blue-400 shadow-2xl hover:shadow-3xl transition-all animate-pulse"
             >
-              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 shadow-lg">
-                <svg className="w-8 h-8 text-white" fill="white" viewBox="0 0 20 20">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-500 shadow-xl">
+                <svg className="w-10 h-10 text-white" fill="white" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-blue-700 font-bold text-lg tracking-wide">
+                <span className="text-blue-700 font-bold text-xl tracking-wide">
                   最短60秒で入力完了
                 </span>
-                <span className="text-blue-400 text-[10px] font-medium tracking-wider">
+                <span className="text-blue-400 text-[11px] font-medium tracking-wider">
                   その場で結果表示
                 </span>
               </div>
