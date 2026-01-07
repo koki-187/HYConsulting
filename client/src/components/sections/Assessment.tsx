@@ -46,7 +46,7 @@ export default function Assessment() {
                 damping: 15,
                 delay: 0.3
               }}
-              className="absolute -top-16 left-1/2 -translate-x-1/2 group"
+              className="absolute -top-20 sm:-top-24 md:-top-28 lg:-top-16 left-1/2 -translate-x-1/2 group z-10"
             >
               {/* Outer glow effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-red-500/30 via-rose-500/30 to-pink-500/30 rounded-3xl blur-xl animate-pulse"></div>
@@ -60,7 +60,7 @@ export default function Assessment() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 
                 {/* Content */}
-                <div className="relative px-8 py-4 flex items-center gap-3">
+                <div className="relative px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center gap-2 sm:gap-3">
                   {/* Icon with animation */}
                   <motion.div
                     animate={{ 
@@ -73,15 +73,15 @@ export default function Assessment() {
                       repeatDelay: 3
                     }}
                   >
-                    <Shield className="w-6 h-6 text-white drop-shadow-lg" strokeWidth={2.5} />
+                    <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-white drop-shadow-lg" strokeWidth={2.5} />
                   </motion.div>
                   
                   {/* Text */}
                   <div className="flex flex-col">
-                    <span className="text-white font-extrabold text-2xl tracking-wider drop-shadow-lg" style={{ letterSpacing: '0.15em' }}>
+                    <span className="text-white font-extrabold text-xl sm:text-2xl tracking-wider drop-shadow-lg" style={{ letterSpacing: '0.15em' }}>
                       匿名・無料
                     </span>
-                    <span className="text-white/90 text-xs font-medium tracking-widest uppercase" style={{ letterSpacing: '0.2em' }}>
+                    <span className="text-white/90 text-[10px] sm:text-xs font-medium tracking-widest uppercase" style={{ letterSpacing: '0.2em' }}>
                       Anonymous & Free
                     </span>
                   </div>
@@ -98,7 +98,7 @@ export default function Assessment() {
                       ease: "easeInOut"
                     }}
                   >
-                    <Sparkles className="w-5 h-5 text-yellow-300 drop-shadow-lg" fill="currentColor" />
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-300 drop-shadow-lg" fill="currentColor" />
                   </motion.div>
                 </div>
                 
@@ -111,23 +111,24 @@ export default function Assessment() {
                 <div className="w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] border-t-pink-600 drop-shadow-lg"></div>
               </div>
             </motion.div>
-            <span className="mt-8 block">無料不動産査定</span>
+            <span className="mt-16 sm:mt-20 md:mt-24 lg:mt-12 block">無料不動産査定</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 font-sans max-w-3xl mx-auto"
+            className="text-base sm:text-lg text-slate-600 font-sans max-w-3xl mx-auto leading-relaxed"
           >
-            たった３つの物件情報を入力するだけで瞬時に概算価格を算出。<br className="hidden lg:block" />
-            国土交通省のデータベースと連動し膨大な取引事例と公的データから概算価格を導き出します。<br className="hidden lg:block" />
-            <br className="hidden lg:block" />
-            <span className="text-base font-semibold text-slate-700">あなたの不動産、今いくら？</span><br className="hidden lg:block" />
-            <br className="hidden lg:block" />
-            <span className="text-base font-semibold text-slate-700">かんたん無料！概算価格査定</span><br className="hidden lg:block" />
-            <span className="text-sm text-slate-500">※詳細情報を入力する程、査定結果の精度があがります。</span><br className="hidden lg:block" />
-            <span className="text-sm text-slate-500">※入力完了後、その場で結果が表示されます。</span>
+            たった３つの物件情報を入力するだけで瞬時に概算価格を算出。
+            <br className="block my-2" />
+            国土交通省のデータベースと連動し膨大な取引事例と公的データから概算価格を導き出します。
+            <br className="block my-3" />
+            <span className="block text-sm sm:text-base font-semibold text-slate-700 my-2">あなたの不動産、今いくら？</span>
+            <span className="block text-sm sm:text-base font-semibold text-slate-700 my-2">かんたん無料！概算価格査定</span>
+            <br className="block my-2" />
+            <span className="block text-xs sm:text-sm text-slate-500 my-1">※詳細情報を入力する程、査定結果の精度があがります。</span>
+            <span className="block text-xs sm:text-sm text-slate-500 my-1">※入力完了後、その場で結果が表示されます。</span>
           </motion.p>
         </div>
 
