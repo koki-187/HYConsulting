@@ -1,0 +1,8 @@
+{
+  "query": "SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = 'public'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = 'public'",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1142 (42000) at line 1: SELECT command denied to user '4Rc7drD6ZCiTxbp.6c4f27fb1d84'@'%' for table 'pg_tables'"
+  ]
+}
