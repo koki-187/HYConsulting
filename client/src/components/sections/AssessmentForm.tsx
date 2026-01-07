@@ -147,15 +147,6 @@ export default function AssessmentForm() {
         
         {/* Section Header */}
         <div className="text-center mb-12">
-          <motion.div 
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 bg-white border border-accent/30 px-6 py-2 rounded-full mb-6 shadow-sm"
-          >
-            <Database className="w-5 h-5 text-accent" />
-            <span className="text-primary font-bold tracking-wide">国土交通省 地価公示データ連動</span>
-          </motion.div>
           
           <h2 className="text-3xl lg:text-5xl font-bold text-primary mb-6 font-heading leading-tight">
             あなたの不動産、<br className="md:hidden" />
@@ -163,11 +154,11 @@ export default function AssessmentForm() {
               今いくら？
               <span className="absolute bottom-1 left-0 w-full h-3 bg-accent/20 -z-10 transform -skew-x-12" />
             </span>
-            で即時査定
+            即時査定
           </h2>
           <p className="text-lg text-slate-600 font-sans max-w-2xl mx-auto">
             物件情報を入力するだけで、膨大な取引事例と公的データを照合。<br />
-            <span className="font-bold text-primary">適正価格を瞬時に算出</span>します。匿名・無料です。
+            <span className="font-bold text-primary">概算価格を瞬時に算出</span>します。
           </p>
         </div>
 
@@ -183,12 +174,10 @@ export default function AssessmentForm() {
             <div className="relative z-10">
               <h3 className="text-xl lg:text-2xl font-bold text-white font-heading flex items-center gap-3">
                 <Search className="w-6 h-6 text-accent" />
-                不動産価格を知りたい方はまずはオンライン査定
+                不動産価格を知りたい方はまずは即時査定
               </h3>
               <p className="text-primary-foreground/80 text-sm mt-1">最短60秒で入力完了・その場で結果表示</p>
-              <div className="mt-2 inline-block bg-white/20 px-3 py-1 rounded text-xs text-white font-bold border border-white/30">
-                国土交通省「不動産取引価格情報」データベース連動
-              </div>
+
             </div>
             {/* Decoration */}
             <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-white/10 to-transparent transform skew-x-12" />

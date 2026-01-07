@@ -43,16 +43,9 @@ export default function Assessment() {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg text-slate-600 font-sans max-w-3xl mx-auto leading-relaxed"
           >
-            たった３つの物件情報を入力するだけで瞬時に概算価格を算出。
-            <br className="block my-2" />
-            国土交通省のデータベースと連動し膨大な取引事例と公的データから概算価格を導き出します。
-            <br className="block my-3" />
-            
-            {/* "あなたの不動産、今いくら？" with glassmorphism badge */}
+            {/* Glassmorphism badges - 匿名・無料 and 最短60秒 */}
             <span className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-base sm:text-lg font-semibold text-slate-700 my-4">
-              <span>あなたの不動産、今いくら？</span>
-              
-              {/* Glassmorphism Badge */}
+              {/* Glassmorphism Badge - 匿名・無料 */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -113,12 +106,73 @@ export default function Assessment() {
                   }}
                 />
               </motion.div>
+              
+              {/* 最短60秒で入力完了・その場で結果表示 Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 15,
+                  delay: 0.5
+                }}
+                className="relative inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-lg group"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.25), rgba(29, 78, 216, 0.3))',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255, 255, 255, 0.4)'
+                }}
+              >
+                {/* Clock icon */}
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                </svg>
+                
+                {/* Text content */}
+                <div className="flex flex-col leading-tight">
+                  <span className="text-blue-700 font-extrabold text-sm sm:text-base tracking-wide drop-shadow" style={{ letterSpacing: '0.05em' }}>
+                    最短60秒で入力完了
+                  </span>
+                  <span className="text-blue-600/80 text-[8px] sm:text-[9px] font-medium tracking-wider" style={{ letterSpacing: '0.1em' }}>
+                    その場で結果表示
+                  </span>
+                </div>
+                
+                {/* Sparkle icon */}
+                <motion.div
+                  animate={{ 
+                    opacity: [0.5, 1, 0.5],
+                    scale: [0.8, 1.2, 0.8]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                >
+                  <Sparkles className="w-4 h-4 text-yellow-500 drop-shadow" fill="currentColor" />
+                </motion.div>
+                
+                {/* Animated shine effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full"
+                  animate={{
+                    x: ['-100%', '200%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    repeatDelay: 2,
+                    delay: 0.5
+                  }}
+                />
+              </motion.div>
             </span>
-            
-            <span className="block text-base sm:text-lg font-semibold text-slate-700 my-2">かんたん無料！概算価格査定</span>
-            <br className="block my-2" />
-            <span className="block text-xs sm:text-sm text-slate-500 my-1">※詳細情報を入力する程、査定結果の精度があがります。</span>
-            <span className="block text-xs sm:text-sm text-slate-500 my-1">※入力完了後、その場で結果が表示されます。</span>
           </motion.p>
         </div>
 
@@ -127,21 +181,7 @@ export default function Assessment() {
           <AssessmentForm />
         </div>
 
-        {/* Feature Highlights - Data Source Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md border border-slate-200">
-            <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-              <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-            </svg>
-            <span className="text-sm font-medium text-slate-700">国土交通省 地価公示データ連動</span>
-          </div>
-        </motion.div>
+
 
         {/* CTA Section */}
         <motion.div
@@ -152,11 +192,11 @@ export default function Assessment() {
           className="mt-16 text-center"
         >
           <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-4">
-            あなたの不動産、<span className="text-blue-600">今いくら？</span>で即時査定
+            あなたの不動産、<span className="text-blue-600">今いくら？</span>即時査定
           </h3>
           <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-8">
             物件情報を入力するだけで、膨大な取引事例と公的データを照合。<br />
-            <span className="font-semibold text-blue-600">適正価格を瞬時に算出</span>します。匿名・無料です。
+            <span className="font-semibold text-blue-600">概算価格を瞬時に算出</span>します。
           </p>
           
           {/* Info Box */}
@@ -168,14 +208,37 @@ export default function Assessment() {
                 </svg>
               </div>
               <div className="text-left">
-                <h4 className="text-lg font-bold text-slate-900 mb-2">不動産価格を知りたい方はまずはオンライン査定</h4>
-                <p className="text-slate-600 mb-4">最短60秒で入力完了・その場で結果表示</p>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm border border-blue-200">
-                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                    <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm font-medium text-slate-700">国土交通省「不動産取引価格情報」データベース連動</span>
+                <h4 className="text-lg font-bold text-slate-900 mb-2">不動産価格を知りたい方はまずは即時査定</h4>
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  {/* 匿名・無料 Badge */}
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full shadow-md"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(244, 63, 94, 0.25), rgba(220, 38, 38, 0.3))',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(255, 255, 255, 0.4)'
+                    }}
+                  >
+                    <Shield className="w-4 h-4 text-pink-600" fill="currentColor" />
+                    <span className="text-pink-700 font-bold text-xs tracking-wide">匿名・無料</span>
+                  </div>
+                  
+                  {/* 最短60秒 Badge */}
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full shadow-md"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(37, 99, 235, 0.25), rgba(29, 78, 216, 0.3))',
+                      backdropFilter: 'blur(12px)',
+                      WebkitBackdropFilter: 'blur(12px)',
+                      border: '1px solid rgba(255, 255, 255, 0.4)'
+                    }}
+                  >
+                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-blue-700 font-bold text-xs tracking-wide">最短60秒で入力完了・その場で結果表示</span>
+                  </div>
                 </div>
               </div>
             </div>
