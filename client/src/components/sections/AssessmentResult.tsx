@@ -27,6 +27,17 @@ interface AssessmentResultProps {
       avgPricePerM2: number;
       marketTrend: string;
     };
+    confidenceBreakdown?: {
+      totalScore: number;
+      dataVolumeScore: number;
+      locationMatchScore: number;
+      buildingAgeSimilarityScore: number;
+      propertyTypeMatchScore: number;
+      dataVolumeDetails: string;
+      locationMatchDetails: string;
+      buildingAgeSimilarityDetails: string;
+      propertyTypeMatchDetails: string;
+    };
   };
   propertyData: {
     propertyType: string;
@@ -196,22 +207,95 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             </div>
           )}
 
-          {/* Confidence Level */}
-          {result.confidence && (
-            <div className="space-y-2">
+          {/* Confidence Level with Breakdown */}
+          {(result.confidence || result.confidenceBreakdown) && (
+            <div className="space-y-4">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm font-medium text-slate-700">査定の信頼度</span>
-                <span className="text-2xl font-bold text-primary">{result.confidence}%</span>
+                <span className="text-2xl font-bold text-primary">
+                  {result.confidenceBreakdown?.totalScore || result.confidence}%
+                </span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2">
                 <div
                   className="bg-gradient-to-r from-accent to-primary h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${result.confidence}%` }}
+                  style={{ width: `${result.confidenceBreakdown?.totalScore || result.confidence}%` }}
                 />
               </div>
-              <p className="text-xs text-slate-600 mt-2">
-                信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
-              </p>
+              
+              {/* Confidence Breakdown Details */}
+              {result.confidenceBreakdown && (
+                <div className="bg-white rounded-lg border border-slate-200 p-4 mt-4">
+                  <h4 className="font-bold text-slate-700 mb-4 text-sm">信頼度の詳細内訳</h4>
+                  <div className="space-y-4">
+                    {/* Data Volume Score */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-slate-600">参照データ件数</span>
+                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.dataVolumeScore}%</span>
+                      </div>
+                      <div className="w-full bg-slate-100 rounded-full h-1.5">
+                        <div
+                          className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
+                          style={{ width: `${(result.confidenceBreakdown.dataVolumeScore / 25) * 100}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.dataVolumeDetails}</p>
+                    </div>
+
+                    {/* Location Match Score */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-slate-600">地域一致度</span>
+                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.locationMatchScore}%</span>
+                      </div>
+                      <div className="w-full bg-slate-100 rounded-full h-1.5">
+                        <div
+                          className="bg-green-500 h-1.5 rounded-full transition-all duration-500"
+                          style={{ width: `${(result.confidenceBreakdown.locationMatchScore / 25) * 100}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.locationMatchDetails}</p>
+                    </div>
+
+                    {/* Building Age Similarity Score */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-slate-600">築年数類似性</span>
+                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.buildingAgeSimilarityScore}%</span>
+                      </div>
+                      <div className="w-full bg-slate-100 rounded-full h-1.5">
+                        <div
+                          className="bg-purple-500 h-1.5 rounded-full transition-all duration-500"
+                          style={{ width: `${(result.confidenceBreakdown.buildingAgeSimilarityScore / 25) * 100}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.buildingAgeSimilarityDetails}</p>
+                    </div>
+
+                    {/* Property Type Match Score */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-medium text-slate-600">物件種別一致度</span>
+                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.propertyTypeMatchScore}%</span>
+                      </div>
+                      <div className="w-full bg-slate-100 rounded-full h-1.5">
+                        <div
+                          className="bg-orange-500 h-1.5 rounded-full transition-all duration-500"
+                          style={{ width: `${(result.confidenceBreakdown.propertyTypeMatchScore / 25) * 100}%` }}
+                        />
+                      </div>
+                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.propertyTypeMatchDetails}</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              {!result.confidenceBreakdown && (
+                <p className="text-xs text-slate-600 mt-2">
+                  信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
+                </p>
+              )}
             </div>
           )}
 

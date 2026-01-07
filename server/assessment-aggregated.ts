@@ -46,6 +46,17 @@ export interface AssessmentResult {
     forecast3Year: number;
     forecast5Year: number;
   };
+  confidenceBreakdown: {
+    totalScore: number;
+    dataVolumeScore: number;
+    locationMatchScore: number;
+    buildingAgeSimilarityScore: number;
+    propertyTypeMatchScore: number;
+    dataVolumeDetails: string;
+    locationMatchDetails: string;
+    buildingAgeSimilarityDetails: string;
+    propertyTypeMatchDetails: string;
+  };
 }
 
 /**
@@ -311,6 +322,126 @@ function calculateAdjustments(input: AssessmentInput, comps: any[]): {
 }
 
 /**
+ * Calculate confidence breakdown scores
+ */
+function calculateConfidenceBreakdown(
+  input: AssessmentInput,
+  comps: any[],
+  totalTransactions: number
+): {
+  totalScore: number;
+  dataVolumeScore: number;
+  locationMatchScore: number;
+  buildingAgeSimilarityScore: number;
+  propertyTypeMatchScore: number;
+  dataVolumeDetails: string;
+  locationMatchDetails: string;
+  buildingAgeSimilarityDetails: string;
+  propertyTypeMatchDetails: string;
+} {
+  // 1. Data Volume Score (0-25%)
+  let dataVolumeScore = 0;
+  let dataVolumeDetails = "";
+  if (comps.length >= 100) {
+    dataVolumeScore = 25;
+    dataVolumeDetails = `参照データ${comps.length}件（取引${totalTransactions}件）- 非常に豊富なデータ`;
+  } else if (comps.length >= 50) {
+    dataVolumeScore = 20;
+    dataVolumeDetails = `参照データ${comps.length}件（取引${totalTransactions}件）- 豊富なデータ`;
+  } else if (comps.length >= 20) {
+    dataVolumeScore = 15;
+    dataVolumeDetails = `参照データ${comps.length}件（取引${totalTransactions}件）- 十分なデータ`;
+  } else if (comps.length >= 10) {
+    dataVolumeScore = 10;
+    dataVolumeDetails = `参照データ${comps.length}件（取引${totalTransactions}件）- やや少ないデータ`;
+  } else {
+    dataVolumeScore = 5;
+    dataVolumeDetails = `参照データ${comps.length}件（取引${totalTransactions}件）- 限定的なデータ`;
+  }
+
+  // 2. Location Match Score (0-25%)
+  const { city, district } = parseCityInput(input.city);
+  let locationMatchScore = 0;
+  let locationMatchDetails = "";
+  
+  // Check if we have district-level matches
+  const districtMatches = district
+    ? comps.filter((c) => c.city === city && c.district && c.district.includes(district))
+    : [];
+  const cityMatches = comps.filter((c) => c.city === city);
+  const prefectureMatches = comps.filter((c) => c.prefecture === input.prefecture);
+
+  if (districtMatches.length > 0 && district) {
+    locationMatchScore = 25;
+    locationMatchDetails = `${input.prefecture}${city}${district}レベルで完全一致`;
+  } else if (cityMatches.length > 0) {
+    locationMatchScore = 20;
+    locationMatchDetails = `${input.prefecture}${city}レベルで一致`;
+  } else if (prefectureMatches.length > 0) {
+    locationMatchScore = 10;
+    locationMatchDetails = `${input.prefecture}レベルで一致`;
+  } else {
+    locationMatchScore = 5;
+    locationMatchDetails = `全国データを使用`;
+  }
+
+  // 3. Building Age Similarity Score (0-25%)
+  let buildingAgeSimilarityScore = 25; // Default for land
+  let buildingAgeSimilarityDetails = "築年数: 該当なし（土地）";
+  
+  if (input.buildingYear && input.propertyType !== "land") {
+    const currentYear = new Date().getFullYear();
+    const inputAge = currentYear - input.buildingYear;
+    const ageGroups = getBuildingAgeGroup(input.buildingYear);
+    
+    // Calculate percentage of transactions within similar age groups
+    let similarAgeTransactions = 0;
+    for (const comp of comps) {
+      if (ageGroups.includes(comp.buildingAgeGroup)) {
+        similarAgeTransactions += Number(comp.transactionCount) || 0;
+      }
+    }
+    
+    const similarityPercentage = totalTransactions > 0
+      ? (similarAgeTransactions / totalTransactions) * 100
+      : 0;
+    
+    if (similarityPercentage >= 80) {
+      buildingAgeSimilarityScore = 25;
+      buildingAgeSimilarityDetails = `築${inputAge}年 - 類似築年数物件が${similarityPercentage.toFixed(0)}%（非常に高い類似性）`;
+    } else if (similarityPercentage >= 50) {
+      buildingAgeSimilarityScore = 20;
+      buildingAgeSimilarityDetails = `築${inputAge}年 - 類似築年数物件が${similarityPercentage.toFixed(0)}%（高い類似性）`;
+    } else if (similarityPercentage >= 30) {
+      buildingAgeSimilarityScore = 15;
+      buildingAgeSimilarityDetails = `築${inputAge}年 - 類似築年数物件が${similarityPercentage.toFixed(0)}%（中程度の類似性）`;
+    } else {
+      buildingAgeSimilarityScore = 10;
+      buildingAgeSimilarityDetails = `築${inputAge}年 - 類似築年数物件が${similarityPercentage.toFixed(0)}%（低い類似性）`;
+    }
+  }
+
+  // 4. Property Type Match Score (0-25%)
+  // Always 25% since we filter by property type
+  const propertyTypeMatchScore = 25;
+  const propertyTypeMatchDetails = `物件種別: ${mapPropertyType(input.propertyType)}で完全一致`;
+
+  const totalScore = dataVolumeScore + locationMatchScore + buildingAgeSimilarityScore + propertyTypeMatchScore;
+
+  return {
+    totalScore,
+    dataVolumeScore,
+    locationMatchScore,
+    buildingAgeSimilarityScore,
+    propertyTypeMatchScore,
+    dataVolumeDetails,
+    locationMatchDetails,
+    buildingAgeSimilarityDetails,
+    propertyTypeMatchDetails,
+  };
+}
+
+/**
  * Main assessment calculation function
  */
 export async function calculateAssessment(input: AssessmentInput): Promise<AssessmentResult> {
@@ -379,6 +510,15 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
   // Generate explanation
   const explanation = generateExplanation(input, comps.length, stats.totalTransactions, adjustments);
 
+  // Calculate confidence breakdown
+  const confidenceBreakdown = calculateConfidenceBreakdown(input, comps, stats.totalTransactions);
+  console.log(`\n📊 Confidence Breakdown:`);
+  console.log(`  Total Score: ${confidenceBreakdown.totalScore}%`);
+  console.log(`  Data Volume: ${confidenceBreakdown.dataVolumeScore}% - ${confidenceBreakdown.dataVolumeDetails}`);
+  console.log(`  Location Match: ${confidenceBreakdown.locationMatchScore}% - ${confidenceBreakdown.locationMatchDetails}`);
+  console.log(`  Building Age Similarity: ${confidenceBreakdown.buildingAgeSimilarityScore}% - ${confidenceBreakdown.buildingAgeSimilarityDetails}`);
+  console.log(`  Property Type Match: ${confidenceBreakdown.propertyTypeMatchScore}% - ${confidenceBreakdown.propertyTypeMatchDetails}`);
+
   console.log("\n" + "=".repeat(60));
   console.log("査定計算完了");
   console.log("=".repeat(60) + "\n");
@@ -403,6 +543,7 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
       forecast3Year,
       forecast5Year,
     },
+    confidenceBreakdown,
   };
 }
 

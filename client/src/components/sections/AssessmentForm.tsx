@@ -511,11 +511,13 @@ export default function AssessmentForm() {
                       estimatedLowYen: assessmentResult?.estimatedLowYen || 0,
                       estimatedHighYen: assessmentResult?.estimatedHighYen || 0,
                       explanation: assessmentResult?.message || "",
-                      compsUsedCount: 0,
-                      marketTrend: "stable",
-                      pricePerM2: assessmentResult?.estimatedPrice ? (assessmentResult.estimatedPrice * 10000) / (parseFloat(area) || 100) : 0,
-                      comparableCount: 0,
-                      confidence: 75,
+                      compsUsedCount: assessmentResult?.compsUsedCount || 0,
+                      marketTrend: assessmentResult?.marketAnalysis?.marketTrend || "stable",
+                      pricePerM2: assessmentResult?.marketAnalysis?.avgPricePerM2 || 0,
+                      comparableCount: assessmentResult?.marketAnalysis?.transactionCount || 0,
+                      confidence: assessmentResult?.confidenceBreakdown?.totalScore || 75,
+                      marketAnalysis: assessmentResult?.marketAnalysis,
+                      confidenceBreakdown: assessmentResult?.confidenceBreakdown,
                     }}
                     propertyData={{
                       propertyType,
