@@ -1,0 +1,49 @@
+{
+  "query": "SHOW TABLES",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SHOW TABLES",
+  "rows": [
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "aggregated_real_estate_data"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "assessment_error_log"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "assessment_reports"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "assessment_requests"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "audit_log"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "dataset_versions"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "property_database"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "regions"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "transactions"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "users"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "valuation_requests"
+    },
+    {
+      "Tables_in_R4vCcFNnyAc3ewAPUNxkML": "valuation_results"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_R4vCcFNnyAc3ewAPUNxkML\n__drizzle_migrations\naggregated_real_estate_data\nassessment_error_log\nassessment_reports\nassessment_requests\naudit_log\ndataset_versions\nproperty_database\nregions\ntransactions\nusers\nvaluation_requests\nvaluation_results\n",
+  "stderr": "",
+  "execution_time_ms": 1586
+}

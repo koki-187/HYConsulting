@@ -296,6 +296,86 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                   信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
                 </p>
               )}
+
+              {/* Confidence Improvement Advice */}
+              {result.confidenceBreakdown && (
+                <div className="mt-4">
+                  {result.confidenceBreakdown.totalScore < 60 && (
+                    <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                          <CheckCircle2 className="w-5 h-5 text-amber-600" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-amber-900 mb-2 text-sm">より正確な査定をご希望の場合</h5>
+                          <p className="text-sm text-amber-800 leading-relaxed mb-3">
+                            現在の信頼度は{result.confidenceBreakdown.totalScore}%です。訪問査定では、物件の状態、周辺環境、設備などを直接確認し、より正確な価格を算出できます。
+                          </p>
+                          <a
+                            href="https://hyconsulting.jp/contact"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg transition-all text-sm"
+                          >
+                            <Home className="w-4 h-4" />
+                            訪問査定を依頼する（無料）
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {result.confidenceBreakdown.totalScore >= 60 && result.confidenceBreakdown.totalScore < 80 && (
+                    <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                          <TrendingUp className="w-5 h-5 text-blue-600" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-blue-900 mb-2 text-sm">信頼度を高めるには</h5>
+                          <p className="text-sm text-blue-800 leading-relaxed mb-3">
+                            現在の信頼度は{result.confidenceBreakdown.totalScore}%です。訪問査定では、物件の個別要因（日当たり、眺望、リフォーム状況など）を考慮し、より精度の高い査定が可能です。
+                          </p>
+                          <a
+                            href="https://hyconsulting.jp/contact"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-all text-sm"
+                          >
+                            <Home className="w-4 h-4" />
+                            訪問査定を依頼する（無料）
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {result.confidenceBreakdown.totalScore >= 80 && (
+                    <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                          <CheckCircle2 className="w-5 h-5 text-green-600" />
+                        </div>
+                        <div className="flex-1">
+                          <h5 className="font-bold text-green-900 mb-2 text-sm">高い信頼度の査定結果です</h5>
+                          <p className="text-sm text-green-800 leading-relaxed mb-3">
+                            信頼度{result.confidenceBreakdown.totalScore}%の査定結果です。十分なデータに基づいた信頼性の高い査定ですが、訪問査定では物件の個別要因を加味し、さらに精度を高めることができます。
+                          </p>
+                          <a
+                            href="https://hyconsulting.jp/contact"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-all text-sm"
+                          >
+                            <Home className="w-4 h-4" />
+                            訪問査定を依頼する（無料）
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 

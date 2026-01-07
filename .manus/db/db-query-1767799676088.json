@@ -1,0 +1,85 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as count, SUM(transactionCount) as total_transactions FROM aggregated_real_estate_data GROUP BY prefecture ORDER BY prefecture",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as count, SUM(transactionCount) as total_transactions FROM aggregated_real_estate_data GROUP BY prefecture ORDER BY prefecture",
+  "rows": [
+    {
+      "prefecture": "北海道",
+      "count": "14912",
+      "total_transactions": "99624"
+    },
+    {
+      "prefecture": "千葉県",
+      "count": "7904",
+      "total_transactions": "74504"
+    },
+    {
+      "prefecture": "埼玉県",
+      "count": "9648",
+      "total_transactions": "97180"
+    },
+    {
+      "prefecture": "宮城県",
+      "count": "4788",
+      "total_transactions": "33040"
+    },
+    {
+      "prefecture": "山形県",
+      "count": "3600",
+      "total_transactions": "17396"
+    },
+    {
+      "prefecture": "岩手県",
+      "count": "3008",
+      "total_transactions": "20656"
+    },
+    {
+      "prefecture": "愛知県",
+      "count": "5000",
+      "total_transactions": "32319"
+    },
+    {
+      "prefecture": "栃木県",
+      "count": "4908",
+      "total_transactions": "42728"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "2001",
+      "total_transactions": "23448"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "4000",
+      "total_transactions": "21480"
+    },
+    {
+      "prefecture": "福島県",
+      "count": "5652",
+      "total_transactions": "32504"
+    },
+    {
+      "prefecture": "秋田県",
+      "count": "3176",
+      "total_transactions": "17556"
+    },
+    {
+      "prefecture": "群馬県",
+      "count": "4508",
+      "total_transactions": "39508"
+    },
+    {
+      "prefecture": "茨城県",
+      "count": "7500",
+      "total_transactions": "60340"
+    },
+    {
+      "prefecture": "青森県",
+      "count": "3496",
+      "total_transactions": "22944"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\ttotal_transactions\n北海道\t14912\t99624\n千葉県\t7904\t74504\n埼玉県\t9648\t97180\n宮城県\t4788\t33040\n山形県\t3600\t17396\n岩手県\t3008\t20656\n愛知県\t5000\t32319\n栃木県\t4908\t42728\n神奈川県\t2001\t23448\n福岡県\t4000\t21480\n福島県\t5652\t32504\n秋田県\t3176\t17556\n群馬県\t4508\t39508\n茨城県\t7500\t60340\n青森県\t3496\t22944\n",
+  "stderr": "",
+  "execution_time_ms": 1559
+}
