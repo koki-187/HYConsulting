@@ -1,0 +1,16 @@
+{
+  "query": "SELECT COUNT(*) as count, AVG(priceYen) as avg_price, MIN(priceYen) as min_price, MAX(priceYen) as max_price FROM transactions WHERE prefecture = '神奈川県' AND city LIKE '横浜市%' AND propertyType = 'mansion';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as count, AVG(priceYen) as avg_price, MIN(priceYen) as min_price, MAX(priceYen) as max_price FROM transactions WHERE prefecture = '神奈川県' AND city LIKE '横浜市%' AND propertyType = 'mansion';",
+  "rows": [
+    {
+      "count": "0",
+      "avg_price": "NULL",
+      "min_price": "NULL",
+      "max_price": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "count\tavg_price\tmin_price\tmax_price\n0\tNULL\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1597
+}
