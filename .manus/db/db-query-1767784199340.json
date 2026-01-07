@@ -1,0 +1,18 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_records,\n  SUM(CASE WHEN prefecture IS NULL THEN 1 ELSE 0 END) as null_prefecture,\n  SUM(CASE WHEN city IS NULL THEN 1 ELSE 0 END) as null_city,\n  SUM(CASE WHEN averagePriceYen IS NULL THEN 1 ELSE 0 END) as null_average_price,\n  SUM(CASE WHEN transactionCount IS NULL THEN 1 ELSE 0 END) as null_transaction_count,\n  SUM(CASE WHEN pricePerTsubo IS NULL THEN 1 ELSE 0 END) as null_price_per_tsubo\nFROM aggregated_real_estate_data;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  COUNT(*) as total_records,\n  SUM(CASE WHEN prefecture IS NULL THEN 1 ELSE 0 END) as null_prefecture,\n  SUM(CASE WHEN city IS NULL THEN 1 ELSE 0 END) as null_city,\n  SUM(CASE WHEN averagePriceYen IS NULL THEN 1 ELSE 0 END) as null_average_price,\n  SUM(CASE WHEN transactionCount IS NULL THEN 1 ELSE 0 END) as null_transaction_count,\n  SUM(CASE WHEN pricePerTsubo IS NULL THEN 1 ELSE 0 END) as null_price_per_tsubo\nFROM aggregated_real_estate_data;",
+  "rows": [
+    {
+      "total_records": "84100",
+      "null_prefecture": "0",
+      "null_city": "0",
+      "null_average_price": "0",
+      "null_transaction_count": "0",
+      "null_price_per_tsubo": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_records\tnull_prefecture\tnull_city\tnull_average_price\tnull_transaction_count\tnull_price_per_tsubo\n84100\t0\t0\t0\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1583
+}

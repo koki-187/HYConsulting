@@ -1,0 +1,70 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as record_count FROM aggregated_real_estate_data GROUP BY prefecture ORDER BY record_count DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as record_count FROM aggregated_real_estate_data GROUP BY prefecture ORDER BY record_count DESC LIMIT 20;",
+  "rows": [
+    {
+      "prefecture": "北海道",
+      "record_count": "14912"
+    },
+    {
+      "prefecture": "埼玉県",
+      "record_count": "9648"
+    },
+    {
+      "prefecture": "千葉県",
+      "record_count": "7904"
+    },
+    {
+      "prefecture": "茨城県",
+      "record_count": "7500"
+    },
+    {
+      "prefecture": "福島県",
+      "record_count": "5652"
+    },
+    {
+      "prefecture": "愛知県",
+      "record_count": "5000"
+    },
+    {
+      "prefecture": "栃木県",
+      "record_count": "4908"
+    },
+    {
+      "prefecture": "宮城県",
+      "record_count": "4788"
+    },
+    {
+      "prefecture": "群馬県",
+      "record_count": "4508"
+    },
+    {
+      "prefecture": "福岡県",
+      "record_count": "4000"
+    },
+    {
+      "prefecture": "山形県",
+      "record_count": "3600"
+    },
+    {
+      "prefecture": "青森県",
+      "record_count": "3496"
+    },
+    {
+      "prefecture": "秋田県",
+      "record_count": "3176"
+    },
+    {
+      "prefecture": "岩手県",
+      "record_count": "3008"
+    },
+    {
+      "prefecture": "神奈川県",
+      "record_count": "2000"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\trecord_count\n北海道\t14912\n埼玉県\t9648\n千葉県\t7904\n茨城県\t7500\n福島県\t5652\n愛知県\t5000\n栃木県\t4908\n宮城県\t4788\n群馬県\t4508\n福岡県\t4000\n山形県\t3600\n青森県\t3496\n秋田県\t3176\n岩手県\t3008\n神奈川県\t2000\n",
+  "stderr": "",
+  "execution_time_ms": 1700
+}

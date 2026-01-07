@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_records,\n  SUM(CASE WHEN prefecture IS NULL THEN 1 ELSE 0 END) as null_prefecture,\n  SUM(CASE WHEN city IS NULL THEN 1 ELSE 0 END) as null_city,\n  SUM(CASE WHEN avg_price_per_sqm IS NULL THEN 1 ELSE 0 END) as null_avg_price,\n  SUM(CASE WHEN transaction_count IS NULL THEN 1 ELSE 0 END) as null_transaction_count\nFROM aggregated_real_estate_data;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  COUNT(*) as total_records,\n  SUM(CASE WHEN prefecture IS NULL THEN 1 ELSE 0 END) as null_prefecture,\n  SUM(CASE WHEN city IS NULL THEN 1 ELSE 0 END) as null_city,\n  SUM(CASE WHEN avg_price_per_sqm IS NULL THEN 1 ELSE 0 END) as null_avg_price,\n  SUM(CASE WHEN transaction_count IS NULL THEN 1 ELSE 0 END) as null_transaction_count\nFROM aggregated_real_estate_data;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'avg_price_per_sqm' in ''"
+  ]
+}

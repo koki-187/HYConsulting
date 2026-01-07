@@ -1,0 +1,242 @@
+{
+  "query": "SELECT city, COUNT(*) as record_count FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' GROUP BY city ORDER BY record_count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT city, COUNT(*) as record_count FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' GROUP BY city ORDER BY record_count DESC;",
+  "rows": [
+    {
+      "city": "横浜市鶴見区",
+      "record_count": "309"
+    },
+    {
+      "city": "平塚市",
+      "record_count": "91"
+    },
+    {
+      "city": "横須賀市",
+      "record_count": "86"
+    },
+    {
+      "city": "小田原市",
+      "record_count": "68"
+    },
+    {
+      "city": "藤沢市",
+      "record_count": "65"
+    },
+    {
+      "city": "秦野市",
+      "record_count": "61"
+    },
+    {
+      "city": "厚木市",
+      "record_count": "59"
+    },
+    {
+      "city": "茅ヶ崎市",
+      "record_count": "58"
+    },
+    {
+      "city": "横浜市神奈川区",
+      "record_count": "58"
+    },
+    {
+      "city": "横浜市中区",
+      "record_count": "54"
+    },
+    {
+      "city": "川崎市川崎区",
+      "record_count": "51"
+    },
+    {
+      "city": "横浜市南区",
+      "record_count": "50"
+    },
+    {
+      "city": "相模原市緑区",
+      "record_count": "45"
+    },
+    {
+      "city": "鎌倉市",
+      "record_count": "43"
+    },
+    {
+      "city": "横浜市青葉区",
+      "record_count": "41"
+    },
+    {
+      "city": "横浜市旭区",
+      "record_count": "40"
+    },
+    {
+      "city": "横浜市保土ケ谷区",
+      "record_count": "39"
+    },
+    {
+      "city": "相模原市中央区",
+      "record_count": "39"
+    },
+    {
+      "city": "横浜市都筑区",
+      "record_count": "39"
+    },
+    {
+      "city": "川崎市中原区",
+      "record_count": "37"
+    },
+    {
+      "city": "横浜市港北区",
+      "record_count": "34"
+    },
+    {
+      "city": "伊勢原市",
+      "record_count": "32"
+    },
+    {
+      "city": "相模原市南区",
+      "record_count": "30"
+    },
+    {
+      "city": "横浜市金沢区",
+      "record_count": "30"
+    },
+    {
+      "city": "横浜市栄区",
+      "record_count": "30"
+    },
+    {
+      "city": "横浜市西区",
+      "record_count": "29"
+    },
+    {
+      "city": "横浜市戸塚区",
+      "record_count": "27"
+    },
+    {
+      "city": "海老名市",
+      "record_count": "26"
+    },
+    {
+      "city": "川崎市麻生区",
+      "record_count": "25"
+    },
+    {
+      "city": "川崎市宮前区",
+      "record_count": "25"
+    },
+    {
+      "city": "横浜市磯子区",
+      "record_count": "25"
+    },
+    {
+      "city": "川崎市多摩区",
+      "record_count": "24"
+    },
+    {
+      "city": "大和市",
+      "record_count": "24"
+    },
+    {
+      "city": "綾瀬市",
+      "record_count": "24"
+    },
+    {
+      "city": "川崎市幸区",
+      "record_count": "23"
+    },
+    {
+      "city": "川崎市高津区",
+      "record_count": "22"
+    },
+    {
+      "city": "南足柄市",
+      "record_count": "22"
+    },
+    {
+      "city": "横浜市泉区",
+      "record_count": "21"
+    },
+    {
+      "city": "横浜市緑区",
+      "record_count": "21"
+    },
+    {
+      "city": "横浜市瀬谷区",
+      "record_count": "20"
+    },
+    {
+      "city": "横浜市港南区",
+      "record_count": "19"
+    },
+    {
+      "city": "座間市",
+      "record_count": "19"
+    },
+    {
+      "city": "三浦市",
+      "record_count": "15"
+    },
+    {
+      "city": "中郡大磯町",
+      "record_count": "12"
+    },
+    {
+      "city": "足柄下郡箱根町",
+      "record_count": "11"
+    },
+    {
+      "city": "高座郡寒川町",
+      "record_count": "9"
+    },
+    {
+      "city": "中郡二宮町",
+      "record_count": "8"
+    },
+    {
+      "city": "逗子市",
+      "record_count": "8"
+    },
+    {
+      "city": "足柄下郡湯河原町",
+      "record_count": "8"
+    },
+    {
+      "city": "足柄上郡開成町",
+      "record_count": "7"
+    },
+    {
+      "city": "足柄上郡山北町",
+      "record_count": "7"
+    },
+    {
+      "city": "愛甲郡愛川町",
+      "record_count": "6"
+    },
+    {
+      "city": "三浦郡葉山町",
+      "record_count": "6"
+    },
+    {
+      "city": "足柄上郡大井町",
+      "record_count": "5"
+    },
+    {
+      "city": "足柄上郡中井町",
+      "record_count": "5"
+    },
+    {
+      "city": "足柄上郡松田町",
+      "record_count": "4"
+    },
+    {
+      "city": "足柄下郡真鶴町",
+      "record_count": "2"
+    },
+    {
+      "city": "愛甲郡清川村",
+      "record_count": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\trecord_count\n横浜市鶴見区\t309\n平塚市\t91\n横須賀市\t86\n小田原市\t68\n藤沢市\t65\n秦野市\t61\n厚木市\t59\n茅ヶ崎市\t58\n横浜市神奈川区\t58\n横浜市中区\t54\n川崎市川崎区\t51\n横浜市南区\t50\n相模原市緑区\t45\n鎌倉市\t43\n横浜市青葉区\t41\n横浜市旭区\t40\n横浜市保土ケ谷区\t39\n相模原市中央区\t39\n横浜市都筑区\t39\n川崎市中原区\t37\n横浜市港北区\t34\n伊勢原市\t32\n相模原市南区\t30\n横浜市金沢区\t30\n横浜市栄区\t30\n横浜市西区\t29\n横浜市戸塚区\t27\n海老名市\t26\n川崎市麻生区\t25\n川崎市宮前区\t25\n横浜市磯子区\t25\n川崎市多摩区\t24\n大和市\t24\n綾瀬市\t24\n川崎市幸区\t23\n川崎市高津区\t22\n南足柄市\t22\n横浜市泉区\t21\n横浜市緑区\t21\n横浜市瀬谷区\t20\n横浜市港南区\t19\n座間市\t19\n三浦市\t15\n中郡大磯町\t12\n足柄下郡箱根町\t11\n高座郡寒川町\t9\n中郡二宮町\t8\n逗子市\t8\n足柄下郡湯河原町\t8\n足柄上郡開成町\t7\n足柄上郡山北町\t7\n愛甲郡愛川町\t6\n三浦郡葉山町\t6\n足柄上郡大井町\t5\n足柄上郡中井町\t5\n足柄上郡松田町\t4\n足柄下郡真鶴町\t2\n愛甲郡清川村\t2\n",
+  "stderr": "",
+  "execution_time_ms": 1517
+}
