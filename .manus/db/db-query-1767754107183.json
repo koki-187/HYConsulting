@@ -1,0 +1,30 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as count FROM transactions WHERE prefecture IN ('東京都', '神奈川県', '大阪府', '愛知県', '福岡県') GROUP BY prefecture ORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as count FROM transactions WHERE prefecture IN ('東京都', '神奈川県', '大阪府', '愛知県', '福岡県') GROUP BY prefecture ORDER BY count DESC;",
+  "rows": [
+    {
+      "prefecture": "愛知県",
+      "count": "12607"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "12590"
+    },
+    {
+      "prefecture": "大阪府",
+      "count": "12511"
+    },
+    {
+      "prefecture": "東京都",
+      "count": "12493"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "12430"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\n愛知県\t12607\n福岡県\t12590\n大阪府\t12511\n東京都\t12493\n神奈川県\t12430\n",
+  "stderr": "",
+  "execution_time_ms": 1714
+}

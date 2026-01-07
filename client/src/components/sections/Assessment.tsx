@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calculator, Home, FileSearch } from "lucide-react";
+import { Calculator, Home, FileSearch, Shield, Sparkles } from "lucide-react";
 import AssessmentForm from "./AssessmentForm";
 
 const steps = [
@@ -35,12 +35,82 @@ export default function Assessment() {
             transition={{ delay: 0.1 }}
             className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 font-heading relative inline-block"
           >
-            {/* Speech Bubble Badge */}
-            <span className="absolute -top-12 left-1/2 -translate-x-1/2 bg-gradient-to-r from-red-600 to-red-500 text-white px-6 py-3 rounded-2xl font-extrabold text-xl shadow-2xl animate-pulse relative">
-              匿名・無料
-              {/* Triangle pointer */}
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[10px] border-t-red-500"></span>
-            </span>
+            {/* Premium Badge - Glassmorphism Design */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: -20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                type: "spring",
+                stiffness: 200,
+                damping: 15,
+                delay: 0.3
+              }}
+              className="absolute -top-16 left-1/2 -translate-x-1/2 group"
+            >
+              {/* Outer glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500/30 via-rose-500/30 to-pink-500/30 rounded-3xl blur-xl animate-pulse"></div>
+              
+              {/* Main badge container */}
+              <div className="relative bg-gradient-to-br from-red-600 via-rose-600 to-pink-600 rounded-3xl shadow-2xl overflow-hidden">
+                {/* Glassmorphism overlay */}
+                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                
+                {/* Animated shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                
+                {/* Content */}
+                <div className="relative px-8 py-4 flex items-center gap-3">
+                  {/* Icon with animation */}
+                  <motion.div
+                    animate={{ 
+                      rotate: [0, 5, -5, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3
+                    }}
+                  >
+                    <Shield className="w-6 h-6 text-white drop-shadow-lg" strokeWidth={2.5} />
+                  </motion.div>
+                  
+                  {/* Text */}
+                  <div className="flex flex-col">
+                    <span className="text-white font-extrabold text-2xl tracking-wider drop-shadow-lg" style={{ letterSpacing: '0.15em' }}>
+                      匿名・無料
+                    </span>
+                    <span className="text-white/90 text-xs font-medium tracking-widest uppercase" style={{ letterSpacing: '0.2em' }}>
+                      Anonymous & Free
+                    </span>
+                  </div>
+                  
+                  {/* Sparkle icon */}
+                  <motion.div
+                    animate={{ 
+                      opacity: [0.5, 1, 0.5],
+                      scale: [0.8, 1.2, 0.8]
+                    }}
+                    transition={{ 
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <Sparkles className="w-5 h-5 text-yellow-300 drop-shadow-lg" fill="currentColor" />
+                  </motion.div>
+                </div>
+                
+                {/* Bottom border accent */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+              </div>
+              
+              {/* Triangle pointer with gradient */}
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
+                <div className="w-0 h-0 border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent border-t-[12px] border-t-pink-600 drop-shadow-lg"></div>
+              </div>
+            </motion.div>
             <span className="mt-8 block">無料不動産査定</span>
           </motion.h2>
           <motion.p 
