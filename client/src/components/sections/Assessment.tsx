@@ -36,24 +36,24 @@ export default function Assessment() {
             無料不動産査定
           </motion.h2>
           
-          {/* Pattern 3: アイコン強調デザイン */}
+          {/* Pattern 4: アニメーション強調デザイン */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 my-4">
             {/* 匿名・無料 Badge */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-white border-2 border-pink-300 shadow-md hover:shadow-lg hover:border-pink-400 transition-all"
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all animate-pulse"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 shadow-lg">
-                <Shield className="w-7 h-7 text-white" fill="white" strokeWidth={0} />
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-500 shadow-md">
+                <Shield className="w-6 h-6 text-white" fill="white" strokeWidth={0} />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-pink-700 font-bold text-base tracking-wide">
+                <span className="text-pink-700 font-bold text-sm tracking-wide">
                   匿名・無料
                 </span>
-                <span className="text-pink-500 text-[10px] font-medium uppercase tracking-wider">
+                <span className="text-pink-400 text-[9px] font-medium uppercase tracking-wider">
                   Anonymous & Free
                 </span>
               </div>
@@ -61,22 +61,22 @@ export default function Assessment() {
 
             {/* 最短60秒 Badge */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-white border-2 border-blue-300 shadow-md hover:shadow-lg hover:border-blue-400 transition-all"
+              transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all animate-bounce"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg">
-                <svg className="w-7 h-7 text-white" fill="white" viewBox="0 0 20 20">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 shadow-md">
+                <svg className="w-6 h-6 text-white" fill="white" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-blue-700 font-bold text-base tracking-wide">
+                <span className="text-blue-700 font-bold text-sm tracking-wide">
                   最短60秒で入力完了
                 </span>
-                <span className="text-blue-500 text-[10px] font-medium tracking-wider">
+                <span className="text-blue-400 text-[9px] font-medium tracking-wider">
                   その場で結果表示
                 </span>
               </div>
