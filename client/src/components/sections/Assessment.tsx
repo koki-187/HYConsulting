@@ -36,47 +36,47 @@ export default function Assessment() {
             無料不動産査定
           </motion.h2>
           
-          {/* Pattern 4: アニメーション強調デザイン */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 my-4">
-            {/* 匿名・無料 Badge */}
+          {/* Pattern 5 (拡大版) + Pattern 4 (パルス効果) + スプリングアニメーション統一 */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 my-6">
+            {/* 匿名・無料 Badge - 拡大版 + パルス効果 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all animate-pulse"
+              className="inline-flex items-center gap-3 px-7 py-4 rounded-3xl bg-white border-2 border-pink-400 shadow-xl hover:shadow-2xl transition-all animate-pulse"
             >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-pink-500 shadow-md">
-                <Shield className="w-6 h-6 text-white" fill="white" strokeWidth={0} />
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-pink-500 shadow-lg">
+                <Shield className="w-8 h-8 text-white" fill="white" strokeWidth={0} />
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-pink-700 font-bold text-sm tracking-wide">
+                <span className="text-pink-700 font-bold text-lg tracking-wide">
                   匿名・無料
                 </span>
-                <span className="text-pink-400 text-[9px] font-medium uppercase tracking-wider">
+                <span className="text-pink-400 text-[10px] font-medium uppercase tracking-wider">
                   Anonymous & Free
                 </span>
               </div>
             </motion.div>
 
-            {/* 最短60秒 Badge */}
+            {/* 最短60秒 Badge - 拡大版 + パルス効果 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-2xl bg-white border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all animate-bounce"
+              className="inline-flex items-center gap-3 px-7 py-4 rounded-3xl bg-white border-2 border-blue-400 shadow-xl hover:shadow-2xl transition-all animate-pulse"
             >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-500 shadow-md">
-                <svg className="w-6 h-6 text-white" fill="white" viewBox="0 0 20 20">
+              <div className="flex items-center justify-center w-14 h-14 rounded-full bg-blue-500 shadow-lg">
+                <svg className="w-8 h-8 text-white" fill="white" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                 </svg>
               </div>
               <div className="flex flex-col leading-tight">
-                <span className="text-blue-700 font-bold text-sm tracking-wide">
+                <span className="text-blue-700 font-bold text-lg tracking-wide">
                   最短60秒で入力完了
                 </span>
-                <span className="text-blue-400 text-[9px] font-medium tracking-wider">
+                <span className="text-blue-400 text-[10px] font-medium tracking-wider">
                   その場で結果表示
                 </span>
               </div>
