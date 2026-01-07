@@ -1,0 +1,210 @@
+{
+  "query": "SELECT \n  propertyType,\n  prefecture,\n  city,\n  district,\n  buildingAgeGroup,\n  transactionCount,\n  averagePriceYen,\n  pricePerTsubo\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県' AND city LIKE '%戸塚%'\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  propertyType,\n  prefecture,\n  city,\n  district,\n  buildingAgeGroup,\n  transactionCount,\n  averagePriceYen,\n  pricePerTsubo\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県' AND city LIKE '%戸塚%'\nLIMIT 20;",
+  "rows": [
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "秋葉町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "13",
+      "averagePriceYen": "27615384",
+      "pricePerTsubo": "441181"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "影取町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5",
+      "averagePriceYen": "79600000",
+      "pricePerTsubo": "978218"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "柏尾町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "14",
+      "averagePriceYen": "32000000",
+      "pricePerTsubo": "384673"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "上柏尾町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "12",
+      "averagePriceYen": "28666666",
+      "pricePerTsubo": "279408"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "上倉田町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "27",
+      "averagePriceYen": "37651851",
+      "pricePerTsubo": "666798"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "上品濃",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "1",
+      "averagePriceYen": "63000000",
+      "pricePerTsubo": "946658"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "上矢部町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "40",
+      "averagePriceYen": "39963775",
+      "pricePerTsubo": "473731"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "川上町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "6",
+      "averagePriceYen": "79250000",
+      "pricePerTsubo": "967325"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "汲沢",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "50",
+      "averagePriceYen": "44170000",
+      "pricePerTsubo": "603624"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "汲沢町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "19",
+      "averagePriceYen": "25866315",
+      "pricePerTsubo": "391014"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "小雀町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "21",
+      "averagePriceYen": "17247619",
+      "pricePerTsubo": "201405"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "品濃町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "9",
+      "averagePriceYen": "75937777",
+      "pricePerTsubo": "1086206"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "下倉田町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "23",
+      "averagePriceYen": "27486956",
+      "pricePerTsubo": "431801"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "戸塚町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "67",
+      "averagePriceYen": "35581119",
+      "pricePerTsubo": "550334"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "鳥が丘",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "15",
+      "averagePriceYen": "44800000",
+      "pricePerTsubo": "652420"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "名瀬町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "25",
+      "averagePriceYen": "29668000",
+      "pricePerTsubo": "520574"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "原宿",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "25",
+      "averagePriceYen": "36536000",
+      "pricePerTsubo": "449331"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "東俣野町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "8",
+      "averagePriceYen": "23150000",
+      "pricePerTsubo": "136202"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "平戸",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "30",
+      "averagePriceYen": "36772500",
+      "pricePerTsubo": "742742"
+    },
+    {
+      "propertyType": "土地",
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "district": "平戸町",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "13",
+      "averagePriceYen": "30353846",
+      "pricePerTsubo": "630176"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\tprefecture\tcity\tdistrict\tbuildingAgeGroup\ttransactionCount\taveragePriceYen\tpricePerTsubo\n土地\t神奈川県\t横浜市戸塚区\t秋葉町\t不明\t13\t27615384\t441181\n土地\t神奈川県\t横浜市戸塚区\t影取町\t不明\t5\t79600000\t978218\n土地\t神奈川県\t横浜市戸塚区\t柏尾町\t不明\t14\t32000000\t384673\n土地\t神奈川県\t横浜市戸塚区\t上柏尾町\t不明\t12\t28666666\t279408\n土地\t神奈川県\t横浜市戸塚区\t上倉田町\t不明\t27\t37651851\t666798\n土地\t神奈川県\t横浜市戸塚区\t上品濃\t不明\t1\t63000000\t946658\n土地\t神奈川県\t横浜市戸塚区\t上矢部町\t不明\t40\t39963775\t473731\n土地\t神奈川県\t横浜市戸塚区\t川上町\t不明\t6\t79250000\t967325\n土地\t神奈川県\t横浜市戸塚区\t汲沢\t不明\t50\t44170000\t603624\n土地\t神奈川県\t横浜市戸塚区\t汲沢町\t不明\t19\t25866315\t391014\n土地\t神奈川県\t横浜市戸塚区\t小雀町\t不明\t21\t17247619\t201405\n土地\t神奈川県\t横浜市戸塚区\t品濃町\t不明\t9\t75937777\t1086206\n土地\t神奈川県\t横浜市戸塚区\t下倉田町\t不明\t23\t27486956\t431801\n土地\t神奈川県\t横浜市戸塚区\t戸塚町\t不明\t67\t35581119\t550334\n土地\t神奈川県\t横浜市戸塚区\t鳥が丘\t不明\t15\t44800000\t652420\n土地\t神奈川県\t横浜市戸塚区\t名瀬町\t不明\t25\t29668000\t520574\n土地\t神奈川県\t横浜市戸塚区\t原宿\t不明\t25\t36536000\t449331\n土地\t神奈川県\t横浜市戸塚区\t東俣野町\t不明\t8\t23150000\t136202\n土地\t神奈川県\t横浜市戸塚区\t平戸\t不明\t30\t36772500\t742742\n土地\t神奈川県\t横浜市戸塚区\t平戸町\t不明\t13\t30353846\t630176\n",
+  "stderr": "",
+  "execution_time_ms": 1513
+}

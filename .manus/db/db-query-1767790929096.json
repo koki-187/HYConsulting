@@ -1,0 +1,90 @@
+{
+  "query": "SELECT DISTINCT city, COUNT(*) as count\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県'\nGROUP BY city\nORDER BY count DESC\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT city, COUNT(*) as count\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県'\nGROUP BY city\nORDER BY count DESC\nLIMIT 20;",
+  "rows": [
+    {
+      "city": "横浜市鶴見区",
+      "count": "309"
+    },
+    {
+      "city": "平塚市",
+      "count": "91"
+    },
+    {
+      "city": "横須賀市",
+      "count": "86"
+    },
+    {
+      "city": "小田原市",
+      "count": "68"
+    },
+    {
+      "city": "藤沢市",
+      "count": "65"
+    },
+    {
+      "city": "秦野市",
+      "count": "61"
+    },
+    {
+      "city": "厚木市",
+      "count": "59"
+    },
+    {
+      "city": "横浜市神奈川区",
+      "count": "58"
+    },
+    {
+      "city": "茅ヶ崎市",
+      "count": "58"
+    },
+    {
+      "city": "横浜市中区",
+      "count": "54"
+    },
+    {
+      "city": "川崎市川崎区",
+      "count": "51"
+    },
+    {
+      "city": "横浜市南区",
+      "count": "50"
+    },
+    {
+      "city": "相模原市緑区",
+      "count": "45"
+    },
+    {
+      "city": "鎌倉市",
+      "count": "43"
+    },
+    {
+      "city": "横浜市青葉区",
+      "count": "41"
+    },
+    {
+      "city": "横浜市旭区",
+      "count": "40"
+    },
+    {
+      "city": "横浜市保土ケ谷区",
+      "count": "39"
+    },
+    {
+      "city": "横浜市都筑区",
+      "count": "39"
+    },
+    {
+      "city": "相模原市中央区",
+      "count": "39"
+    },
+    {
+      "city": "川崎市中原区",
+      "count": "37"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\tcount\n横浜市鶴見区\t309\n平塚市\t91\n横須賀市\t86\n小田原市\t68\n藤沢市\t65\n秦野市\t61\n厚木市\t59\n横浜市神奈川区\t58\n茅ヶ崎市\t58\n横浜市中区\t54\n川崎市川崎区\t51\n横浜市南区\t50\n相模原市緑区\t45\n鎌倉市\t43\n横浜市青葉区\t41\n横浜市旭区\t40\n横浜市保土ケ谷区\t39\n横浜市都筑区\t39\n相模原市中央区\t39\n川崎市中原区\t37\n",
+  "stderr": "",
+  "execution_time_ms": 1527
+}

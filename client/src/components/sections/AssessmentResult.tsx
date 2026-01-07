@@ -94,7 +94,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             </div>
             <div>
               <h3 className="text-2xl font-bold text-primary">査定完了</h3>
-              <p className="text-slate-600 text-sm">適正価格を算出しました</p>
+              <p className="text-slate-600 text-sm">概算価格を算出しました</p>
             </div>
           </div>
 
@@ -111,20 +111,20 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             <div className="bg-white rounded-lg p-4 border border-slate-200">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <p className="text-xs text-slate-500 font-medium mb-1">最低価格</p>
+                  <p className="text-xs text-slate-500 font-medium mb-1">概算最低価格</p>
                   <p className="text-lg font-bold text-slate-700">{formatPrice(result.estimatedLowYen)}</p>
                   <p className="text-xs text-slate-400 mt-1">{formatPriceDetailed(result.estimatedLowYen)}</p>
                 </div>
                 <div className="flex items-center justify-center">
                   <div className="text-center">
-                    <p className="text-xs text-slate-500 font-medium mb-2">推定価格</p>
+                    <p className="text-xs text-slate-500 font-medium mb-2">概算価格</p>
                     <div className="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
                       <DollarSign className="w-6 h-6 text-accent" />
                     </div>
                   </div>
                 </div>
                 <div>
-                  <p className="text-xs text-slate-500 font-medium mb-1">最高価格</p>
+                  <p className="text-xs text-slate-500 font-medium mb-1">概算最高価格</p>
                   <p className="text-lg font-bold text-slate-700">{formatPrice(result.estimatedHighYen)}</p>
                   <p className="text-xs text-slate-400 mt-1">{formatPriceDetailed(result.estimatedHighYen)}</p>
                 </div>
@@ -306,7 +306,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
               </div>
               <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                 <span className="text-sm text-slate-600">市場トレンド</span>
-                <span className="font-bold text-slate-700 capitalize">{result.marketTrend === "stable" ? "安定" : result.marketTrend || "安定"}</span>
+                <span className="font-bold text-slate-700">{result.marketTrend || "安定"}</span>
               </div>
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
                 <p className="text-xs text-blue-700">

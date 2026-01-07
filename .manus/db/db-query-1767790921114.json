@@ -1,0 +1,9 @@
+{
+  "query": "SELECT \n  propertyType,\n  city,\n  district,\n  buildingAgeGroup,\n  transactionCount,\n  averagePriceYen,\n  pricePerTsubo,\n  averageAreaM2\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市戸塚区'\n  AND propertyType = '一戸建て'\nORDER BY transactionCount DESC\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  propertyType,\n  city,\n  district,\n  buildingAgeGroup,\n  transactionCount,\n  averagePriceYen,\n  pricePerTsubo,\n  averageAreaM2\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県' \n  AND city = '横浜市戸塚区'\n  AND propertyType = '一戸建て'\nORDER BY transactionCount DESC\nLIMIT 10;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1577
+}

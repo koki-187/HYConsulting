@@ -82,6 +82,24 @@ function getBuildingAgeGroup(buildingYear?: number): string[] {
 }
 
 /**
+ * Parse city input to extract city and district
+ * Handles formats like "横浜市戸塚区" → city: "横浜市", district: "戸塚区"
+ */
+function parseCityInput(cityInput: string): { city: string; district?: string } {
+  // Common patterns: "横浜市戸塚区", "川崎市中原区", etc.
+  const cityDistrictMatch = cityInput.match(/^(.+市)(.+区)$/);
+  if (cityDistrictMatch) {
+    return {
+      city: cityDistrictMatch[1],
+      district: cityDistrictMatch[2],
+    };
+  }
+  
+  // If no district found, return as-is
+  return { city: cityInput };
+}
+
+/**
  * Find comparable aggregated data
  * Uses progressive search strategy: exact match → city level → prefecture level
  */
@@ -91,28 +109,67 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
     throw new Error("Database not available");
   }
 
-  const { prefecture, city, propertyType, buildingYear } = input;
+  const { prefecture, city: cityInput, propertyType, buildingYear } = input;
+  const { city, district } = parseCityInput(cityInput);
   const dbPropertyType = mapPropertyType(propertyType);
   const ageGroups = getBuildingAgeGroup(buildingYear);
 
-  console.log(`🔍 Searching for: ${prefecture} ${city} ${dbPropertyType} ${ageGroups.join(", ")}`);
+  console.log(`🔍 Searching for: ${prefecture} ${city}${district ? ` ${district}` : ""} ${dbPropertyType} ${ageGroups.join(", ")}`);
 
-  // Step 1: Try exact match (same city, property type, age group)
-  let comparables = await db
-    .select()
-    .from(aggregatedRealEstateData)
-    .where(
-      and(
-        eq(aggregatedRealEstateData.prefecture, prefecture),
-        eq(aggregatedRealEstateData.city, city),
-        eq(aggregatedRealEstateData.propertyType, dbPropertyType),
-        sql`${aggregatedRealEstateData.buildingAgeGroup} IN ${ageGroups}`
-      )
-    );
+  // Step 1: Try exact match with district (if district exists)
+  let comparables: any[] = [];
+  if (district) {
+    comparables = await db
+      .select()
+      .from(aggregatedRealEstateData)
+      .where(
+        and(
+          eq(aggregatedRealEstateData.prefecture, prefecture),
+          eq(aggregatedRealEstateData.city, city),
+          sql`${aggregatedRealEstateData.district} LIKE ${`%${district}%`}`,
+          eq(aggregatedRealEstateData.propertyType, dbPropertyType),
+          sql`${aggregatedRealEstateData.buildingAgeGroup} IN ${ageGroups}`
+        )
+      );
 
-  console.log(`  ✓ City level: ${comparables.length} records`);
+    console.log(`  ✓ City + District level (specific age): ${comparables.length} records`);
 
-  // Step 2: If not enough, expand to city level (all age groups)
+    // Step 2: If not enough, expand to district level (all age groups)
+    if (comparables.length < 3) {
+      comparables = await db
+        .select()
+        .from(aggregatedRealEstateData)
+        .where(
+          and(
+            eq(aggregatedRealEstateData.prefecture, prefecture),
+            eq(aggregatedRealEstateData.city, city),
+            sql`${aggregatedRealEstateData.district} LIKE ${`%${district}%`}`,
+            eq(aggregatedRealEstateData.propertyType, dbPropertyType)
+          )
+        );
+
+      console.log(`  ✓ City + District level (all ages): ${comparables.length} records`);
+    }
+  }
+
+  // Step 3: Try city level (without district filter)
+  if (comparables.length < 3) {
+    comparables = await db
+      .select()
+      .from(aggregatedRealEstateData)
+      .where(
+        and(
+          eq(aggregatedRealEstateData.prefecture, prefecture),
+          eq(aggregatedRealEstateData.city, city),
+          eq(aggregatedRealEstateData.propertyType, dbPropertyType),
+          sql`${aggregatedRealEstateData.buildingAgeGroup} IN ${ageGroups}`
+        )
+      );
+
+    console.log(`  ✓ City level (specific age): ${comparables.length} records`);
+  }
+
+  // Step 4: If not enough, expand to city level (all age groups)
   if (comparables.length < 3) {
     comparables = await db
       .select()
@@ -311,7 +368,7 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
   console.log(`  High: ¥${estimatedHighYen.toLocaleString()}`);
 
   // Market trend (simplified for aggregated data)
-  const marketTrend = "stable"; // TODO: Implement trend analysis when historical data is available
+  const marketTrend = "安定"; // TODO: Implement trend analysis when historical data is available
 
   // Forecast (simple trend-based)
   const trendMultiplier = 1.0; // Stable market

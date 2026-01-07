@@ -1,0 +1,220 @@
+{
+  "query": "SELECT \n  city,\n  district,\n  propertyType,\n  buildingAgeGroup,\n  transactionCount\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県'\nLIMIT 30;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  city,\n  district,\n  propertyType,\n  buildingAgeGroup,\n  transactionCount\nFROM aggregated_real_estate_data\nWHERE prefecture = '神奈川県'\nLIMIT 30;",
+  "rows": [
+    {
+      "city": "横浜市鶴見区",
+      "district": "朝日町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "市場上町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "2"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "市場下町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "2"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "市場西中町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "1"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "市場東中町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "6"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "市場富士見町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "市場大和町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "2"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "潮田町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "10"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "江ケ崎町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "8"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "小野町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "梶山",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "11"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "上末吉",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "33"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "上の宮",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "15"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "寛政町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "4"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "岸谷",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "19"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "北寺尾",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "25"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "駒岡",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "28"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "栄町通",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "12"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "汐入町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "7"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "獅子ケ谷",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "12"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "下野谷町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "7"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "尻手",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "下末吉",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "33"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "菅沢町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "7"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "諏訪坂",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "5"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "大東町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "1"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "佃野町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "8"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "鶴見",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "1"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "鶴見中央",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "8"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "district": "寺谷",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "transactionCount": "14"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\tdistrict\tpropertyType\tbuildingAgeGroup\ttransactionCount\n横浜市鶴見区\t朝日町\t土地\t不明\t5\n横浜市鶴見区\t市場上町\t土地\t不明\t2\n横浜市鶴見区\t市場下町\t土地\t不明\t2\n横浜市鶴見区\t市場西中町\t土地\t不明\t1\n横浜市鶴見区\t市場東中町\t土地\t不明\t6\n横浜市鶴見区\t市場富士見町\t土地\t不明\t5\n横浜市鶴見区\t市場大和町\t土地\t不明\t2\n横浜市鶴見区\t潮田町\t土地\t不明\t10\n横浜市鶴見区\t江ケ崎町\t土地\t不明\t8\n横浜市鶴見区\t小野町\t土地\t不明\t5\n横浜市鶴見区\t梶山\t土地\t不明\t11\n横浜市鶴見区\t上末吉\t土地\t不明\t33\n横浜市鶴見区\t上の宮\t土地\t不明\t15\n横浜市鶴見区\t寛政町\t土地\t不明\t4\n横浜市鶴見区\t岸谷\t土地\t不明\t19\n横浜市鶴見区\t北寺尾\t土地\t不明\t25\n横浜市鶴見区\t駒岡\t土地\t不明\t28\n横浜市鶴見区\t栄町通\t土地\t不明\t12\n横浜市鶴見区\t汐入町\t土地\t不明\t7\n横浜市鶴見区\t獅子ケ谷\t土地\t不明\t12\n横浜市鶴見区\t下野谷町\t土地\t不明\t7\n横浜市鶴見区\t尻手\t土地\t不明\t5\n横浜市鶴見区\t下末吉\t土地\t不明\t33\n横浜市鶴見区\t菅沢町\t土地\t不明\t7\n横浜市鶴見区\t諏訪坂\t土地\t不明\t5\n横浜市鶴見区\t大東町\t土地\t不明\t1\n横浜市鶴見区\t佃野町\t土地\t不明\t8\n横浜市鶴見区\t鶴見\t土地\t不明\t1\n横浜市鶴見区\t鶴見中央\t土地\t不明\t8\n横浜市鶴見区\t寺谷\t土地\t不明\t14\n",
+  "stderr": "",
+  "execution_time_ms": 1546
+}
