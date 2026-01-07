@@ -1,0 +1,130 @@
+{
+  "query": "SELECT city, propertyType, COUNT(*) as count, SUM(transactionCount) as total_tx FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' AND city LIKE '%横浜%' GROUP BY city, propertyType ORDER BY city, propertyType LIMIT 30;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT city, propertyType, COUNT(*) as count, SUM(transactionCount) as total_tx FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' AND city LIKE '%横浜%' GROUP BY city, propertyType ORDER BY city, propertyType LIMIT 30;",
+  "rows": [
+    {
+      "city": "横浜市",
+      "propertyType": "マンション",
+      "count": "1",
+      "total_tx": "1"
+    },
+    {
+      "city": "横浜市中区",
+      "propertyType": "土地",
+      "count": "54",
+      "total_tx": "280"
+    },
+    {
+      "city": "横浜市保土ケ谷区",
+      "propertyType": "土地",
+      "count": "39",
+      "total_tx": "478"
+    },
+    {
+      "city": "横浜市南区",
+      "propertyType": "土地",
+      "count": "50",
+      "total_tx": "455"
+    },
+    {
+      "city": "横浜市戸塚区",
+      "propertyType": "土地",
+      "count": "27",
+      "total_tx": "560"
+    },
+    {
+      "city": "横浜市旭区",
+      "propertyType": "土地",
+      "count": "40",
+      "total_tx": "669"
+    },
+    {
+      "city": "横浜市栄区",
+      "propertyType": "土地",
+      "count": "30",
+      "total_tx": "202"
+    },
+    {
+      "city": "横浜市泉区",
+      "propertyType": "土地",
+      "count": "21",
+      "total_tx": "363"
+    },
+    {
+      "city": "横浜市港北区",
+      "propertyType": "土地",
+      "count": "34",
+      "total_tx": "657"
+    },
+    {
+      "city": "横浜市港南区",
+      "propertyType": "土地",
+      "count": "19",
+      "total_tx": "413"
+    },
+    {
+      "city": "横浜市瀬谷区",
+      "propertyType": "土地",
+      "count": "20",
+      "total_tx": "261"
+    },
+    {
+      "city": "横浜市磯子区",
+      "propertyType": "土地",
+      "count": "25",
+      "total_tx": "288"
+    },
+    {
+      "city": "横浜市神奈川区",
+      "propertyType": "土地",
+      "count": "58",
+      "total_tx": "536"
+    },
+    {
+      "city": "横浜市緑区",
+      "propertyType": "土地",
+      "count": "21",
+      "total_tx": "252"
+    },
+    {
+      "city": "横浜市西区",
+      "propertyType": "土地",
+      "count": "29",
+      "total_tx": "206"
+    },
+    {
+      "city": "横浜市都筑区",
+      "propertyType": "土地",
+      "count": "39",
+      "total_tx": "276"
+    },
+    {
+      "city": "横浜市金沢区",
+      "propertyType": "土地",
+      "count": "30",
+      "total_tx": "266"
+    },
+    {
+      "city": "横浜市青葉区",
+      "propertyType": "土地",
+      "count": "41",
+      "total_tx": "452"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "count": "266",
+      "total_tx": "1927"
+    },
+    {
+      "city": "横浜市鶴見区",
+      "propertyType": "土地",
+      "count": "43",
+      "total_tx": "570"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\tpropertyType\tcount\ttotal_tx\n横浜市\tマンション\t1\t1\n横浜市中区\t土地\t54\t280\n横浜市保土ケ谷区\t土地\t39\t478\n横浜市南区\t土地\t50\t455\n横浜市戸塚区\t土地\t27\t560\n横浜市旭区\t土地\t40\t669\n横浜市栄区\t土地\t30\t202\n横浜市泉区\t土地\t21\t363\n横浜市港北区\t土地\t34\t657\n横浜市港南区\t土地\t19\t413\n横浜市瀬谷区\t土地\t20\t261\n横浜市磯子区\t土地\t25\t288\n横浜市神奈川区\t土地\t58\t536\n横浜市緑区\t土地\t21\t252\n横浜市西区\t土地\t29\t206\n横浜市都筑区\t土地\t39\t276\n横浜市金沢区\t土地\t30\t266\n横浜市青葉区\t土地\t41\t452\n横浜市鶴見区\t一戸建て\t266\t1927\n横浜市鶴見区\t土地\t43\t570\n",
+  "stderr": "",
+  "execution_time_ms": 1526
+}

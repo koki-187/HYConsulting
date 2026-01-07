@@ -1,0 +1,410 @@
+{
+  "query": "SELECT prefecture, city, propertyType, buildingAgeGroup, COUNT(*) as record_count, SUM(transactionCount) as total_transactions FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' GROUP BY prefecture, city, propertyType, buildingAgeGroup ORDER BY city, propertyType, buildingAgeGroup LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, city, propertyType, buildingAgeGroup, COUNT(*) as record_count, SUM(transactionCount) as total_transactions FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' GROUP BY prefecture, city, propertyType, buildingAgeGroup ORDER BY city, propertyType, buildingAgeGroup LIMIT 50;",
+  "rows": [
+    {
+      "prefecture": "神奈川県",
+      "city": "三浦市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "15",
+      "total_transactions": "112"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "三浦郡葉山町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "6",
+      "total_transactions": "137"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "中郡二宮町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "8",
+      "total_transactions": "129"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "中郡大磯町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "12",
+      "total_transactions": "168"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "伊勢原市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "32",
+      "total_transactions": "376"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "南足柄市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "22",
+      "total_transactions": "113"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "厚木市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "59",
+      "total_transactions": "637"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "大和市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "24",
+      "total_transactions": "607"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "小田原市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "68",
+      "total_transactions": "839"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市中原区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "37",
+      "total_transactions": "321"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市多摩区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "24",
+      "total_transactions": "314"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市宮前区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "25",
+      "total_transactions": "248"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市川崎区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "51",
+      "total_transactions": "305"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市幸区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "23",
+      "total_transactions": "201"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市高津区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "22",
+      "total_transactions": "239"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "川崎市麻生区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "25",
+      "total_transactions": "278"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "平塚市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "91",
+      "total_transactions": "810"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "座間市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "19",
+      "total_transactions": "360"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "愛甲郡愛川町",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "6",
+      "total_transactions": "170"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "愛甲郡清川村",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "2",
+      "total_transactions": "8"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市",
+      "propertyType": "マンション",
+      "buildingAgeGroup": "10～15年",
+      "record_count": "1",
+      "total_transactions": "1"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市中区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "54",
+      "total_transactions": "280"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市保土ケ谷区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "39",
+      "total_transactions": "478"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市南区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "50",
+      "total_transactions": "455"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市戸塚区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "27",
+      "total_transactions": "560"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市旭区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "40",
+      "total_transactions": "669"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市栄区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "30",
+      "total_transactions": "202"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市泉区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "21",
+      "total_transactions": "363"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市港北区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "34",
+      "total_transactions": "657"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市港南区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "19",
+      "total_transactions": "413"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市瀬谷区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "20",
+      "total_transactions": "261"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市磯子区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "25",
+      "total_transactions": "288"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市神奈川区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "58",
+      "total_transactions": "536"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市緑区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "21",
+      "total_transactions": "252"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市西区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "29",
+      "total_transactions": "206"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市都筑区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "39",
+      "total_transactions": "276"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市金沢区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "30",
+      "total_transactions": "266"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市青葉区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "41",
+      "total_transactions": "452"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "0～5年",
+      "record_count": "42",
+      "total_transactions": "755"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "10～15年",
+      "record_count": "37",
+      "total_transactions": "111"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "15～20年",
+      "record_count": "31",
+      "total_transactions": "120"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "20～30年",
+      "record_count": "37",
+      "total_transactions": "191"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "30年以上",
+      "record_count": "43",
+      "total_transactions": "462"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "5～10年",
+      "record_count": "37",
+      "total_transactions": "146"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "一戸建て",
+      "buildingAgeGroup": "不明",
+      "record_count": "39",
+      "total_transactions": "142"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横浜市鶴見区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "43",
+      "total_transactions": "570"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "横須賀市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "86",
+      "total_transactions": "830"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "海老名市",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "26",
+      "total_transactions": "422"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "相模原市中央区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "39",
+      "total_transactions": "576"
+    },
+    {
+      "prefecture": "神奈川県",
+      "city": "相模原市南区",
+      "propertyType": "土地",
+      "buildingAgeGroup": "不明",
+      "record_count": "30",
+      "total_transactions": "726"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcity\tpropertyType\tbuildingAgeGroup\trecord_count\ttotal_transactions\n神奈川県\t三浦市\t土地\t不明\t15\t112\n神奈川県\t三浦郡葉山町\t土地\t不明\t6\t137\n神奈川県\t中郡二宮町\t土地\t不明\t8\t129\n神奈川県\t中郡大磯町\t土地\t不明\t12\t168\n神奈川県\t伊勢原市\t土地\t不明\t32\t376\n神奈川県\t南足柄市\t土地\t不明\t22\t113\n神奈川県\t厚木市\t土地\t不明\t59\t637\n神奈川県\t大和市\t土地\t不明\t24\t607\n神奈川県\t小田原市\t土地\t不明\t68\t839\n神奈川県\t川崎市中原区\t土地\t不明\t37\t321\n神奈川県\t川崎市多摩区\t土地\t不明\t24\t314\n神奈川県\t川崎市宮前区\t土地\t不明\t25\t248\n神奈川県\t川崎市川崎区\t土地\t不明\t51\t305\n神奈川県\t川崎市幸区\t土地\t不明\t23\t201\n神奈川県\t川崎市高津区\t土地\t不明\t22\t239\n神奈川県\t川崎市麻生区\t土地\t不明\t25\t278\n神奈川県\t平塚市\t土地\t不明\t91\t810\n神奈川県\t座間市\t土地\t不明\t19\t360\n神奈川県\t愛甲郡愛川町\t土地\t不明\t6\t170\n神奈川県\t愛甲郡清川村\t土地\t不明\t2\t8\n神奈川県\t横浜市\tマンション\t10～15年\t1\t1\n神奈川県\t横浜市中区\t土地\t不明\t54\t280\n神奈川県\t横浜市保土ケ谷区\t土地\t不明\t39\t478\n神奈川県\t横浜市南区\t土地\t不明\t50\t455\n神奈川県\t横浜市戸塚区\t土地\t不明\t27\t560\n神奈川県\t横浜市旭区\t土地\t不明\t40\t669\n神奈川県\t横浜市栄区\t土地\t不明\t30\t202\n神奈川県\t横浜市泉区\t土地\t不明\t21\t363\n神奈川県\t横浜市港北区\t土地\t不明\t34\t657\n神奈川県\t横浜市港南区\t土地\t不明\t19\t413\n神奈川県\t横浜市瀬谷区\t土地\t不明\t20\t261\n神奈川県\t横浜市磯子区\t土地\t不明\t25\t288\n神奈川県\t横浜市神奈川区\t土地\t不明\t58\t536\n神奈川県\t横浜市緑区\t土地\t不明\t21\t252\n神奈川県\t横浜市西区\t土地\t不明\t29\t206\n神奈川県\t横浜市都筑区\t土地\t不明\t39\t276\n神奈川県\t横浜市金沢区\t土地\t不明\t30\t266\n神奈川県\t横浜市青葉区\t土地\t不明\t41\t452\n神奈川県\t横浜市鶴見区\t一戸建て\t0～5年\t42\t755\n神奈川県\t横浜市鶴見区\t一戸建て\t10～15年\t37\t111\n神奈川県\t横浜市鶴見区\t一戸建て\t15～20年\t31\t120\n神奈川県\t横浜市鶴見区\t一戸建て\t20～30年\t37\t191\n神奈川県\t横浜市鶴見区\t一戸建て\t30年以上\t43\t462\n神奈川県\t横浜市鶴見区\t一戸建て\t5～10年\t37\t146\n神奈川県\t横浜市鶴見区\t一戸建て\t不明\t39\t142\n神奈川県\t横浜市鶴見区\t土地\t不明\t43\t570\n神奈川県\t横須賀市\t土地\t不明\t86\t830\n神奈川県\t海老名市\t土地\t不明\t26\t422\n神奈川県\t相模原市中央区\t土地\t不明\t39\t576\n神奈川県\t相模原市南区\t土地\t不明\t30\t726\n",
+  "stderr": "",
+  "execution_time_ms": 2212
+}

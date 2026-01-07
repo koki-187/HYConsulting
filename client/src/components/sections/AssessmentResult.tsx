@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { TrendingUp, MapPin, DollarSign, Home, Calendar, Users, BarChart3, ArrowUpRight, ArrowDownRight, CheckCircle2, Share2, Download } from "lucide-react";
+import { TrendingUp, MapPin, DollarSign, Home, Calendar, Users, BarChart3, ArrowUpRight, ArrowDownRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { PriceTrendChart } from "@/components/charts/PriceTrendChart";
 import { MarketAnalysisCharts } from "@/components/charts/MarketAnalysisCharts";
-import { generateAssessmentPDF } from "@/lib/pdf-generator";
+
 import type { PriceTrendData } from "@/components/charts/PriceTrendChart";
 import type { PriceDistributionData, PropertyTypeComparison, StationDistanceAnalysis, BuildingAgeAnalysis } from "@/components/charts/MarketAnalysisCharts";
 
@@ -50,28 +50,6 @@ interface AssessmentResultProps {
 
 export default function AssessmentResult({ result, propertyData, marketAnalysis, onReset }: AssessmentResultProps) {
   const [showDetails, setShowDetails] = useState(false);
-  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
-
-  const handlePDFDownload = async () => {
-    try {
-      setIsGeneratingPDF(true);
-      const midPrice = (result.estimatedLowYen + result.estimatedHighYen) / 2;
-      await generateAssessmentPDF({
-        propertyData,
-        result: {
-          ...result,
-          estimatedLowYen: result.estimatedLowYen,
-          estimatedHighYen: result.estimatedHighYen,
-        },
-        generatedDate: new Date(),
-      }, `assessment-${propertyData.prefecture}-${propertyData.city}.pdf`);
-    } catch (error) {
-      console.error('PDF download error:', error);
-      alert('PDF生成に失敗しました');
-    } finally {
-      setIsGeneratingPDF(false);
-    }
-  };
 
   const formatPrice = (price: number) => {
     // Format in 万円 (10,000 yen units)
@@ -220,10 +198,10 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
 
           {/* Confidence Level */}
           {result.confidence && (
-            <div className="mb-8">
+            <div className="space-y-2">
               <div className="flex items-center justify-between mb-2">
-                <p className="text-sm font-medium text-slate-700">査定の信頼度</p>
-                <p className="text-sm font-bold text-primary">{result.confidence}%</p>
+                <span className="text-sm font-medium text-slate-700">査定の信頼度</span>
+                <span className="text-2xl font-bold text-primary">{result.confidence}%</span>
               </div>
               <div className="w-full bg-slate-200 rounded-full h-2">
                 <div
@@ -231,33 +209,20 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                   style={{ width: `${result.confidence}%` }}
                 />
               </div>
+              <p className="text-xs text-slate-600 mt-2">
+                信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
+              </p>
             </div>
           )}
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3">
+          {/* Action Button - Centered Toggle */}
+          <div className="flex justify-center">
             <Button
               onClick={() => setShowDetails(!showDetails)}
-              className="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg transition-all"
+              className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl"
             >
               <BarChart3 className="w-5 h-5 mr-2" />
-              {showDetails ? "詳細を隠す" : "詳細分析を表示"}
-            </Button>
-            <Button
-              variant="outline"
-              className="flex-1 border-2 border-primary text-primary hover:bg-primary/5 font-bold py-3 rounded-lg"
-            >
-              <Share2 className="w-5 h-5 mr-2" />
-              共有
-            </Button>
-            <Button
-              onClick={handlePDFDownload}
-              disabled={isGeneratingPDF}
-              variant="outline"
-              className="flex-1 border-2 border-slate-300 text-slate-700 hover:bg-slate-50 font-bold py-3 rounded-lg disabled:opacity-50"
-            >
-              <Download className="w-5 h-5 mr-2" />
-              {isGeneratingPDF ? "生成中..." : "レポート"}
+              {showDetails ? "詳細を隙す" : "詳細分析を表示"}
             </Button>
           </div>
         </div>
@@ -277,20 +242,52 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                 <Home className="w-5 h-5 text-accent" />
                 単価分析
               </h4>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-slate-50 rounded-lg p-4">
-                  <p className="text-xs text-slate-500 font-medium mb-2">㎡当たり価格</p>
-                  <p className="text-2xl font-bold text-primary">¥{(result.pricePerM2 / 10000).toFixed(1)}万</p>
-                  <p className="text-xs text-slate-600 mt-1">/ ㎡</p>
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-slate-50 rounded-lg p-4">
+                    <p className="text-xs text-slate-500 font-medium mb-2">㎡当たり価格</p>
+                    <p className="text-2xl font-bold text-primary">¥{(result.pricePerM2 / 10000).toFixed(1)}万</p>
+                    <p className="text-xs text-slate-600 mt-1">/ ㎡</p>
+                  </div>
+                  <div className="bg-slate-50 rounded-lg p-4">
+                    <p className="text-xs text-slate-500 font-medium mb-2">坪当たり価格</p>
+                    <p className="text-2xl font-bold text-primary">¥{(result.pricePerM2 * 3.3 / 10000).toFixed(1)}万</p>
+                    <p className="text-xs text-slate-600 mt-1">/ 坪</p>
+                  </div>
                 </div>
-                <div className="bg-slate-50 rounded-lg p-4">
-                  <p className="text-xs text-slate-500 font-medium mb-2">坪当たり価格</p>
-                  <p className="text-2xl font-bold text-primary">¥{(result.pricePerM2 * 3.3 / 10000).toFixed(1)}万</p>
-                  <p className="text-xs text-slate-600 mt-1">/ 坪</p>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <p className="text-xs text-blue-700">
+                    <strong>算出方法:</strong> 周辺の取引事例{result.marketAnalysis?.transactionCount || result.compsUsedCount}件の平均単価を、取引件数で加重平均して算出しています。
+                  </p>
                 </div>
               </div>
             </Card>
           )}
+
+          {/* Calculation Basis */}
+          <Card className="p-6 border-2 border-primary/20 bg-gradient-to-br from-blue-50 to-white">
+            <h4 className="font-bold text-primary mb-4 flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-primary" />
+              この査定はどのように算出されたか
+            </h4>
+            <div className="space-y-3">
+              <div className="bg-white p-4 rounded-lg border border-primary/10">
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  {result.explanation}
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-white p-3 rounded-lg border border-slate-200">
+                  <p className="text-xs text-slate-500 mb-1">参照データソース</p>
+                  <p className="text-sm font-bold text-slate-800">国土交通省 不動産取引価格情報</p>
+                </div>
+                <div className="bg-white p-3 rounded-lg border border-slate-200">
+                  <p className="text-xs text-slate-500 mb-1">査定手法</p>
+                  <p className="text-sm font-bold text-slate-800">取引事例比較法（加重平均）</p>
+                </div>
+              </div>
+            </div>
+          </Card>
 
           {/* Market Analysis */}
           <Card className="p-6 border-2 border-slate-200">
@@ -300,16 +297,21 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             </h4>
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                <span className="text-sm text-slate-600">取引件数（直近1年）</span>
-                <span className="font-bold text-slate-700">{result.comparableCount || 0} 件</span>
+                <span className="text-sm text-slate-600">参照した集約データ</span>
+                <span className="font-bold text-slate-700">{result.compsUsedCount || 0} 件</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                <span className="text-sm text-slate-600">参照した取引データ</span>
-                <span className="font-bold text-slate-700">{result.marketAnalysis?.transactionCount || result.compsUsedCount} 件</span>
+                <span className="text-sm text-slate-600">実際の取引件数（合計）</span>
+                <span className="font-bold text-slate-700">{result.marketAnalysis?.transactionCount || 0} 件</span>
               </div>
               <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
                 <span className="text-sm text-slate-600">市場トレンド</span>
-                <span className="font-bold text-slate-700">{result.marketTrend || "安定"}</span>
+                <span className="font-bold text-slate-700 capitalize">{result.marketTrend === "stable" ? "安定" : result.marketTrend || "安定"}</span>
+              </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
+                <p className="text-xs text-blue-700">
+                  <strong>説明:</strong> 「参照した集約データ」は地域・物件種別・築年数で集約されたデータ件数、「実際の取引件数」はその集約データに含まれる実取引の合計件数です。
+                </p>
               </div>
             </div>
           </Card>

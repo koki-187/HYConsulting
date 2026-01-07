@@ -1,0 +1,9 @@
+{
+  "query": "SELECT city, propertyType, buildingAgeGroup, transactionCount, averagePriceYen, averageAreaM2 FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' AND city LIKE '%横浜市戸塚区%' AND propertyType = '一戸建て' ORDER BY buildingAgeGroup;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT city, propertyType, buildingAgeGroup, transactionCount, averagePriceYen, averageAreaM2 FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' AND city LIKE '%横浜市戸塚区%' AND propertyType = '一戸建て' ORDER BY buildingAgeGroup;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1615
+}

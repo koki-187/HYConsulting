@@ -1,0 +1,67 @@
+{
+  "query": "SELECT DISTINCT city FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' AND city LIKE '%横浜%' ORDER BY city;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT city FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' AND city LIKE '%横浜%' ORDER BY city;",
+  "rows": [
+    {
+      "city": "横浜市"
+    },
+    {
+      "city": "横浜市中区"
+    },
+    {
+      "city": "横浜市保土ケ谷区"
+    },
+    {
+      "city": "横浜市南区"
+    },
+    {
+      "city": "横浜市戸塚区"
+    },
+    {
+      "city": "横浜市旭区"
+    },
+    {
+      "city": "横浜市栄区"
+    },
+    {
+      "city": "横浜市泉区"
+    },
+    {
+      "city": "横浜市港北区"
+    },
+    {
+      "city": "横浜市港南区"
+    },
+    {
+      "city": "横浜市瀬谷区"
+    },
+    {
+      "city": "横浜市磯子区"
+    },
+    {
+      "city": "横浜市神奈川区"
+    },
+    {
+      "city": "横浜市緑区"
+    },
+    {
+      "city": "横浜市西区"
+    },
+    {
+      "city": "横浜市都筑区"
+    },
+    {
+      "city": "横浜市金沢区"
+    },
+    {
+      "city": "横浜市青葉区"
+    },
+    {
+      "city": "横浜市鶴見区"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\n横浜市\n横浜市中区\n横浜市保土ケ谷区\n横浜市南区\n横浜市戸塚区\n横浜市旭区\n横浜市栄区\n横浜市泉区\n横浜市港北区\n横浜市港南区\n横浜市瀬谷区\n横浜市磯子区\n横浜市神奈川区\n横浜市緑区\n横浜市西区\n横浜市都筑区\n横浜市金沢区\n横浜市青葉区\n横浜市鶴見区\n",
+  "stderr": "",
+  "execution_time_ms": 1521
+}

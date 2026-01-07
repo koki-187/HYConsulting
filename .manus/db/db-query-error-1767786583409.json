@@ -1,0 +1,8 @@
+{
+  "query": "SELECT municipality, COUNT(*) as count FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' GROUP BY municipality ORDER BY count DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT municipality, COUNT(*) as count FROM aggregated_real_estate_data WHERE prefecture = '神奈川県' GROUP BY municipality ORDER BY count DESC LIMIT 20;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'municipality' in 'group statement'"
+  ]
+}

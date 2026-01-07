@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import BadgeComparison from "./pages/BadgeComparison";
+import { Badge10Patterns } from "./pages/Badge10Patterns";
 import SchemaMarkup from "./components/SchemaMarkup";
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/badge-comparison"} component={BadgeComparison} />
+      <Route path={"/badge-10-patterns"} component={Badge10Patterns} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

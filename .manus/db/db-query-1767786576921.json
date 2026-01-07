@@ -1,0 +1,22 @@
+{
+  "query": "SELECT propertyType, COUNT(*) as count FROM aggregated_real_estate_data GROUP BY propertyType ORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT propertyType, COUNT(*) as count FROM aggregated_real_estate_data GROUP BY propertyType ORDER BY count DESC;",
+  "rows": [
+    {
+      "propertyType": "土地",
+      "count": "81682"
+    },
+    {
+      "propertyType": "一戸建て",
+      "count": "2418"
+    },
+    {
+      "propertyType": "マンション",
+      "count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\tcount\n土地\t81682\n一戸建て\t2418\nマンション\t1\n",
+  "stderr": "",
+  "execution_time_ms": 1526
+}
