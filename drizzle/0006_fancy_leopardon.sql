@@ -1,0 +1,1 @@
+ALTER TABLE `transactions` MODIFY COLUMN `priceYen` bigint NOT NULL;

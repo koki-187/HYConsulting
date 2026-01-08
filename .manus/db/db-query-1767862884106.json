@@ -1,0 +1,151 @@
+{
+  "query": "SELECT DISTINCT prefecture FROM transactions LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT prefecture FROM transactions LIMIT 50;",
+  "rows": [
+    {
+      "prefecture": "Aichi"
+    },
+    {
+      "prefecture": "Akita"
+    },
+    {
+      "prefecture": "Aomori"
+    },
+    {
+      "prefecture": "Chiba"
+    },
+    {
+      "prefecture": "Ehime"
+    },
+    {
+      "prefecture": "Fukui"
+    },
+    {
+      "prefecture": "Fukuoka"
+    },
+    {
+      "prefecture": "Fukushima"
+    },
+    {
+      "prefecture": "Gifu"
+    },
+    {
+      "prefecture": "Gunma"
+    },
+    {
+      "prefecture": "Hiroshima"
+    },
+    {
+      "prefecture": "Hokkaido"
+    },
+    {
+      "prefecture": "Hyogo"
+    },
+    {
+      "prefecture": "Ibaraki"
+    },
+    {
+      "prefecture": "Ishikawa"
+    },
+    {
+      "prefecture": "Iwate"
+    },
+    {
+      "prefecture": "Kagawa"
+    },
+    {
+      "prefecture": "Kagoshima"
+    },
+    {
+      "prefecture": "Kanagawa"
+    },
+    {
+      "prefecture": "Kochi"
+    },
+    {
+      "prefecture": "Kumamoto"
+    },
+    {
+      "prefecture": "Kyoto"
+    },
+    {
+      "prefecture": "Mie"
+    },
+    {
+      "prefecture": "Miyagi"
+    },
+    {
+      "prefecture": "Miyazaki"
+    },
+    {
+      "prefecture": "Nagano"
+    },
+    {
+      "prefecture": "Nagasaki"
+    },
+    {
+      "prefecture": "Nara"
+    },
+    {
+      "prefecture": "Niigata"
+    },
+    {
+      "prefecture": "Oita"
+    },
+    {
+      "prefecture": "Okayama"
+    },
+    {
+      "prefecture": "Okinawa"
+    },
+    {
+      "prefecture": "Osaka"
+    },
+    {
+      "prefecture": "Saga"
+    },
+    {
+      "prefecture": "Saitama"
+    },
+    {
+      "prefecture": "Shiga"
+    },
+    {
+      "prefecture": "Shimane"
+    },
+    {
+      "prefecture": "Shizuoka"
+    },
+    {
+      "prefecture": "Tochigi"
+    },
+    {
+      "prefecture": "Tokushima"
+    },
+    {
+      "prefecture": "Tokyo"
+    },
+    {
+      "prefecture": "Tottori"
+    },
+    {
+      "prefecture": "Toyama"
+    },
+    {
+      "prefecture": "Wakayama"
+    },
+    {
+      "prefecture": "Yamagata"
+    },
+    {
+      "prefecture": "Yamaguchi"
+    },
+    {
+      "prefecture": "Yamanashi"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\nAichi\nAkita\nAomori\nChiba\nEhime\nFukui\nFukuoka\nFukushima\nGifu\nGunma\nHiroshima\nHokkaido\nHyogo\nIbaraki\nIshikawa\nIwate\nKagawa\nKagoshima\nKanagawa\nKochi\nKumamoto\nKyoto\nMie\nMiyagi\nMiyazaki\nNagano\nNagasaki\nNara\nNiigata\nOita\nOkayama\nOkinawa\nOsaka\nSaga\nSaitama\nShiga\nShimane\nShizuoka\nTochigi\nTokushima\nTokyo\nTottori\nToyama\nWakayama\nYamagata\nYamaguchi\nYamanashi\n",
+  "stderr": "",
+  "execution_time_ms": 2957
+}

@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as count FROM transactions WHERE prefecture = '東京都' AND city LIKE '%新宿%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT COUNT(*) as count FROM transactions WHERE prefecture = '東京都' AND city LIKE '%新宿%'",
+  "rows": [
+    {
+      "count": "10364"
+    }
+  ],
+  "messages": [],
+  "stdout": "count\n10364\n",
+  "stderr": "",
+  "execution_time_ms": 2539
+}

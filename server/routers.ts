@@ -43,7 +43,9 @@ export const appRouter = router({
         walkingMinutes: z.number().optional(),
       }))
       .mutation(async ({ input }) => {
+        console.log('[Assessment API] Received request:', input);
         try {
+          console.log('[Assessment API] Calling calculateAssessment...');
           // Calculate estimated price using aggregated data
           const assessmentResult = await calculateAssessment({
             prefecture: input.prefecture,
@@ -54,8 +56,10 @@ export const appRouter = router({
             buildingYear: input.buildingAge ? new Date().getFullYear() - input.buildingAge : undefined,
             stationDistanceMin: input.walkingMinutes,
           });
+          console.log('[Assessment API] Assessment result:', assessmentResult);
           
           const estimatedPrice = Math.round(assessmentResult.estimatedMidYen / 10000); // Convert to 万円
+          console.log('[Assessment API] Estimated price:', estimatedPrice, '万円');
 
           // Create assessment request
           const result = await createAssessmentRequest({
@@ -202,7 +206,7 @@ export const appRouter = router({
             },
           };
         } catch (error) {
-          console.error("Assessment submission error:", error);
+          console.error("[Assessment API] Assessment submission error:", error);
           throw new Error(error instanceof Error ? error.message : "査定リクエストの送信に失敗しました。");
         }
       }),

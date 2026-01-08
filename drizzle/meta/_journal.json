@@ -43,6 +43,13 @@
       "when": 1767854289959,
       "tag": "0005_gifted_wallow",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1767861261235,
+      "tag": "0006_fancy_leopardon",
+      "breakpoints": true
     }
   ]
 }

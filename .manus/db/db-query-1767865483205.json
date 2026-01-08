@@ -1,0 +1,45 @@
+{
+  "query": "SELECT prefecture, city, propertyType, priceYen, buildingYear FROM transactions WHERE prefecture = '東京都' LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, city, propertyType, priceYen, buildingYear FROM transactions WHERE prefecture = '東京都' LIMIT 5",
+  "rows": [
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "propertyType": "中古マンション等",
+      "priceYen": "53000000",
+      "buildingYear": "2015"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "propertyType": "中古マンション等",
+      "priceYen": "33000000",
+      "buildingYear": "2018"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "propertyType": "中古マンション等",
+      "priceYen": "27000000",
+      "buildingYear": "2006"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "propertyType": "中古マンション等",
+      "priceYen": "49000000",
+      "buildingYear": "2013"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "千代田区",
+      "propertyType": "中古マンション等",
+      "priceYen": "71000000",
+      "buildingYear": "2005"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcity\tpropertyType\tpriceYen\tbuildingYear\n東京都\t千代田区\t中古マンション等\t53000000\t2015\n東京都\t千代田区\t中古マンション等\t33000000\t2018\n東京都\t千代田区\t中古マンション等\t27000000\t2006\n東京都\t千代田区\t中古マンション等\t49000000\t2013\n東京都\t千代田区\t中古マンション等\t71000000\t2005\n",
+  "stderr": "",
+  "execution_time_ms": 1796
+}

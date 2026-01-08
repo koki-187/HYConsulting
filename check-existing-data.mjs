@@ -1,30 +1,23 @@
-import { drizzle } from 'drizzle-orm/mysql2';
-import mysql from 'mysql2/promise';
-import { sql } from 'drizzle-orm';
+import { getDb } from "./server/db.js";
 
-const connection = await mysql.createConnection(process.env.DATABASE_URL);
-const db = drizzle(connection);
+const db = getDb();
 
-console.log('既存データベースの状態確認\n');
-console.log('=' .repeat(80));
+console.log("=== 既存データベースの都道府県別件数 ===\n");
 
-// Total records
-const totalResult = await db.execute(sql`SELECT COUNT(*) as total FROM aggregated_real_estate_data`);
-console.log(`\n総レコード数: ${totalResult[0][0].total.toLocaleString()} 件\n`);
-
-// Prefecture breakdown
-const prefResult = await db.execute(sql`
-  SELECT prefecture, COUNT(*) as count 
-  FROM aggregated_real_estate_data 
-  GROUP BY prefecture 
+const prefectures = await db.all(`
+  SELECT prefecture, COUNT(*) as count
+  FROM transactions
+  GROUP BY prefecture
   ORDER BY prefecture
 `);
 
-console.log('都道府県別レコード数:');
-console.log('-'.repeat(80));
-for (const row of prefResult[0]) {
-  console.log(`${row.prefecture.padEnd(20)}: ${row.count.toLocaleString().padStart(10)} 件`);
+let total = 0;
+for (const p of prefectures) {
+  console.log(`${p.prefecture}: ${p.count.toLocaleString()}件`);
+  total += p.count;
 }
-console.log('=' .repeat(80));
 
-await connection.end();
+console.log(`\n合計: ${total.toLocaleString()}件`);
+console.log(`都道府県数: ${prefectures.length}都道府県`);
+
+process.exit(0);

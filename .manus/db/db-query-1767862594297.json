@@ -1,0 +1,198 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as count FROM transactions GROUP BY prefecture ORDER BY count DESC",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as count FROM transactions GROUP BY prefecture ORDER BY count DESC",
+  "rows": [
+    {
+      "prefecture": "Tokyo",
+      "count": "282962"
+    },
+    {
+      "prefecture": "Osaka",
+      "count": "170005"
+    },
+    {
+      "prefecture": "Kanagawa",
+      "count": "166501"
+    },
+    {
+      "prefecture": "Saitama",
+      "count": "114527"
+    },
+    {
+      "prefecture": "Aichi",
+      "count": "108224"
+    },
+    {
+      "prefecture": "Chiba",
+      "count": "104428"
+    },
+    {
+      "prefecture": "Hyogo",
+      "count": "99191"
+    },
+    {
+      "prefecture": "Hokkaido",
+      "count": "89240"
+    },
+    {
+      "prefecture": "Fukuoka",
+      "count": "76305"
+    },
+    {
+      "prefecture": "Kyoto",
+      "count": "48552"
+    },
+    {
+      "prefecture": "Shizuoka",
+      "count": "45940"
+    },
+    {
+      "prefecture": "Ibaraki",
+      "count": "36440"
+    },
+    {
+      "prefecture": "Miyagi",
+      "count": "35162"
+    },
+    {
+      "prefecture": "Hiroshima",
+      "count": "32827"
+    },
+    {
+      "prefecture": "Nagano",
+      "count": "28561"
+    },
+    {
+      "prefecture": "Tochigi",
+      "count": "25093"
+    },
+    {
+      "prefecture": "Niigata",
+      "count": "24939"
+    },
+    {
+      "prefecture": "Gifu",
+      "count": "23386"
+    },
+    {
+      "prefecture": "Mie",
+      "count": "23075"
+    },
+    {
+      "prefecture": "Gunma",
+      "count": "22890"
+    },
+    {
+      "prefecture": "Shiga",
+      "count": "22293"
+    },
+    {
+      "prefecture": "Okayama",
+      "count": "21860"
+    },
+    {
+      "prefecture": "Nara",
+      "count": "21402"
+    },
+    {
+      "prefecture": "Fukushima",
+      "count": "20449"
+    },
+    {
+      "prefecture": "Kumamoto",
+      "count": "18553"
+    },
+    {
+      "prefecture": "Kagoshima",
+      "count": "17108"
+    },
+    {
+      "prefecture": "Yamaguchi",
+      "count": "16007"
+    },
+    {
+      "prefecture": "Ishikawa",
+      "count": "14779"
+    },
+    {
+      "prefecture": "Ehime",
+      "count": "14220"
+    },
+    {
+      "prefecture": "Aomori",
+      "count": "12768"
+    },
+    {
+      "prefecture": "Oita",
+      "count": "12659"
+    },
+    {
+      "prefecture": "Wakayama",
+      "count": "12179"
+    },
+    {
+      "prefecture": "Nagasaki",
+      "count": "11930"
+    },
+    {
+      "prefecture": "Toyama",
+      "count": "11885"
+    },
+    {
+      "prefecture": "Iwate",
+      "count": "11661"
+    },
+    {
+      "prefecture": "Okinawa",
+      "count": "11314"
+    },
+    {
+      "prefecture": "Miyazaki",
+      "count": "11080"
+    },
+    {
+      "prefecture": "Yamanashi",
+      "count": "10315"
+    },
+    {
+      "prefecture": "Kagawa",
+      "count": "10284"
+    },
+    {
+      "prefecture": "Akita",
+      "count": "10097"
+    },
+    {
+      "prefecture": "Yamagata",
+      "count": "9230"
+    },
+    {
+      "prefecture": "Saga",
+      "count": "8365"
+    },
+    {
+      "prefecture": "Fukui",
+      "count": "7710"
+    },
+    {
+      "prefecture": "Shimane",
+      "count": "6564"
+    },
+    {
+      "prefecture": "Tokushima",
+      "count": "6426"
+    },
+    {
+      "prefecture": "Kochi",
+      "count": "6417"
+    },
+    {
+      "prefecture": "Tottori",
+      "count": "6368"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\nTokyo\t282962\nOsaka\t170005\nKanagawa\t166501\nSaitama\t114527\nAichi\t108224\nChiba\t104428\nHyogo\t99191\nHokkaido\t89240\nFukuoka\t76305\nKyoto\t48552\nShizuoka\t45940\nIbaraki\t36440\nMiyagi\t35162\nHiroshima\t32827\nNagano\t28561\nTochigi\t25093\nNiigata\t24939\nGifu\t23386\nMie\t23075\nGunma\t22890\nShiga\t22293\nOkayama\t21860\nNara\t21402\nFukushima\t20449\nKumamoto\t18553\nKagoshima\t17108\nYamaguchi\t16007\nIshikawa\t14779\nEhime\t14220\nAomori\t12768\nOita\t12659\nWakayama\t12179\nNagasaki\t11930\nToyama\t11885\nIwate\t11661\nOkinawa\t11314\nMiyazaki\t11080\nYamanashi\t10315\nKagawa\t10284\nAkita\t10097\nYamagata\t9230\nSaga\t8365\nFukui\t7710\nShimane\t6564\nTokushima\t6426\nKochi\t6417\nTottori\t6368\n",
+  "stderr": "",
+  "execution_time_ms": 3628
+}

@@ -1,18 +1,41 @@
 import { drizzle } from "drizzle-orm/mysql2";
 import { eq } from "drizzle-orm";
+import mysql2 from 'mysql2';
 import { InsertUser, users, assessmentRequests, propertyDatabase, InsertAssessmentRequest, InsertPropertyDatabase, assessmentReports, auditLog } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _pool: mysql2.Pool | null = null;
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
-export async function getDb() {
+export function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      // Parse DATABASE_URL and create MySQL2 connection pool
+      const dbUrl = new URL(process.env.DATABASE_URL);
+      
+      const poolConfig: mysql2.PoolOptions = {
+        host: dbUrl.hostname,
+        port: parseInt(dbUrl.port) || 3306,
+        user: dbUrl.username,
+        password: dbUrl.password,
+        database: dbUrl.pathname.slice(1), // Remove leading '/'
+        ssl: {
+          rejectUnauthorized: true
+        },
+        waitForConnections: true,
+        connectionLimit: 10,
+        queueLimit: 0
+      };
+      
+      _pool = mysql2.createPool(poolConfig);
+      
+      // Create Drizzle instance with the pool
+      _db = drizzle(_pool);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
+      _pool = null;
     }
   }
   return _db;
@@ -23,7 +46,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
     throw new Error("User openId is required for upsert");
   }
 
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     console.warn("[Database] Cannot upsert user: database not available");
     return;
@@ -78,7 +101,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 }
 
 export async function getUserByOpenId(openId: string) {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     console.warn("[Database] Cannot get user: database not available");
     return undefined;
@@ -93,7 +116,7 @@ export async function getUserByOpenId(openId: string) {
  * Assessment Request Helpers
  */
 export async function createAssessmentRequest(request: InsertAssessmentRequest) {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     throw new Error("Database not available");
   }
@@ -109,7 +132,7 @@ export async function createAssessmentRequest(request: InsertAssessmentRequest) 
 }
 
 export async function getAssessmentRequests(limit: number = 10, offset: number = 0) {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     throw new Error("Database not available");
   }
@@ -134,7 +157,7 @@ export async function calculateAssessmentPrice(
   floorArea: number,
   condition: string
 ): Promise<number | null> {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     console.warn("[Database] Cannot calculate price: database not available");
     return null;
@@ -189,7 +212,7 @@ export async function calculateAssessmentPrice(
  *約10万件のデータは外部から取得し、ここでは代表的なサンプルデータを使用
  */
 export async function seedPropertyDatabase() {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     console.warn("[Database] Cannot seed: database not available");
     return;
@@ -365,7 +388,7 @@ export async function seedPropertyDatabase() {
  * Stores detailed assessment results
  */
 export async function createAssessmentReport(report: any) {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     throw new Error("Database not available");
   }
@@ -384,7 +407,7 @@ export async function createAssessmentReport(report: any) {
  * Tracks all assessment operations for debugging
  */
 export async function logAuditEvent(event: any) {
-  const db = await getDb();
+  const db = getDb();
   if (!db) {
     console.warn("[Database] Cannot log audit event: database not available");
     return;

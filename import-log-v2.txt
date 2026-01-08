@@ -1,0 +1,112 @@
+============================================================
+全47都道府県データベース投入開始
+============================================================
+
+既存データを削除中...
+既存データ削除完了
+
+処理対象: 47ファイル
+
+[1/47]
+
+処理中: Hokkaido (01_Hokkaido_20202_20252.csv)
+  Hokkaido: 0件投入完了
+
+[2/47]
+
+処理中: Aomori (02_Aomori Prefecture_20202_20252.csv)
+  Aomori: 0件投入完了
+
+[3/47]
+
+処理中: Iwate (03_Iwate Prefecture_20202_20252.csv)
+  Iwate: 0件投入完了
+
+[4/47]
+
+処理中: Miyagi (04_Miyagi Prefecture_20202_20252.csv)
+  Miyagi: 0件投入完了
+
+[5/47]
+
+処理中: Akita (05_Akita Prefecture_20202_20252.csv)
+  Akita: 0件投入完了
+
+[6/47]
+
+処理中: Yamagata (06_Yamagata Prefecture_20202_20252.csv)
+  Yamagata: 0件投入完了
+
+[7/47]
+
+処理中: Fukushima (07_Fukushima Prefecture_20202_20252.csv)
+  Fukushima: 0件投入完了
+
+[8/47]
+
+処理中: Ibaraki (08_Ibaraki Prefecture_20202_20252.csv)
+  Ibaraki: 0件投入完了
+
+[9/47]
+
+処理中: Tochigi (09_Tochigi Prefecture_20202_20252.csv)
+  Tochigi: 0件投入完了
+
+[10/47]
+
+処理中: Gunma (10_Gunma Prefecture_20202_20252.csv)
+  Gunma: 0件投入完了
+
+[11/47]
+
+処理中: Saitama (11_Saitama Prefecture_20202_20252.csv)
+  Saitama: 0件投入完了
+
+[12/47]
+
+処理中: Chiba (12_Chiba Prefecture_20202_20252.csv)
+  Chiba: 0件投入完了
+
+[13/47]
+
+処理中: Tokyo (13_Tokyo_20202_20252.csv)
+  Tokyo: 0件投入完了
+
+[14/47]
+
+処理中: Kanagawa (14_Kanagawa Prefecture_20202_20252.csv)
+  Kanagawa: 0件投入完了
+
+[15/47]
+
+処理中: Niigata (15_Niigata Prefecture_20202_20252.csv)
+  Niigata: 0件投入完了
+
+[16/47]
+
+処理中: Toyama (16_Toyama Prefecture_20202_20252.csv)
+  Toyama: 0件投入完了
+
+[17/47]
+
+処理中: Ishikawa (17_Ishikawa Prefecture_20202_20252.csv)
+  Ishikawa: 0件投入完了
+
+[18/47]
+
+処理中: Fukui (18_Fukui Prefecture_20202_20252.csv)
+  Fukui: 0件投入完了
+
+[19/47]
+
+処理中: Yamanashi (19_Yamanashi Prefecture_20202_20252.csv)
+  Yamanashi: 0件投入完了
+
+[20/47]
+
+処理中: Nagano (20_Nagano Prefecture_20202_20252.csv)
+  Nagano: 0件投入完了
+
+[21/47]
+
+処理中: Gifu (21_Gifu Prefecture_20202_20252.csv)

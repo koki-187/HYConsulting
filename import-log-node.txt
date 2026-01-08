@@ -1,0 +1,69 @@
+============================================================
+全47都道府県データベース投入開始
+============================================================
+
+既存データを削除中...
+既存データ削除完了
+
+処理対象: 47ファイル
+
+[1/47]
+
+処理中: Hokkaido (01_Hokkaido_20202_20252.csv)
+CsvError: Invalid Closing Quote: got "" at line 10001 instead of delimiter, record delimiter, trimable character (if activated) or comment
+    at Object.parse (file:///home/ubuntu/hy-consulting-lp/node_modules/.pnpm/csv-parse@6.1.0/node_modules/csv-parse/lib/api/index.js:237:19)
+    at Parser._transform (file:///home/ubuntu/hy-consulting-lp/node_modules/.pnpm/csv-parse@6.1.0/node_modules/csv-parse/lib/index.js:33:26)
+    at Transform._write (node:internal/streams/transform:171:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at ReadStream.ondata (node:internal/streams/readable:1009:22)
+    at ReadStream.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3) {
+  code: 'CSV_INVALID_CLOSING_QUOTE',
+  bytes: 2139375,
+  comment_lines: 0,
+  empty_lines: 0,
+  invalid_field_length: 0,
+  lines: 10001,
+  records: 9999,
+  columns: [
+    { name: '���' },
+    { name: '���i���敪' },
+    { name: '�n��' },
+    { name: '�s�撬���R�[�h' },
+    { name: '�s���{����' },
+    { name: '�s�撬����' },
+    { name: '�n�於' },
+    { name: '�Ŋ�w�F����' },
+    { name: '�Ŋ�w�F�����i���j' },
+    { name: '������i�i���z�j' },
+    { name: '�ؒP��' },
+    { name: '�Ԏ��' },
+    { name: '�ʐρi�u�j' },
+    { name: '������i�i�u�P���j' },
+    { name: '�y�n�̌`��' },
+    { name: '�Ԍ�' },
+    { name: '�����ʐρi�u�j' },
+    { name: '���z�N' },
+    { name: '�����̍\\��' },
+    { name: '�p�r' },
+    { name: '����̗��p�ړI' },
+    { name: '�O�ʓ��H�F����' },
+    { name: '�O�ʓ��H�F���' },
+    { name: '�O�ʓ��H�F�����i���j' },
+    { name: '�s�s�v��' },
+    { name: '���؂����i���j' },
+    { name: '�e�ϗ��i���j' },
+    { name: '�������' },
+    { name: '����' },
+    { name: '����̎��' }
+  ],
+  error: undefined,
+  header: false,
+  index: 29,
+  raw: undefined,
+  column: '����̎��',
+  quoting: false
+}

@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal, index } from "drizzle-orm/mysql-core";
+import { int, bigint, mysqlEnum, mysqlTable, text, timestamp, varchar, decimal, index } from "drizzle-orm/mysql-core";
 import { relations } from "drizzle-orm";
 
 /**
@@ -207,7 +207,7 @@ export const transactions = mysqlTable(
     floor: int("floor"), // Floor number
     nearestStation: varchar("nearestStation", { length: 100 }), // 最寄り駅
     stationDistanceMin: int("stationDistanceMin"), // 駅距離 (walking minutes)
-    priceYen: int("priceYen").notNull(), // 価格 (price in yen)
+    priceYen: bigint("priceYen", { mode: "number" }).notNull(), // 価格 (price in yen)
     unitPriceYenPerM2: decimal("unitPriceYenPerM2", { precision: 15, scale: 2 }), // 単価 (price per sqm)
     lat: decimal("lat", { precision: 10, scale: 6 }), // Latitude
     lon: decimal("lon", { precision: 10, scale: 6 }), // Longitude

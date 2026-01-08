@@ -60,7 +60,7 @@ function mapPropertyTypeToDb(propertyType: string): string {
   const mapping: Record<string, string> = {
     "apartment": "中古マンション等",
     "condo": "中古マンション等",
-    "house": "中古戸建",
+    "house": "宅地(土地と建物)",
     "land": "宅地(土地)",
     "building": "中古マンション等", // アパート一棟は中古マンション等として扱う
   };
@@ -90,7 +90,8 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
         eq(transactions.city, city),
         eq(transactions.propertyType, dbPropertyType)
       )
-    );
+    )
+    .limit(500); // Limit to 500 records for performance
 
   // If we have enough comparables, apply filters
   if (comparables.length >= 3) {
@@ -107,7 +108,8 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
           eq(transactions.prefecture, prefecture),
           eq(transactions.propertyType, dbPropertyType)
         )
-      );
+      )
+      .limit(500); // Limit to 500 records for performance
 
     if (comparables.length >= 3) {
       comparables = applyFilters(comparables, input);

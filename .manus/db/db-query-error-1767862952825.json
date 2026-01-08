@@ -1,0 +1,8 @@
+{
+  "query": "DELETE FROM transactions;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute DELETE FROM transactions;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1105 (HY000) at line 1: Your query has been cancelled due to exceeding the allowed memory limit for a single SQL query. Please try narrowing your query scope or increase the tidb_mem_quota_query limit and try again.[conn=3263168544]"
+  ]
+}
