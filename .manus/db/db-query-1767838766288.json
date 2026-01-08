@@ -1,0 +1,192 @@
+{
+  "query": "\nSELECT \n  prefecture,\n  COUNT(*) as record_count,\n  COUNT(DISTINCT city) as city_count,\n  SUM(transactionCount) as total_transactions,\n  COUNT(DISTINCT propertyType) as property_types\nFROM aggregated_real_estate_data\nGROUP BY prefecture\nORDER BY record_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute \nSELECT \n  prefecture,\n  COUNT(*) as record_count,\n  COUNT(DISTINCT city) as city_count,\n  SUM(transactionCount) as total_transactions,\n  COUNT(DISTINCT propertyType) as property_types\nFROM aggregated_real_estate_data\nGROUP BY prefecture\nORDER BY record_count DESC;\n",
+  "rows": [
+    {
+      "prefecture": "北海道",
+      "record_count": "15137",
+      "city_count": "188",
+      "total_transactions": "115548",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "埼玉県",
+      "record_count": "9873",
+      "city_count": "73",
+      "total_transactions": "112963",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "千葉県",
+      "record_count": "8129",
+      "city_count": "60",
+      "total_transactions": "90392",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "茨城県",
+      "record_count": "7500",
+      "city_count": "44",
+      "total_transactions": "60340",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "福島県",
+      "record_count": "5877",
+      "city_count": "59",
+      "total_transactions": "48404",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "愛知県",
+      "record_count": "5225",
+      "city_count": "70",
+      "total_transactions": "48579",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "宮城県",
+      "record_count": "5013",
+      "city_count": "40",
+      "total_transactions": "48802",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "栃木県",
+      "record_count": "4908",
+      "city_count": "25",
+      "total_transactions": "42728",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "群馬県",
+      "record_count": "4508",
+      "city_count": "35",
+      "total_transactions": "39508",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "福岡県",
+      "record_count": "4225",
+      "city_count": "74",
+      "total_transactions": "37242",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "山形県",
+      "record_count": "3600",
+      "city_count": "35",
+      "total_transactions": "17396",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "青森県",
+      "record_count": "3496",
+      "city_count": "40",
+      "total_transactions": "22944",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "秋田県",
+      "record_count": "3176",
+      "city_count": "25",
+      "total_transactions": "17556",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "岩手県",
+      "record_count": "3008",
+      "city_count": "33",
+      "total_transactions": "20656",
+      "property_types": "1"
+    },
+    {
+      "prefecture": "神奈川県",
+      "record_count": "2227",
+      "city_count": "61",
+      "total_transactions": "39037",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "広島県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15738",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "東京都",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15615",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "大阪府",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "16023",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "長野県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15786",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "静岡県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15801",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "岡山県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15459",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "滋賀県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15705",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "三重県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15642",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "新潟県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15924",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "京都府",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15471",
+      "property_types": "3"
+    },
+    {
+      "prefecture": "兵庫県",
+      "record_count": "225",
+      "city_count": "5",
+      "total_transactions": "15969",
+      "property_types": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\trecord_count\tcity_count\ttotal_transactions\tproperty_types\n北海道\t15137\t188\t115548\t3\n埼玉県\t9873\t73\t112963\t3\n千葉県\t8129\t60\t90392\t3\n茨城県\t7500\t44\t60340\t1\n福島県\t5877\t59\t48404\t3\n愛知県\t5225\t70\t48579\t3\n宮城県\t5013\t40\t48802\t3\n栃木県\t4908\t25\t42728\t1\n群馬県\t4508\t35\t39508\t1\n福岡県\t4225\t74\t37242\t3\n山形県\t3600\t35\t17396\t1\n青森県\t3496\t40\t22944\t1\n秋田県\t3176\t25\t17556\t1\n岩手県\t3008\t33\t20656\t1\n神奈川県\t2227\t61\t39037\t3\n広島県\t225\t5\t15738\t3\n東京都\t225\t5\t15615\t3\n大阪府\t225\t5\t16023\t3\n長野県\t225\t5\t15786\t3\n静岡県\t225\t5\t15801\t3\n岡山県\t225\t5\t15459\t3\n滋賀県\t225\t5\t15705\t3\n三重県\t225\t5\t15642\t3\n新潟県\t225\t5\t15924\t3\n京都府\t225\t5\t15471\t3\n兵庫県\t225\t5\t15969\t3\n",
+  "stderr": "",
+  "execution_time_ms": 2603
+}

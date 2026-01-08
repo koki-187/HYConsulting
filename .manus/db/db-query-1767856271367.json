@@ -1,0 +1,80 @@
+{
+  "query": "SELECT \n  prefecture,\n  COUNT(*) as count,\n  MIN(priceYen) as min_price,\n  MAX(priceYen) as max_price,\n  AVG(priceYen) as avg_price\nFROM transactions \nGROUP BY prefecture \nORDER BY count DESC \nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  prefecture,\n  COUNT(*) as count,\n  MIN(priceYen) as min_price,\n  MAX(priceYen) as max_price,\n  AVG(priceYen) as avg_price\nFROM transactions \nGROUP BY prefecture \nORDER BY count DESC \nLIMIT 10;",
+  "rows": [
+    {
+      "prefecture": "愛知県",
+      "count": "12607",
+      "min_price": "30021588",
+      "max_price": "395917813",
+      "avg_price": "138094412.8787"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "12590",
+      "min_price": "22561666",
+      "max_price": "359014211",
+      "avg_price": "113220594.9862"
+    },
+    {
+      "prefecture": "大阪府",
+      "count": "12511",
+      "min_price": "37505991",
+      "max_price": "449841260",
+      "avg_price": "179730795.3241"
+    },
+    {
+      "prefecture": "東京都",
+      "count": "12493",
+      "min_price": "52645243",
+      "max_price": "629806024",
+      "avg_price": "252832612.4424"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "12430",
+      "min_price": "42000000",
+      "max_price": "503862395",
+      "avg_price": "200166316.4817"
+    },
+    {
+      "prefecture": "北海道",
+      "count": "10693",
+      "min_price": "22523985",
+      "max_price": "269957642",
+      "avg_price": "109386423.0420"
+    },
+    {
+      "prefecture": "新潟県",
+      "count": "10618",
+      "min_price": "22553714",
+      "max_price": "269982354",
+      "avg_price": "108376176.7272"
+    },
+    {
+      "prefecture": "静岡県",
+      "count": "10611",
+      "min_price": "22590430",
+      "max_price": "269995800",
+      "avg_price": "108083233.3373"
+    },
+    {
+      "prefecture": "広島県",
+      "count": "10596",
+      "min_price": "22606139",
+      "max_price": "269994323",
+      "avg_price": "108823840.5907"
+    },
+    {
+      "prefecture": "千葉県",
+      "count": "10596",
+      "min_price": "22567401",
+      "max_price": "269971960",
+      "avg_price": "109393234.0275"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\tmin_price\tmax_price\tavg_price\n愛知県\t12607\t30021588\t395917813\t138094412.8787\n福岡県\t12590\t22561666\t359014211\t113220594.9862\n大阪府\t12511\t37505991\t449841260\t179730795.3241\n東京都\t12493\t52645243\t629806024\t252832612.4424\n神奈川県\t12430\t42000000\t503862395\t200166316.4817\n北海道\t10693\t22523985\t269957642\t109386423.0420\n新潟県\t10618\t22553714\t269982354\t108376176.7272\n静岡県\t10611\t22590430\t269995800\t108083233.3373\n広島県\t10596\t22606139\t269994323\t108823840.5907\n千葉県\t10596\t22567401\t269971960\t109393234.0275\n",
+  "stderr": "",
+  "execution_time_ms": 1769
+}

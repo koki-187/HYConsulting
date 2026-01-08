@@ -1,0 +1,33 @@
+{
+  "query": "SELECT * FROM transactions LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT * FROM transactions LIMIT 1;",
+  "rows": [
+    {
+      "id": "1",
+      "datasetVersionId": "test_dataset_2025Q1",
+      "transactionYm": "2025-01",
+      "prefecture": "神奈川県",
+      "city": "横浜市",
+      "ward": "西区",
+      "district": "みなとみらい",
+      "propertyType": "land",
+      "landAreaM2": "120.00",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "NULL",
+      "structure": "NULL",
+      "floorPlan": "NULL",
+      "floor": "NULL",
+      "nearestStation": "みなとみらい駅",
+      "stationDistanceMin": "8",
+      "priceYen": "185000000",
+      "unitPriceYenPerM2": "1541666.67",
+      "lat": "35.457000",
+      "lon": "139.632000",
+      "remarks": "Test data"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tdatasetVersionId\ttransactionYm\tprefecture\tcity\tward\tdistrict\tpropertyType\tlandAreaM2\tbuildingAreaM2\tbuildingYear\tstructure\tfloorPlan\tfloor\tnearestStation\tstationDistanceMin\tpriceYen\tunitPriceYenPerM2\tlat\tlon\tremarks\n1\ttest_dataset_2025Q1\t2025-01\t神奈川県\t横浜市\t西区\tみなとみらい\tland\t120.00\tNULL\tNULL\tNULL\tNULL\tNULL\tみなとみらい駅\t8\t185000000\t1541666.67\t35.457000\t139.632000\tTest data\n",
+  "stderr": "",
+  "execution_time_ms": 1510
+}

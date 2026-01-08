@@ -4,7 +4,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { createAssessmentRequest, calculateAssessmentPrice, seedPropertyDatabase } from "./db";
-import { calculateAssessment } from "./assessment-aggregated";
+import { calculateAssessment } from "./assessment";
 import { generateMarketAnalysis } from "./market-analysis";
 import emailService from "./email-service";
 

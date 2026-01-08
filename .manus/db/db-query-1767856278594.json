@@ -1,0 +1,86 @@
+{
+  "query": "SELECT \n  prefecture,\n  COUNT(*) as count\nFROM transactions \nGROUP BY prefecture \nORDER BY prefecture;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  prefecture,\n  COUNT(*) as count\nFROM transactions \nGROUP BY prefecture \nORDER BY prefecture;",
+  "rows": [
+    {
+      "prefecture": "三重県",
+      "count": "10482"
+    },
+    {
+      "prefecture": "京都府",
+      "count": "10454"
+    },
+    {
+      "prefecture": "兵庫県",
+      "count": "10501"
+    },
+    {
+      "prefecture": "北海道",
+      "count": "10693"
+    },
+    {
+      "prefecture": "千葉県",
+      "count": "10596"
+    },
+    {
+      "prefecture": "埼玉県",
+      "count": "10357"
+    },
+    {
+      "prefecture": "大阪府",
+      "count": "12511"
+    },
+    {
+      "prefecture": "宮城県",
+      "count": "10553"
+    },
+    {
+      "prefecture": "岡山県",
+      "count": "10482"
+    },
+    {
+      "prefecture": "広島県",
+      "count": "10596"
+    },
+    {
+      "prefecture": "愛知県",
+      "count": "12607"
+    },
+    {
+      "prefecture": "新潟県",
+      "count": "10618"
+    },
+    {
+      "prefecture": "東京都",
+      "count": "12493"
+    },
+    {
+      "prefecture": "滋賀県",
+      "count": "10415"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "12430"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "12590"
+    },
+    {
+      "prefecture": "福島県",
+      "count": "10511"
+    },
+    {
+      "prefecture": "長野県",
+      "count": "10508"
+    },
+    {
+      "prefecture": "静岡県",
+      "count": "10611"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\n三重県\t10482\n京都府\t10454\n兵庫県\t10501\n北海道\t10693\n千葉県\t10596\n埼玉県\t10357\n大阪府\t12511\n宮城県\t10553\n岡山県\t10482\n広島県\t10596\n愛知県\t12607\n新潟県\t10618\n東京都\t12493\n滋賀県\t10415\n神奈川県\t12430\n福岡県\t12590\n福島県\t10511\n長野県\t10508\n静岡県\t10611\n",
+  "stderr": "",
+  "execution_time_ms": 1566
+}

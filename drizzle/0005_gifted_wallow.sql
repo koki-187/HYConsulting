@@ -1,0 +1,1 @@
+ALTER TABLE `aggregated_real_estate_data` MODIFY COLUMN `averagePriceYen` decimal(15,2) NOT NULL;

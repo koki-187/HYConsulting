@@ -329,7 +329,7 @@ export const aggregatedRealEstateData = mysqlTable(
     totalAreaM2: decimal("totalAreaM2", { precision: 15, scale: 2 }).notNull(), // Total area in square meters
     transactionCount: int("transactionCount").notNull(), // Number of transactions
     pricePerTsubo: int("pricePerTsubo").notNull(), // Price per tsubo (yen/坪)
-    averagePriceYen: int("averagePriceYen").notNull(), // Average price in yen
+    averagePriceYen: decimal("averagePriceYen", { precision: 15, scale: 2 }).notNull(), // Average price in yen
     averageAreaM2: decimal("averageAreaM2", { precision: 10, scale: 2 }).notNull(), // Average area in square meters
     // Metadata
     datasetVersionId: varchar("datasetVersionId", { length: 100 }).notNull(),

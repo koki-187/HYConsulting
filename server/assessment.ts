@@ -18,7 +18,7 @@ export interface AssessmentInput {
   city: string;
   ward?: string;
   district?: string;
-  propertyType: "land" | "house" | "condo";
+  propertyType: "land" | "house" | "condo" | "apartment";
   landAreaM2?: number;
   buildingAreaM2?: number;
   buildingYear?: number;
@@ -54,8 +54,22 @@ export interface AssessmentResult {
 }
 
 /**
+ * Map frontend property type to database property type
+ */
+function mapPropertyTypeToDb(propertyType: string): string {
+  const mapping: Record<string, string> = {
+    "apartment": "中古マンション等",
+    "condo": "中古マンション等",
+    "house": "中古戸建",
+    "land": "宅地(土地)",
+    "building": "中古マンション等", // アパート一棟は中古マンション等として扱う
+  };
+  return mapping[propertyType] || propertyType;
+}
+
+/**
  * Find comparable transactions
- * Uses progressive search strategy: exact match → expanded search → regional fallback
+ * Uses progressive search strategy: exact match → expanded search
  */
 async function findComparables(input: AssessmentInput): Promise<any[]> {
   const db = await getDb();
@@ -64,6 +78,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
   }
 
   const { prefecture, city, propertyType, buildingAreaM2, buildingYear, stationDistanceMin } = input;
+  const dbPropertyType = mapPropertyTypeToDb(propertyType);
 
   // Step 1: Try exact match (same city, property type)
   let comparables = await db
@@ -73,7 +88,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
       and(
         eq(transactions.prefecture, prefecture),
         eq(transactions.city, city),
-        eq(transactions.propertyType, propertyType)
+        eq(transactions.propertyType, dbPropertyType)
       )
     );
 
@@ -90,7 +105,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
       .where(
         and(
           eq(transactions.prefecture, prefecture),
-          eq(transactions.propertyType, propertyType)
+          eq(transactions.propertyType, dbPropertyType)
         )
       );
 
@@ -104,12 +119,13 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
     comparables = await db
       .select()
       .from(transactions)
-      .where(eq(transactions.propertyType, propertyType))
+      .where(eq(transactions.propertyType, dbPropertyType))
       .limit(100);
   }
 
   return comparables;
 }
+
 
 /**
  * Apply filters to comparables based on property characteristics
@@ -347,6 +363,7 @@ function generateExplanation(
     land: "土地",
     house: "戸建て",
     condo: "マンション",
+    apartment: "アパート",
   }[input.propertyType] || "物件";
 
   const trendLabel = {

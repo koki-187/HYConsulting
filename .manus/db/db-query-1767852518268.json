@@ -1,0 +1,114 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as count FROM aggregated_real_estate_data GROUP BY prefecture ORDER BY prefecture;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as count FROM aggregated_real_estate_data GROUP BY prefecture ORDER BY prefecture;",
+  "rows": [
+    {
+      "prefecture": "三重県",
+      "count": "225"
+    },
+    {
+      "prefecture": "京都府",
+      "count": "225"
+    },
+    {
+      "prefecture": "兵庫県",
+      "count": "225"
+    },
+    {
+      "prefecture": "北海道",
+      "count": "15137"
+    },
+    {
+      "prefecture": "千葉県",
+      "count": "8129"
+    },
+    {
+      "prefecture": "埼玉県",
+      "count": "9873"
+    },
+    {
+      "prefecture": "大阪府",
+      "count": "225"
+    },
+    {
+      "prefecture": "宮城県",
+      "count": "5013"
+    },
+    {
+      "prefecture": "山形県",
+      "count": "3600"
+    },
+    {
+      "prefecture": "岡山県",
+      "count": "225"
+    },
+    {
+      "prefecture": "岩手県",
+      "count": "3008"
+    },
+    {
+      "prefecture": "広島県",
+      "count": "225"
+    },
+    {
+      "prefecture": "愛知県",
+      "count": "5225"
+    },
+    {
+      "prefecture": "新潟県",
+      "count": "225"
+    },
+    {
+      "prefecture": "東京都",
+      "count": "225"
+    },
+    {
+      "prefecture": "栃木県",
+      "count": "4908"
+    },
+    {
+      "prefecture": "滋賀県",
+      "count": "225"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "2227"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "4225"
+    },
+    {
+      "prefecture": "福島県",
+      "count": "5877"
+    },
+    {
+      "prefecture": "秋田県",
+      "count": "3176"
+    },
+    {
+      "prefecture": "群馬県",
+      "count": "4508"
+    },
+    {
+      "prefecture": "茨城県",
+      "count": "7500"
+    },
+    {
+      "prefecture": "長野県",
+      "count": "225"
+    },
+    {
+      "prefecture": "青森県",
+      "count": "3496"
+    },
+    {
+      "prefecture": "静岡県",
+      "count": "225"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\n三重県\t225\n京都府\t225\n兵庫県\t225\n北海道\t15137\n千葉県\t8129\n埼玉県\t9873\n大阪府\t225\n宮城県\t5013\n山形県\t3600\n岡山県\t225\n岩手県\t3008\n広島県\t225\n愛知県\t5225\n新潟県\t225\n東京都\t225\n栃木県\t4908\n滋賀県\t225\n神奈川県\t2227\n福岡県\t4225\n福島県\t5877\n秋田県\t3176\n群馬県\t4508\n茨城県\t7500\n長野県\t225\n青森県\t3496\n静岡県\t225\n",
+  "stderr": "",
+  "execution_time_ms": 1657
+}
