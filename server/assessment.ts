@@ -25,6 +25,9 @@ export interface AssessmentInput {
   stationDistanceMin?: number;
   ownershipType?: string;
   inheritanceFlag?: number;
+  // アパート専用フィールド
+  buildingStructure?: string; // 建築構造（木造、軽量鉄骨、鉄骨造、RC、SRC）
+  floors?: number; // 階建（1～5階）
 }
 
 export interface AssessmentResult {
@@ -58,11 +61,11 @@ export interface AssessmentResult {
  */
 function mapPropertyTypeToDb(propertyType: string): string {
   const mapping: Record<string, string> = {
-    "apartment": "中古マンション等",
+    "apartment": "アパート", // アパート専用データベースを使用
     "condo": "中古マンション等",
     "house": "宅地(土地と建物)",
     "land": "宅地(土地)",
-    "building": "中古マンション等", // アパート一棟は中古マンション等として扱う
+    "building": "中古マンション等",
   };
   return mapping[propertyType] || propertyType;
 }
@@ -239,6 +242,8 @@ function calculateAdjustments(input: AssessmentInput, comps: any[]): {
   buildingYearAdjustment: number;
   stationDistanceAdjustment: number;
   areaAdjustment: number;
+  buildingStructureAdjustment: number;
+  floorsAdjustment: number;
 } {
   // Building year adjustment (newer properties are worth more)
   // Logic: If input property is newer than average comps, it should be worth MORE
@@ -278,10 +283,40 @@ function calculateAdjustments(input: AssessmentInput, comps: any[]): {
     areaAdjustment = Math.max(0.8, 1 - (areaDiff / 100) * 0.005);
   }
 
+  // アパート専用: 建築構造調整
+  // 分析結果: RC/SRCは木造の約1.5倍の価格
+  let buildingStructureAdjustment = 1.0;
+  if (input.propertyType === "apartment" && input.buildingStructure) {
+    const structureMultipliers: Record<string, number> = {
+      "木造": 1.0,      // 基準
+      "軽量鉄骨": 0.98,  // 木造とほぼ同等
+      "鉄骨造": 1.15,   // 木造の1.15倍
+      "RC": 1.35,       // 木造の1.35倍
+      "SRC": 1.45,      // 木造の1.45倍
+    };
+    buildingStructureAdjustment = structureMultipliers[input.buildingStructure] || 1.0;
+  }
+
+  // アパート専用: 階建調整
+  // 分析結果: 3階建ては2階建ての約1.8倍の価格
+  let floorsAdjustment = 1.0;
+  if (input.propertyType === "apartment" && input.floors) {
+    const floorsMultipliers: Record<number, number> = {
+      1: 0.35,  // 1階建ては低価格
+      2: 1.0,   // 2階建てが基準（最も件数が多い）
+      3: 1.55,  // 3階建ては1.55倍
+      4: 1.40,  // 4階建ては1.40倍
+      5: 1.85,  // 5階建て以上は1.85倍
+    };
+    floorsAdjustment = floorsMultipliers[input.floors] || 1.0;
+  }
+
   return {
     buildingYearAdjustment,
     stationDistanceAdjustment,
     areaAdjustment,
+    buildingStructureAdjustment,
+    floorsAdjustment,
   };
 }
 
@@ -357,7 +392,12 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
   const adjustments = calculateAdjustments(input, comps);
 
   // Apply adjustments to median
-  const adjustedMedian = Math.round(filteredStats.median * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment);
+  // アパートの場合は建築構造・階建調整も適用
+  const baseAdjustment = adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment;
+  const apartmentAdjustment = adjustments.buildingStructureAdjustment * adjustments.floorsAdjustment;
+  const totalAdjustment = baseAdjustment * apartmentAdjustment;
+  
+  const adjustedMedian = Math.round(filteredStats.median * totalAdjustment);
 
   // Calculate range using more conservative approach
   // Use 15-20% margin around median, bounded by Q1 and Q3
@@ -365,13 +405,13 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
   
   let estimatedLowYen = Math.round(Math.max(
     adjustedMedian - conservativeMargin,
-    filteredStats.q1 * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment,
+    filteredStats.q1 * totalAdjustment,
     adjustedMedian * 0.7 // Never go below 70% of median
   ));
   
   let estimatedHighYen = Math.round(Math.min(
     adjustedMedian + conservativeMargin,
-    filteredStats.q3 * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment,
+    filteredStats.q3 * totalAdjustment,
     adjustedMedian * 1.3 // Never go above 130% of median
   ));
   
@@ -447,6 +487,17 @@ function generateExplanation(
   if (input.stationDistanceMin) {
     const adjustment = Math.round((adjustments.stationDistanceAdjustment - 1) * 100);
     explanation += `・駅距離による調整: ${adjustment > 0 ? "+" : ""}${adjustment}%\n`;
+  }
+  // アパート専用調整要因
+  if (input.propertyType === "apartment") {
+    if (input.buildingStructure && adjustments.buildingStructureAdjustment !== 1.0) {
+      const structureAdj = Math.round((adjustments.buildingStructureAdjustment - 1) * 100);
+      explanation += `・建築構造（${input.buildingStructure}）による調整: ${structureAdj > 0 ? "+" : ""}${structureAdj}%\n`;
+    }
+    if (input.floors && adjustments.floorsAdjustment !== 1.0) {
+      const floorsAdj = Math.round((adjustments.floorsAdjustment - 1) * 100);
+      explanation += `・階建（${input.floors}階建て）による調整: ${floorsAdj > 0 ? "+" : ""}${floorsAdj}%\n`;
+    }
   }
 
   explanation += `\n【市場動向】\n`;

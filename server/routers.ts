@@ -41,6 +41,9 @@ export const appRouter = router({
         phone: z.string().optional(),
         nearestStation: z.string().optional(),
         walkingMinutes: z.number().optional(),
+        // アパート専用フィールド
+        buildingStructure: z.string().optional(), // 建築構造（木造、軽量鉄骨、鉄骨造、RC、SRC）
+        floors: z.number().optional(), // 階建（1～5階）
       }))
       .mutation(async ({ input }) => {
         console.log('[Assessment API] Received request:', input);
@@ -55,6 +58,9 @@ export const appRouter = router({
             buildingAreaM2: input.floorArea,
             buildingYear: input.buildingAge ? new Date().getFullYear() - input.buildingAge : undefined,
             stationDistanceMin: input.walkingMinutes,
+            // アパート専用フィールド
+            buildingStructure: input.buildingStructure,
+            floors: input.floors,
           });
           console.log('[Assessment API] Assessment result:', assessmentResult);
           

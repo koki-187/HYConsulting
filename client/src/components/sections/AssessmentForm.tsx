@@ -30,6 +30,9 @@ export default function AssessmentForm() {
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
   const [contactError, setContactError] = useState<string | null>(null);
+  // アパート専用フィールド
+  const [buildingStructure, setBuildingStructure] = useState("");
+  const [floors, setFloors] = useState("");
 
   const submitAssessment = trpc.assessment.submit.useMutation({
     onSuccess: (data) => {
@@ -130,6 +133,9 @@ export default function AssessmentForm() {
         phone: wantContact ? phone : undefined,
         nearestStation: stationName || undefined,
         walkingMinutes: walkingMinutes ? parseInt(walkingMinutes) : undefined,
+        // アパート専用フィールド
+        buildingStructure: propertyType === "apartment" ? buildingStructure || undefined : undefined,
+        floors: propertyType === "apartment" && floors ? parseInt(floors) : undefined,
       });
       
       const result = await Promise.race([apiPromise, timeoutPromise]);
@@ -162,6 +168,9 @@ export default function AssessmentForm() {
     setEmail("");
     setPhone("");
     setContactError(null);
+    // アパート専用フィールドのリセット
+    setBuildingStructure("");
+    setFloors("");
     
     // Scroll to assessment form section for better UX
     setTimeout(() => {
@@ -413,6 +422,56 @@ export default function AssessmentForm() {
                           />
                         </div>
                       </div>
+
+                      {/* アパート専用フィールド */}
+                      {propertyType === "apartment" && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="space-y-4 pt-4 border-t border-slate-200"
+                        >
+                          <p className="text-sm text-slate-600 font-bold flex items-center gap-2">
+                            <Building2 className="w-4 h-4" />
+                            アパート専用情報（査定精度向上）
+                          </p>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                              <Label htmlFor="buildingStructure" className="text-sm font-bold text-slate-600">建築構造</Label>
+                              <Select value={buildingStructure} onValueChange={setBuildingStructure}>
+                                <SelectTrigger className="h-14 text-lg bg-white border-slate-300 focus:ring-accent">
+                                  <SelectValue placeholder="選択してください" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="木造">木造</SelectItem>
+                                  <SelectItem value="軽量鉄骨">軽量鉄骨</SelectItem>
+                                  <SelectItem value="鉄骨造">鉄骨造</SelectItem>
+                                  <SelectItem value="RC">RC（鉄筋コンクリート）</SelectItem>
+                                  <SelectItem value="SRC">SRC（鉄骨鉄筋コンクリート）</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="floors" className="text-sm font-bold text-slate-600">階建</Label>
+                              <Select value={floors} onValueChange={setFloors}>
+                                <SelectTrigger className="h-14 text-lg bg-white border-slate-300 focus:ring-accent">
+                                  <SelectValue placeholder="選択してください" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="1">1階建</SelectItem>
+                                  <SelectItem value="2">2階建</SelectItem>
+                                  <SelectItem value="3">3階建</SelectItem>
+                                  <SelectItem value="4">4階建</SelectItem>
+                                  <SelectItem value="5">5階建以上</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+                          <p className="text-xs text-slate-500">
+                            ※ 建築構造と階建の情報を入力すると、より正確な査定結果を算出できます。
+                          </p>
+                        </motion.div>
+                      )}
                     </div>
                   </div>
 
