@@ -1,0 +1,198 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as count \nFROM transactions \nGROUP BY prefecture \nORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as count \nFROM transactions \nGROUP BY prefecture \nORDER BY count DESC;",
+  "rows": [
+    {
+      "prefecture": "東京都",
+      "count": "283233"
+    },
+    {
+      "prefecture": "大阪府",
+      "count": "170442"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "167342"
+    },
+    {
+      "prefecture": "埼玉県",
+      "count": "115529"
+    },
+    {
+      "prefecture": "愛知県",
+      "count": "111469"
+    },
+    {
+      "prefecture": "千葉県",
+      "count": "109952"
+    },
+    {
+      "prefecture": "兵庫県",
+      "count": "104252"
+    },
+    {
+      "prefecture": "北海道",
+      "count": "101746"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "81745"
+    },
+    {
+      "prefecture": "静岡県",
+      "count": "52807"
+    },
+    {
+      "prefecture": "京都府",
+      "count": "50707"
+    },
+    {
+      "prefecture": "宮城県",
+      "count": "40688"
+    },
+    {
+      "prefecture": "広島県",
+      "count": "38931"
+    },
+    {
+      "prefecture": "茨城県",
+      "count": "38868"
+    },
+    {
+      "prefecture": "新潟県",
+      "count": "33641"
+    },
+    {
+      "prefecture": "鹿児島県",
+      "count": "31571"
+    },
+    {
+      "prefecture": "長野県",
+      "count": "29695"
+    },
+    {
+      "prefecture": "岐阜県",
+      "count": "29202"
+    },
+    {
+      "prefecture": "栃木県",
+      "count": "28922"
+    },
+    {
+      "prefecture": "岡山県",
+      "count": "27870"
+    },
+    {
+      "prefecture": "熊本県",
+      "count": "27449"
+    },
+    {
+      "prefecture": "三重県",
+      "count": "25960"
+    },
+    {
+      "prefecture": "滋賀県",
+      "count": "25229"
+    },
+    {
+      "prefecture": "福島県",
+      "count": "25087"
+    },
+    {
+      "prefecture": "群馬県",
+      "count": "24557"
+    },
+    {
+      "prefecture": "奈良県",
+      "count": "22785"
+    },
+    {
+      "prefecture": "青森県",
+      "count": "20711"
+    },
+    {
+      "prefecture": "宮崎県",
+      "count": "20642"
+    },
+    {
+      "prefecture": "山口県",
+      "count": "19635"
+    },
+    {
+      "prefecture": "大分県",
+      "count": "18539"
+    },
+    {
+      "prefecture": "愛媛県",
+      "count": "18249"
+    },
+    {
+      "prefecture": "秋田県",
+      "count": "17393"
+    },
+    {
+      "prefecture": "岩手県",
+      "count": "17344"
+    },
+    {
+      "prefecture": "石川県",
+      "count": "17189"
+    },
+    {
+      "prefecture": "山形県",
+      "count": "15622"
+    },
+    {
+      "prefecture": "長崎県",
+      "count": "15594"
+    },
+    {
+      "prefecture": "和歌山県",
+      "count": "13378"
+    },
+    {
+      "prefecture": "富山県",
+      "count": "13371"
+    },
+    {
+      "prefecture": "沖縄県",
+      "count": "13200"
+    },
+    {
+      "prefecture": "香川県",
+      "count": "12475"
+    },
+    {
+      "prefecture": "佐賀県",
+      "count": "11475"
+    },
+    {
+      "prefecture": "高知県",
+      "count": "11140"
+    },
+    {
+      "prefecture": "島根県",
+      "count": "10889"
+    },
+    {
+      "prefecture": "山梨県",
+      "count": "10727"
+    },
+    {
+      "prefecture": "福井県",
+      "count": "9435"
+    },
+    {
+      "prefecture": "徳島県",
+      "count": "9239"
+    },
+    {
+      "prefecture": "鳥取県",
+      "count": "8838"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\n東京都\t283233\n大阪府\t170442\n神奈川県\t167342\n埼玉県\t115529\n愛知県\t111469\n千葉県\t109952\n兵庫県\t104252\n北海道\t101746\n福岡県\t81745\n静岡県\t52807\n京都府\t50707\n宮城県\t40688\n広島県\t38931\n茨城県\t38868\n新潟県\t33641\n鹿児島県\t31571\n長野県\t29695\n岐阜県\t29202\n栃木県\t28922\n岡山県\t27870\n熊本県\t27449\n三重県\t25960\n滋賀県\t25229\n福島県\t25087\n群馬県\t24557\n奈良県\t22785\n青森県\t20711\n宮崎県\t20642\n山口県\t19635\n大分県\t18539\n愛媛県\t18249\n秋田県\t17393\n岩手県\t17344\n石川県\t17189\n山形県\t15622\n長崎県\t15594\n和歌山県\t13378\n富山県\t13371\n沖縄県\t13200\n香川県\t12475\n佐賀県\t11475\n高知県\t11140\n島根県\t10889\n山梨県\t10727\n福井県\t9435\n徳島県\t9239\n鳥取県\t8838\n",
+  "stderr": "",
+  "execution_time_ms": 3095
+}

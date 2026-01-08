@@ -159,6 +159,14 @@ export default function AssessmentForm() {
     setEmail("");
     setPhone("");
     setContactError(null);
+    
+    // Scroll to assessment form section for better UX
+    setTimeout(() => {
+      const assessmentSection = document.getElementById('assessment');
+      if (assessmentSection) {
+        assessmentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
   };
 
   return (
