@@ -112,7 +112,13 @@ export default function AssessmentForm() {
       }
 
       console.log("📤 Sending API request...");
-      const result = await submitAssessment.mutateAsync({
+      
+      // Add timeout wrapper (60 seconds)
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error("査定処理がタイムアウトしました。データベースが応答していません。しばらくしてから再度お試しください。")), 60000);
+      });
+      
+      const apiPromise = submitAssessment.mutateAsync({
         propertyType,
         prefecture,
         city,
@@ -125,10 +131,14 @@ export default function AssessmentForm() {
         nearestStation: stationName || undefined,
         walkingMinutes: walkingMinutes ? parseInt(walkingMinutes) : undefined,
       });
+      
+      const result = await Promise.race([apiPromise, timeoutPromise]);
       console.log("📥 API response received:", result);
     } catch (err) {
       console.error("❌ Assessment error in handleSearch:", err);
-      setError(err instanceof Error ? err.message : "査定処理中にエラーが発生しました");
+      const errorMessage = err instanceof Error ? err.message : "査定処理中にエラーが発生しました";
+      setError(errorMessage);
+      setIsSearching(false); // Ensure loading state is cleared
     } finally {
       console.log("🏁 Assessment process completed, setting isSearching to false");
       setIsSearching(false);

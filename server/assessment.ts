@@ -91,7 +91,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
         eq(transactions.propertyType, dbPropertyType)
       )
     )
-    .limit(500); // Limit to 500 records for performance
+    .limit(100); // Reduced from 500 to 100 for better performance
 
   // If we have enough comparables, apply filters
   if (comparables.length >= 3) {
@@ -109,7 +109,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
           eq(transactions.propertyType, dbPropertyType)
         )
       )
-      .limit(500); // Limit to 500 records for performance
+      .limit(100); // Reduced from 500 to 100 for better performance
 
     if (comparables.length >= 3) {
       comparables = applyFilters(comparables, input);
@@ -122,7 +122,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
       .select()
       .from(transactions)
       .where(eq(transactions.propertyType, dbPropertyType))
-      .limit(100);
+      .limit(50); // Reduced from 100 to 50 for better performance
   }
 
   return comparables;
