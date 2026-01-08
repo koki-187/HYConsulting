@@ -129,11 +129,17 @@ export const appRouter = router({
                 walkingMinutes: walkingText,
               };
               
+              const webhookController = new AbortController();
+              const webhookTimeout = setTimeout(() => webhookController.abort(), 5000); // 5秒タイムアウト
+              
               const webhookResponse = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(webhookData),
+                signal: webhookController.signal,
               });
+              
+              clearTimeout(webhookTimeout);
               
               if (webhookResponse.ok) {
                 console.log("Data sent to Google Sheets successfully");
@@ -141,7 +147,11 @@ export const appRouter = router({
                 console.warn("Failed to send data to Google Sheets:", await webhookResponse.text());
               }
             } catch (e) {
-              console.warn("Failed to send data to Google Sheets:", e);
+              if (e instanceof Error && e.name === 'AbortError') {
+                console.warn("Google Sheets webhook timeout (5s)");
+              } else {
+                console.warn("Failed to send data to Google Sheets:", e);
+              }
             }
           }
 
@@ -166,7 +176,11 @@ export const appRouter = router({
                 marketTrend: "stable",
               };
               
-              const emailResult = await emailService.sendAssessmentEmail(input.email, emailData);
+              const emailPromise = emailService.sendAssessmentEmail(input.email, emailData);
+              const emailTimeout = new Promise<{ success: boolean; error: string }>((resolve) => {
+                setTimeout(() => resolve({ success: false, error: "Email timeout (10s)" }), 10000);
+              });
+              const emailResult = await Promise.race([emailPromise, emailTimeout]);
               if (emailResult.success) {
                 console.log(`Email sent successfully to ${input.email}`);
               } else {

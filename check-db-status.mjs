@@ -1,29 +1,41 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
+import { drizzle } from 'drizzle-orm/mysql2';
+import mysql from 'mysql2/promise';
 import { sql } from 'drizzle-orm';
 
-const connectionString = process.env.DATABASE_URL;
-const client = postgres(connectionString, { max: 1 });
-const db = drizzle(client);
-
-const result = await db.execute(sql`
-  SELECT prefecture, COUNT(*)::int as count 
-  FROM transactions 
-  GROUP BY prefecture 
-  ORDER BY count DESC
-`);
-
-console.log('\n=== Database Status ===\n');
-const majorCities = ['東京都', '神奈川県', '大阪府', '愛知県', '福岡県'];
-let total = 0;
-
-result.forEach((row, index) => {
-  const mark = majorCities.includes(row.prefecture) ? '★' : ' ';
-  console.log(`${mark} ${String(index + 1).padStart(2)}. ${row.prefecture.padEnd(10)} ${row.count.toLocaleString().padStart(10)} 件`);
-  total += row.count;
+const connection = await mysql.createConnection({
+  host: process.env.DATABASE_HOST,
+  port: parseInt(process.env.DATABASE_PORT || '4000'),
+  user: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+  ssl: {
+    minVersion: 'TLSv1.2',
+    rejectUnauthorized: true
+  }
 });
 
-console.log(`\n合計: ${total.toLocaleString()} 件\n`);
+const db = drizzle(connection);
 
-await client.end();
-process.exit(0);
+console.log('✅ データベース接続成功\n');
+
+// 総レコード件数
+const [totalCount] = await connection.execute('SELECT COUNT(*) as count FROM transactions');
+console.log(`📊 総レコード件数: ${totalCount[0].count.toLocaleString()}件\n`);
+
+// 都道府県別件数
+const [prefectures] = await connection.execute(`
+  SELECT prefecture, COUNT(*) as count 
+  FROM transactions 
+  GROUP BY prefecture 
+  ORDER BY prefecture
+`);
+
+console.log('📍 都道府県別データ件数:');
+console.log('─'.repeat(50));
+prefectures.forEach((row, index) => {
+  console.log(`${(index + 1).toString().padStart(2, '0')}. ${row.prefecture.padEnd(10, '　')}: ${row.count.toLocaleString().padStart(10, ' ')}件`);
+});
+console.log('─'.repeat(50));
+console.log(`合計: ${prefectures.length}都道府県\n`);
+
+await connection.end();
