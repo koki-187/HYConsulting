@@ -1,0 +1,90 @@
+{
+  "query": "SELECT city, COUNT(*) as cnt FROM transactions WHERE prefecture = '東京都' GROUP BY city ORDER BY cnt DESC LIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT city, COUNT(*) as cnt FROM transactions WHERE prefecture = '東京都' GROUP BY city ORDER BY cnt DESC LIMIT 20",
+  "rows": [
+    {
+      "city": "世田谷区",
+      "cnt": "17507"
+    },
+    {
+      "city": "大田区",
+      "cnt": "15331"
+    },
+    {
+      "city": "江東区",
+      "cnt": "14541"
+    },
+    {
+      "city": "練馬区",
+      "cnt": "13395"
+    },
+    {
+      "city": "板橋区",
+      "cnt": "11445"
+    },
+    {
+      "city": "足立区",
+      "cnt": "11381"
+    },
+    {
+      "city": "杉並区",
+      "cnt": "11253"
+    },
+    {
+      "city": "品川区",
+      "cnt": "10638"
+    },
+    {
+      "city": "新宿区",
+      "cnt": "10364"
+    },
+    {
+      "city": "港区",
+      "cnt": "10336"
+    },
+    {
+      "city": "八王子市",
+      "cnt": "9388"
+    },
+    {
+      "city": "中央区",
+      "cnt": "8961"
+    },
+    {
+      "city": "江戸川区",
+      "cnt": "8626"
+    },
+    {
+      "city": "葛飾区",
+      "cnt": "7922"
+    },
+    {
+      "city": "墨田区",
+      "cnt": "7521"
+    },
+    {
+      "city": "豊島区",
+      "cnt": "7014"
+    },
+    {
+      "city": "町田市",
+      "cnt": "7002"
+    },
+    {
+      "city": "中野区",
+      "cnt": "6880"
+    },
+    {
+      "city": "渋谷区",
+      "cnt": "6810"
+    },
+    {
+      "city": "文京区",
+      "cnt": "6787"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\tcnt\n世田谷区\t17507\n大田区\t15331\n江東区\t14541\n練馬区\t13395\n板橋区\t11445\n足立区\t11381\n杉並区\t11253\n品川区\t10638\n新宿区\t10364\n港区\t10336\n八王子市\t9388\n中央区\t8961\n江戸川区\t8626\n葛飾区\t7922\n墨田区\t7521\n豊島区\t7014\n町田市\t7002\n中野区\t6880\n渋谷区\t6810\n文京区\t6787\n",
+  "stderr": "",
+  "execution_time_ms": 1793
+}

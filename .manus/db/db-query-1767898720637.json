@@ -1,0 +1,100 @@
+{
+  "query": "SELECT DISTINCT city FROM transactions WHERE prefecture = '東京都' LIMIT 30",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT city FROM transactions WHERE prefecture = '東京都' LIMIT 30",
+  "rows": [
+    {
+      "city": "あきる野市"
+    },
+    {
+      "city": "三宅村"
+    },
+    {
+      "city": "三鷹市"
+    },
+    {
+      "city": "世田谷区"
+    },
+    {
+      "city": "中央区"
+    },
+    {
+      "city": "中野区"
+    },
+    {
+      "city": "八丈町"
+    },
+    {
+      "city": "八王子市"
+    },
+    {
+      "city": "北区"
+    },
+    {
+      "city": "千代田区"
+    },
+    {
+      "city": "台東区"
+    },
+    {
+      "city": "品川区"
+    },
+    {
+      "city": "国分寺市"
+    },
+    {
+      "city": "国立市"
+    },
+    {
+      "city": "墨田区"
+    },
+    {
+      "city": "多摩市"
+    },
+    {
+      "city": "大島町"
+    },
+    {
+      "city": "大田区"
+    },
+    {
+      "city": "小平市"
+    },
+    {
+      "city": "小笠原村"
+    },
+    {
+      "city": "小金井市"
+    },
+    {
+      "city": "府中市"
+    },
+    {
+      "city": "文京区"
+    },
+    {
+      "city": "新宿区"
+    },
+    {
+      "city": "新島村"
+    },
+    {
+      "city": "日野市"
+    },
+    {
+      "city": "昭島市"
+    },
+    {
+      "city": "杉並区"
+    },
+    {
+      "city": "東久留米市"
+    },
+    {
+      "city": "東大和市"
+    }
+  ],
+  "messages": [],
+  "stdout": "city\nあきる野市\n三宅村\n三鷹市\n世田谷区\n中央区\n中野区\n八丈町\n八王子市\n北区\n千代田区\n台東区\n品川区\n国分寺市\n国立市\n墨田区\n多摩市\n大島町\n大田区\n小平市\n小笠原村\n小金井市\n府中市\n文京区\n新宿区\n新島村\n日野市\n昭島市\n杉並区\n東久留米市\n東大和市\n",
+  "stderr": "",
+  "execution_time_ms": 1793
+}

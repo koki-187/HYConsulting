@@ -1,0 +1,70 @@
+{
+  "query": "SELECT prefecture, COUNT(*) as count FROM transactions GROUP BY prefecture ORDER BY count DESC LIMIT 15",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT prefecture, COUNT(*) as count FROM transactions GROUP BY prefecture ORDER BY count DESC LIMIT 15",
+  "rows": [
+    {
+      "prefecture": "東京都",
+      "count": "283233"
+    },
+    {
+      "prefecture": "大阪府",
+      "count": "170442"
+    },
+    {
+      "prefecture": "神奈川県",
+      "count": "167342"
+    },
+    {
+      "prefecture": "埼玉県",
+      "count": "115529"
+    },
+    {
+      "prefecture": "愛知県",
+      "count": "111469"
+    },
+    {
+      "prefecture": "千葉県",
+      "count": "109952"
+    },
+    {
+      "prefecture": "兵庫県",
+      "count": "104252"
+    },
+    {
+      "prefecture": "北海道",
+      "count": "101746"
+    },
+    {
+      "prefecture": "福岡県",
+      "count": "81745"
+    },
+    {
+      "prefecture": "静岡県",
+      "count": "52807"
+    },
+    {
+      "prefecture": "京都府",
+      "count": "50707"
+    },
+    {
+      "prefecture": "宮城県",
+      "count": "40688"
+    },
+    {
+      "prefecture": "広島県",
+      "count": "38931"
+    },
+    {
+      "prefecture": "茨城県",
+      "count": "38868"
+    },
+    {
+      "prefecture": "新潟県",
+      "count": "33641"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcount\n東京都\t283233\n大阪府\t170442\n神奈川県\t167342\n埼玉県\t115529\n愛知県\t111469\n千葉県\t109952\n兵庫県\t104252\n北海道\t101746\n福岡県\t81745\n静岡県\t52807\n京都府\t50707\n宮城県\t40688\n広島県\t38931\n茨城県\t38868\n新潟県\t33641\n",
+  "stderr": "",
+  "execution_time_ms": 3214
+}
