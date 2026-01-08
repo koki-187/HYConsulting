@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  prefecture, \n  city, \n  property_type,\n  COUNT(*) as count,\n  AVG(price_yen) as avg_price,\n  MIN(price_yen) as min_price,\n  MAX(price_yen) as max_price,\n  AVG(unit_price_yen_per_m2) as avg_unit_price\nFROM transactions \nWHERE prefecture = '東京都' AND city LIKE '%小平%'\nGROUP BY prefecture, city, property_type\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  prefecture, \n  city, \n  property_type,\n  COUNT(*) as count,\n  AVG(price_yen) as avg_price,\n  MIN(price_yen) as min_price,\n  MAX(price_yen) as max_price,\n  AVG(unit_price_yen_per_m2) as avg_unit_price\nFROM transactions \nWHERE prefecture = '東京都' AND city LIKE '%小平%'\nGROUP BY prefecture, city, property_type\nLIMIT 20;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'property_type' in 'group statement'"
+  ]
+}

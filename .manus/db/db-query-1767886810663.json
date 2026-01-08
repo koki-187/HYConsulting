@@ -1,0 +1,19 @@
+{
+  "query": "SELECT DISTINCT propertyType FROM transactions WHERE prefecture = '東京都' AND city LIKE '%小平市%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT DISTINCT propertyType FROM transactions WHERE prefecture = '東京都' AND city LIKE '%小平市%';",
+  "rows": [
+    {
+      "propertyType": "中古マンション等"
+    },
+    {
+      "propertyType": "宅地(土地)"
+    },
+    {
+      "propertyType": "宅地(土地と建物)"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\n中古マンション等\n宅地(土地)\n宅地(土地と建物)\n",
+  "stderr": "",
+  "execution_time_ms": 1795
+}

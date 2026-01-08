@@ -70,6 +70,7 @@ function mapPropertyTypeToDb(propertyType: string): string {
 /**
  * Find comparable transactions
  * Uses progressive search strategy: exact match → expanded search
+ * Prioritizes recent transactions and similar building years
  */
 async function findComparables(input: AssessmentInput): Promise<any[]> {
   const db = await getDb();
@@ -80,7 +81,7 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
   const { prefecture, city, propertyType, buildingAreaM2, buildingYear, stationDistanceMin } = input;
   const dbPropertyType = mapPropertyTypeToDb(propertyType);
 
-  // Step 1: Try exact match (same city, property type)
+  // Step 1: Try exact match (same city, property type) - get more data
   let comparables = await db
     .select()
     .from(transactions)
@@ -91,15 +92,31 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
         eq(transactions.propertyType, dbPropertyType)
       )
     )
-    .limit(100); // Reduced from 500 to 100 for better performance
+    .limit(500); // Get more data for better accuracy
 
-  // If we have enough comparables, apply filters
-  if (comparables.length >= 3) {
-    comparables = applyFilters(comparables, input);
+  // Apply building year filter if provided (prioritize similar age properties)
+  if (buildingYear && comparables.length >= 10) {
+    const yearFiltered = comparables.filter(c => {
+      if (!c.buildingYear) return true; // Include if no year data
+      return Math.abs(c.buildingYear - buildingYear) <= 15; // ±15 years
+    });
+    // Only use filtered if we have enough
+    if (yearFiltered.length >= 10) {
+      comparables = yearFiltered;
+    }
+  }
+
+  // If we have enough comparables, apply additional filters
+  if (comparables.length >= 10) {
+    const filtered = applyFilters(comparables, input);
+    // Only use filtered if we have enough
+    if (filtered.length >= 10) {
+      comparables = filtered;
+    }
   }
 
   // Step 2: If not enough, expand to prefecture level
-  if (comparables.length < 3) {
+  if (comparables.length < 10) {
     comparables = await db
       .select()
       .from(transactions)
@@ -109,23 +126,38 @@ async function findComparables(input: AssessmentInput): Promise<any[]> {
           eq(transactions.propertyType, dbPropertyType)
         )
       )
-      .limit(100); // Reduced from 500 to 100 for better performance
+      .limit(500);
 
-    if (comparables.length >= 3) {
-      comparables = applyFilters(comparables, input);
+    // Apply building year filter
+    if (buildingYear && comparables.length >= 10) {
+      const yearFiltered = comparables.filter(c => {
+        if (!c.buildingYear) return true;
+        return Math.abs(c.buildingYear - buildingYear) <= 15;
+      });
+      if (yearFiltered.length >= 10) {
+        comparables = yearFiltered;
+      }
+    }
+
+    if (comparables.length >= 10) {
+      const filtered = applyFilters(comparables, input);
+      if (filtered.length >= 10) {
+        comparables = filtered;
+      }
     }
   }
 
   // Step 3: If still not enough, use all available data for the property type
-  if (comparables.length < 3) {
+  if (comparables.length < 10) {
     comparables = await db
       .select()
       .from(transactions)
       .where(eq(transactions.propertyType, dbPropertyType))
-      .limit(50); // Reduced from 100 to 50 for better performance
+      .limit(200);
   }
 
-  return comparables;
+  // Limit final result to prevent performance issues
+  return comparables.slice(0, 200);
 }
 
 
@@ -208,12 +240,21 @@ function calculateAdjustments(input: AssessmentInput, comps: any[]): {
   stationDistanceAdjustment: number;
   areaAdjustment: number;
 } {
-  // Building year adjustment (depreciation: -2% per year)
+  // Building year adjustment (newer properties are worth more)
+  // Logic: If input property is newer than average comps, it should be worth MORE
+  // If input property is older than average comps, it should be worth LESS
   let buildingYearAdjustment = 1.0;
   if (input.buildingYear && input.propertyType !== "land") {
-    const avgCompAge = comps.reduce((sum, c) => sum + (c.buildingYear || 0), 0) / comps.length;
-    const ageDiff = avgCompAge - input.buildingYear; // Negative if input is newer (should increase value)
-    buildingYearAdjustment = Math.max(0.5, 1 + ageDiff * 0.02); // +2% per year older, floor at 50%
+    // Get average building year of comparables (only those with valid years)
+    const compsWithYear = comps.filter(c => c.buildingYear && c.buildingYear > 1900);
+    if (compsWithYear.length > 0) {
+      const avgCompYear = compsWithYear.reduce((sum, c) => sum + c.buildingYear, 0) / compsWithYear.length;
+      // yearDiff: positive if input is newer, negative if older
+      const yearDiff = input.buildingYear - avgCompYear;
+      // Apply 1% adjustment per year difference (newer = higher value)
+      // Cap adjustment between 0.7 (30% discount) and 1.3 (30% premium)
+      buildingYearAdjustment = Math.max(0.7, Math.min(1.3, 1 + yearDiff * 0.01));
+    }
   }
 
   // Station distance adjustment (-1% per minute)

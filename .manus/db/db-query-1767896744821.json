@@ -1,0 +1,37 @@
+{
+  "query": "SELECT \n  propertyType,\n  COUNT(*) as count,\n  ROUND(AVG(priceYen)) as avg_price_yen,\n  ROUND(AVG(priceYen)/10000) as avg_price_man,\n  ROUND(MIN(priceYen)/10000) as min_price_man,\n  ROUND(MAX(priceYen)/10000) as max_price_man,\n  ROUND(AVG(unitPriceYenPerM2)) as avg_unit_price\nFROM transactions \nWHERE prefecture = '東京都' AND city LIKE '%小平%'\nGROUP BY propertyType;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  propertyType,\n  COUNT(*) as count,\n  ROUND(AVG(priceYen)) as avg_price_yen,\n  ROUND(AVG(priceYen)/10000) as avg_price_man,\n  ROUND(MIN(priceYen)/10000) as min_price_man,\n  ROUND(MAX(priceYen)/10000) as max_price_man,\n  ROUND(AVG(unitPriceYenPerM2)) as avg_unit_price\nFROM transactions \nWHERE prefecture = '東京都' AND city LIKE '%小平%'\nGROUP BY propertyType;",
+  "rows": [
+    {
+      "propertyType": "宅地(土地)",
+      "count": "366",
+      "avg_price_yen": "55107650",
+      "avg_price_man": "5511",
+      "min_price_man": "200",
+      "max_price_man": "150000",
+      "avg_unit_price": "NULL"
+    },
+    {
+      "propertyType": "中古マンション等",
+      "count": "989",
+      "avg_price_yen": "34018099",
+      "avg_price_man": "3402",
+      "min_price_man": "250",
+      "max_price_man": "6600",
+      "avg_unit_price": "NULL"
+    },
+    {
+      "propertyType": "宅地(土地と建物)",
+      "count": "1586",
+      "avg_price_yen": "51872951",
+      "avg_price_man": "5187",
+      "min_price_man": "20",
+      "max_price_man": "360000",
+      "avg_unit_price": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\tcount\tavg_price_yen\tavg_price_man\tmin_price_man\tmax_price_man\tavg_unit_price\n宅地(土地)\t366\t55107650\t5511\t200\t150000\tNULL\n中古マンション等\t989\t34018099\t3402\t250\t6600\tNULL\n宅地(土地と建物)\t1586\t51872951\t5187\t20\t360000\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 3434
+}

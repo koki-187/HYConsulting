@@ -1,0 +1,40 @@
+{
+  "query": "SELECT \n  prefecture, \n  city, \n  propertyType,\n  COUNT(*) as count,\n  AVG(priceYen) as avg_price,\n  MIN(priceYen) as min_price,\n  MAX(priceYen) as max_price,\n  AVG(unitPriceYenPerM2) as avg_unit_price\nFROM transactions \nWHERE prefecture = '東京都' AND city LIKE '%小平%'\nGROUP BY prefecture, city, propertyType\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  prefecture, \n  city, \n  propertyType,\n  COUNT(*) as count,\n  AVG(priceYen) as avg_price,\n  MIN(priceYen) as min_price,\n  MAX(priceYen) as max_price,\n  AVG(unitPriceYenPerM2) as avg_unit_price\nFROM transactions \nWHERE prefecture = '東京都' AND city LIKE '%小平%'\nGROUP BY prefecture, city, propertyType\nLIMIT 20;",
+  "rows": [
+    {
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "中古マンション等",
+      "count": "989",
+      "avg_price": "34018099.0900",
+      "min_price": "2500000",
+      "max_price": "66000000",
+      "avg_unit_price": "NULL"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地)",
+      "count": "366",
+      "avg_price": "55107650.2732",
+      "min_price": "2000000",
+      "max_price": "1500000000",
+      "avg_unit_price": "NULL"
+    },
+    {
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)",
+      "count": "1586",
+      "avg_price": "51872950.8197",
+      "min_price": "200000",
+      "max_price": "3600000000",
+      "avg_unit_price": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "prefecture\tcity\tpropertyType\tcount\tavg_price\tmin_price\tmax_price\tavg_unit_price\n東京都\t小平市\t中古マンション等\t989\t34018099.0900\t2500000\t66000000\tNULL\n東京都\t小平市\t宅地(土地)\t366\t55107650.2732\t2000000\t1500000000\tNULL\n東京都\t小平市\t宅地(土地と建物)\t1586\t51872950.8197\t200000\t3600000000\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1804
+}

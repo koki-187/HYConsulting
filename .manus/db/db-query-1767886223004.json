@@ -1,0 +1,31 @@
+{
+  "query": "SELECT \n  propertyType,\n  COUNT(*) as count,\n  AVG(priceYen) as avgPrice,\n  MIN(priceYen) as minPrice,\n  MAX(priceYen) as maxPrice\nFROM transactions \nWHERE prefecture = '東京都' \n  AND (city LIKE '%小平%' OR district LIKE '%小平%')\nGROUP BY propertyType;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  propertyType,\n  COUNT(*) as count,\n  AVG(priceYen) as avgPrice,\n  MIN(priceYen) as minPrice,\n  MAX(priceYen) as maxPrice\nFROM transactions \nWHERE prefecture = '東京都' \n  AND (city LIKE '%小平%' OR district LIKE '%小平%')\nGROUP BY propertyType;",
+  "rows": [
+    {
+      "propertyType": "宅地(土地)",
+      "count": "366",
+      "avgPrice": "55107650.2732",
+      "minPrice": "2000000",
+      "maxPrice": "1500000000"
+    },
+    {
+      "propertyType": "中古マンション等",
+      "count": "989",
+      "avgPrice": "34018099.0900",
+      "minPrice": "2500000",
+      "maxPrice": "66000000"
+    },
+    {
+      "propertyType": "宅地(土地と建物)",
+      "count": "1586",
+      "avgPrice": "51872950.8197",
+      "minPrice": "200000",
+      "maxPrice": "3600000000"
+    }
+  ],
+  "messages": [],
+  "stdout": "propertyType\tcount\tavgPrice\tminPrice\tmaxPrice\n宅地(土地)\t366\t55107650.2732\t2000000\t1500000000\n中古マンション等\t989\t34018099.0900\t2500000\t66000000\n宅地(土地と建物)\t1586\t51872950.8197\t200000\t3600000000\n",
+  "stderr": "",
+  "execution_time_ms": 3511
+}

@@ -115,7 +115,7 @@ export default function Hero() {
                       </div>
                       <div>
                         <p className="text-[10px] sm:text-[11px] text-white font-bold uppercase tracking-wider mb-0.5 sm:mb-1 drop-shadow-lg">Real Estate</p>
-                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">利活用・売却・管理</p>
+                        <p className="text-xs sm:text-sm lg:text-base font-bold text-white leading-tight drop-shadow-lg">土地活用・売却・管理</p>
                       </div>
                     </div>
 

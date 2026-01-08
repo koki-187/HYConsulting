@@ -134,13 +134,16 @@ export default function AssessmentForm() {
       
       const result = await Promise.race([apiPromise, timeoutPromise]);
       console.log("📥 API response received:", result);
+      
+      // Set assessment result to display
+      setAssessmentResult(result);
+      setIsSearching(false);
+      
+      console.log("✅ Assessment completed successfully");
     } catch (err) {
       console.error("❌ Assessment error in handleSearch:", err);
       const errorMessage = err instanceof Error ? err.message : "査定処理中にエラーが発生しました";
       setError(errorMessage);
-      setIsSearching(false); // Ensure loading state is cleared
-    } finally {
-      console.log("🏁 Assessment process completed, setting isSearching to false");
       setIsSearching(false);
     }
   };
@@ -210,7 +213,7 @@ export default function AssessmentForm() {
                 <Search className="w-6 h-6 text-accent" />
                 不動産価格を知りたい方はまずは即時査定
               </h3>
-
+              <p className="text-primary-foreground/80 text-sm mt-1">最短60秒で入力完了・その場で結果表示</p>
             </div>
             {/* Decoration */}
             <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-white/10 to-transparent transform skew-x-12" />

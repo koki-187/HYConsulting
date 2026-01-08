@@ -1,0 +1,90 @@
+{
+  "query": "SELECT priceYen, buildingAreaM2, buildingYear, prefecture, city, propertyType FROM transactions WHERE prefecture = '東京都' AND city = '小平市' AND propertyType = '宅地(土地と建物)' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT priceYen, buildingAreaM2, buildingYear, prefecture, city, propertyType FROM transactions WHERE prefecture = '東京都' AND city = '小平市' AND propertyType = '宅地(土地と建物)' LIMIT 10;",
+  "rows": [
+    {
+      "priceYen": "44000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2015",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "29000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2009",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "27000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2014",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "32000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2014",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "25000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2006",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "20000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "1982",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "51000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2015",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "26000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "1999",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "28000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "1999",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    },
+    {
+      "priceYen": "45000000",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2012",
+      "prefecture": "東京都",
+      "city": "小平市",
+      "propertyType": "宅地(土地と建物)"
+    }
+  ],
+  "messages": [],
+  "stdout": "priceYen\tbuildingAreaM2\tbuildingYear\tprefecture\tcity\tpropertyType\n44000000\tNULL\t2015\t東京都\t小平市\t宅地(土地と建物)\n29000000\tNULL\t2009\t東京都\t小平市\t宅地(土地と建物)\n27000000\tNULL\t2014\t東京都\t小平市\t宅地(土地と建物)\n32000000\tNULL\t2014\t東京都\t小平市\t宅地(土地と建物)\n25000000\tNULL\t2006\t東京都\t小平市\t宅地(土地と建物)\n20000000\tNULL\t1982\t東京都\t小平市\t宅地(土地と建物)\n51000000\tNULL\t2015\t東京都\t小平市\t宅地(土地と建物)\n26000000\tNULL\t1999\t東京都\t小平市\t宅地(土地と建物)\n28000000\tNULL\t1999\t東京都\t小平市\t宅地(土地と建物)\n45000000\tNULL\t2012\t東京都\t小平市\t宅地(土地と建物)\n",
+  "stderr": "",
+  "execution_time_ms": 1479
+}

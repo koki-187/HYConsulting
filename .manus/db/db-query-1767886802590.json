@@ -1,0 +1,9 @@
+{
+  "query": "SELECT id, priceYen, landAreaM2, buildingAreaM2, buildingYear, transactionYm FROM transactions WHERE prefecture = '東京都' AND city LIKE '%小平市%' AND propertyType = 'house' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT id, priceYen, landAreaM2, buildingAreaM2, buildingYear, transactionYm FROM transactions WHERE prefecture = '東京都' AND city LIKE '%小平市%' AND propertyType = 'house' LIMIT 5;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1516
+}

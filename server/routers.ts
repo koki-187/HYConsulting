@@ -86,120 +86,137 @@ export const appRouter = router({
             console.warn("Failed to generate market analysis:", e);
           }
 
-          // Send data to Google Sheets via webhook
-          if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
-            try {
-              // Calculate price range in 万円 (10,000 yen units)
-              const estimatedLowManYen = Math.round(assessmentResult.estimatedLowYen / 10000);
-              const estimatedHighManYen = Math.round(assessmentResult.estimatedHighYen / 10000);
-              const priceRangeText = estimatedPrice 
-                ? `${estimatedLowManYen.toLocaleString('ja-JP')}万円～${estimatedHighManYen.toLocaleString('ja-JP')}万円`
-                : "査定中";
+          // Send data to Google Sheets via webhook (non-blocking)
+          const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+          if (webhookUrl) {
+            // Capture variables for background task
+            const webhookInput = { ...input };
+            const webhookAssessmentResult = { ...assessmentResult };
+            const webhookEstimatedPrice = estimatedPrice;
+            
+            // Run webhook in background without blocking response
+            (async () => {
+              try {
+                // Calculate price range in 万円 (10,000 yen units)
+                const estimatedLowManYen = Math.round(webhookAssessmentResult.estimatedLowYen / 10000);
+                const estimatedHighManYen = Math.round(webhookAssessmentResult.estimatedHighYen / 10000);
+                const priceRangeText = webhookEstimatedPrice 
+                  ? `${estimatedLowManYen.toLocaleString('ja-JP')}万円～${estimatedHighManYen.toLocaleString('ja-JP')}万円`
+                  : "査定中";
 
-              // Format property type in Japanese
-              const propertyTypeMap: Record<string, string> = {
-                house: "戸建て",
-                mansion: "マンション",
-                land: "土地",
-                apartment: "アパート",
-                condo: "マンション",
-              };
-              const propertyTypeJa = propertyTypeMap[input.propertyType] || input.propertyType;
+                // Format property type in Japanese
+                const propertyTypeMap: Record<string, string> = {
+                  house: "戸建て",
+                  mansion: "マンション",
+                  land: "土地",
+                  apartment: "アパート",
+                  condo: "マンション",
+                };
+                const propertyTypeJa = propertyTypeMap[webhookInput.propertyType] || webhookInput.propertyType;
 
-              // Format location (prefecture + city)
-              const locationText = `${input.prefecture}${input.city}`;
+                // Format location (prefecture + city)
+                const locationText = `${webhookInput.prefecture}${webhookInput.city}`;
 
-              // Format station info
-              const stationText = input.nearestStation || "未入力";
-              const walkingText = input.walkingMinutes ? `${input.walkingMinutes}分` : "未入力";
+                // Format station info
+                const stationText = webhookInput.nearestStation || "未入力";
+                const walkingText = webhookInput.walkingMinutes ? `${webhookInput.walkingMinutes}分` : "未入力";
 
-              // Format timestamp as Japan time "YYYY-MM-DD HH:mm"
-              const now = new Date();
-              const jstOffset = 9 * 60; // JST is UTC+9
-              const jstTime = new Date(now.getTime() + jstOffset * 60 * 1000);
-              const formattedTimestamp = jstTime.toISOString()
-                .replace('T', ' ')
-                .substring(0, 16); // "YYYY-MM-DD HH:mm"
+                // Format timestamp as Japan time "YYYY-MM-DD HH:mm"
+                const now = new Date();
+                const jstOffset = 9 * 60; // JST is UTC+9
+                const jstTime = new Date(now.getTime() + jstOffset * 60 * 1000);
+                const formattedTimestamp = jstTime.toISOString()
+                  .replace('T', ' ')
+                  .substring(0, 16); // "YYYY-MM-DD HH:mm"
 
-              // Format phone number as string with leading zero
-              const formattedPhone = input.phone ? String(input.phone).padStart(11, '0') : "";
+                // Format phone number as string with leading zero
+                const formattedPhone = webhookInput.phone ? String(webhookInput.phone).padStart(11, '0') : "";
 
-              const webhookData = {
-                timestamp: formattedTimestamp,
-                ownerName: input.ownerName || "匿名",
-                email: input.email || "",
-                phone: formattedPhone,
-                propertyType: propertyTypeJa,
-                prefecture: input.prefecture,
-                city: input.city,
-                address: locationText,
-                floorArea: input.floorArea || "",
-                buildingAge: input.buildingAge || "",
-                estimatedPrice: priceRangeText,
-                nearestStation: stationText,
-                walkingMinutes: walkingText,
-              };
-              
-              const webhookController = new AbortController();
-              const webhookTimeout = setTimeout(() => webhookController.abort(), 5000); // 5秒タイムアウト
-              
-              const webhookResponse = await fetch(process.env.GOOGLE_SHEETS_WEBHOOK_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(webhookData),
-                signal: webhookController.signal,
-              });
-              
-              clearTimeout(webhookTimeout);
-              
-              if (webhookResponse.ok) {
-                console.log("Data sent to Google Sheets successfully");
-              } else {
-                console.warn("Failed to send data to Google Sheets:", await webhookResponse.text());
+                const webhookData = {
+                  timestamp: formattedTimestamp,
+                  ownerName: webhookInput.ownerName || "匿名",
+                  email: webhookInput.email || "",
+                  phone: formattedPhone,
+                  propertyType: propertyTypeJa,
+                  prefecture: webhookInput.prefecture,
+                  city: webhookInput.city,
+                  address: locationText,
+                  floorArea: webhookInput.floorArea || "",
+                  buildingAge: webhookInput.buildingAge || "",
+                  estimatedPrice: priceRangeText,
+                  nearestStation: stationText,
+                  walkingMinutes: walkingText,
+                };
+                
+                const webhookController = new AbortController();
+                const webhookTimeout = setTimeout(() => webhookController.abort(), 5000); // 5秒タイムアウト
+                
+                const webhookResponse = await fetch(webhookUrl, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(webhookData),
+                  signal: webhookController.signal,
+                });
+                
+                clearTimeout(webhookTimeout);
+                
+                if (webhookResponse.ok) {
+                  console.log("Data sent to Google Sheets successfully");
+                } else {
+                  console.warn("Failed to send data to Google Sheets:", await webhookResponse.text());
+                }
+              } catch (e) {
+                if (e instanceof Error && e.name === 'AbortError') {
+                  console.warn("Google Sheets webhook timeout (5s)");
+                } else {
+                  console.warn("Failed to send data to Google Sheets:", e);
+                }
               }
-            } catch (e) {
-              if (e instanceof Error && e.name === 'AbortError') {
-                console.warn("Google Sheets webhook timeout (5s)");
-              } else {
-                console.warn("Failed to send data to Google Sheets:", e);
-              }
-            }
+            })().catch(err => console.error("Background webhook error:", err));
           }
 
-          // Send email if user provided email address and it's not the default
+          // Send email if user provided email address and it's not the default (non-blocking)
           if (input.email && input.email !== "" && input.email !== "noreply@hy-consulting.jp") {
-            try {
-              const emailData = {
-                propertyType: input.propertyType,
-                prefecture: input.prefecture,
-                city: input.city,
-                location: input.location,
-                estimatedLowYen: assessmentResult.estimatedLowYen,
-                estimatedHighYen: assessmentResult.estimatedHighYen,
-                estimatedPrice: estimatedPrice || 0,
-                message: estimatedPrice 
-                  ? `ご依頼いただいた物件の査定が完了いたしました。推定価格は${estimatedPrice}万円です。詳細はメール本文をご確認ください。` 
-                  : "査定リクエストを受け付けました。後ほど詳細をご連絡いたします。",
-                confidence: 75,
-                pricePerM2: input.floorArea && estimatedPrice ? (estimatedPrice * 10000) / input.floorArea : undefined,
-                floorArea: input.floorArea,
-                buildingAge: input.buildingAge,
-                marketTrend: "stable",
-              };
-              
-              const emailPromise = emailService.sendAssessmentEmail(input.email, emailData);
-              const emailTimeout = new Promise<{ success: boolean; error: string }>((resolve) => {
-                setTimeout(() => resolve({ success: false, error: "Email timeout (10s)" }), 10000);
-              });
-              const emailResult = await Promise.race([emailPromise, emailTimeout]);
-              if (emailResult.success) {
-                console.log(`Email sent successfully to ${input.email}`);
-              } else {
-                console.warn(`Failed to send email to ${input.email}:`, emailResult.error);
+            // Capture variables for background task
+            const emailInput = { ...input };
+            const emailAssessmentResult = { ...assessmentResult };
+            const emailEstimatedPrice = estimatedPrice;
+            
+            // Run email sending in background without blocking response
+            (async () => {
+              try {
+                const emailData = {
+                  propertyType: emailInput.propertyType,
+                  prefecture: emailInput.prefecture,
+                  city: emailInput.city,
+                  location: emailInput.location,
+                  estimatedLowYen: emailAssessmentResult.estimatedLowYen,
+                  estimatedHighYen: emailAssessmentResult.estimatedHighYen,
+                  estimatedPrice: emailEstimatedPrice || 0,
+                  message: emailEstimatedPrice 
+                    ? `ご依頼いただいた物件の査定が完了いたしました。推定価格は${emailEstimatedPrice}万円です。詳細はメール本文をご確認ください。` 
+                    : "査定リクエストを受け付けました。後ほど詳細をご連絡いたします。",
+                  confidence: 75,
+                  pricePerM2: emailInput.floorArea && emailEstimatedPrice ? (emailEstimatedPrice * 10000) / emailInput.floorArea : undefined,
+                  floorArea: emailInput.floorArea,
+                  buildingAge: emailInput.buildingAge,
+                  marketTrend: "stable",
+                };
+                
+                const emailPromise = emailService.sendAssessmentEmail(emailInput.email!, emailData);
+                const emailTimeout = new Promise<{ success: boolean; error: string }>((resolve) => {
+                  setTimeout(() => resolve({ success: false, error: "Email timeout (10s)" }), 10000);
+                });
+                const emailResult = await Promise.race([emailPromise, emailTimeout]);
+                if (emailResult.success) {
+                  console.log(`Email sent successfully to ${emailInput.email}`);
+                } else {
+                  console.warn(`Failed to send email to ${emailInput.email}:`, emailResult.error);
+                }
+              } catch (e) {
+                console.warn("Failed to send assessment email:", e);
               }
-            } catch (e) {
-              console.warn("Failed to send assessment email:", e);
-            }
+            })().catch(err => console.error("Background email error:", err));
           }
 
           return {

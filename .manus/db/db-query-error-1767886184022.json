@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  prefecture, \n  city, \n  district,\n  propertyType,\n  tradePriceYen,\n  area,\n  buildingYear,\n  pricePerSqm,\n  (tradePriceYen / 10000) as tradePriceManYen\nFROM transactions \nWHERE prefecture = '東京都' \n  AND city LIKE '%小平市%' \n  AND propertyType = 'house'\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT \n  prefecture, \n  city, \n  district,\n  propertyType,\n  tradePriceYen,\n  area,\n  buildingYear,\n  pricePerSqm,\n  (tradePriceYen / 10000) as tradePriceManYen\nFROM transactions \nWHERE prefecture = '東京都' \n  AND city LIKE '%小平市%' \n  AND propertyType = 'house'\nLIMIT 20;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'tradepriceyen' in 'field list'"
+  ]
+}

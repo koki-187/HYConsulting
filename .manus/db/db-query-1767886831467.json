@@ -1,0 +1,50 @@
+{
+  "query": "SELECT id, priceYen, landAreaM2, buildingAreaM2, buildingYear, transactionYm FROM transactions WHERE prefecture = '東京都' AND city LIKE '%小平市%' AND propertyType = '宅地(土地と建物)' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 4Rc7drD6ZCiTxbp.6c4f27fb1d84 --database R4vCcFNnyAc3ewAPUNxkML --execute SELECT id, priceYen, landAreaM2, buildingAreaM2, buildingYear, transactionYm FROM transactions WHERE prefecture = '東京都' AND city LIKE '%小平市%' AND propertyType = '宅地(土地と建物)' LIMIT 5;",
+  "rows": [
+    {
+      "id": "813875",
+      "priceYen": "44000000",
+      "landAreaM2": "135.00",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2015",
+      "transactionYm": "202101"
+    },
+    {
+      "id": "813876",
+      "priceYen": "29000000",
+      "landAreaM2": "80.00",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2009",
+      "transactionYm": "202101"
+    },
+    {
+      "id": "813878",
+      "priceYen": "27000000",
+      "landAreaM2": "100.00",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2014",
+      "transactionYm": "202101"
+    },
+    {
+      "id": "813879",
+      "priceYen": "32000000",
+      "landAreaM2": "120.00",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2014",
+      "transactionYm": "202101"
+    },
+    {
+      "id": "813880",
+      "priceYen": "25000000",
+      "landAreaM2": "110.00",
+      "buildingAreaM2": "NULL",
+      "buildingYear": "2006",
+      "transactionYm": "202101"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tpriceYen\tlandAreaM2\tbuildingAreaM2\tbuildingYear\ttransactionYm\n813875\t44000000\t135.00\tNULL\t2015\t202101\n813876\t29000000\t80.00\tNULL\t2009\t202101\n813878\t27000000\t100.00\tNULL\t2014\t202101\n813879\t32000000\t120.00\tNULL\t2014\t202101\n813880\t25000000\t110.00\tNULL\t2006\t202101\n",
+  "stderr": "",
+  "execution_time_ms": 1913
+}
