@@ -59,28 +59,7 @@ export default function Assessment() {
               </div>
             </motion.div>
 
-            {/* 最短60秒 Badge - さらに拡大 + 強化スプリング */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 150, damping: 10 }}
-              className="inline-flex items-center gap-4 px-9 py-5 rounded-3xl bg-white border-2 border-blue-400 shadow-2xl hover:shadow-3xl transition-all animate-pulse"
-            >
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-500 shadow-xl">
-                <svg className="w-10 h-10 text-white" fill="white" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div className="flex flex-col leading-tight">
-                <span className="text-blue-700 font-bold text-xl tracking-wide">
-                  最短60秒で入力完了
-                </span>
-                <span className="text-blue-400 text-[11px] font-medium tracking-wider">
-                  その場で結果表示
-                </span>
-              </div>
-            </motion.div>
+
           </div>
         </div>
 

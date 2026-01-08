@@ -274,11 +274,11 @@ function determineMarketTrend(comps: any[]): string {
   const changeRate = (recentAvg - olderAvg) / olderAvg;
 
   if (changeRate > 0.05) {
-    return "rising";
+    return "上昇傾向";
   } else if (changeRate < -0.05) {
-    return "declining";
+    return "下降傾向";
   } else {
-    return "stable";
+    return "安定";
   }
 }
 
@@ -300,28 +300,53 @@ export async function calculateAssessment(input: AssessmentInput): Promise<Asses
     throw new Error("No valid price data found");
   }
 
-  // Calculate statistics
+  // Remove outliers using IQR method
   const stats = calculateStatistics(prices);
+  const iqr = stats.q3 - stats.q1;
+  const lowerBound = stats.q1 - 1.5 * iqr;
+  const upperBound = stats.q3 + 1.5 * iqr;
+  
+  // Filter out outliers
+  const filteredPrices = prices.filter(p => p >= lowerBound && p <= upperBound);
+  
+  // Recalculate statistics without outliers
+  const filteredStats = filteredPrices.length >= 3 ? calculateStatistics(filteredPrices) : stats;
 
   // Calculate adjustments
   const adjustments = calculateAdjustments(input, comps);
 
   // Apply adjustments to median
-  const adjustedMedian = Math.round(stats.median * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment);
+  const adjustedMedian = Math.round(filteredStats.median * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment);
 
-  // Calculate range using IQR (Interquartile Range)
-  const iqr = stats.q3 - stats.q1;
-  const margin = Math.max(iqr * 0.25, adjustedMedian * 0.1); // At least 10% margin
-
-  const estimatedLowYen = Math.round(adjustedMedian - margin);
-  const estimatedHighYen = Math.round(adjustedMedian + margin);
+  // Calculate range using more conservative approach
+  // Use 15-20% margin around median, bounded by Q1 and Q3
+  const conservativeMargin = adjustedMedian * 0.15; // 15% margin
+  
+  let estimatedLowYen = Math.round(Math.max(
+    adjustedMedian - conservativeMargin,
+    filteredStats.q1 * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment,
+    adjustedMedian * 0.7 // Never go below 70% of median
+  ));
+  
+  let estimatedHighYen = Math.round(Math.min(
+    adjustedMedian + conservativeMargin,
+    filteredStats.q3 * adjustments.buildingYearAdjustment * adjustments.stationDistanceAdjustment * adjustments.areaAdjustment,
+    adjustedMedian * 1.3 // Never go above 130% of median
+  ));
+  
+  // Ensure minimum spread of 10%
+  const minSpread = adjustedMedian * 0.1;
+  if (estimatedHighYen - estimatedLowYen < minSpread) {
+    estimatedLowYen = Math.round(adjustedMedian - minSpread / 2);
+    estimatedHighYen = Math.round(adjustedMedian + minSpread / 2);
+  }
 
   // Market analysis
   const avgPricePerM2 = comps.reduce((sum, c) => sum + Number(c.unitPriceYenPerM2 || 0), 0) / comps.length;
   const marketTrend = determineMarketTrend(comps);
 
   // Forecast (simple trend-based)
-  const trendMultiplier = marketTrend === "rising" ? 1.02 : marketTrend === "declining" ? 0.98 : 1.0;
+  const trendMultiplier = marketTrend === "上昇傾向" ? 1.02 : marketTrend === "下降傾向" ? 0.98 : 1.0;
   const forecast1Year = Math.round(adjustedMedian * Math.pow(trendMultiplier, 1));
   const forecast3Year = Math.round(adjustedMedian * Math.pow(trendMultiplier, 3));
   const forecast5Year = Math.round(adjustedMedian * Math.pow(trendMultiplier, 5));
@@ -368,11 +393,7 @@ function generateExplanation(
     apartment: "アパート",
   }[input.propertyType] || "物件";
 
-  const trendLabel = {
-    rising: "上昇傾向",
-    declining: "下降傾向",
-    stable: "安定",
-  }[marketTrend];
+  // marketTrend is already in Japanese from determineMarketTrend()
 
   let explanation = `${input.prefecture}${input.city}の${propertyTypeLabel}について、`;
   explanation += `同一エリア近傍の類似取引${compsCount}件から算出した中央値レンジです。\n\n`;
@@ -388,7 +409,7 @@ function generateExplanation(
   }
 
   explanation += `\n【市場動向】\n`;
-  explanation += `当該地域の市場は${trendLabel}です。\n\n`;
+  explanation += `当該地域の市場は${marketTrend}です。\n\n`;
 
   explanation += "【ご注意】\n";
   explanation += "本査定は参考値であり、詳細査定は面談で確定いたします。\n";

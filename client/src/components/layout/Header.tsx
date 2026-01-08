@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Phone } from "lucide-react";
+import { Phone, Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -77,7 +77,7 @@ export default function Header() {
                 element?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              <Phone className="w-4 h-4 mr-2" />
+              <Mail className="w-4 h-4 mr-2" />
               お問い合わせ
             </Button>
           </nav>
@@ -119,7 +119,7 @@ export default function Header() {
               element?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            <Phone className="w-5 h-5 mr-2" />
+            <Mail className="w-5 h-5 mr-2" />
             お問い合わせ
           </Button>
         </nav>

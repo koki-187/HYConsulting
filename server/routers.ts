@@ -113,11 +113,22 @@ export const appRouter = router({
               const stationText = input.nearestStation || "未入力";
               const walkingText = input.walkingMinutes ? `${input.walkingMinutes}分` : "未入力";
 
+              // Format timestamp as Japan time "YYYY-MM-DD HH:mm"
+              const now = new Date();
+              const jstOffset = 9 * 60; // JST is UTC+9
+              const jstTime = new Date(now.getTime() + jstOffset * 60 * 1000);
+              const formattedTimestamp = jstTime.toISOString()
+                .replace('T', ' ')
+                .substring(0, 16); // "YYYY-MM-DD HH:mm"
+
+              // Format phone number as string with leading zero
+              const formattedPhone = input.phone ? String(input.phone).padStart(11, '0') : "";
+
               const webhookData = {
-                timestamp: new Date().toISOString(),
+                timestamp: formattedTimestamp,
                 ownerName: input.ownerName || "匿名",
                 email: input.email || "",
-                phone: input.phone || "",
+                phone: formattedPhone,
                 propertyType: propertyTypeJa,
                 prefecture: input.prefecture,
                 city: input.city,

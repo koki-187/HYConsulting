@@ -150,6 +150,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
               <p className="font-bold text-slate-700">
                 {propertyData.propertyType === "house" && "戸建て"}
                 {propertyData.propertyType === "mansion" && "マンション"}
+                {propertyData.propertyType === "condo" && "マンション"}
                 {propertyData.propertyType === "land" && "土地"}
                 {propertyData.propertyType === "apartment" && "アパート"}
               </p>
@@ -554,10 +555,16 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
               正確な価格を知りたい方へ
             </h4>
             <p className="text-slate-700 mb-6">
-              无料査定の結果をもとに、プロが現地で詳細な調査を実施します。
+              無料査定の結果をもとに、プロが現地で詳細な調査を実施します。
             </p>
-            <button className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg">
-              訪問査定をご依頁
+            <button 
+              className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+              onClick={() => {
+                const element = document.querySelector("#contact");
+                element?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              訪問査定をご依頼
             </button>
           </div>
         </motion.div>
