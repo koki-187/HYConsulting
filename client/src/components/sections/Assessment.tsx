@@ -57,7 +57,7 @@ export default function Assessment() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 12 }}
               whileHover={{ scale: 1.05, y: -2 }}
-              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all duration-300" style={{width: '289px'}}
             >
               <motion.div 
                 className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 shadow-md"
@@ -73,7 +73,7 @@ export default function Assessment() {
                 <Shield className="w-7 h-7 text-white" fill="white" strokeWidth={0} />
               </motion.div>
               <div className="flex flex-col leading-tight">
-                <span className="text-pink-600 font-bold text-lg tracking-wide">
+                <span className="text-pink-600 font-bold text-lg tracking-wide" style={{fontSize: '22px'}}>
                   匿名・無料
                 </span>
                 <span className="text-pink-400 text-[10px] font-medium uppercase tracking-wider">
@@ -105,7 +105,7 @@ export default function Assessment() {
                 <Clock className="w-7 h-7 text-white" strokeWidth={2.5} />
               </motion.div>
               <div className="flex flex-col leading-tight">
-                <span className="text-blue-600 font-bold text-lg tracking-wide">
+                <span className="text-blue-600 font-bold text-lg tracking-wide" style={{fontSize: '20px'}}>
                   最短60秒で入力完了
                 </span>
                 <span className="text-blue-400 text-[10px] font-medium tracking-wider">
