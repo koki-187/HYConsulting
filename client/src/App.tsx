@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import BadgeComparison from "./pages/BadgeComparison";
 import { Badge10Patterns } from "./pages/Badge10Patterns";
 import SchemaMarkup from "./components/SchemaMarkup";
+import Tokushoho from "./pages/Tokushoho";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -16,6 +17,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/badge-comparison"} component={BadgeComparison} />
       <Route path={"/badge-10-patterns"} component={Badge10Patterns} />
+      <Route path={"/tokushoho"} component={Tokushoho} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

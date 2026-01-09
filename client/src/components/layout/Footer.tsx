@@ -68,7 +68,7 @@ export default function Footer() {
                 { label: "選ばれる理由", href: "#features" },
                 { label: "解決事例・実績", href: "#achievements" },
                 { label: "よくあるご質問", href: "#faq" },
-                { label: "お問い合わせ", href: "#footer" },
+                { label: "お問い合わせ", href: "#contact" },
               ].map((link) => (
                 <li key={link.label}>
                   <a 
@@ -113,15 +113,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://hyconsulting.jp/privacypolicy" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-600 hover:text-accent transition-colors text-sm flex items-center gap-2 font-sans group"
-                >
-                  <span className="w-1.5 h-1.5 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                  特定商取引法に基づく表記
-                </a>
+                <Link href="/tokushoho">
+                  <a className="text-slate-600 hover:text-accent transition-colors text-sm flex items-center gap-2 font-sans group">
+                    <span className="w-1.5 h-1.5 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
+                    特定商取引法に基づく表記
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

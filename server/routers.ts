@@ -138,6 +138,14 @@ export const appRouter = router({
                 // Format phone number as string with leading zero
                 const formattedPhone = webhookInput.phone ? String(webhookInput.phone).padStart(11, '0') : "";
 
+                // アパート専用フィールドのフォーマット
+                const buildingStructureText = webhookInput.propertyType === "apartment" && webhookInput.buildingStructure 
+                  ? webhookInput.buildingStructure 
+                  : "";
+                const floorsText = webhookInput.propertyType === "apartment" && webhookInput.floors 
+                  ? `${webhookInput.floors}階建` 
+                  : "";
+
                 const webhookData = {
                   timestamp: formattedTimestamp,
                   ownerName: webhookInput.ownerName || "匿名",
@@ -152,6 +160,9 @@ export const appRouter = router({
                   estimatedPrice: priceRangeText,
                   nearestStation: stationText,
                   walkingMinutes: walkingText,
+                  // アパート専用フィールド（アパート査定時のみ値が入る）
+                  buildingStructure: buildingStructureText,
+                  floors: floorsText,
                 };
                 
                 const webhookController = new AbortController();
