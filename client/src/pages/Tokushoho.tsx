@@ -12,7 +12,7 @@ export default function Tokushoho() {
             <Link href="/">
               <a className="flex items-center gap-3 group bg-transparent">
                 <img 
-                  src="/images/logo_hy_consulting_transparent_new.png" 
+                  src="/images/logo_white_bg.png" 
                   alt="HY Consulting" 
                   className="h-8 lg:h-10 w-auto object-contain"
                 />
@@ -166,7 +166,7 @@ export default function Tokushoho() {
           {/* ロゴ - 透明背景のロゴを使用 */}
           <div className="flex items-center justify-center mb-6 bg-transparent">
             <img 
-              src="/images/logo_hy_consulting_transparent_new.png" 
+              src="/images/logo_white_bg.png" 
               alt="HY Consulting" 
               className="h-12 w-auto object-contain"
             />

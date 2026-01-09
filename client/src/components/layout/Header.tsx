@@ -49,7 +49,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group bg-transparent">
             <img 
-              src="/images/logo_hy_consulting_transparent_new.png" 
+              src="/images/logo_white_bg.png" 
               alt="HY Consulting" 
               className="h-8 lg:h-10 w-auto object-contain"
             />
