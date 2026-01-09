@@ -14,7 +14,7 @@ export default function Footer() {
             <Link href="/">
               <a className="flex items-center gap-3 w-fit group hover:opacity-80 transition-opacity">
                 <img 
-                  src="/images/logo_hy_consulting.png" 
+                  src="/images/logo_hy_consulting_transparent_new.png" 
                   alt="HY Consulting" 
                   className="h-10 w-auto object-contain"
                 />

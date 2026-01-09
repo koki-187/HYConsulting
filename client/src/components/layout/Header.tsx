@@ -50,7 +50,7 @@ export default function Header() {
           <Link href="/">
             <a className="flex items-center gap-3 group">
               <img 
-                src="/images/logo_hy_consulting.png" 
+                src="/images/logo_hy_consulting_transparent_new.png" 
                 alt="HY Consulting" 
                 className="h-8 lg:h-10 w-auto object-contain"
               />
