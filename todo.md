@@ -1698,3 +1698,8 @@
 
 #### Phase 2: ロゴ要素のCSS背景色を透明に設定
 - [x] Header、Footer、Tokushohoページのロゴ要素のCSS背景色をtransparentに設定
+
+## Session 82: ネストされた<a>タグエラーの修正
+
+- [x] Header.tsxのネストされた<a>タグエラーを修正
+- [x] エラーが解消されたことをブラウザで確認

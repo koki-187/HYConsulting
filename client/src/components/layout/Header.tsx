@@ -47,14 +47,12 @@ export default function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/">
-            <a className="flex items-center gap-3 group bg-transparent">
-              <img 
-                src="/images/logo_hy_consulting_transparent_new.png" 
-                alt="HY Consulting" 
-                className="h-8 lg:h-10 w-auto object-contain"
-              />
-            </a>
+          <Link href="/" className="flex items-center gap-3 group bg-transparent">
+            <img 
+              src="/images/logo_hy_consulting_transparent_new.png" 
+              alt="HY Consulting" 
+              className="h-8 lg:h-10 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
