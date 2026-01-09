@@ -236,13 +236,123 @@ export const appRouter = router({
             })().catch(err => console.error("Background email error:", err));
           }
 
+          // 信頼度計算ロジック
+          // 各要素を25%ずつの重みで計算（合計100%）
+          const transactionCount = assessmentResult.marketAnalysis.transactionCount;
+          const compsUsedCount = assessmentResult.compsUsedCount;
+          
+          // 1. データ件数スコア (25%): 取引件数に基づく
+          // 50件以上で満点、10件以下で最低点
+          let dataVolumeScore: number;
+          let dataVolumeDetails: string;
+          if (transactionCount >= 50) {
+            dataVolumeScore = 25;
+            dataVolumeDetails = `${transactionCount}件の取引データを参照（十分なデータ量）`;
+          } else if (transactionCount >= 30) {
+            dataVolumeScore = 22;
+            dataVolumeDetails = `${transactionCount}件の取引データを参照（良好なデータ量）`;
+          } else if (transactionCount >= 20) {
+            dataVolumeScore = 18;
+            dataVolumeDetails = `${transactionCount}件の取引データを参照（標準的なデータ量）`;
+          } else if (transactionCount >= 10) {
+            dataVolumeScore = 14;
+            dataVolumeDetails = `${transactionCount}件の取引データを参照（やや少ないデータ量）`;
+          } else if (transactionCount >= 5) {
+            dataVolumeScore = 10;
+            dataVolumeDetails = `${transactionCount}件の取引データを参照（限定的なデータ量）`;
+          } else {
+            dataVolumeScore = 5;
+            dataVolumeDetails = `${transactionCount}件の取引データを参照（データ量が少ない）`;
+          }
+          
+          // 2. 地域一致度スコア (25%): 同一市区町村のデータ割合
+          // compsUsedCountが同一市区町村のデータ件数を表す
+          let locationMatchScore: number;
+          let locationMatchDetails: string;
+          const locationMatchRatio = compsUsedCount / Math.max(transactionCount, 1);
+          if (locationMatchRatio >= 0.8) {
+            locationMatchScore = 25;
+            locationMatchDetails = `同一市区町村の類似物件${compsUsedCount}件を参照（高い地域一致度）`;
+          } else if (locationMatchRatio >= 0.6) {
+            locationMatchScore = 20;
+            locationMatchDetails = `同一市区町村の類似物件${compsUsedCount}件を参照（良好な地域一致度）`;
+          } else if (locationMatchRatio >= 0.4) {
+            locationMatchScore = 15;
+            locationMatchDetails = `同一市区町村の類似物件${compsUsedCount}件を参照（標準的な地域一致度）`;
+          } else if (locationMatchRatio >= 0.2) {
+            locationMatchScore = 10;
+            locationMatchDetails = `同一市区町村の類似物件${compsUsedCount}件を参照（やや低い地域一致度）`;
+          } else {
+            locationMatchScore = 5;
+            locationMatchDetails = `同一市区町村の類似物件${compsUsedCount}件を参照（地域一致度が低い）`;
+          }
+          
+          // 3. 築年数類似性スコア (25%): 築年数調整係数に基づく
+          let buildingAgeSimilarityScore: number;
+          let buildingAgeSimilarityDetails: string;
+          const buildingYearAdj = assessmentResult.adjustmentFactors.buildingYearAdjustment;
+          const buildingYearDiff = Math.abs(buildingYearAdj - 1.0);
+          if (input.propertyType === "land") {
+            // 土地の場合は築年数関係なし
+            buildingAgeSimilarityScore = 25;
+            buildingAgeSimilarityDetails = "土地のため築年数は査定に影響しません";
+          } else if (buildingYearDiff <= 0.05) {
+            buildingAgeSimilarityScore = 25;
+            buildingAgeSimilarityDetails = "類似築年数の物件が多く、高い精度で算出";
+          } else if (buildingYearDiff <= 0.10) {
+            buildingAgeSimilarityScore = 20;
+            buildingAgeSimilarityDetails = "築年数が近い物件を参照して算出";
+          } else if (buildingYearDiff <= 0.15) {
+            buildingAgeSimilarityScore = 15;
+            buildingAgeSimilarityDetails = "築年数にやや差がある物件を参照して算出";
+          } else if (buildingYearDiff <= 0.20) {
+            buildingAgeSimilarityScore = 10;
+            buildingAgeSimilarityDetails = "築年数に差がある物件を参照して算出";
+          } else {
+            buildingAgeSimilarityScore = 5;
+            buildingAgeSimilarityDetails = "築年数が大きく異なる物件を参照して算出";
+          }
+          
+          // 4. 物件種別一致度スコア (25%): 同一物件種別のデータ割合
+          // 物件種別は完全一致のみを使用しているため、基本的に高スコア
+          let propertyTypeMatchScore: number;
+          let propertyTypeMatchDetails: string;
+          if (compsUsedCount >= 20) {
+            propertyTypeMatchScore = 25;
+            propertyTypeMatchDetails = `同一物件種別（${input.propertyType === 'house' ? '戸建て' : input.propertyType === 'condo' ? 'マンション' : input.propertyType === 'land' ? '土地' : 'アパート'}）のデータを十分に参照`;
+          } else if (compsUsedCount >= 10) {
+            propertyTypeMatchScore = 20;
+            propertyTypeMatchDetails = `同一物件種別のデータを参照`;
+          } else if (compsUsedCount >= 5) {
+            propertyTypeMatchScore = 15;
+            propertyTypeMatchDetails = `同一物件種別のデータを限定的に参照`;
+          } else {
+            propertyTypeMatchScore = 10;
+            propertyTypeMatchDetails = `同一物件種別のデータが少ない`;
+          }
+          
+          // 総合スコア計算
+          const totalScore = dataVolumeScore + locationMatchScore + buildingAgeSimilarityScore + propertyTypeMatchScore;
+          
+          const confidenceBreakdown = {
+            totalScore,
+            dataVolumeScore,
+            locationMatchScore,
+            buildingAgeSimilarityScore,
+            propertyTypeMatchScore,
+            dataVolumeDetails,
+            locationMatchDetails,
+            buildingAgeSimilarityDetails,
+            propertyTypeMatchDetails,
+          };
+
           return {
             success: true,
             estimatedPrice: estimatedPrice,
             estimatedLowYen: assessmentResult.estimatedLowYen,
             estimatedHighYen: assessmentResult.estimatedHighYen,
             estimatedMidYen: assessmentResult.estimatedMidYen,
-            message: `査定価格: ${estimatedPrice}万円`,
+            message: `概算査定価格: ${estimatedPrice}万円`,
             explanation: assessmentResult.explanation,
             compsUsedCount: assessmentResult.compsUsedCount,
             method: assessmentResult.method,
@@ -255,6 +365,7 @@ export const appRouter = router({
             },
             adjustmentFactors: assessmentResult.adjustmentFactors,
             forecastAnalysis: assessmentResult.forecastAnalysis,
+            confidenceBreakdown: confidenceBreakdown,
             propertyData: {
               propertyType: input.propertyType,
               prefecture: input.prefecture,

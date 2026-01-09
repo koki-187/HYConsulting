@@ -204,7 +204,10 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                 <span className="w-2 h-2 bg-accent rounded-full" />
                 査定根拠
               </h4>
-              <p className="text-slate-700 text-sm leading-relaxed">{result.explanation}</p>
+              <p className="text-slate-700 text-sm leading-relaxed">
+                概算査定価格: {formatPrice((result.estimatedLowYen + result.estimatedHighYen) / 2)}
+              </p>
+              <p className="text-slate-600 text-xs leading-relaxed mt-2">{result.explanation}</p>
             </div>
           )}
 
@@ -380,14 +383,17 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             </div>
           )}
 
-          {/* Action Button - Centered Toggle */}
-          <div className="flex justify-center">
+          {/* Action Button - Left Aligned Below Confidence Section */}
+          <div className="mt-6 pt-4 border-t border-slate-200">
+            <p className="text-xs text-slate-500 mb-4">
+              信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
+            </p>
             <Button
               onClick={() => setShowDetails(!showDetails)}
               className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl"
             >
               <BarChart3 className="w-5 h-5 mr-2" />
-              {showDetails ? "詳細を隙す" : "詳細分析を表示"}
+              {showDetails ? "詳細を隠す" : "詳細分析を表示"}
             </Button>
           </div>
         </div>
@@ -401,7 +407,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
           className="space-y-4"
         >
           {/* Price per M2 */}
-          {result.pricePerM2 && (
+          {result.pricePerM2 ? (
             <Card className="p-6 border-2 border-slate-200">
               <h4 className="font-bold text-slate-700 mb-4 flex items-center gap-2">
                 <Home className="w-5 h-5 text-accent" />
@@ -427,7 +433,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
                 </div>
               </div>
             </Card>
-          )}
+          ) : null}
 
           {/* Calculation Basis */}
           <Card className="p-6 border-2 border-primary/20 bg-gradient-to-br from-blue-50 to-white">

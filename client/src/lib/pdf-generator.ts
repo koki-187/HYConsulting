@@ -275,7 +275,7 @@ const generateHTMLContent = (data: AssessmentReportData): string => {
         <div class="section">
           <div class="section-title">査定結果</div>
           <div class="price-box">
-            <div class="price-label">推定査定価格</div>
+            <div class="price-label">概算査定価格</div>
             <div class="price-value">${formatPrice(midPrice)}</div>
             <div class="price-range">（${formatPrice(data.result.estimatedLowYen)} ～ ${formatPrice(data.result.estimatedHighYen)}）</div>
           </div>

@@ -367,7 +367,7 @@ export function generateAssessmentEmailHTML(data: AssessmentEmailData): string {
         <div class="market-trend">
           <span class="trend-badge trend-${data.marketTrend || 'stable'}">${marketTrendLabel}</span>
           <p style="margin-top: 10px; font-size: 13px; color: #666;">
-            現在の市場は${marketTrendLabel}です。査定価格は最新の市場データに基づいています。
+            現在の市場は${marketTrendLabel}です。概算査定価格は最新の市場データに基づいています。
           </p>
         </div>
       </div>

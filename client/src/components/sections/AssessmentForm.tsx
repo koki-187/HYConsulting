@@ -608,7 +608,7 @@ export default function AssessmentForm() {
                       explanation: assessmentResult?.message || "",
                       compsUsedCount: assessmentResult?.compsUsedCount || 0,
                       marketTrend: assessmentResult?.marketAnalysis?.marketTrend || "stable",
-                      pricePerM2: assessmentResult?.marketAnalysis?.avgPricePerM2 || 0,
+                      pricePerM2: (assessmentResult?.marketAnalysis?.avgPricePerM2 && !isNaN(assessmentResult.marketAnalysis.avgPricePerM2) && assessmentResult.marketAnalysis.avgPricePerM2 > 0) ? assessmentResult.marketAnalysis.avgPricePerM2 : undefined,
                       comparableCount: assessmentResult?.marketAnalysis?.transactionCount || 0,
                       confidence: assessmentResult?.confidenceBreakdown?.totalScore || 75,
                       marketAnalysis: assessmentResult?.marketAnalysis,

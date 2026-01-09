@@ -11,7 +11,7 @@ export default function Tokushoho() {
             <Link href="/">
               <a className="flex items-center gap-3 group">
                 <img 
-                  src="/images/logo_hy_consulting.png" 
+                  src="/images/logo_hy_consulting_transparent.png" 
                   alt="HY Consulting" 
                   className="h-8 lg:h-10 w-auto object-contain"
                 />
@@ -159,16 +159,18 @@ export default function Tokushoho() {
         </div>
       </main>
 
-      {/* Footer */}
+      {/* Footer - 公式HPのContactページ風デザイン */}
       <footer className="bg-gradient-to-r from-blue-600 to-cyan-500 py-12">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
+          {/* ロゴ - 透明背景のロゴを使用 */}
+          <div className="flex items-center justify-center mb-6">
             <img 
-              src="/images/logo_hy_consulting.png" 
+              src="/images/logo_footer_transparent.png" 
               alt="HY Consulting" 
-              className="h-8 w-auto object-contain brightness-0 invert"
+              className="h-12 w-auto object-contain"
             />
           </div>
+          {/* ナビゲーションリンク */}
           <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm">
             <Link href="/">
               <a className="text-white/80 hover:text-white transition-colors">ホーム</a>
