@@ -3,7 +3,6 @@ import Header from "@/components/layout/Header";
 
 import Assessment from "@/components/sections/Assessment";
 import FAQ from "@/components/sections/FAQ";
-import Contact from "@/components/sections/Contact";
 import Features from "@/components/sections/Features";
 
 import Hero from "@/components/sections/Hero";
@@ -26,12 +25,8 @@ export default function Home() {
         {/* Show why HY Consulting is chosen */}
         <Features />
 
-
         {/* Address remaining questions */}
         <FAQ />
-
-        {/* Contact Section */}
-        <Contact />
 
       </main>
       

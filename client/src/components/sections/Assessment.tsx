@@ -36,45 +36,67 @@ export default function Assessment() {
             無料不動産査定
           </motion.h2>
           
-          {/* 拡大版バッジ + 強化スプリングアニメーション */}
-          <div className="flex flex-wrap items-center justify-center gap-5 sm:gap-8 mb-12">
-            {/* 匿名・無料 Badge - さらに拡大 + 強化スプリング */}
+          {/* バッジ - 添付画像1のバランスに合わせたデザイン */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-12">
+            {/* 匿名・無料 Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 150, damping: 10 }}
-              className="inline-flex items-center gap-4 px-9 py-5 rounded-3xl bg-white border-2 border-pink-400 shadow-2xl hover:shadow-3xl transition-all animate-pulse"
+              transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 12 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-pink-500 shadow-xl">
-                <Shield className="w-10 h-10 text-white" fill="white" strokeWidth={0} />
-              </div>
+              <motion.div 
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 shadow-md"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Shield className="w-6 h-6 text-white" fill="white" strokeWidth={0} />
+              </motion.div>
               <div className="flex flex-col leading-tight">
-                <span className="text-pink-700 font-bold text-xl tracking-wide">
+                <span className="text-pink-600 font-bold text-lg tracking-wide">
                   匿名・無料
                 </span>
-                <span className="text-pink-400 text-[11px] font-medium uppercase tracking-wider">
-                  Anonymous & Free
+                <span className="text-pink-400 text-[10px] font-medium uppercase tracking-wider">
+                  ANONYMOUS & FREE
                 </span>
               </div>
             </motion.div>
 
-            {/* 最短60秒 Badge - 拡大 + 強化スプリング */}
+            {/* 最短60秒 Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 150, damping: 10 }}
-              className="inline-flex items-center gap-4 px-9 py-5 rounded-3xl bg-white border-2 border-blue-400 shadow-2xl hover:shadow-3xl transition-all animate-pulse"
+              transition={{ delay: 0.3, type: "spring", stiffness: 100, damping: 12 }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-500 shadow-xl">
-                <Clock className="w-10 h-10 text-white" fill="white" strokeWidth={0} />
-              </div>
+              <motion.div 
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-md"
+                animate={{ 
+                  rotate: [0, 360],
+                }}
+                transition={{ 
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              >
+                <Clock className="w-6 h-6 text-white" strokeWidth={2.5} />
+              </motion.div>
               <div className="flex flex-col leading-tight">
-                <span className="text-blue-700 font-bold text-xl tracking-wide">
+                <span className="text-blue-600 font-bold text-lg tracking-wide">
                   最短60秒で入力完了
                 </span>
-                <span className="text-blue-400 text-[11px] font-medium tracking-wider">
+                <span className="text-blue-400 text-[10px] font-medium tracking-wider">
                   その場で結果表示
                 </span>
               </div>
