@@ -3,8 +3,46 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Tokushoho() {
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
       
+      {/* Background Decorative SVG Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        {/* Top Left - Rotated Square */}
+        <img 
+          src="/images/tokushoho-svg-1.svg" 
+          alt="" 
+          className="absolute -top-20 -left-20 w-64 h-64 opacity-30"
+        />
+        
+        {/* Top Right - Circle */}
+        <img 
+          src="/images/tokushoho-svg-2.svg" 
+          alt="" 
+          className="absolute top-32 -right-16 w-56 h-56 opacity-25"
+        />
+        
+        {/* Bottom Left - Large Rounded Square */}
+        <img 
+          src="/images/tokushoho-svg-3.svg" 
+          alt="" 
+          className="absolute -bottom-32 -left-32 w-96 h-96 opacity-20"
+        />
+        
+        {/* Bottom Right - Rotated Square (duplicate for balance) */}
+        <img 
+          src="/images/tokushoho-svg-1.svg" 
+          alt="" 
+          className="absolute bottom-20 -right-20 w-72 h-72 opacity-15 rotate-45"
+        />
+        
+        {/* Middle Right - Circle (duplicate for depth) */}
+        <img 
+          src="/images/tokushoho-svg-2.svg" 
+          alt="" 
+          className="absolute top-1/2 -right-24 w-64 h-64 opacity-20 transform -translate-y-1/2"
+        />
+      </div>
+
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-slate-100">
         <div className="container mx-auto px-4 lg:px-8">
@@ -29,7 +67,7 @@ export default function Tokushoho() {
       </header>
 
       {/* Hero Section - matching official HP style */}
-      <section className="pt-32 pb-16 relative">
+      <section className="pt-32 pb-16 relative z-10">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           <p className="text-slate-500 text-sm uppercase tracking-widest mb-4">LEGAL NOTICE</p>
           <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">特定商取引法に基づく表記</h1>
@@ -44,9 +82,9 @@ export default function Tokushoho() {
       </section>
 
       {/* Content Section */}
-      <main className="py-16 lg:py-24 relative">
+      <main className="py-16 lg:py-24 relative z-10">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 lg:p-12 border border-slate-100">
+          <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 lg:p-12 border border-slate-100">
             
             {/* Introduction */}
             <p className="text-slate-600 leading-relaxed mb-12">
@@ -161,7 +199,7 @@ export default function Tokushoho() {
       </main>
 
       {/* Footer - matching official HP style with transparent logo */}
-      <footer className="bg-white py-12 border-t border-slate-100 relative">
+      <footer className="bg-white/80 backdrop-blur-sm py-12 border-t border-slate-100 relative z-10">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           {/* ロゴ - 透明背景のロゴを使用 */}
           <div className="flex items-center justify-center mb-6 bg-transparent">
