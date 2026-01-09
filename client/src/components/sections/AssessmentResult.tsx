@@ -202,192 +202,40 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
             <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 mb-8">
               <h4 className="font-bold text-slate-700 mb-2 flex items-center gap-2">
                 <span className="w-2 h-2 bg-accent rounded-full" />
-                査定根拠
+                調査結果
               </h4>
-              <p className="text-slate-700 text-sm leading-relaxed">
-                概算査定価格: {formatPrice((result.estimatedLowYen + result.estimatedHighYen) / 2)}
-              </p>
-              <p className="text-slate-600 text-xs leading-relaxed mt-2">{result.explanation}</p>
+              <p className="text-slate-600 text-xs leading-relaxed">{result.explanation}</p>
             </div>
           )}
 
-          {/* Confidence Level with Breakdown */}
-          {(result.confidence || result.confidenceBreakdown) && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-sm font-medium text-slate-700">査定の信頼度</span>
-                <span className="text-2xl font-bold text-primary">
-                  {result.confidenceBreakdown?.totalScore || result.confidence}%
-                </span>
+
+
+          {/* Visit Assessment CTA */}
+          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 mt-8">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <Home className="w-6 h-6 text-blue-600" />
               </div>
-              <div className="w-full bg-slate-200 rounded-full h-2">
-                <div
-                  className="bg-gradient-to-r from-accent to-primary h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${result.confidenceBreakdown?.totalScore || result.confidence}%` }}
-                />
-              </div>
-              
-              {/* Confidence Breakdown Details */}
-              {result.confidenceBreakdown && (
-                <div className="bg-white rounded-lg border border-slate-200 p-4 mt-4">
-                  <h4 className="font-bold text-slate-700 mb-4 text-sm">信頼度の詳細内訳</h4>
-                  <div className="space-y-4">
-                    {/* Data Volume Score */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-slate-600">参照データ件数</span>
-                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.dataVolumeScore}%</span>
-                      </div>
-                      <div className="w-full bg-slate-100 rounded-full h-1.5">
-                        <div
-                          className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
-                          style={{ width: `${(result.confidenceBreakdown.dataVolumeScore / 25) * 100}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.dataVolumeDetails}</p>
-                    </div>
-
-                    {/* Location Match Score */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-slate-600">地域一致度</span>
-                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.locationMatchScore}%</span>
-                      </div>
-                      <div className="w-full bg-slate-100 rounded-full h-1.5">
-                        <div
-                          className="bg-green-500 h-1.5 rounded-full transition-all duration-500"
-                          style={{ width: `${(result.confidenceBreakdown.locationMatchScore / 25) * 100}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.locationMatchDetails}</p>
-                    </div>
-
-                    {/* Building Age Similarity Score */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-slate-600">築年数類似性</span>
-                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.buildingAgeSimilarityScore}%</span>
-                      </div>
-                      <div className="w-full bg-slate-100 rounded-full h-1.5">
-                        <div
-                          className="bg-purple-500 h-1.5 rounded-full transition-all duration-500"
-                          style={{ width: `${(result.confidenceBreakdown.buildingAgeSimilarityScore / 25) * 100}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.buildingAgeSimilarityDetails}</p>
-                    </div>
-
-                    {/* Property Type Match Score */}
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-medium text-slate-600">物件種別一致度</span>
-                        <span className="text-sm font-bold text-primary">{result.confidenceBreakdown.propertyTypeMatchScore}%</span>
-                      </div>
-                      <div className="w-full bg-slate-100 rounded-full h-1.5">
-                        <div
-                          className="bg-orange-500 h-1.5 rounded-full transition-all duration-500"
-                          style={{ width: `${(result.confidenceBreakdown.propertyTypeMatchScore / 25) * 100}%` }}
-                        />
-                      </div>
-                      <p className="text-xs text-slate-500">{result.confidenceBreakdown.propertyTypeMatchDetails}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {!result.confidenceBreakdown && (
-                <p className="text-xs text-slate-600 mt-2">
-                  信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
+              <div className="flex-1">
+                <h5 className="font-bold text-blue-900 mb-3 text-base">さらに精度の高い査定をご希望の方へ</h5>
+                <p className="text-sm text-blue-800 leading-relaxed mb-4">
+                  周辺の取引・成約価格の相場に基づいた概算査定価格ではありますが、訪問査定では物件の個別要因を加味し、さらに精度の高い査定を行う事が可能です。
                 </p>
-              )}
-
-              {/* Confidence Improvement Advice */}
-              {result.confidenceBreakdown && (
-                <div className="mt-4">
-                  {result.confidenceBreakdown.totalScore < 60 && (
-                    <div className="bg-amber-50 border-2 border-amber-300 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                          <CheckCircle2 className="w-5 h-5 text-amber-600" />
-                        </div>
-                        <div className="flex-1">
-                          <h5 className="font-bold text-amber-900 mb-2 text-sm">より正確な査定をご希望の場合</h5>
-                          <p className="text-sm text-amber-800 leading-relaxed mb-3">
-                            現在の信頼度は{result.confidenceBreakdown.totalScore}%です。訪問査定では、物件の状態、周辺環境、設備などを直接確認し、より正確な価格を算出できます。
-                          </p>
-                          <a
-                            href="https://hyconsulting.jp/contact"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 px-4 rounded-lg transition-all text-sm"
-                          >
-                            <Home className="w-4 h-4" />
-                            訪問査定を依頼する（無料）
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {result.confidenceBreakdown.totalScore >= 60 && result.confidenceBreakdown.totalScore < 80 && (
-                    <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                          <TrendingUp className="w-5 h-5 text-blue-600" />
-                        </div>
-                        <div className="flex-1">
-                          <h5 className="font-bold text-blue-900 mb-2 text-sm">信頼度を高めるには</h5>
-                          <p className="text-sm text-blue-800 leading-relaxed mb-3">
-                            現在の信頼度は{result.confidenceBreakdown.totalScore}%です。訪問査定では、物件の個別要因（日当たり、眺望、リフォーム状況など）を考慮し、より精度の高い査定が可能です。
-                          </p>
-                          <a
-                            href="https://hyconsulting.jp/contact"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-all text-sm"
-                          >
-                            <Home className="w-4 h-4" />
-                            訪問査定を依頼する（無料）
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {result.confidenceBreakdown.totalScore >= 80 && (
-                    <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                          <CheckCircle2 className="w-5 h-5 text-green-600" />
-                        </div>
-                        <div className="flex-1">
-                          <h5 className="font-bold text-green-900 mb-2 text-sm">高い信頼度の査定結果です</h5>
-                          <p className="text-sm text-green-800 leading-relaxed mb-3">
-                            信頼度{result.confidenceBreakdown.totalScore}%の査定結果です。十分なデータに基づいた信頼性の高い査定ですが、訪問査定では物件の個別要因を加味し、さらに精度を高めることができます。
-                          </p>
-                          <a
-                            href="https://hyconsulting.jp/contact"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-all text-sm"
-                          >
-                            <Home className="w-4 h-4" />
-                            訪問査定を依頼する（無料）
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
+                <a
+                  href="https://hyconsulting.jp/contact"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all text-sm shadow-md hover:shadow-lg"
+                >
+                  <Home className="w-5 h-5" />
+                  訪問査定を依頼する
+                </a>
+              </div>
             </div>
-          )}
+          </div>
 
-          {/* Action Button - Left Aligned Below Confidence Section */}
+          {/* Action Button - Left Aligned Below Result Section */}
           <div className="mt-6 pt-4 border-t border-slate-200">
-            <p className="text-xs text-slate-500 mb-4">
-              信頼度は、参照した取引データの件数、地域の一致度、築年数の類似性に基づいて算出されています。
-            </p>
             <Button
               onClick={() => setShowDetails(!showDetails)}
               className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg hover:shadow-xl"
