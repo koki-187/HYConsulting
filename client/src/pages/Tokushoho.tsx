@@ -9,37 +9,37 @@ export default function Tokushoho() {
       <div className="fixed inset-0 pointer-events-none z-0">
         {/* Top Left - Rotated Square */}
         <img 
-          src="/images/tokushoho-svg-1.svg" 
+          src="/square-decoration.png" 
           alt="" 
-          className="absolute -top-20 -left-20 w-64 h-64 opacity-30"
+          className="absolute -top-10 -left-10 w-40 h-40 opacity-20 rotate-12"
         />
         
         {/* Top Right - Circle */}
         <img 
-          src="/images/tokushoho-svg-2.svg" 
+          src="/circle-decoration.jpg" 
           alt="" 
-          className="absolute top-32 -right-16 w-56 h-56 opacity-25"
+          className="absolute top-20 -right-10 w-48 h-48 opacity-15 rounded-full"
         />
         
         {/* Bottom Left - Large Rounded Square */}
         <img 
-          src="/images/tokushoho-svg-3.svg" 
+          src="/square-decoration.png" 
           alt="" 
-          className="absolute -bottom-32 -left-32 w-96 h-96 opacity-20"
+          className="absolute -bottom-20 -left-20 w-64 h-64 opacity-10 rotate-45"
         />
         
         {/* Bottom Right - Rotated Square (duplicate for balance) */}
         <img 
-          src="/images/tokushoho-svg-1.svg" 
+          src="/square-decoration.png" 
           alt="" 
-          className="absolute bottom-20 -right-20 w-72 h-72 opacity-15 rotate-45"
+          className="absolute bottom-10 -right-10 w-56 h-56 opacity-12 rotate-[-15deg]"
         />
         
         {/* Middle Right - Circle (duplicate for depth) */}
         <img 
-          src="/images/tokushoho-svg-2.svg" 
+          src="/circle-decoration.jpg" 
           alt="" 
-          className="absolute top-1/2 -right-24 w-64 h-64 opacity-20 transform -translate-y-1/2"
+          className="absolute top-1/2 -right-16 w-52 h-52 opacity-12 rounded-full transform -translate-y-1/2"
         />
       </div>
 
