@@ -3,7 +3,12 @@ import { ArrowLeft } from "lucide-react";
 
 export default function Tokushoho() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Background decorations - matching official HP */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100/30 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-100/30 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-blue-50/40 rounded-full blur-2xl" />
+      
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md py-4 shadow-sm border-b border-slate-100">
         <div className="container mx-auto px-4 lg:px-8">
@@ -27,14 +32,14 @@ export default function Tokushoho() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-gradient-to-r from-blue-600 to-cyan-500">
+      {/* Hero Section - matching official HP style */}
+      <section className="pt-32 pb-16 relative">
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <p className="text-white/80 text-sm uppercase tracking-widest mb-4">LEGAL NOTICE</p>
-          <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4">特定商取引法に基づく表記</h1>
-          <div className="flex items-center justify-center gap-2 text-white/70 text-sm">
+          <p className="text-slate-500 text-sm uppercase tracking-widest mb-4">LEGAL NOTICE</p>
+          <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">特定商取引法に基づく表記</h1>
+          <div className="flex items-center justify-center gap-2 text-slate-500 text-sm">
             <Link href="/">
-              <a className="hover:text-white transition-colors">HOME</a>
+              <a className="hover:text-accent transition-colors">HOME</a>
             </Link>
             <span>/</span>
             <span>Legal Notice</span>
@@ -43,9 +48,9 @@ export default function Tokushoho() {
       </section>
 
       {/* Content Section */}
-      <main className="py-16 lg:py-24">
+      <main className="py-16 lg:py-24 relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 lg:p-12">
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 lg:p-12 border border-slate-100">
             
             {/* Introduction */}
             <p className="text-slate-600 leading-relaxed mb-12">
@@ -159,13 +164,13 @@ export default function Tokushoho() {
         </div>
       </main>
 
-      {/* Footer - 公式HPのContactページ風デザイン */}
-      <footer className="bg-gradient-to-r from-blue-600 to-cyan-500 py-12">
+      {/* Footer - matching official HP style with transparent logo */}
+      <footer className="bg-white py-12 border-t border-slate-100 relative">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           {/* ロゴ - 透明背景のロゴを使用 */}
           <div className="flex items-center justify-center mb-6">
             <img 
-              src="/images/logo_footer_transparent.png" 
+              src="/images/logo_hy_consulting_transparent.png" 
               alt="HY Consulting" 
               className="h-12 w-auto object-contain"
             />
@@ -173,13 +178,13 @@ export default function Tokushoho() {
           {/* ナビゲーションリンク */}
           <div className="flex flex-wrap justify-center gap-6 mb-6 text-sm">
             <Link href="/">
-              <a className="text-white/80 hover:text-white transition-colors">ホーム</a>
+              <a className="text-slate-600 hover:text-accent transition-colors">ホーム</a>
             </Link>
             <a 
               href="https://hyconsulting.jp/company" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-white/80 hover:text-white transition-colors"
+              className="text-slate-600 hover:text-accent transition-colors"
             >
               会社情報
             </a>
@@ -187,7 +192,7 @@ export default function Tokushoho() {
               href="https://hyconsulting.jp/privacypolicy" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-white/80 hover:text-white transition-colors"
+              className="text-slate-600 hover:text-accent transition-colors"
             >
               プライバシーポリシー
             </a>
@@ -195,12 +200,12 @@ export default function Tokushoho() {
               href="https://hyconsulting.jp/contact" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-white/80 hover:text-white transition-colors"
+              className="text-slate-600 hover:text-accent transition-colors"
             >
               お問い合わせ
             </a>
           </div>
-          <p className="text-white/60 text-sm">
+          <p className="text-slate-500 text-sm">
             © {new Date().getFullYear()} HY Consulting, Inc. All rights reserved.
           </p>
         </div>

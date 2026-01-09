@@ -414,7 +414,7 @@ export default function AssessmentForm() {
                           <Label htmlFor="buildingYear" className="text-sm font-bold text-slate-600">築年数（年）</Label>
                           <Input 
                             id="buildingYear" 
-                            placeholder="例：2000" 
+                            placeholder="例:15" 
                             type="number"
                             className="h-14 text-lg bg-white border-slate-300 focus:ring-accent"
                             value={buildingYear}
