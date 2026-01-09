@@ -1695,3 +1695,6 @@
 
 #### Phase 1: 背景透過ロゴの置き換え
 - [x] 背景透過ロゴを既存ロゴと入れ替え、白い枠を除去
+
+#### Phase 2: ロゴ要素のCSS背景色を透明に設定
+- [x] Header、Footer、Tokushohoページのロゴ要素のCSS背景色をtransparentに設定

@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Company Info - Left */}
           <div className="space-y-6">
             <Link href="/">
-              <a className="flex items-center gap-3 w-fit group hover:opacity-80 transition-opacity">
+              <a className="flex items-center gap-3 w-fit group hover:opacity-80 transition-opacity bg-transparent">
                 <img 
                   src="/images/logo_hy_consulting_transparent_new.png" 
                   alt="HY Consulting" 

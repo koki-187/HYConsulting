@@ -10,7 +10,7 @@ export default function Tokushoho() {
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             <Link href="/">
-              <a className="flex items-center gap-3 group">
+              <a className="flex items-center gap-3 group bg-transparent">
                 <img 
                   src="/images/logo_hy_consulting_transparent_new.png" 
                   alt="HY Consulting" 
@@ -164,7 +164,7 @@ export default function Tokushoho() {
       <footer className="bg-white py-12 border-t border-slate-100 relative">
         <div className="container mx-auto px-4 lg:px-8 text-center">
           {/* ロゴ - 透明背景のロゴを使用 */}
-          <div className="flex items-center justify-center mb-6">
+          <div className="flex items-center justify-center mb-6 bg-transparent">
             <img 
               src="/images/logo_hy_consulting_transparent_new.png" 
               alt="HY Consulting" 

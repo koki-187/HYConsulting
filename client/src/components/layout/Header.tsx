@@ -48,7 +48,7 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/">
-            <a className="flex items-center gap-3 group">
+            <a className="flex items-center gap-3 group bg-transparent">
               <img 
                 src="/images/logo_hy_consulting_transparent_new.png" 
                 alt="HY Consulting" 
