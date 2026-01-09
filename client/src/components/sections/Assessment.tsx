@@ -55,8 +55,8 @@ export default function Assessment() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 100, damping: 12 }}
-              whileHover={{ scale: 1.05, y: -2 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 150, damping: 10 }}
+              whileHover={{ scale: 1.08, y: -4, rotate: 1 }}
               className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all duration-300" style={{width: '289px'}}
             >
               <motion.div 
@@ -87,8 +87,8 @@ export default function Assessment() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3, type: "spring", stiffness: 100, damping: 12 }}
-              whileHover={{ scale: 1.05, y: -2 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 150, damping: 10 }}
+              whileHover={{ scale: 1.08, y: -4, rotate: -1 }}
               className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <motion.div 
