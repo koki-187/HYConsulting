@@ -31,8 +31,31 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section id="faq" className="py-20 lg:py-32 bg-slate-50">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section id="faq" className="py-20 lg:py-32 bg-slate-50 relative overflow-hidden">
+      {/* Background decorative elements - matching official HP */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Soft pastel blue diagonal shape */}
+        <div 
+          className="absolute -right-20 top-0 w-1/2 h-full"
+          style={{
+            background: 'linear-gradient(135deg, rgba(168, 212, 230, 0.15) 0%, rgba(200, 220, 240, 0.05) 100%)',
+            transform: 'skewX(-10deg)',
+          }}
+        />
+        
+        {/* Large "?" watermark */}
+        <span 
+          className="absolute left-10 top-1/4 text-[15rem] sm:text-[20rem] lg:text-[25rem] font-bold leading-none"
+          style={{
+            color: 'rgba(168, 212, 230, 0.06)',
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+          }}
+        >
+          ?
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
         <div className="text-center mb-16">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}

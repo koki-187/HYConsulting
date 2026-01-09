@@ -56,7 +56,21 @@ export default function Services() {
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-      <div className="container mx-auto px-4">
+      {/* Large "HY Consulting" watermark text - matching official HP */}
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
+        <span 
+          className="text-[8rem] sm:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-bold tracking-wider whitespace-nowrap"
+          style={{
+            color: 'rgba(0, 0, 0, 0.02)',
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+            letterSpacing: '0.05em',
+          }}
+        >
+          HY Consulting
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
@@ -98,8 +112,18 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 + 0.3 }}
+              className="relative"
             >
-              <Card className="h-full border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-lg flex flex-col">
+              {/* Pastel blue diagonal shape behind card - matching official HP */}
+              <div 
+                className="absolute -left-4 -top-4 w-2/3 h-full rounded-3xl -z-10"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(168, 212, 230, 0.4) 0%, rgba(200, 220, 240, 0.2) 100%)',
+                  transform: 'skewY(-3deg)',
+                }}
+              />
+              
+              <Card className="h-full border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden bg-white rounded-lg flex flex-col relative">
                 <div className="aspect-[4/3] overflow-hidden bg-slate-100 relative">
                   <img 
                     src={service.image} 

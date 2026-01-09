@@ -52,7 +52,20 @@ const successStories = [
 export default function Features() {
   return (
     <section id="features" className="py-20 lg:py-32 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
-      <div className="container mx-auto px-4">
+      {/* Large "H" watermark - matching official HP About section */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none select-none">
+        <span 
+          className="absolute -left-20 top-1/4 text-[30rem] sm:text-[40rem] lg:text-[50rem] font-bold leading-none"
+          style={{
+            color: 'rgba(168, 212, 230, 0.08)',
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+          }}
+        >
+          H
+        </span>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

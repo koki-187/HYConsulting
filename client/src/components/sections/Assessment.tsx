@@ -5,11 +5,23 @@ import AssessmentForm from './AssessmentForm';
 export default function Assessment() {
   return (
     <section id="assessment" className="py-20 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+      {/* Background decorative elements - matching official HP style */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Soft pastel blue circles */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-100/40 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-100/30 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-blue-50/40 rounded-full mix-blend-multiply filter blur-3xl"></div>
+        
+        {/* Large "HY" watermark */}
+        <span 
+          className="absolute right-0 top-1/2 -translate-y-1/2 text-[20rem] sm:text-[25rem] lg:text-[30rem] font-bold leading-none"
+          style={{
+            color: 'rgba(168, 212, 230, 0.06)',
+            fontFamily: 'system-ui, -apple-system, sans-serif',
+          }}
+        >
+          HY
+        </span>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
