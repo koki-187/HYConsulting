@@ -1756,3 +1756,31 @@
 
 ### Phase 2: チェックポイント作成
 - [x] チェックポイント作成準備完了
+
+
+---
+
+## Session 89: LPのロゴサイズの統一
+
+### Phase 1: 公式HPのロゴサイズ調査
+- [ ] 公式HP（https://hyconsulting.jp/）にアクセス
+- [ ] Headerロゴのサイズを確認
+- [ ] Footerロゴのサイズを確認
+
+### Phase 2: 各ページの現在のロゴサイズ確認
+- [ ] Header.tsxのロゴサイズを確認
+- [ ] Footer.tsxのロゴサイズを確認
+- [ ] Tokushoho.tsxのHeaderロゴサイズを確認
+- [ ] Tokushoho.tsxのFooterロゴサイズを確認
+
+### Phase 3: ロゴサイズの統一実装
+- [x] Header.tsxのロゴサイズを公式HPと同じサイズに調整
+- [x] Footer.tsxのロゴサイズを公式HPと同じサイズに調整
+- [x] Tokushoho.tsxのHeaderロゴサイズを調整
+- [x] Tokushoho.tsxのFooterロゴサイズを調整
+- [x] TypeScriptエラーチェック
+
+### Phase 4: ブラウザでの検証とチェックポイント作成
+- [x] ブラウザでHeader、Footer、特定商取引法ページのロゴ表示を確認
+- [x] レスポンシブデザインの確認
+- [ ] チェックポイント作成
