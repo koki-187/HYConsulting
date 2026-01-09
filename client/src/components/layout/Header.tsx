@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Phone, Menu, X, Mail } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -72,10 +72,7 @@ export default function Header() {
             ))}
             <Button 
               className="bg-secondary hover:bg-secondary/90 text-white font-bold tracking-wide rounded-md px-6 shadow-md hover:shadow-lg transition-all"
-              onClick={() => {
-                const element = document.querySelector("#contact");
-                element?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => window.open('https://hyconsulting.jp/contact', '_blank')}
             >
               <Mail className="w-4 h-4 mr-2" />
               お問い合わせ
@@ -115,8 +112,7 @@ export default function Header() {
             className="w-full bg-secondary text-white hover:bg-secondary/90 font-bold py-6 text-lg rounded-md mt-4 shadow-lg"
             onClick={() => {
               setIsMobileMenuOpen(false);
-              const element = document.querySelector("#contact");
-              element?.scrollIntoView({ behavior: "smooth" });
+              window.open('https://hyconsulting.jp/contact', '_blank');
             }}
           >
             <Mail className="w-5 h-5 mr-2" />
