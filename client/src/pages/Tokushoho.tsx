@@ -50,7 +50,7 @@ export default function Tokushoho() {
             <Link href="/">
               <a className="flex items-center gap-3 group bg-transparent">
                 <img 
-                  src="/images/logo_white_bg.png" 
+                  src="https://private-us-east-1.manuscdn.com/users/310519663091040948/uploads/EvoszQPn6sM5lVEeWfNc4H_na1fn_dW5uYW1lZA.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vdXNlcnMvMzEwNTE5NjYzMDkxMDQwOTQ4L3VwbG9hZHMvRXZvc3pRUG42c001bFZFZVdmTmM0SF9uYTFmbl9kVzV1WVcxbFpBLmpwZyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=m4E5vBMGFdEIkvk~6jS37NhCS0HxM4OwAo5jYTIEdBAli-7~zu83hd2FRVWg6ORraShhJAQZz3o6hp5I0aIS59R622mCr7vniVyrR6Ebc~YfXAkpscxIuJwzREa-7lg7JqIr76V9kDbsn0WvGLZbEscAqOE78pvb970KVqQnmwKT1M0pZ5C9fz5xKgnfDbm6sCyyn2zLEMj8UPLH~4dq5xSP87ZJl4DkgshqNAHATrZ6ICWuekGc8U5oIdP68HBy9tmf8MipnARQCr3bcxPBhR-ipJBqCcdp~9U0UvfwvWSUfwPIxLa5d5nq7ckpM0mO1ay0-z6zKNHBFDFIyjfmYw__" 
                   alt="HY Consulting" 
                   className="h-8 lg:h-10 w-auto object-contain"
                 />
@@ -67,9 +67,9 @@ export default function Tokushoho() {
       </header>
 
       {/* Hero Section - matching official HP style */}
-      <section className="pt-32 pb-16 relative z-10">
+      <section className="pt-32 pb-16 relative z-10" style={{backgroundColor: '#ffffff'}}>
         <div className="container mx-auto px-4 lg:px-8 text-center">
-          <p className="text-slate-500 text-sm uppercase tracking-widest mb-4">LEGAL NOTICE</p>
+          <p className="text-slate-500 text-sm uppercase tracking-widest mb-4" style={{fontSize: '20px', fontWeight: '700'}}>LEGAL NOTICE</p>
           <h1 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">特定商取引法に基づく表記</h1>
           <div className="flex items-center justify-center gap-2 text-slate-500 text-sm">
             <Link href="/">
@@ -82,7 +82,7 @@ export default function Tokushoho() {
       </section>
 
       {/* Content Section */}
-      <main className="py-16 lg:py-24 relative z-10">
+      <main className="py-16 lg:py-24 relative z-10" style={{backgroundColor: '#ffffff'}}>
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 lg:p-12 border border-slate-100">
             
@@ -204,9 +204,9 @@ export default function Tokushoho() {
           {/* ロゴ - 透明背景のロゴを使用 */}
           <div className="flex items-center justify-center mb-6 bg-transparent">
             <img 
-              src="/images/logo_white_bg.png" 
+              src="https://private-us-east-1.manuscdn.com/users/310519663091040948/uploads/EvoszQPn6sM5lVEeWfNc4H_na1fn_dW5uYW1lZA.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vdXNlcnMvMzEwNTE5NjYzMDkxMDQwOTQ4L3VwbG9hZHMvRXZvc3pRUG42c001bFZFZVdmTmM0SF9uYTFmbl9kVzV1WVcxbFpBLmpwZyIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc5ODc2MTYwMH19fV19&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=m4E5vBMGFdEIkvk~6jS37NhCS0HxM4OwAo5jYTIEdBAli-7~zu83hd2FRVWg6ORraShhJAQZz3o6hp5I0aIS59R622mCr7vniVyrR6Ebc~YfXAkpscxIuJwzREa-7lg7JqIr76V9kDbsn0WvGLZbEscAqOE78pvb970KVqQnmwKT1M0pZ5C9fz5xKgnfDbm6sCyyn2zLEMj8UPLH~4dq5xSP87ZJl4DkgshqNAHATrZ6ICWuekGc8U5oIdP68HBy9tmf8MipnARQCr3bcxPBhR-ipJBqCcdp~9U0UvfwvWSUfwPIxLa5d5nq7ckpM0mO1ay0-z6zKNHBFDFIyjfmYw__" 
               alt="HY Consulting" 
-              className="h-12 w-auto object-contain"
+              className="h-12 w-auto object-contain" style={{width: '189px', height: '148px'}}
             />
           </div>
           {/* ナビゲーションリンク */}
