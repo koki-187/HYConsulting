@@ -222,7 +222,7 @@ export default function AssessmentForm() {
                 <Search className="w-6 h-6 text-accent" />
                 不動産価格を知りたい方はまずは即時査定
               </h3>
-              <p className="text-primary-foreground/80 text-sm mt-1">最短60秒で入力完了・その場で結果表示</p>
+
             </div>
             {/* Decoration */}
             <div className="absolute right-0 top-0 h-full w-1/3 bg-gradient-to-l from-white/10 to-transparent transform skew-x-12" />

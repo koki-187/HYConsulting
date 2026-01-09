@@ -12,7 +12,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
+    <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-24 overflow-hidden bg-gradient-to-br from-white via-slate-50 to-white">
 
       {/* Animated background elements */}
       <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" />

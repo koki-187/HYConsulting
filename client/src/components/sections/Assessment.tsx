@@ -60,7 +60,7 @@ export default function Assessment() {
               className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-pink-400 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <motion.div 
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 shadow-md"
+                className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 shadow-md"
                 animate={{ 
                   scale: [1, 1.1, 1],
                 }}
@@ -70,7 +70,7 @@ export default function Assessment() {
                   ease: "easeInOut"
                 }}
               >
-                <Shield className="w-6 h-6 text-white" fill="white" strokeWidth={0} />
+                <Shield className="w-7 h-7 text-white" fill="white" strokeWidth={0} />
               </motion.div>
               <div className="flex flex-col leading-tight">
                 <span className="text-pink-600 font-bold text-lg tracking-wide">
@@ -92,7 +92,7 @@ export default function Assessment() {
               className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-white border-2 border-blue-400 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <motion.div 
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-md"
+                className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 shadow-md"
                 animate={{ 
                   rotate: [0, 360],
                 }}
@@ -102,7 +102,7 @@ export default function Assessment() {
                   ease: "linear"
                 }}
               >
-                <Clock className="w-6 h-6 text-white" strokeWidth={2.5} />
+                <Clock className="w-7 h-7 text-white" strokeWidth={2.5} />
               </motion.div>
               <div className="flex flex-col leading-tight">
                 <span className="text-blue-600 font-bold text-lg tracking-wide">
