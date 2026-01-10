@@ -136,15 +136,37 @@ export const appRouter = router({
                   .substring(0, 16); // "YYYY-MM-DD HH:mm"
 
                 // Format phone number as string with leading zero
-                const formattedPhone = webhookInput.phone ? String(webhookInput.phone).padStart(11, '0') : "";
+                // 電話番号を文字列として送信（先頭の0が消えないように）
+                let formattedPhone = "";
+                if (webhookInput.phone) {
+                  // 電話番号を文字列として取得し、先頭に0がなければ追加
+                  let phoneStr = String(webhookInput.phone);
+                  // 10桁の場合は先頭に0を追加（携帯電話番号）
+                  if (phoneStr.length === 10 && !phoneStr.startsWith('0')) {
+                    phoneStr = '0' + phoneStr;
+                  }
+                  // 11桁未満の場合は先頭に0を追加
+                  if (phoneStr.length < 11) {
+                    phoneStr = phoneStr.padStart(11, '0');
+                  }
+                  // Google Sheetsで数値として解釈されないようにシングルクォートを先頭に追加
+                  formattedPhone = "'" + phoneStr;
+                }
 
                 // アパート専用フィールドのフォーマット
+                console.log("🔍 Debug - propertyType:", webhookInput.propertyType);
+                console.log("🔍 Debug - buildingStructure:", webhookInput.buildingStructure);
+                console.log("🔍 Debug - floors:", webhookInput.floors);
+                
                 const buildingStructureText = webhookInput.propertyType === "apartment" && webhookInput.buildingStructure 
                   ? webhookInput.buildingStructure 
                   : "";
                 const floorsText = webhookInput.propertyType === "apartment" && webhookInput.floors 
                   ? `${webhookInput.floors}階建` 
                   : "";
+                  
+                console.log("🔍 Debug - buildingStructureText:", buildingStructureText);
+                console.log("🔍 Debug - floorsText:", floorsText);
 
                 const webhookData = {
                   timestamp: formattedTimestamp,
@@ -165,8 +187,10 @@ export const appRouter = router({
                   floors: floorsText,
                 };
                 
+                console.log("📤 Sending webhook data to Google Sheets:", JSON.stringify(webhookData, null, 2));
+                
                 const webhookController = new AbortController();
-                const webhookTimeout = setTimeout(() => webhookController.abort(), 5000); // 5秒タイムアウト
+                const webhookTimeout = setTimeout(() => webhookController.abort(), 15000); // 15秒タイムアウト
                 
                 const webhookResponse = await fetch(webhookUrl, {
                   method: "POST",
@@ -184,7 +208,7 @@ export const appRouter = router({
                 }
               } catch (e) {
                 if (e instanceof Error && e.name === 'AbortError') {
-                  console.warn("Google Sheets webhook timeout (5s)");
+                  console.warn("Google Sheets webhook timeout (15s)");
                 } else {
                   console.warn("Failed to send data to Google Sheets:", e);
                 }

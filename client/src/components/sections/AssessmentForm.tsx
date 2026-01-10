@@ -134,7 +134,7 @@ export default function AssessmentForm() {
         nearestStation: stationName || undefined,
         walkingMinutes: walkingMinutes ? parseInt(walkingMinutes) : undefined,
         // アパート専用フィールド
-        buildingStructure: propertyType === "apartment" ? buildingStructure || undefined : undefined,
+        buildingStructure: propertyType === "apartment" && buildingStructure ? buildingStructure : undefined,
         floors: propertyType === "apartment" && floors ? parseInt(floors) : undefined,
       });
       
