@@ -329,7 +329,7 @@ export default function AssessmentResult({ result, propertyData, marketAnalysis,
               </div>
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-3">
                 <p className="text-xs text-blue-700">
-                  <strong>説明:</strong> 「参照した集約データ」は地域・物件種別・築年数で集約されたデータ件数、「実際の取引件数」はその集約データに含まれる実取引の合計件数です。
+                  <strong>説明:</strong> 「参照した集約データ」は、ご入力いただいた地域・物件種別・築年数に該当する周辺事例をまとめたデータの数です。「実際の取引件数」は、それらのデータに含まれる実際の不動産取引の総数を示しています。
                 </p>
               </div>
             </div>
